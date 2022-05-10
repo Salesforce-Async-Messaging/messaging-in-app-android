@@ -14,4 +14,4 @@ Start a new conversation with customers from your Android mobile app. Custom bra
 ## Other Links
 
 - Salesforce Org Setup Instructions
-- iOS Messaging for In-App Links
+- [iOS Messaging for In-App Links](https://github.com/Salesforce-Async-Messaging/messaging-in-app-ios)
