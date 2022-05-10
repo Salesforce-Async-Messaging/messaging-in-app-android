@@ -1,3 +1,5 @@
+![Salesforce logo](./images/Salesforce-logo.png)
+
 # Salesforce Messaging for In-App (Android SDK)
 
 Start a new conversation with customers from your Android mobile app. Custom branding and mobile push notifications provide a modern experience.
