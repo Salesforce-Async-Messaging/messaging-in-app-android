@@ -13,7 +13,7 @@ Start a new conversation with customers from your Android mobile app. Custom bra
 
 ## Other Links
 
-- [Salesforce Org Setup Instructions](https://help.salesforce.com/s/articleView?id=sf.miaw_intro_landing.htm)
+- [Salesforce Org Setup Instructions](https://help.salesforce.com/s/articleView?id=sf.miaw_setup_stages.htm)
 - [iOS Messaging for In-App GitHub Repo](https://github.com/Salesforce-Async-Messaging/messaging-in-app-ios)
 
 ![Android Device](./images/messaging-android-device.png)
