@@ -9,7 +9,7 @@ Start a new conversation with customers from your Android mobile app. Custom bra
 - [Messaging for In-App Developer Guide](https://developer.salesforce.com/docs/service/messaging-in-app/overview)
 - [Android Release Notes](https://github.com/Salesforce-Async-Messaging/messaging-in-app-android/releases)
 - [Android Example Apps](./examples)
-- Android Reference Documentation
+- [Android Reference Documentation](https://salesforce-async-messaging.github.io/messaging-in-app-android/)
 
 ## Other Links
 
