@@ -1,0 +1,31 @@
+$dokka.format:html-v1
+$dokka.linkExtension:html
+$dokka.location:com.salesforce.android.smi.core/CoreClientFactory///PointingToDeclaration/messaging-inapp-core/com.salesforce.android.smi.core/[android-jvm]-core-client-factory/index.html
+$dokka.location:com.salesforce.android.smi.core/CoreClientFactory/create/#android.content.Context#Configuration/PointingToDeclaration/messaging-inapp-core/com.salesforce.android.smi.core/[android-jvm]-core-client-factory/create.html
+$dokka.location:com.salesforce.android.smi.core/CoreClientFactory/destroy/#android.content.Context/PointingToDeclaration/messaging-inapp-core/com.salesforce.android.smi.core/[android-jvm]-core-client-factory/destroy.html
+$dokka.location:com.salesforce.android.smi.core/CoreClientFactory/overrideCoreClient/#CoreClient/PointingToDeclaration/messaging-inapp-core/com.salesforce.android.smi.core/[android-jvm]-core-client-factory/override-core-client.html
+module:messaging-inapp-common
+com.salesforce.android.smi.common.api
+module:messaging-inapp-core
+com.salesforce.android.smi.core
+com.salesforce.android.smi.core.data.domain
+com.salesforce.android.smi.core.data.domain.conversationEntry.entryPayload.event.typing
+com.salesforce.android.smi.core.data.domain.remoteConfiguration
+com.salesforce.android.smi.core.events
+module:messaging-inapp-network
+com.salesforce.android.smi.network.data.domain.auth
+com.salesforce.android.smi.network.data.domain.conversation
+com.salesforce.android.smi.network.data.domain.conversationEntry
+com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload
+com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload.event
+com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload.event.entries
+com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload.message.component
+com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload.message.component.optionItem
+com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload.message.component.optionItem.titleItem
+com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload.message.component.richLink
+com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload.message.format
+com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload.routing
+com.salesforce.android.smi.network.data.domain.participant
+com.salesforce.android.smi.network.data.domain.prechat
+module:messaging-inapp-ui
+com.salesforce.android.smi.ui
