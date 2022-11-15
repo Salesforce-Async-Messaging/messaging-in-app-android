@@ -7,4 +7,11 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <!-- Optional color token overrides -->
+    <!--
+    <color name="smi_color_primary">#FFBBDD</color>
+    <color name="smi_color_primary_variant">#9C27B0</color>
+    <color name="smi_color_on_primary">#673AB7</color>
+    -->
 </resources>
