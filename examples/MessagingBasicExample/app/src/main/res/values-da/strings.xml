@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Optional string overrides -->
+    <!--
+    <string name="smi_chat_feed_title">Chat Override (DA)</string>
+    <string name="smi_feed_input_text">Type a message override (DA)</string>
+    -->
+
+</resources>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Optional color token overrides -->
+    <!--
+    <color name="smi_color_primary">#FFEB3B</color>
+    <color name="smi_color_primary_variant">#009688</color>
+    <color name="smi_color_on_primary">#F44336</color>
+    -->
+</resources>

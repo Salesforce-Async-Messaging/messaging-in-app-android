@@ -9,4 +9,10 @@
 
     <string name="hello_first_fragment">Simple example for Messaging for In-App for Android</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+
+    <!-- Optional string overrides -->
+    <!--
+    <string name="smi_chat_feed_title">Chat Override</string>
+    <string name="smi_feed_input_text">Type a message override</string>
+    -->
 </resources>
