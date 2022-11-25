@@ -1,19 +1,17 @@
 package com.example.messagingbasicexample
 
 import android.os.Bundle
-import com.google.android.material.snackbar.Snackbar
+import android.view.Menu
+import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
-import android.view.Menu
-import android.view.MenuItem
 import com.example.messagingbasicexample.databinding.ActivityMainBinding
 import com.salesforce.android.smi.core.CoreConfiguration
 import com.salesforce.android.smi.ui.UIClient
 import com.salesforce.android.smi.ui.UIConfiguration
-import java.net.URL
 import java.util.*
 
 class MainActivity : AppCompatActivity() {
@@ -56,9 +54,12 @@ class MainActivity : AppCompatActivity() {
 
         val coreConfig = CoreConfiguration.fromFile(this, "configFile.json")
         val conversationID = UUID.randomUUID()
-        uiConfig = UIConfiguration(coreConfig, conversationID)
+        uiConfig = UIConfiguration(coreConfig, conversationID).also {
+            // Optionally log events
+            (applicationContext as MessagingApp).viewModel.logEvents(it)
+        }
 
-        println("Config created using conversation ID ${conversationID.toString()}")
+        println("Config created using conversation ID $conversationID")
     }
 
     /**
