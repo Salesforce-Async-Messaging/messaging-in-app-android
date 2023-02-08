@@ -54,6 +54,8 @@ class MainActivity : AppCompatActivity() {
         val coreConfig = CoreConfiguration.fromFile(this, "configFile.json")
 
         // Create a new conversation
+        // This code uses a random UUID for the conversation ID, but
+        // be sure to use the same ID to persist the same conversation.
         val conversationID = UUID.randomUUID()
 
         uiConfig = UIConfiguration(coreConfig, conversationID).also {
