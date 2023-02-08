@@ -19,7 +19,7 @@
         <item name="windowNoTitle">true</item>
     </style>
 
-    <style name="Theme.MessagingBasicExample.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="Theme.MessagingCoreExample.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
-    <style name="Theme.MessagingBasicExample.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+    <style name="Theme.MessagingCoreExample.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>
