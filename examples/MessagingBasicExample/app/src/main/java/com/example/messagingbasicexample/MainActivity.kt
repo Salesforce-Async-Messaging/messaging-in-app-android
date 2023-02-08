@@ -51,9 +51,11 @@ class MainActivity : AppCompatActivity() {
         // TO DO: Replace the config file in this app (assets/configFile.json)
         //        with the config file you downloaded from your Salesforce org.
         //        To learn more, see https://help.salesforce.com/s/articleView?id=sf.miaw_deployment_mobile.htm
-
         val coreConfig = CoreConfiguration.fromFile(this, "configFile.json")
+
+        // Create a new conversation
         val conversationID = UUID.randomUUID()
+
         uiConfig = UIConfiguration(coreConfig, conversationID).also {
             // Optionally log events
             (applicationContext as MessagingApp).viewModel.logEvents(it)
