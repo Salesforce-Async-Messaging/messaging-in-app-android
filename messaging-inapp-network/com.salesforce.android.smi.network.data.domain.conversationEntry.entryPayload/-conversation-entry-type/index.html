@@ -3,12 +3,19 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
     <title>ConversationEntryType</title>
-<link href="../../../images/logo-icon.svg" rel="icon" type="image/svg">
-    <script>var pathToRoot = "../../../";</script>    <script>const storage = localStorage.getItem("dokka-dark-mode")
-const savedDarkMode = storage ? JSON.parse(storage) : false
-if(savedDarkMode === true){
-    document.getElementsByTagName("html")[0].classList.add("theme-dark")
-}</script>
+<link href="../../../images/logo-icon.svg" rel="icon" type="image/svg"><script>var pathToRoot = "../../../";</script>    <script>const storage = localStorage.getItem("dokka-dark-mode")
+    if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    } else {
+        const savedDarkMode = JSON.parse(storage)
+        if(savedDarkMode === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    }
+    </script>
 <script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async></script>
 <link href="../../../styles/style.css" rel="Stylesheet">
 <link href="../../../styles/jetbrains-mono.css" rel="Stylesheet">
@@ -19,7 +26,8 @@ if(savedDarkMode === true){
 <script type="text/javascript" src="../../../scripts/navigation-loader.js" async></script>
 <script type="text/javascript" src="../../../scripts/platform-content-handler.js" async></script>
 <script type="text/javascript" src="../../../scripts/main.js" defer></script>
-<script type="text/javascript" src="../../../scripts/prism.js" async></script></head>
+<script type="text/javascript" src="../../../scripts/prism.js" async></script>
+<script type="text/javascript" src="../../../scripts/symbol-parameters-wrapper_deferred.js" defer></script></head>
 <body>
 <div class="navigation-wrapper" id="navigation-wrapper">
     <div id="leftToggler"><span class="icon-toggler"></span></div>
@@ -39,116 +47,26 @@ if(savedDarkMode === true){
     </div>
     <div id="main">
 <div class="main-content" id="content" pageids="messaging-inapp-network::com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload/ConversationEntryType///PointingToDeclaration//-458278735">
-  <div class="breadcrumbs"><a href="../../index.html">messaging-inapp-network</a><span class="delimiter">/</span><a href="../index.html">com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload</a><span class="delimiter">/</span><a href="index.html">ConversationEntryType</a></div>
+  <div class="breadcrumbs"><a href="../../index.html">messaging-inapp-network</a><span class="delimiter">/</span><a href="../index.html">com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload</a><span class="delimiter">/</span><span class="current">ConversationEntryType</span></div>
   <div class="cover ">
     <h1 class="cover"><span>Conversation</span><wbr><span>Entry</span><wbr><span><span>Type</span></span></h1>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":messaging-inapp-network:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">enum </span><a href="index.html">ConversationEntryType</a> : <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-enum/index.html">Enum</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="index.html">ConversationEntryType</a><span class="token operator">&gt; </span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><p class="paragraph">The payload type for a ConversationEntry.</p></div></div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":messaging-inapp-network:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">enum </span><a href="index.html">ConversationEntryType</a> : <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-enum/index.html">Enum</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="index.html">ConversationEntryType</a><span class="token operator">&gt; </span></div><p class="paragraph">The payload type for a ConversationEntry.</p></div></div>
   </div>
   <div class="tabbedcontent">
-    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="Entries">Entries</button><button class="section-tab" data-togglable="Properties">Properties</button></div>
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="Entries">Entries</button><button class="section-tab" data-togglable="Functions">Functions</button><button class="section-tab" data-togglable="Properties">Properties</button></div>
     <div class="tabs-section-body">
       <h2 class="tabbedcontent">Entries</h2>
-      <div class="table" data-togglable="Entries"><a data-name="166464373%2FClasslikes%2F-458278735" anchor-label="RoutingWorkResult" id="166464373%2FClasslikes%2F-458278735" data-filterable-set=":messaging-inapp-network:dokkaHtmlPartial/release"></a>
+      <div class="table" data-togglable="Entries"><a data-name="-694456184%2FClasslikes%2F-458278735" anchor-label="Message" id="-694456184%2FClasslikes%2F-458278735" data-filterable-set=":messaging-inapp-network:dokkaHtmlPartial/release"></a>
         <div class="table-row" data-filterable-current=":messaging-inapp-network:dokkaHtmlPartial/release" data-filterable-set=":messaging-inapp-network:dokkaHtmlPartial/release">
           <div class="main-subrow keyValue ">
             <div class=""><span class="inline-flex">
-                <div><a href="-routing-work-result/index.html">RoutingWorkResult</a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="166464373%2FClasslikes%2F-458278735"></span>
+                <div><a href="-message/index.html">Message</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-694456184%2FClasslikes%2F-458278735"></span>
                   <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                 </span></span></div>
             <div>
               <div class="title">
-                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":messaging-inapp-network:dokkaHtmlPartial/release"><div class="symbol monospace"><div class="block"><a href="-routing-work-result/index.html">RoutingWorkResult</a><span class="token punctuation">(</span><span class="token punctuation">)</span></div><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><p class="paragraph">A conversation entry payload for a routing work result event.</p></div></div></div>
-              </div>
-            </div>
-          </div>
-        </div>
-<a data-name="-1292062140%2FClasslikes%2F-458278735" anchor-label="RoutingResult" id="-1292062140%2FClasslikes%2F-458278735" data-filterable-set=":messaging-inapp-network:dokkaHtmlPartial/release"></a>
-        <div class="table-row" data-filterable-current=":messaging-inapp-network:dokkaHtmlPartial/release" data-filterable-set=":messaging-inapp-network:dokkaHtmlPartial/release">
-          <div class="main-subrow keyValue ">
-            <div class=""><span class="inline-flex">
-                <div><a href="-routing-result/index.html">RoutingResult</a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1292062140%2FClasslikes%2F-458278735"></span>
-                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                </span></span></div>
-            <div>
-              <div class="title">
-                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":messaging-inapp-network:dokkaHtmlPartial/release"><div class="symbol monospace"><div class="block"><a href="-routing-result/index.html">RoutingResult</a><span class="token punctuation">(</span><span class="token punctuation">)</span></div><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><p class="paragraph">A conversation entry payload for a routing result event.</p></div></div></div>
-              </div>
-            </div>
-          </div>
-        </div>
-<a data-name="-1937372731%2FClasslikes%2F-458278735" anchor-label="ReadAcknowledgement" id="-1937372731%2FClasslikes%2F-458278735" data-filterable-set=":messaging-inapp-network:dokkaHtmlPartial/release"></a>
-        <div class="table-row" data-filterable-current=":messaging-inapp-network:dokkaHtmlPartial/release" data-filterable-set=":messaging-inapp-network:dokkaHtmlPartial/release">
-          <div class="main-subrow keyValue ">
-            <div class=""><span class="inline-flex">
-                <div><a href="-read-acknowledgement/index.html">ReadAcknowledgement</a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1937372731%2FClasslikes%2F-458278735"></span>
-                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                </span></span></div>
-            <div>
-              <div class="title">
-                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":messaging-inapp-network:dokkaHtmlPartial/release"><div class="symbol monospace"><div class="block"><a href="-read-acknowledgement/index.html">ReadAcknowledgement</a><span class="token punctuation">(</span><span class="token punctuation">)</span></div><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><p class="paragraph">A conversation entry payload for a read acknowledgement.</p></div></div></div>
-              </div>
-            </div>
-          </div>
-        </div>
-<a data-name="-965750361%2FClasslikes%2F-458278735" anchor-label="DeliveryAcknowledgement" id="-965750361%2FClasslikes%2F-458278735" data-filterable-set=":messaging-inapp-network:dokkaHtmlPartial/release"></a>
-        <div class="table-row" data-filterable-current=":messaging-inapp-network:dokkaHtmlPartial/release" data-filterable-set=":messaging-inapp-network:dokkaHtmlPartial/release">
-          <div class="main-subrow keyValue ">
-            <div class=""><span class="inline-flex">
-                <div><a href="-delivery-acknowledgement/index.html">DeliveryAcknowledgement</a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-965750361%2FClasslikes%2F-458278735"></span>
-                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                </span></span></div>
-            <div>
-              <div class="title">
-                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":messaging-inapp-network:dokkaHtmlPartial/release"><div class="symbol monospace"><div class="block"><a href="-delivery-acknowledgement/index.html">DeliveryAcknowledgement</a><span class="token punctuation">(</span><span class="token punctuation">)</span></div><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><p class="paragraph">A conversation entry payload for a delivery acknowledgement.</p></div></div></div>
-              </div>
-            </div>
-          </div>
-        </div>
-<a data-name="215483744%2FClasslikes%2F-458278735" anchor-label="TypingStoppedIndicator" id="215483744%2FClasslikes%2F-458278735" data-filterable-set=":messaging-inapp-network:dokkaHtmlPartial/release"></a>
-        <div class="table-row" data-filterable-current=":messaging-inapp-network:dokkaHtmlPartial/release" data-filterable-set=":messaging-inapp-network:dokkaHtmlPartial/release">
-          <div class="main-subrow keyValue ">
-            <div class=""><span class="inline-flex">
-                <div><a href="-typing-stopped-indicator/index.html">TypingStoppedIndicator</a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="215483744%2FClasslikes%2F-458278735"></span>
-                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                </span></span></div>
-            <div>
-              <div class="title">
-                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":messaging-inapp-network:dokkaHtmlPartial/release"><div class="symbol monospace"><div class="block"><a href="-typing-stopped-indicator/index.html">TypingStoppedIndicator</a><span class="token punctuation">(</span><span class="token punctuation">)</span></div><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><p class="paragraph">A conversation entry payload for a typing stopped event indicator.</p></div></div></div>
-              </div>
-            </div>
-          </div>
-        </div>
-<a data-name="-128490452%2FClasslikes%2F-458278735" anchor-label="TypingStartedIndicator" id="-128490452%2FClasslikes%2F-458278735" data-filterable-set=":messaging-inapp-network:dokkaHtmlPartial/release"></a>
-        <div class="table-row" data-filterable-current=":messaging-inapp-network:dokkaHtmlPartial/release" data-filterable-set=":messaging-inapp-network:dokkaHtmlPartial/release">
-          <div class="main-subrow keyValue ">
-            <div class=""><span class="inline-flex">
-                <div><a href="-typing-started-indicator/index.html">TypingStartedIndicator</a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-128490452%2FClasslikes%2F-458278735"></span>
-                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                </span></span></div>
-            <div>
-              <div class="title">
-                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":messaging-inapp-network:dokkaHtmlPartial/release"><div class="symbol monospace"><div class="block"><a href="-typing-started-indicator/index.html">TypingStartedIndicator</a><span class="token punctuation">(</span><span class="token punctuation">)</span></div><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><p class="paragraph">A conversation entry payload for a typing started event indicator.</p></div></div></div>
-              </div>
-            </div>
-          </div>
-        </div>
-<a data-name="-25718247%2FClasslikes%2F-458278735" anchor-label="TypingIndicator" id="-25718247%2FClasslikes%2F-458278735" data-filterable-set=":messaging-inapp-network:dokkaHtmlPartial/release"></a>
-        <div class="table-row" data-filterable-current=":messaging-inapp-network:dokkaHtmlPartial/release" data-filterable-set=":messaging-inapp-network:dokkaHtmlPartial/release">
-          <div class="main-subrow keyValue ">
-            <div class=""><span class="inline-flex">
-                <div><a href="-typing-indicator/index.html">TypingIndicator</a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-25718247%2FClasslikes%2F-458278735"></span>
-                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                </span></span></div>
-            <div>
-              <div class="title">
-                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":messaging-inapp-network:dokkaHtmlPartial/release"><div class="symbol monospace"><div class="block"><a href="-typing-indicator/index.html">TypingIndicator</a><span class="token punctuation">(</span><span class="token punctuation">)</span></div><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><p class="paragraph">A conversation entry payload for a typing indicator.</p></div></div></div>
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":messaging-inapp-network:dokkaHtmlPartial/release"><div class="symbol monospace"><div class="block"><a href="-message/index.html">Message</a></div></div><div class="brief "><p class="paragraph">A conversation entry payload for a message.</p></div></div></div>
               </div>
             </div>
           </div>
@@ -163,22 +81,144 @@ if(savedDarkMode === true){
                 </span></span></div>
             <div>
               <div class="title">
-                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":messaging-inapp-network:dokkaHtmlPartial/release"><div class="symbol monospace"><div class="block"><a href="-participant-changed/index.html">ParticipantChanged</a><span class="token punctuation">(</span><span class="token punctuation">)</span></div><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><p class="paragraph">A conversation entry payload for when a participant has changed.</p></div></div></div>
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":messaging-inapp-network:dokkaHtmlPartial/release"><div class="symbol monospace"><div class="block"><a href="-participant-changed/index.html">ParticipantChanged</a></div></div><div class="brief "><p class="paragraph">A conversation entry payload for when a participant has changed.</p></div></div></div>
               </div>
             </div>
           </div>
         </div>
-<a data-name="-694456184%2FClasslikes%2F-458278735" anchor-label="Message" id="-694456184%2FClasslikes%2F-458278735" data-filterable-set=":messaging-inapp-network:dokkaHtmlPartial/release"></a>
+<a data-name="-25718247%2FClasslikes%2F-458278735" anchor-label="TypingIndicator" id="-25718247%2FClasslikes%2F-458278735" data-filterable-set=":messaging-inapp-network:dokkaHtmlPartial/release"></a>
         <div class="table-row" data-filterable-current=":messaging-inapp-network:dokkaHtmlPartial/release" data-filterable-set=":messaging-inapp-network:dokkaHtmlPartial/release">
           <div class="main-subrow keyValue ">
             <div class=""><span class="inline-flex">
-                <div><a href="-message/index.html">Message</a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-694456184%2FClasslikes%2F-458278735"></span>
+                <div><a href="-typing-indicator/index.html">TypingIndicator</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-25718247%2FClasslikes%2F-458278735"></span>
                   <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                 </span></span></div>
             <div>
               <div class="title">
-                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":messaging-inapp-network:dokkaHtmlPartial/release"><div class="symbol monospace"><div class="block"><a href="-message/index.html">Message</a><span class="token punctuation">(</span><span class="token punctuation">)</span></div><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><p class="paragraph">A conversation entry payload for a message.</p></div></div></div>
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":messaging-inapp-network:dokkaHtmlPartial/release"><div class="symbol monospace"><div class="block"><a href="-typing-indicator/index.html">TypingIndicator</a></div></div><div class="brief "><p class="paragraph">A conversation entry payload for a typing indicator.</p></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="-128490452%2FClasslikes%2F-458278735" anchor-label="TypingStartedIndicator" id="-128490452%2FClasslikes%2F-458278735" data-filterable-set=":messaging-inapp-network:dokkaHtmlPartial/release"></a>
+        <div class="table-row" data-filterable-current=":messaging-inapp-network:dokkaHtmlPartial/release" data-filterable-set=":messaging-inapp-network:dokkaHtmlPartial/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="-typing-started-indicator/index.html">TypingStartedIndicator</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-128490452%2FClasslikes%2F-458278735"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":messaging-inapp-network:dokkaHtmlPartial/release"><div class="symbol monospace"><div class="block"><a href="-typing-started-indicator/index.html">TypingStartedIndicator</a></div></div><div class="brief "><p class="paragraph">A conversation entry payload for a typing started event indicator.</p></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="215483744%2FClasslikes%2F-458278735" anchor-label="TypingStoppedIndicator" id="215483744%2FClasslikes%2F-458278735" data-filterable-set=":messaging-inapp-network:dokkaHtmlPartial/release"></a>
+        <div class="table-row" data-filterable-current=":messaging-inapp-network:dokkaHtmlPartial/release" data-filterable-set=":messaging-inapp-network:dokkaHtmlPartial/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="-typing-stopped-indicator/index.html">TypingStoppedIndicator</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="215483744%2FClasslikes%2F-458278735"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":messaging-inapp-network:dokkaHtmlPartial/release"><div class="symbol monospace"><div class="block"><a href="-typing-stopped-indicator/index.html">TypingStoppedIndicator</a></div></div><div class="brief "><p class="paragraph">A conversation entry payload for a typing stopped event indicator.</p></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="-965750361%2FClasslikes%2F-458278735" anchor-label="DeliveryAcknowledgement" id="-965750361%2FClasslikes%2F-458278735" data-filterable-set=":messaging-inapp-network:dokkaHtmlPartial/release"></a>
+        <div class="table-row" data-filterable-current=":messaging-inapp-network:dokkaHtmlPartial/release" data-filterable-set=":messaging-inapp-network:dokkaHtmlPartial/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="-delivery-acknowledgement/index.html">DeliveryAcknowledgement</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-965750361%2FClasslikes%2F-458278735"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":messaging-inapp-network:dokkaHtmlPartial/release"><div class="symbol monospace"><div class="block"><a href="-delivery-acknowledgement/index.html">DeliveryAcknowledgement</a></div></div><div class="brief "><p class="paragraph">A conversation entry payload for a delivery acknowledgement.</p></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="-1937372731%2FClasslikes%2F-458278735" anchor-label="ReadAcknowledgement" id="-1937372731%2FClasslikes%2F-458278735" data-filterable-set=":messaging-inapp-network:dokkaHtmlPartial/release"></a>
+        <div class="table-row" data-filterable-current=":messaging-inapp-network:dokkaHtmlPartial/release" data-filterable-set=":messaging-inapp-network:dokkaHtmlPartial/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="-read-acknowledgement/index.html">ReadAcknowledgement</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1937372731%2FClasslikes%2F-458278735"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":messaging-inapp-network:dokkaHtmlPartial/release"><div class="symbol monospace"><div class="block"><a href="-read-acknowledgement/index.html">ReadAcknowledgement</a></div></div><div class="brief "><p class="paragraph">A conversation entry payload for a read acknowledgement.</p></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="-1292062140%2FClasslikes%2F-458278735" anchor-label="RoutingResult" id="-1292062140%2FClasslikes%2F-458278735" data-filterable-set=":messaging-inapp-network:dokkaHtmlPartial/release"></a>
+        <div class="table-row" data-filterable-current=":messaging-inapp-network:dokkaHtmlPartial/release" data-filterable-set=":messaging-inapp-network:dokkaHtmlPartial/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="-routing-result/index.html">RoutingResult</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1292062140%2FClasslikes%2F-458278735"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":messaging-inapp-network:dokkaHtmlPartial/release"><div class="symbol monospace"><div class="block"><a href="-routing-result/index.html">RoutingResult</a></div></div><div class="brief "><p class="paragraph">A conversation entry payload for a routing result event.</p></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="166464373%2FClasslikes%2F-458278735" anchor-label="RoutingWorkResult" id="166464373%2FClasslikes%2F-458278735" data-filterable-set=":messaging-inapp-network:dokkaHtmlPartial/release"></a>
+        <div class="table-row" data-filterable-current=":messaging-inapp-network:dokkaHtmlPartial/release" data-filterable-set=":messaging-inapp-network:dokkaHtmlPartial/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="-routing-work-result/index.html">RoutingWorkResult</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="166464373%2FClasslikes%2F-458278735"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":messaging-inapp-network:dokkaHtmlPartial/release"><div class="symbol monospace"><div class="block"><a href="-routing-work-result/index.html">RoutingWorkResult</a></div></div><div class="brief "><p class="paragraph">A conversation entry payload for a routing work result event.</p></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <h2 class="">Functions</h2>
+      <div class="table" data-togglable="Functions"><a data-name="-498657925%2FFunctions%2F-458278735" anchor-label="valueOf" id="-498657925%2FFunctions%2F-458278735" data-filterable-set=":messaging-inapp-network:dokkaHtmlPartial/release"></a>
+        <div class="table-row" data-filterable-current=":messaging-inapp-network:dokkaHtmlPartial/release" data-filterable-set=":messaging-inapp-network:dokkaHtmlPartial/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="value-of.html"><span>value</span><wbr><span><span>Of</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-498657925%2FFunctions%2F-458278735"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":messaging-inapp-network:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">fun </span><a href="value-of.html"><span class="token function">valueOf</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">value<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">ConversationEntryType</a></div><div class="brief "><p class="paragraph">Returns the enum constant of this type with the specified name. The string must match exactly an identifier used to declare an enum constant in this type. (Extraneous whitespace characters are not permitted.)</p></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="-1117764153%2FFunctions%2F-458278735" anchor-label="values" id="-1117764153%2FFunctions%2F-458278735" data-filterable-set=":messaging-inapp-network:dokkaHtmlPartial/release"></a>
+        <div class="table-row" data-filterable-current=":messaging-inapp-network:dokkaHtmlPartial/release" data-filterable-set=":messaging-inapp-network:dokkaHtmlPartial/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="values.html"><span><span>values</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1117764153%2FFunctions%2F-458278735"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":messaging-inapp-network:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">fun </span><a href="values.html"><span class="token function">values</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-array/index.html">Array</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="index.html">ConversationEntryType</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Returns an array containing the constants of this enum type, in the order they're declared.</p></div></div></div>
               </div>
             </div>
           </div>
@@ -189,13 +229,13 @@ if(savedDarkMode === true){
         <div class="table-row" data-filterable-current=":messaging-inapp-network:dokkaHtmlPartial/release" data-filterable-set=":messaging-inapp-network:dokkaHtmlPartial/release">
           <div class="main-subrow keyValue ">
             <div class=""><span class="inline-flex">
-                <div><a href="../../com.salesforce.android.smi.network.data.domain.prechat/-pre-chat-field-type/-email/index.html#-372974862%2FProperties%2F-458278735">name</a></div>
+                <div><a href="../../com.salesforce.android.smi.network.data.domain.prechat/-pre-chat-field-type/-checkbox/index.html#-372974862%2FProperties%2F-458278735"><span><span>name</span></span></a></div>
 <span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-372974862%2FProperties%2F-458278735"></span>
                   <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                 </span></span></div>
             <div>
               <div class="title">
-                <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":messaging-inapp-network:dokkaHtmlPartial/release"><a data-name="-372974862%2FProperties%2F-458278735" anchor-label="name" id="-372974862%2FProperties%2F-458278735" data-filterable-set=":messaging-inapp-network:dokkaHtmlPartial/release"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="../../com.salesforce.android.smi.network.data.domain.prechat/-pre-chat-field-type/-email/index.html#-372974862%2FProperties%2F-458278735">name</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-dependent-content" data-active="" data-togglable=":messaging-inapp-network:dokkaHtmlPartial/release"><a data-name="-372974862%2FProperties%2F-458278735" anchor-label="name" id="-372974862%2FProperties%2F-458278735" data-filterable-set=":messaging-inapp-network:dokkaHtmlPartial/release"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="../../com.salesforce.android.smi.network.data.domain.prechat/-pre-chat-field-type/-checkbox/index.html#-372974862%2FProperties%2F-458278735">name</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a></div></div></div>
               </div>
             </div>
           </div>
@@ -204,13 +244,13 @@ if(savedDarkMode === true){
         <div class="table-row" data-filterable-current=":messaging-inapp-network:dokkaHtmlPartial/release" data-filterable-set=":messaging-inapp-network:dokkaHtmlPartial/release">
           <div class="main-subrow keyValue ">
             <div class=""><span class="inline-flex">
-                <div><a href="../../com.salesforce.android.smi.network.data.domain.prechat/-pre-chat-field-type/-email/index.html#-739389684%2FProperties%2F-458278735">ordinal</a></div>
+                <div><a href="../../com.salesforce.android.smi.network.data.domain.prechat/-pre-chat-field-type/-checkbox/index.html#-739389684%2FProperties%2F-458278735"><span><span>ordinal</span></span></a></div>
 <span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-739389684%2FProperties%2F-458278735"></span>
                   <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                 </span></span></div>
             <div>
               <div class="title">
-                <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":messaging-inapp-network:dokkaHtmlPartial/release"><a data-name="-739389684%2FProperties%2F-458278735" anchor-label="ordinal" id="-739389684%2FProperties%2F-458278735" data-filterable-set=":messaging-inapp-network:dokkaHtmlPartial/release"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="../../com.salesforce.android.smi.network.data.domain.prechat/-pre-chat-field-type/-email/index.html#-739389684%2FProperties%2F-458278735">ordinal</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-dependent-content" data-active="" data-togglable=":messaging-inapp-network:dokkaHtmlPartial/release"><a data-name="-739389684%2FProperties%2F-458278735" anchor-label="ordinal" id="-739389684%2FProperties%2F-458278735" data-filterable-set=":messaging-inapp-network:dokkaHtmlPartial/release"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="../../com.salesforce.android.smi.network.data.domain.prechat/-pre-chat-field-type/-checkbox/index.html#-739389684%2FProperties%2F-458278735">ordinal</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a></div></div></div>
               </div>
             </div>
           </div>
@@ -219,8 +259,9 @@ if(savedDarkMode === true){
     </div>
   </div>
 </div>
-        <div class="footer"><span class="go-to-top-icon"><a href="#content" id="go-to-top-link"></a></span><span>© 2022 Copyright</span><span class="pull-right"><span>Generated by </span><a href="https://github.com/Kotlin/dokka"><span>dokka</span><span class="padded-icon"></span></a></span>
-        </div>
+      <div class="footer">
+        <span class="go-to-top-icon"><a href="#content" id="go-to-top-link"></a></span><span>© 2023 Copyright</span><span class="pull-right"><span>Generated by </span><a href="https://github.com/Kotlin/dokka"><span>dokka</span><span class="padded-icon"></span></a></span>
+      </div>
     </div>
 </div>
 

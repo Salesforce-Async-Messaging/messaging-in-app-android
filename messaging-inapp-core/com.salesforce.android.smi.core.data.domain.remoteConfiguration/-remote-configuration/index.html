@@ -3,12 +3,19 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
     <title>RemoteConfiguration</title>
-<link href="../../../images/logo-icon.svg" rel="icon" type="image/svg">
-    <script>var pathToRoot = "../../../";</script>    <script>const storage = localStorage.getItem("dokka-dark-mode")
-const savedDarkMode = storage ? JSON.parse(storage) : false
-if(savedDarkMode === true){
-    document.getElementsByTagName("html")[0].classList.add("theme-dark")
-}</script>
+<link href="../../../images/logo-icon.svg" rel="icon" type="image/svg"><script>var pathToRoot = "../../../";</script>    <script>const storage = localStorage.getItem("dokka-dark-mode")
+    if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    } else {
+        const savedDarkMode = JSON.parse(storage)
+        if(savedDarkMode === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    }
+    </script>
 <script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async></script>
 <link href="../../../styles/style.css" rel="Stylesheet">
 <link href="../../../styles/jetbrains-mono.css" rel="Stylesheet">
@@ -19,7 +26,8 @@ if(savedDarkMode === true){
 <script type="text/javascript" src="../../../scripts/navigation-loader.js" async></script>
 <script type="text/javascript" src="../../../scripts/platform-content-handler.js" async></script>
 <script type="text/javascript" src="../../../scripts/main.js" defer></script>
-<script type="text/javascript" src="../../../scripts/prism.js" async></script></head>
+<script type="text/javascript" src="../../../scripts/prism.js" async></script>
+<script type="text/javascript" src="../../../scripts/symbol-parameters-wrapper_deferred.js" defer></script></head>
 <body>
 <div class="navigation-wrapper" id="navigation-wrapper">
     <div id="leftToggler"><span class="icon-toggler"></span></div>
@@ -39,10 +47,10 @@ if(savedDarkMode === true){
     </div>
     <div id="main">
 <div class="main-content" id="content" pageids="messaging-inapp-core::com.salesforce.android.smi.core.data.domain.remoteConfiguration/RemoteConfiguration///PointingToDeclaration//415633242">
-  <div class="breadcrumbs"><a href="../../index.html">messaging-inapp-core</a><span class="delimiter">/</span><a href="../index.html">com.salesforce.android.smi.core.data.domain.remoteConfiguration</a><span class="delimiter">/</span><a href="index.html">RemoteConfiguration</a></div>
+  <div class="breadcrumbs"><a href="../../index.html">messaging-inapp-core</a><span class="delimiter">/</span><a href="../index.html">com.salesforce.android.smi.core.data.domain.remoteConfiguration</a><span class="delimiter">/</span><span class="current">RemoteConfiguration</span></div>
   <div class="cover ">
     <h1 class="cover"><span>Remote</span><wbr><span><span>Configuration</span></span></h1>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":messaging-inapp-core:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="index.html">RemoteConfiguration</a><span class="token punctuation">(</span><span class="parameters wrapped"><span class="parameter indented">&nbsp;&nbsp;&nbsp;&nbsp;<span class="token keyword">val </span>name<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter indented">&nbsp;&nbsp;&nbsp;&nbsp;<span class="token keyword">val </span>deploymentType<span class="token operator">: </span><a href="../-deployment-type/index.html">DeploymentType</a><span class="token punctuation">, </span></span><span class="parameter indented">&nbsp;&nbsp;&nbsp;&nbsp;<span class="token keyword">val </span>forms<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../-pre-chat-configuration/index.html">PreChatConfiguration</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter indented">&nbsp;&nbsp;&nbsp;&nbsp;<span class="token keyword">val </span>timestamp<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html">Long</a></span></span><span class="token punctuation">)</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><p class="paragraph">Represents remote configuration information.</p></div></div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":messaging-inapp-core:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="index.html">RemoteConfiguration</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>name<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>deploymentType<span class="token operator">: </span><a href="../-deployment-type/index.html">DeploymentType</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>forms<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../-pre-chat-configuration/index.html">PreChatConfiguration</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>timestamp<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html">Long</a></span></span><span class="token punctuation">)</span></div><p class="paragraph">Represents remote configuration information.</p></div></div>
   </div>
   <div class="tabbedcontent">
     <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="Constructors">Constructors</button><button class="section-tab" data-togglable="Properties">Properties</button></div>
@@ -58,7 +66,7 @@ if(savedDarkMode === true){
                 </span></span></div>
             <div>
               <div class="title">
-                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":messaging-inapp-core:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">fun </span><a href="-remote-configuration.html"><span class="token function">RemoteConfiguration</span></a><span class="token punctuation">(</span><span class="parameters wrapped"><span class="parameter indented">&nbsp;&nbsp;&nbsp;&nbsp;name<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter indented">&nbsp;&nbsp;&nbsp;&nbsp;deploymentType<span class="token operator">: </span><a href="../-deployment-type/index.html">DeploymentType</a><span class="token punctuation">, </span></span><span class="parameter indented">&nbsp;&nbsp;&nbsp;&nbsp;forms<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../-pre-chat-configuration/index.html">PreChatConfiguration</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter indented">&nbsp;&nbsp;&nbsp;&nbsp;timestamp<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html">Long</a></span></span><span class="token punctuation">)</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":messaging-inapp-core:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">fun </span><a href="-remote-configuration.html"><span class="token function">RemoteConfiguration</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">deploymentType<span class="token operator">: </span><a href="../-deployment-type/index.html">DeploymentType</a><span class="token punctuation">, </span></span><span class="parameter ">forms<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../-pre-chat-configuration/index.html">PreChatConfiguration</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter ">timestamp<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html">Long</a></span></span><span class="token punctuation">)</span></div></div></div>
               </div>
             </div>
           </div>
@@ -69,13 +77,13 @@ if(savedDarkMode === true){
         <div class="table-row" data-filterable-current=":messaging-inapp-core:dokkaHtmlPartial/release" data-filterable-set=":messaging-inapp-core:dokkaHtmlPartial/release">
           <div class="main-subrow keyValue ">
             <div class=""><span class="inline-flex">
-                <div><a href="deployment-type.html">deploymentType</a></div>
+                <div><a href="deployment-type.html"><span>deployment</span><wbr><span><span>Type</span></span></a></div>
 <span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2037285963%2FProperties%2F415633242"></span>
                   <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                 </span></span></div>
             <div>
               <div class="title">
-                <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":messaging-inapp-core:dokkaHtmlPartial/release"><a data-name="2037285963%2FProperties%2F415633242" anchor-label="deploymentType" id="2037285963%2FProperties%2F415633242" data-filterable-set=":messaging-inapp-core:dokkaHtmlPartial/release"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="deployment-type.html">deploymentType</a><span class="token operator">: </span><a href="../-deployment-type/index.html">DeploymentType</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><a data-name="2037285963%2FProperties%2F415633242" anchor-label="deploymentType" id="2037285963%2FProperties%2F415633242" data-filterable-set=":messaging-inapp-core:dokkaHtmlPartial/release"></a><p class="paragraph">Remote configuration deployment type.</p></div></div></div>
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-dependent-content" data-active="" data-togglable=":messaging-inapp-core:dokkaHtmlPartial/release"><a data-name="2037285963%2FProperties%2F415633242" anchor-label="deploymentType" id="2037285963%2FProperties%2F415633242" data-filterable-set=":messaging-inapp-core:dokkaHtmlPartial/release"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="deployment-type.html">deploymentType</a><span class="token operator">: </span><a href="../-deployment-type/index.html">DeploymentType</a></div><div class="brief "><a data-name="2037285963%2FProperties%2F415633242" anchor-label="deploymentType" id="2037285963%2FProperties%2F415633242" data-filterable-set=":messaging-inapp-core:dokkaHtmlPartial/release"></a><p class="paragraph">Remote configuration deployment type.</p></div></div></div>
               </div>
             </div>
           </div>
@@ -84,13 +92,13 @@ if(savedDarkMode === true){
         <div class="table-row" data-filterable-current=":messaging-inapp-core:dokkaHtmlPartial/release" data-filterable-set=":messaging-inapp-core:dokkaHtmlPartial/release">
           <div class="main-subrow keyValue ">
             <div class=""><span class="inline-flex">
-                <div><a href="forms.html">forms</a></div>
+                <div><a href="forms.html"><span><span>forms</span></span></a></div>
 <span class="anchor-wrapper"><span class="anchor-icon" pointing-to="121556097%2FProperties%2F415633242"></span>
                   <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                 </span></span></div>
             <div>
               <div class="title">
-                <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":messaging-inapp-core:dokkaHtmlPartial/release"><a data-name="121556097%2FProperties%2F415633242" anchor-label="forms" id="121556097%2FProperties%2F415633242" data-filterable-set=":messaging-inapp-core:dokkaHtmlPartial/release"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="forms.html">forms</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../-pre-chat-configuration/index.html">PreChatConfiguration</a><span class="token operator">&gt;</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><a data-name="121556097%2FProperties%2F415633242" anchor-label="forms" id="121556097%2FProperties%2F415633242" data-filterable-set=":messaging-inapp-core:dokkaHtmlPartial/release"></a><p class="paragraph">Pre-chat configuration forms.</p></div></div></div>
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-dependent-content" data-active="" data-togglable=":messaging-inapp-core:dokkaHtmlPartial/release"><a data-name="121556097%2FProperties%2F415633242" anchor-label="forms" id="121556097%2FProperties%2F415633242" data-filterable-set=":messaging-inapp-core:dokkaHtmlPartial/release"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="forms.html">forms</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../-pre-chat-configuration/index.html">PreChatConfiguration</a><span class="token operator">&gt;</span></div><div class="brief "><a data-name="121556097%2FProperties%2F415633242" anchor-label="forms" id="121556097%2FProperties%2F415633242" data-filterable-set=":messaging-inapp-core:dokkaHtmlPartial/release"></a><p class="paragraph">Pre-chat configuration forms.</p></div></div></div>
               </div>
             </div>
           </div>
@@ -99,13 +107,13 @@ if(savedDarkMode === true){
         <div class="table-row" data-filterable-current=":messaging-inapp-core:dokkaHtmlPartial/release" data-filterable-set=":messaging-inapp-core:dokkaHtmlPartial/release">
           <div class="main-subrow keyValue ">
             <div class=""><span class="inline-flex">
-                <div><a href="name.html">name</a></div>
+                <div><a href="name.html"><span><span>name</span></span></a></div>
 <span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1514441503%2FProperties%2F415633242"></span>
                   <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                 </span></span></div>
             <div>
               <div class="title">
-                <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":messaging-inapp-core:dokkaHtmlPartial/release"><a data-name="1514441503%2FProperties%2F415633242" anchor-label="name" id="1514441503%2FProperties%2F415633242" data-filterable-set=":messaging-inapp-core:dokkaHtmlPartial/release"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="name.html">name</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><a data-name="1514441503%2FProperties%2F415633242" anchor-label="name" id="1514441503%2FProperties%2F415633242" data-filterable-set=":messaging-inapp-core:dokkaHtmlPartial/release"></a><p class="paragraph">Name of the remote configuration.</p></div></div></div>
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-dependent-content" data-active="" data-togglable=":messaging-inapp-core:dokkaHtmlPartial/release"><a data-name="1514441503%2FProperties%2F415633242" anchor-label="name" id="1514441503%2FProperties%2F415633242" data-filterable-set=":messaging-inapp-core:dokkaHtmlPartial/release"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="name.html">name</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a></div><div class="brief "><a data-name="1514441503%2FProperties%2F415633242" anchor-label="name" id="1514441503%2FProperties%2F415633242" data-filterable-set=":messaging-inapp-core:dokkaHtmlPartial/release"></a><p class="paragraph">Name of the remote configuration.</p></div></div></div>
               </div>
             </div>
           </div>
@@ -114,13 +122,13 @@ if(savedDarkMode === true){
         <div class="table-row" data-filterable-current=":messaging-inapp-core:dokkaHtmlPartial/release" data-filterable-set=":messaging-inapp-core:dokkaHtmlPartial/release">
           <div class="main-subrow keyValue ">
             <div class=""><span class="inline-flex">
-                <div><a href="timestamp.html">timestamp</a></div>
+                <div><a href="timestamp.html"><span><span>timestamp</span></span></a></div>
 <span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2091610106%2FProperties%2F415633242"></span>
                   <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                 </span></span></div>
             <div>
               <div class="title">
-                <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":messaging-inapp-core:dokkaHtmlPartial/release"><a data-name="2091610106%2FProperties%2F415633242" anchor-label="timestamp" id="2091610106%2FProperties%2F415633242" data-filterable-set=":messaging-inapp-core:dokkaHtmlPartial/release"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="timestamp.html">timestamp</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html">Long</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><a data-name="2091610106%2FProperties%2F415633242" anchor-label="timestamp" id="2091610106%2FProperties%2F415633242" data-filterable-set=":messaging-inapp-core:dokkaHtmlPartial/release"></a><p class="paragraph">Timestamp for this remote configuration.</p></div></div></div>
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-dependent-content" data-active="" data-togglable=":messaging-inapp-core:dokkaHtmlPartial/release"><a data-name="2091610106%2FProperties%2F415633242" anchor-label="timestamp" id="2091610106%2FProperties%2F415633242" data-filterable-set=":messaging-inapp-core:dokkaHtmlPartial/release"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="timestamp.html">timestamp</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html">Long</a></div><div class="brief "><a data-name="2091610106%2FProperties%2F415633242" anchor-label="timestamp" id="2091610106%2FProperties%2F415633242" data-filterable-set=":messaging-inapp-core:dokkaHtmlPartial/release"></a><p class="paragraph">Timestamp for this remote configuration.</p></div></div></div>
               </div>
             </div>
           </div>
@@ -129,8 +137,9 @@ if(savedDarkMode === true){
     </div>
   </div>
 </div>
-        <div class="footer"><span class="go-to-top-icon"><a href="#content" id="go-to-top-link"></a></span><span>© 2022 Copyright</span><span class="pull-right"><span>Generated by </span><a href="https://github.com/Kotlin/dokka"><span>dokka</span><span class="padded-icon"></span></a></span>
-        </div>
+      <div class="footer">
+        <span class="go-to-top-icon"><a href="#content" id="go-to-top-link"></a></span><span>© 2023 Copyright</span><span class="pull-right"><span>Generated by </span><a href="https://github.com/Kotlin/dokka"><span>dokka</span><span class="padded-icon"></span></a></span>
+      </div>
     </div>
 </div>
 

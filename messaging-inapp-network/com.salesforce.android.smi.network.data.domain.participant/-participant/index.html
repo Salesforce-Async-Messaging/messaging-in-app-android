@@ -3,12 +3,19 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
     <title>Participant</title>
-<link href="../../../images/logo-icon.svg" rel="icon" type="image/svg">
-    <script>var pathToRoot = "../../../";</script>    <script>const storage = localStorage.getItem("dokka-dark-mode")
-const savedDarkMode = storage ? JSON.parse(storage) : false
-if(savedDarkMode === true){
-    document.getElementsByTagName("html")[0].classList.add("theme-dark")
-}</script>
+<link href="../../../images/logo-icon.svg" rel="icon" type="image/svg"><script>var pathToRoot = "../../../";</script>    <script>const storage = localStorage.getItem("dokka-dark-mode")
+    if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    } else {
+        const savedDarkMode = JSON.parse(storage)
+        if(savedDarkMode === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    }
+    </script>
 <script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async></script>
 <link href="../../../styles/style.css" rel="Stylesheet">
 <link href="../../../styles/jetbrains-mono.css" rel="Stylesheet">
@@ -19,7 +26,8 @@ if(savedDarkMode === true){
 <script type="text/javascript" src="../../../scripts/navigation-loader.js" async></script>
 <script type="text/javascript" src="../../../scripts/platform-content-handler.js" async></script>
 <script type="text/javascript" src="../../../scripts/main.js" defer></script>
-<script type="text/javascript" src="../../../scripts/prism.js" async></script></head>
+<script type="text/javascript" src="../../../scripts/prism.js" async></script>
+<script type="text/javascript" src="../../../scripts/symbol-parameters-wrapper_deferred.js" defer></script></head>
 <body>
 <div class="navigation-wrapper" id="navigation-wrapper">
     <div id="leftToggler"><span class="icon-toggler"></span></div>
@@ -39,10 +47,10 @@ if(savedDarkMode === true){
     </div>
     <div id="main">
 <div class="main-content" id="content" pageids="messaging-inapp-network::com.salesforce.android.smi.network.data.domain.participant/Participant///PointingToDeclaration//-458278735">
-  <div class="breadcrumbs"><a href="../../index.html">messaging-inapp-network</a><span class="delimiter">/</span><a href="../index.html">com.salesforce.android.smi.network.data.domain.participant</a><span class="delimiter">/</span><a href="index.html">Participant</a></div>
+  <div class="breadcrumbs"><a href="../../index.html">messaging-inapp-network</a><span class="delimiter">/</span><a href="../index.html">com.salesforce.android.smi.network.data.domain.participant</a><span class="delimiter">/</span><span class="current">Participant</span></div>
   <div class="cover ">
     <h1 class="cover"><span><span>Participant</span></span></h1>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":messaging-inapp-network:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">interface </span><a href="index.html">Participant</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><p class="paragraph">A participant in a Conversation.</p></div></div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":messaging-inapp-network:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">interface </span><a href="index.html">Participant</a></div><p class="paragraph">A participant in a Conversation.</p></div></div>
   </div>
   <div class="tabbedcontent">
     <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="Types">Types</button><button class="section-tab" data-togglable="Properties">Properties</button><button class="section-tab" data-togglable="Inheritors">Inheritors</button></div>
@@ -58,7 +66,7 @@ if(savedDarkMode === true){
                 </span></span></div>
             <div>
               <div class="title">
-                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":messaging-inapp-network:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">object </span><a href="-companion/index.html">Companion</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":messaging-inapp-network:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">object </span><a href="-companion/index.html">Companion</a></div></div></div>
               </div>
             </div>
           </div>
@@ -69,13 +77,13 @@ if(savedDarkMode === true){
         <div class="table-row" data-filterable-current=":messaging-inapp-network:dokkaHtmlPartial/release" data-filterable-set=":messaging-inapp-network:dokkaHtmlPartial/release">
           <div class="main-subrow keyValue ">
             <div class=""><span class="inline-flex">
-                <div><a href="app.html">app</a></div>
+                <div><a href="app.html"><span><span>app</span></span></a></div>
 <span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-164720742%2FProperties%2F-458278735"></span>
                   <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                 </span></span></div>
             <div>
               <div class="title">
-                <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":messaging-inapp-network:dokkaHtmlPartial/release"><a data-name="-164720742%2FProperties%2F-458278735" anchor-label="app" id="-164720742%2FProperties%2F-458278735" data-filterable-set=":messaging-inapp-network:dokkaHtmlPartial/release"></a><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword"></span><span class="token keyword">val </span><a href="app.html">app</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><a data-name="-164720742%2FProperties%2F-458278735" anchor-label="app" id="-164720742%2FProperties%2F-458278735" data-filterable-set=":messaging-inapp-network:dokkaHtmlPartial/release"></a><p class="paragraph">The app identifier for this participant.</p></div></div></div>
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-dependent-content" data-active="" data-togglable=":messaging-inapp-network:dokkaHtmlPartial/release"><a data-name="-164720742%2FProperties%2F-458278735" anchor-label="app" id="-164720742%2FProperties%2F-458278735" data-filterable-set=":messaging-inapp-network:dokkaHtmlPartial/release"></a><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword"></span><span class="token keyword">val </span><a href="app.html">app</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span></div><div class="brief "><a data-name="-164720742%2FProperties%2F-458278735" anchor-label="app" id="-164720742%2FProperties%2F-458278735" data-filterable-set=":messaging-inapp-network:dokkaHtmlPartial/release"></a><p class="paragraph">The app identifier for this participant.</p></div></div></div>
               </div>
             </div>
           </div>
@@ -84,13 +92,13 @@ if(savedDarkMode === true){
         <div class="table-row" data-filterable-current=":messaging-inapp-network:dokkaHtmlPartial/release" data-filterable-set=":messaging-inapp-network:dokkaHtmlPartial/release">
           <div class="main-subrow keyValue ">
             <div class=""><span class="inline-flex">
-                <div><a href="context.html">context</a></div>
+                <div><a href="context.html"><span><span>context</span></span></a></div>
 <span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1076801740%2FProperties%2F-458278735"></span>
                   <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                 </span></span></div>
             <div>
               <div class="title">
-                <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":messaging-inapp-network:dokkaHtmlPartial/release"><a data-name="1076801740%2FProperties%2F-458278735" anchor-label="context" id="1076801740%2FProperties%2F-458278735" data-filterable-set=":messaging-inapp-network:dokkaHtmlPartial/release"></a><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword"></span><span class="token keyword">val </span><a href="context.html">context</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-dependent-content" data-active="" data-togglable=":messaging-inapp-network:dokkaHtmlPartial/release"><a data-name="1076801740%2FProperties%2F-458278735" anchor-label="context" id="1076801740%2FProperties%2F-458278735" data-filterable-set=":messaging-inapp-network:dokkaHtmlPartial/release"></a><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword"></span><span class="token keyword">val </span><a href="context.html">context</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span></div></div></div>
               </div>
             </div>
           </div>
@@ -99,13 +107,13 @@ if(savedDarkMode === true){
         <div class="table-row" data-filterable-current=":messaging-inapp-network:dokkaHtmlPartial/release" data-filterable-set=":messaging-inapp-network:dokkaHtmlPartial/release">
           <div class="main-subrow keyValue ">
             <div class=""><span class="inline-flex">
-                <div><a href="is-local.html">isLocal</a></div>
+                <div><a href="is-local.html"><span>is</span><wbr><span><span>Local</span></span></a></div>
 <span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-926947750%2FProperties%2F-458278735"></span>
                   <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                 </span></span></div>
             <div>
               <div class="title">
-                <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":messaging-inapp-network:dokkaHtmlPartial/release"><a data-name="-926947750%2FProperties%2F-458278735" anchor-label="isLocal" id="-926947750%2FProperties%2F-458278735" data-filterable-set=":messaging-inapp-network:dokkaHtmlPartial/release"></a><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword"></span><span class="token keyword">var </span><a href="is-local.html">isLocal</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><a data-name="-926947750%2FProperties%2F-458278735" anchor-label="isLocal" id="-926947750%2FProperties%2F-458278735" data-filterable-set=":messaging-inapp-network:dokkaHtmlPartial/release"></a><p class="paragraph">Whether this participant is the local participant.</p></div></div></div>
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-dependent-content" data-active="" data-togglable=":messaging-inapp-network:dokkaHtmlPartial/release"><a data-name="-926947750%2FProperties%2F-458278735" anchor-label="isLocal" id="-926947750%2FProperties%2F-458278735" data-filterable-set=":messaging-inapp-network:dokkaHtmlPartial/release"></a><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword"></span><span class="token keyword">var </span><a href="is-local.html">isLocal</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><a data-name="-926947750%2FProperties%2F-458278735" anchor-label="isLocal" id="-926947750%2FProperties%2F-458278735" data-filterable-set=":messaging-inapp-network:dokkaHtmlPartial/release"></a><p class="paragraph">Whether this participant is the local participant.</p></div></div></div>
               </div>
             </div>
           </div>
@@ -114,13 +122,13 @@ if(savedDarkMode === true){
         <div class="table-row" data-filterable-current=":messaging-inapp-network:dokkaHtmlPartial/release" data-filterable-set=":messaging-inapp-network:dokkaHtmlPartial/release">
           <div class="main-subrow keyValue ">
             <div class=""><span class="inline-flex">
-                <div><a href="role.html">role</a></div>
+                <div><a href="role.html"><span><span>role</span></span></a></div>
 <span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-78323479%2FProperties%2F-458278735"></span>
                   <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                 </span></span></div>
             <div>
               <div class="title">
-                <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":messaging-inapp-network:dokkaHtmlPartial/release"><a data-name="-78323479%2FProperties%2F-458278735" anchor-label="role" id="-78323479%2FProperties%2F-458278735" data-filterable-set=":messaging-inapp-network:dokkaHtmlPartial/release"></a><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword"></span><span class="token keyword">val </span><a href="role.html">role</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><a data-name="-78323479%2FProperties%2F-458278735" anchor-label="role" id="-78323479%2FProperties%2F-458278735" data-filterable-set=":messaging-inapp-network:dokkaHtmlPartial/release"></a><p class="paragraph">The role of this participant.</p></div></div></div>
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-dependent-content" data-active="" data-togglable=":messaging-inapp-network:dokkaHtmlPartial/release"><a data-name="-78323479%2FProperties%2F-458278735" anchor-label="role" id="-78323479%2FProperties%2F-458278735" data-filterable-set=":messaging-inapp-network:dokkaHtmlPartial/release"></a><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword"></span><span class="token keyword">val </span><a href="role.html">role</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span></div><div class="brief "><a data-name="-78323479%2FProperties%2F-458278735" anchor-label="role" id="-78323479%2FProperties%2F-458278735" data-filterable-set=":messaging-inapp-network:dokkaHtmlPartial/release"></a><p class="paragraph">The role of this participant.</p></div></div></div>
               </div>
             </div>
           </div>
@@ -129,13 +137,13 @@ if(savedDarkMode === true){
         <div class="table-row" data-filterable-current=":messaging-inapp-network:dokkaHtmlPartial/release" data-filterable-set=":messaging-inapp-network:dokkaHtmlPartial/release">
           <div class="main-subrow keyValue ">
             <div class=""><span class="inline-flex">
-                <div><a href="subject.html">subject</a></div>
+                <div><a href="subject.html"><span><span>subject</span></span></a></div>
 <span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-406190097%2FProperties%2F-458278735"></span>
                   <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                 </span></span></div>
             <div>
               <div class="title">
-                <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":messaging-inapp-network:dokkaHtmlPartial/release"><a data-name="-406190097%2FProperties%2F-458278735" anchor-label="subject" id="-406190097%2FProperties%2F-458278735" data-filterable-set=":messaging-inapp-network:dokkaHtmlPartial/release"></a><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword"></span><span class="token keyword">val </span><a href="subject.html">subject</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><a data-name="-406190097%2FProperties%2F-458278735" anchor-label="subject" id="-406190097%2FProperties%2F-458278735" data-filterable-set=":messaging-inapp-network:dokkaHtmlPartial/release"></a><p class="paragraph">The subject of the conversation.</p></div></div></div>
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-dependent-content" data-active="" data-togglable=":messaging-inapp-network:dokkaHtmlPartial/release"><a data-name="-406190097%2FProperties%2F-458278735" anchor-label="subject" id="-406190097%2FProperties%2F-458278735" data-filterable-set=":messaging-inapp-network:dokkaHtmlPartial/release"></a><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword"></span><span class="token keyword">val </span><a href="subject.html">subject</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a></div><div class="brief "><a data-name="-406190097%2FProperties%2F-458278735" anchor-label="subject" id="-406190097%2FProperties%2F-458278735" data-filterable-set=":messaging-inapp-network:dokkaHtmlPartial/release"></a><p class="paragraph">The subject of the conversation.</p></div></div></div>
               </div>
             </div>
           </div>
@@ -157,8 +165,9 @@ if(savedDarkMode === true){
     </div>
   </div>
 </div>
-        <div class="footer"><span class="go-to-top-icon"><a href="#content" id="go-to-top-link"></a></span><span>© 2022 Copyright</span><span class="pull-right"><span>Generated by </span><a href="https://github.com/Kotlin/dokka"><span>dokka</span><span class="padded-icon"></span></a></span>
-        </div>
+      <div class="footer">
+        <span class="go-to-top-icon"><a href="#content" id="go-to-top-link"></a></span><span>© 2023 Copyright</span><span class="pull-right"><span>Generated by </span><a href="https://github.com/Kotlin/dokka"><span>dokka</span><span class="padded-icon"></span></a></span>
+      </div>
     </div>
 </div>
 
