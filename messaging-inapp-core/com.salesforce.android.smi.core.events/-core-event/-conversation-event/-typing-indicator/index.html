@@ -3,12 +3,19 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
     <title>TypingIndicator</title>
-<link href="../../../../../images/logo-icon.svg" rel="icon" type="image/svg">
-    <script>var pathToRoot = "../../../../../";</script>    <script>const storage = localStorage.getItem("dokka-dark-mode")
-const savedDarkMode = storage ? JSON.parse(storage) : false
-if(savedDarkMode === true){
-    document.getElementsByTagName("html")[0].classList.add("theme-dark")
-}</script>
+<link href="../../../../../images/logo-icon.svg" rel="icon" type="image/svg"><script>var pathToRoot = "../../../../../";</script>    <script>const storage = localStorage.getItem("dokka-dark-mode")
+    if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    } else {
+        const savedDarkMode = JSON.parse(storage)
+        if(savedDarkMode === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    }
+    </script>
 <script type="text/javascript" src="../../../../../scripts/sourceset_dependencies.js" async></script>
 <link href="../../../../../styles/style.css" rel="Stylesheet">
 <link href="../../../../../styles/jetbrains-mono.css" rel="Stylesheet">
@@ -19,7 +26,8 @@ if(savedDarkMode === true){
 <script type="text/javascript" src="../../../../../scripts/navigation-loader.js" async></script>
 <script type="text/javascript" src="../../../../../scripts/platform-content-handler.js" async></script>
 <script type="text/javascript" src="../../../../../scripts/main.js" defer></script>
-<script type="text/javascript" src="../../../../../scripts/prism.js" async></script></head>
+<script type="text/javascript" src="../../../../../scripts/prism.js" async></script>
+<script type="text/javascript" src="../../../../../scripts/symbol-parameters-wrapper_deferred.js" defer></script></head>
 <body>
 <div class="navigation-wrapper" id="navigation-wrapper">
     <div id="leftToggler"><span class="icon-toggler"></span></div>
@@ -39,10 +47,10 @@ if(savedDarkMode === true){
     </div>
     <div id="main">
 <div class="main-content" id="content" pageids="messaging-inapp-core::com.salesforce.android.smi.core.events/CoreEvent.ConversationEvent.TypingIndicator///PointingToDeclaration//415633242">
-  <div class="breadcrumbs"><a href="../../../../index.html">messaging-inapp-core</a><span class="delimiter">/</span><a href="../../../index.html">com.salesforce.android.smi.core.events</a><span class="delimiter">/</span><a href="../../index.html">CoreEvent</a><span class="delimiter">/</span><a href="../index.html">ConversationEvent</a><span class="delimiter">/</span><a href="index.html">TypingIndicator</a></div>
+  <div class="breadcrumbs"><a href="../../../../index.html">messaging-inapp-core</a><span class="delimiter">/</span><a href="../../../index.html">com.salesforce.android.smi.core.events</a><span class="delimiter">/</span><a href="../../index.html">CoreEvent</a><span class="delimiter">/</span><a href="../index.html">ConversationEvent</a><span class="delimiter">/</span><span class="current">TypingIndicator</span></div>
   <div class="cover ">
     <h1 class="cover"><span>Typing</span><wbr><span><span>Indicator</span></span></h1>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":messaging-inapp-core:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="index.html">TypingIndicator</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>conversationEntry<span class="token operator">: </span><a href="../../../../../messaging-inapp-network/com.salesforce.android.smi.network.data.domain.conversation-entry/-conversation-entry/index.html">ConversationEntry</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>status<span class="token operator">: </span><a href="../../../../com.salesforce.android.smi.core.data.domain.conversationEntry.entryPayload.event.typing/-typing-indicator-status/index.html">TypingIndicatorStatus</a></span></span><span class="token punctuation">)</span> : <a href="../index.html">CoreEvent.ConversationEvent</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><p class="paragraph"><a href="../../index.html">CoreEvent</a> emitted when a new typing event has been triggered.</p></div></div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":messaging-inapp-core:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="index.html">TypingIndicator</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>conversationEntry<span class="token operator">: </span><a href="../../../../../messaging-inapp-network/com.salesforce.android.smi.network.data.domain.conversation-entry/-conversation-entry/index.html">ConversationEntry</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>status<span class="token operator">: </span><a href="../../../../com.salesforce.android.smi.core.data.domain.conversationEntry.entryPayload.event.typing/-typing-indicator-status/index.html">TypingIndicatorStatus</a></span></span><span class="token punctuation">)</span> : <a href="../index.html">CoreEvent.ConversationEvent</a></div><p class="paragraph"><a href="../../index.html">CoreEvent</a> emitted when a new typing event has been triggered.</p></div></div>
   </div>
   <div class="tabbedcontent">
     <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="Constructors">Constructors</button><button class="section-tab" data-togglable="Properties">Properties</button></div>
@@ -58,7 +66,7 @@ if(savedDarkMode === true){
                 </span></span></div>
             <div>
               <div class="title">
-                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":messaging-inapp-core:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">fun </span><a href="-typing-indicator.html"><span class="token function">TypingIndicator</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">conversationEntry<span class="token operator">: </span><a href="../../../../../messaging-inapp-network/com.salesforce.android.smi.network.data.domain.conversation-entry/-conversation-entry/index.html">ConversationEntry</a><span class="token punctuation">, </span></span><span class="parameter ">status<span class="token operator">: </span><a href="../../../../com.salesforce.android.smi.core.data.domain.conversationEntry.entryPayload.event.typing/-typing-indicator-status/index.html">TypingIndicatorStatus</a></span></span><span class="token punctuation">)</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":messaging-inapp-core:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">fun </span><a href="-typing-indicator.html"><span class="token function">TypingIndicator</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">conversationEntry<span class="token operator">: </span><a href="../../../../../messaging-inapp-network/com.salesforce.android.smi.network.data.domain.conversation-entry/-conversation-entry/index.html">ConversationEntry</a><span class="token punctuation">, </span></span><span class="parameter ">status<span class="token operator">: </span><a href="../../../../com.salesforce.android.smi.core.data.domain.conversationEntry.entryPayload.event.typing/-typing-indicator-status/index.html">TypingIndicatorStatus</a></span></span><span class="token punctuation">)</span></div></div></div>
               </div>
             </div>
           </div>
@@ -69,13 +77,13 @@ if(savedDarkMode === true){
         <div class="table-row" data-filterable-current=":messaging-inapp-core:dokkaHtmlPartial/release" data-filterable-set=":messaging-inapp-core:dokkaHtmlPartial/release">
           <div class="main-subrow keyValue ">
             <div class=""><span class="inline-flex">
-                <div><a href="conversation-entry.html">conversationEntry</a></div>
+                <div><a href="conversation-entry.html"><span>conversation</span><wbr><span><span>Entry</span></span></a></div>
 <span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1874864630%2FProperties%2F415633242"></span>
                   <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                 </span></span></div>
             <div>
               <div class="title">
-                <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":messaging-inapp-core:dokkaHtmlPartial/release"><a data-name="1874864630%2FProperties%2F415633242" anchor-label="conversationEntry" id="1874864630%2FProperties%2F415633242" data-filterable-set=":messaging-inapp-core:dokkaHtmlPartial/release"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="conversation-entry.html">conversationEntry</a><span class="token operator">: </span><a href="../../../../../messaging-inapp-network/com.salesforce.android.smi.network.data.domain.conversation-entry/-conversation-entry/index.html">ConversationEntry</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><a data-name="1874864630%2FProperties%2F415633242" anchor-label="conversationEntry" id="1874864630%2FProperties%2F415633242" data-filterable-set=":messaging-inapp-core:dokkaHtmlPartial/release"></a><p class="paragraph">The <a href="../../../../../messaging-inapp-network/com.salesforce.android.smi.network.data.domain.conversation-entry/-conversation-entry/index.html">ConversationEntry</a> representing the typing indicator event.</p></div></div></div>
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-dependent-content" data-active="" data-togglable=":messaging-inapp-core:dokkaHtmlPartial/release"><a data-name="1874864630%2FProperties%2F415633242" anchor-label="conversationEntry" id="1874864630%2FProperties%2F415633242" data-filterable-set=":messaging-inapp-core:dokkaHtmlPartial/release"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="conversation-entry.html">conversationEntry</a><span class="token operator">: </span><a href="../../../../../messaging-inapp-network/com.salesforce.android.smi.network.data.domain.conversation-entry/-conversation-entry/index.html">ConversationEntry</a></div><div class="brief "><a data-name="1874864630%2FProperties%2F415633242" anchor-label="conversationEntry" id="1874864630%2FProperties%2F415633242" data-filterable-set=":messaging-inapp-core:dokkaHtmlPartial/release"></a><p class="paragraph">The <a href="../../../../../messaging-inapp-network/com.salesforce.android.smi.network.data.domain.conversation-entry/-conversation-entry/index.html">ConversationEntry</a> representing the typing indicator event.</p></div></div></div>
               </div>
             </div>
           </div>
@@ -84,13 +92,13 @@ if(savedDarkMode === true){
         <div class="table-row" data-filterable-current=":messaging-inapp-core:dokkaHtmlPartial/release" data-filterable-set=":messaging-inapp-core:dokkaHtmlPartial/release">
           <div class="main-subrow keyValue ">
             <div class=""><span class="inline-flex">
-                <div><a href="../conversation-id.html">conversationId</a></div>
+                <div><a href="../conversation-id.html"><span>conversation</span><wbr><span><span>Id</span></span></a></div>
 <span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1360152621%2FProperties%2F415633242"></span>
                   <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                 </span></span></div>
             <div>
               <div class="title">
-                <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":messaging-inapp-core:dokkaHtmlPartial/release"><a data-name="1360152621%2FProperties%2F415633242" anchor-label="conversationId" id="1360152621%2FProperties%2F415633242" data-filterable-set=":messaging-inapp-core:dokkaHtmlPartial/release"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="../conversation-id.html">conversationId</a><span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/java/util/UUID.html">UUID</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><a data-name="1360152621%2FProperties%2F415633242" anchor-label="conversationId" id="1360152621%2FProperties%2F415633242" data-filterable-set=":messaging-inapp-core:dokkaHtmlPartial/release"></a><p class="paragraph">The conversationId in which this event belongs to.</p></div></div></div>
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-dependent-content" data-active="" data-togglable=":messaging-inapp-core:dokkaHtmlPartial/release"><a data-name="1360152621%2FProperties%2F415633242" anchor-label="conversationId" id="1360152621%2FProperties%2F415633242" data-filterable-set=":messaging-inapp-core:dokkaHtmlPartial/release"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="../conversation-id.html">conversationId</a><span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/java/util/UUID.html">UUID</a></div><div class="brief "><a data-name="1360152621%2FProperties%2F415633242" anchor-label="conversationId" id="1360152621%2FProperties%2F415633242" data-filterable-set=":messaging-inapp-core:dokkaHtmlPartial/release"></a><p class="paragraph">The conversationId in which this event belongs to.</p></div></div></div>
               </div>
             </div>
           </div>
@@ -99,13 +107,13 @@ if(savedDarkMode === true){
         <div class="table-row" data-filterable-current=":messaging-inapp-core:dokkaHtmlPartial/release" data-filterable-set=":messaging-inapp-core:dokkaHtmlPartial/release">
           <div class="main-subrow keyValue ">
             <div class=""><span class="inline-flex">
-                <div><a href="status.html">status</a></div>
+                <div><a href="status.html"><span><span>status</span></span></a></div>
 <span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1001196541%2FProperties%2F415633242"></span>
                   <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                 </span></span></div>
             <div>
               <div class="title">
-                <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":messaging-inapp-core:dokkaHtmlPartial/release"><a data-name="-1001196541%2FProperties%2F415633242" anchor-label="status" id="-1001196541%2FProperties%2F415633242" data-filterable-set=":messaging-inapp-core:dokkaHtmlPartial/release"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="status.html">status</a><span class="token operator">: </span><a href="../../../../com.salesforce.android.smi.core.data.domain.conversationEntry.entryPayload.event.typing/-typing-indicator-status/index.html">TypingIndicatorStatus</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><a data-name="-1001196541%2FProperties%2F415633242" anchor-label="status" id="-1001196541%2FProperties%2F415633242" data-filterable-set=":messaging-inapp-core:dokkaHtmlPartial/release"></a><p class="paragraph">The <a href="../../../../com.salesforce.android.smi.core.data.domain.conversationEntry.entryPayload.event.typing/-typing-indicator-status/index.html">TypingIndicatorStatus</a> enum indicating if the typing has <a href="../../../../com.salesforce.android.smi.core.data.domain.conversationEntry.entryPayload.event.typing/-typing-indicator-status/-started/index.html">TypingIndicatorStatus.Started</a> or <a href="../../../../com.salesforce.android.smi.core.data.domain.conversationEntry.entryPayload.event.typing/-typing-indicator-status/-stopped/index.html">TypingIndicatorStatus.Stopped</a>.</p></div></div></div>
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-dependent-content" data-active="" data-togglable=":messaging-inapp-core:dokkaHtmlPartial/release"><a data-name="-1001196541%2FProperties%2F415633242" anchor-label="status" id="-1001196541%2FProperties%2F415633242" data-filterable-set=":messaging-inapp-core:dokkaHtmlPartial/release"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="status.html">status</a><span class="token operator">: </span><a href="../../../../com.salesforce.android.smi.core.data.domain.conversationEntry.entryPayload.event.typing/-typing-indicator-status/index.html">TypingIndicatorStatus</a></div><div class="brief "><a data-name="-1001196541%2FProperties%2F415633242" anchor-label="status" id="-1001196541%2FProperties%2F415633242" data-filterable-set=":messaging-inapp-core:dokkaHtmlPartial/release"></a><p class="paragraph">The <a href="../../../../com.salesforce.android.smi.core.data.domain.conversationEntry.entryPayload.event.typing/-typing-indicator-status/index.html">TypingIndicatorStatus</a> enum indicating if the typing has <a href="../../../../com.salesforce.android.smi.core.data.domain.conversationEntry.entryPayload.event.typing/-typing-indicator-status/-started/index.html">TypingIndicatorStatus.Started</a> or <a href="../../../../com.salesforce.android.smi.core.data.domain.conversationEntry.entryPayload.event.typing/-typing-indicator-status/-stopped/index.html">TypingIndicatorStatus.Stopped</a>.</p></div></div></div>
               </div>
             </div>
           </div>
@@ -114,8 +122,9 @@ if(savedDarkMode === true){
     </div>
   </div>
 </div>
-        <div class="footer"><span class="go-to-top-icon"><a href="#content" id="go-to-top-link"></a></span><span>© 2022 Copyright</span><span class="pull-right"><span>Generated by </span><a href="https://github.com/Kotlin/dokka"><span>dokka</span><span class="padded-icon"></span></a></span>
-        </div>
+      <div class="footer">
+        <span class="go-to-top-icon"><a href="#content" id="go-to-top-link"></a></span><span>© 2023 Copyright</span><span class="pull-right"><span>Generated by </span><a href="https://github.com/Kotlin/dokka"><span>dokka</span><span class="padded-icon"></span></a></span>
+      </div>
     </div>
 </div>
 
