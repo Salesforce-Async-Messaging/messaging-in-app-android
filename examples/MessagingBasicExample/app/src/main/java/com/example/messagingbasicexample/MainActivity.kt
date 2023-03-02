@@ -13,6 +13,8 @@ import com.salesforce.android.smi.core.CoreConfiguration
 import com.salesforce.android.smi.ui.UIClient
 import com.salesforce.android.smi.ui.UIConfiguration
 import java.util.*
+import java.util.logging.Level
+import java.util.logging.Logger
 
 class MainActivity : AppCompatActivity() {
 
@@ -20,6 +22,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     var uiConfig: UIConfiguration? = null
     var uiClient: UIClient? = null
+    private val logger = Logger.getLogger(TAG)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,12 +49,16 @@ class MainActivity : AppCompatActivity() {
      */
     private fun resetMessagingConfig() {
 
-        println("Initializing config file.")
+        logger.log(Level.INFO, "Initializing config file.")
+
+        // TO DO Set this value to true if using a userVerificationProvider, otherwise false
+        val isUserVerificationEnabled = true
 
         // TO DO: Replace the config file in this app (assets/configFile.json)
         //        with the config file you downloaded from your Salesforce org.
         //        To learn more, see https://help.salesforce.com/s/articleView?id=sf.miaw_deployment_mobile.htm
-        val coreConfig = CoreConfiguration.fromFile(this, "configFile.json")
+        val coreConfig = CoreConfiguration
+            .fromFile(this, "configFile.json", isUserVerificationEnabled)
 
         // Create a new conversation
         // This code uses a random UUID for the conversation ID, but
@@ -60,10 +67,10 @@ class MainActivity : AppCompatActivity() {
 
         uiConfig = UIConfiguration(coreConfig, conversationID).also {
             // Optionally log events
-            (applicationContext as MessagingApp).viewModel.logEvents(it)
+            (applicationContext as MessagingApp).viewModel.setupMessaging(it)
         }
 
-        println("Config created using conversation ID $conversationID")
+        logger.log(Level.INFO, "Config created using conversation ID $conversationID")
     }
 
     /**
@@ -79,7 +86,7 @@ class MainActivity : AppCompatActivity() {
         if (uiClient != null) {
             uiClient!!.openConversationActivity(this)
         } else {
-            println("Unable to create a conversation for messaging.")
+            logger.log(Level.INFO, "Unable to create a conversation for messaging.")
         }
     }
 
@@ -103,5 +110,9 @@ class MainActivity : AppCompatActivity() {
         val navController = findNavController(R.id.nav_host_fragment_content_main)
         return navController.navigateUp(appBarConfiguration)
                 || super.onSupportNavigateUp()
+    }
+
+    companion object {
+        val TAG: String = MainActivity::class.java.name
     }
 }
