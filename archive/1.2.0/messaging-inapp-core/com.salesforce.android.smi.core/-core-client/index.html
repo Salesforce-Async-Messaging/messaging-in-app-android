@@ -1,0 +1,314 @@
+<!doctype html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>CoreClient</title>
+<link href="../../../images/logo-icon.svg" rel="icon" type="image/svg"><script>var pathToRoot = "../../../";</script>    <script>const storage = localStorage.getItem("dokka-dark-mode")
+    if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    } else {
+        const savedDarkMode = JSON.parse(storage)
+        if(savedDarkMode === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    }
+    </script>
+<script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async></script>
+<link href="../../../styles/style.css" rel="Stylesheet">
+<link href="../../../styles/jetbrains-mono.css" rel="Stylesheet">
+<link href="../../../styles/main.css" rel="Stylesheet">
+<link href="../../../styles/prism.css" rel="Stylesheet">
+<link href="../../../styles/logo-styles.css" rel="Stylesheet">
+<script type="text/javascript" src="../../../scripts/clipboard.js" async></script>
+<script type="text/javascript" src="../../../scripts/navigation-loader.js" async></script>
+<script type="text/javascript" src="../../../scripts/platform-content-handler.js" async></script>
+<script type="text/javascript" src="../../../scripts/main.js" defer></script>
+<script type="text/javascript" src="../../../scripts/prism.js" async></script>
+<script type="text/javascript" src="../../../scripts/symbol-parameters-wrapper_deferred.js" defer></script></head>
+<body>
+<div class="navigation-wrapper" id="navigation-wrapper">
+    <div id="leftToggler"><span class="icon-toggler"></span></div>
+    <div class="library-name">
+<a href="../../../index.html">
+<span>InAppSDK-Android</span>            </a>    </div>
+    <div>
+    </div>
+    <div class="pull-right d-flex">
+        <button id="theme-toggle-button"><span id="theme-toggle"></span></button>
+        <div id="searchBar"></div>
+    </div>
+</div>
+<div id="container">
+    <div id="leftColumn">
+        <div id="sideMenu"></div>
+    </div>
+    <div id="main">
+<div class="main-content" id="content" pageids="messaging-inapp-core::com.salesforce.android.smi.core/CoreClient///PointingToDeclaration//415633242">
+  <div class="breadcrumbs"><a href="../../index.html">messaging-inapp-core</a><span class="delimiter">/</span><a href="../index.html">com.salesforce.android.smi.core</a><span class="delimiter">/</span><span class="current">CoreClient</span></div>
+  <div class="cover ">
+    <h1 class="cover"><span>Core</span><wbr><span><span>Client</span></span></h1>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":messaging-inapp-core:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">interface </span><a href="index.html">CoreClient</a></div><p class="paragraph">A <a href="index.html">CoreClient</a> instance serves as the entry point to all Messaging for In-App actions and events.</p></div></div>
+  </div>
+  <div class="tabbedcontent">
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="Types">Types</button><button class="section-tab" data-togglable="Functions">Functions</button><button class="section-tab" data-togglable="Properties">Properties</button></div>
+    <div class="tabs-section-body">
+      <h2 class="">Types</h2>
+      <div class="table" data-togglable="Types"><a data-name="-955761159%2FClasslikes%2F415633242" anchor-label="Companion" id="-955761159%2FClasslikes%2F415633242" data-filterable-set=":messaging-inapp-core:dokkaHtmlPartial/release"></a>
+        <div class="table-row" data-filterable-current=":messaging-inapp-core:dokkaHtmlPartial/release" data-filterable-set=":messaging-inapp-core:dokkaHtmlPartial/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="-companion/index.html"><span><span>Companion</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-955761159%2FClasslikes%2F415633242"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":messaging-inapp-core:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">object </span><a href="-companion/index.html">Companion</a> : <a href="../-core/index.html">Core</a></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <h2 class="">Functions</h2>
+      <div class="table" data-togglable="Functions"><a data-name="-1255555969%2FFunctions%2F415633242" anchor-label="conversationClient" id="-1255555969%2FFunctions%2F415633242" data-filterable-set=":messaging-inapp-core:dokkaHtmlPartial/release"></a>
+        <div class="table-row" data-filterable-current=":messaging-inapp-core:dokkaHtmlPartial/release" data-filterable-set=":messaging-inapp-core:dokkaHtmlPartial/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="conversation-client.html"><span>conversation</span><wbr><span><span>Client</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1255555969%2FFunctions%2F415633242"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":messaging-inapp-core:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword"></span><span class="token keyword">fun </span><a href="conversation-client.html"><span class="token function">conversationClient</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">conversationId<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/java/util/UUID.html">UUID</a><span class="token operator"> = </span>UUID.randomUUID()</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-conversation-client/index.html">ConversationClient</a></div><div class="brief "><p class="paragraph"><a href="../-conversation-client/index.html">ConversationClient</a> client for interacting with a conversation.</p></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="1076225230%2FFunctions%2F415633242" anchor-label="deregisterDevice" id="1076225230%2FFunctions%2F415633242" data-filterable-set=":messaging-inapp-core:dokkaHtmlPartial/release"></a>
+        <div class="table-row" data-filterable-current=":messaging-inapp-core:dokkaHtmlPartial/release" data-filterable-set=":messaging-inapp-core:dokkaHtmlPartial/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="deregister-device.html"><span>deregister</span><wbr><span><span>Device</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1076225230%2FFunctions%2F415633242"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":messaging-inapp-core:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">suspend </span><span class="token keyword">fun </span><a href="deregister-device.html"><span class="token function">deregisterDevice</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../../messaging-inapp-common/com.salesforce.android.smi.common.api/-result/index.html">Result</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html">Unit</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Deregister the device from receiving push notifications.</p></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="-489974984%2FFunctions%2F415633242" anchor-label="destroy" id="-489974984%2FFunctions%2F415633242" data-filterable-set=":messaging-inapp-core:dokkaHtmlPartial/release"></a>
+        <div class="table-row" data-filterable-current=":messaging-inapp-core:dokkaHtmlPartial/release" data-filterable-set=":messaging-inapp-core:dokkaHtmlPartial/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="destroy.html"><span><span>destroy</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-489974984%2FFunctions%2F415633242"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":messaging-inapp-core:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword"></span><span class="token keyword">fun </span><a href="destroy.html"><span class="token function">destroy</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Destroys this instance.</p></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="-779858711%2FFunctions%2F415633242" anchor-label="markAsRead" id="-779858711%2FFunctions%2F415633242" data-filterable-set=":messaging-inapp-core:dokkaHtmlPartial/release"></a>
+        <div class="table-row" data-filterable-current=":messaging-inapp-core:dokkaHtmlPartial/release" data-filterable-set=":messaging-inapp-core:dokkaHtmlPartial/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="mark-as-read.html"><span>mark</span><wbr><span>As</span><wbr><span><span>Read</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-779858711%2FFunctions%2F415633242"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":messaging-inapp-core:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">suspend </span><span class="token keyword">fun </span><a href="mark-as-read.html"><span class="token function">markAsRead</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">conversationEntry<span class="token operator">: </span><a href="../../../messaging-inapp-network/com.salesforce.android.smi.network.data.domain.conversation-entry/-conversation-entry/index.html">ConversationEntry</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../../messaging-inapp-common/com.salesforce.android.smi.common.api/-result/index.html">Result</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../../messaging-inapp-network/com.salesforce.android.smi.network.data.domain.conversation-entry/-conversation-entry/index.html">ConversationEntry</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Sends a read acknowledgement for a <a href="../../../messaging-inapp-network/com.salesforce.android.smi.network.data.domain.conversation-entry/-conversation-entry/index.html">ConversationEntry</a>.</p></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="1421784850%2FFunctions%2F415633242" anchor-label="registerHiddenPreChatValuesProvider" id="1421784850%2FFunctions%2F415633242" data-filterable-set=":messaging-inapp-core:dokkaHtmlPartial/release"></a>
+        <div class="table-row" data-filterable-current=":messaging-inapp-core:dokkaHtmlPartial/release" data-filterable-set=":messaging-inapp-core:dokkaHtmlPartial/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="register-hidden-pre-chat-values-provider.html"><span>register</span><wbr><span>Hidden</span><wbr><span>Pre</span><wbr><span>Chat</span><wbr><span>Values</span><wbr><span><span>Provider</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1421784850%2FFunctions%2F415633242"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":messaging-inapp-core:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword"></span><span class="token keyword">fun </span><a href="register-hidden-pre-chat-values-provider.html"><span class="token function">registerHiddenPreChatValuesProvider</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">provider<span class="token operator">: </span><a href="../-pre-chat-values-provider/index.html">PreChatValuesProvider</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Registers a provider for supplying hidden pre-chat values.</p></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="1422177222%2FFunctions%2F415633242" anchor-label="registerTemplatedUrlValuesProvider" id="1422177222%2FFunctions%2F415633242" data-filterable-set=":messaging-inapp-core:dokkaHtmlPartial/release"></a>
+        <div class="table-row" data-filterable-current=":messaging-inapp-core:dokkaHtmlPartial/release" data-filterable-set=":messaging-inapp-core:dokkaHtmlPartial/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="register-templated-url-values-provider.html"><span>register</span><wbr><span>Templated</span><wbr><span>Url</span><wbr><span>Values</span><wbr><span><span>Provider</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1422177222%2FFunctions%2F415633242"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":messaging-inapp-core:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword"></span><span class="token keyword">fun </span><a href="register-templated-url-values-provider.html"><span class="token function">registerTemplatedUrlValuesProvider</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">provider<span class="token operator">: </span><a href="../-templated-url-values-provider/index.html">TemplatedUrlValuesProvider</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Registers a provider for supplying templated URL values for an auto-response messaging component.</p></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="-2033457819%2FFunctions%2F415633242" anchor-label="registerUserVerificationProvider" id="-2033457819%2FFunctions%2F415633242" data-filterable-set=":messaging-inapp-core:dokkaHtmlPartial/release"></a>
+        <div class="table-row" data-filterable-current=":messaging-inapp-core:dokkaHtmlPartial/release" data-filterable-set=":messaging-inapp-core:dokkaHtmlPartial/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="register-user-verification-provider.html"><span>register</span><wbr><span>User</span><wbr><span>Verification</span><wbr><span><span>Provider</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2033457819%2FFunctions%2F415633242"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":messaging-inapp-core:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword"></span><span class="token keyword">fun </span><a href="register-user-verification-provider.html"><span class="token function">registerUserVerificationProvider</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">provider<span class="token operator">: </span><a href="../../../messaging-inapp-network/com.salesforce.android.smi.network.api.auth/-user-verification-provider/index.html">UserVerificationProvider</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Registers a provider for authorizing an already authenticated user using one of the supported <a href="../index.html#919734625%2FClasslikes%2F415633242">UserVerificationType</a>s.</p></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="-873689218%2FFunctions%2F415633242" anchor-label="retrieveRemoteConfiguration" id="-873689218%2FFunctions%2F415633242" data-filterable-set=":messaging-inapp-core:dokkaHtmlPartial/release"></a>
+        <div class="table-row" data-filterable-current=":messaging-inapp-core:dokkaHtmlPartial/release" data-filterable-set=":messaging-inapp-core:dokkaHtmlPartial/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="retrieve-remote-configuration.html"><span>retrieve</span><wbr><span>Remote</span><wbr><span><span>Configuration</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-873689218%2FFunctions%2F415633242"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":messaging-inapp-core:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">suspend </span><span class="token keyword">fun </span><a href="retrieve-remote-configuration.html"><span class="token function">retrieveRemoteConfiguration</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../../messaging-inapp-common/com.salesforce.android.smi.common.api/-result/index.html">Result</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../com.salesforce.android.smi.core.data.domain.remoteConfiguration/-remote-configuration/index.html">RemoteConfiguration</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Retrieves the <a href="../../com.salesforce.android.smi.core.data.domain.remoteConfiguration/-remote-configuration/index.html">RemoteConfiguration</a> object from Core.</p></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="27115828%2FFunctions%2F415633242" anchor-label="retryEntry" id="27115828%2FFunctions%2F415633242" data-filterable-set=":messaging-inapp-core:dokkaHtmlPartial/release"></a>
+        <div class="table-row" data-filterable-current=":messaging-inapp-core:dokkaHtmlPartial/release" data-filterable-set=":messaging-inapp-core:dokkaHtmlPartial/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="retry-entry.html"><span>retry</span><wbr><span><span>Entry</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="27115828%2FFunctions%2F415633242"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":messaging-inapp-core:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">suspend </span><span class="token keyword">fun </span><a href="retry-entry.html"><span class="token function">retryEntry</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">conversationEntry<span class="token operator">: </span><a href="../../../messaging-inapp-network/com.salesforce.android.smi.network.data.domain.conversation-entry/-conversation-entry/index.html">ConversationEntry</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../../messaging-inapp-common/com.salesforce.android.smi.common.api/-result/index.html">Result</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../../messaging-inapp-network/com.salesforce.android.smi.network.data.domain.conversation-entry/-conversation-entry/index.html">ConversationEntry</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Re-sends a conversation entry.</p></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="1925323972%2FFunctions%2F415633242" anchor-label="revokeToken" id="1925323972%2FFunctions%2F415633242" data-filterable-set=":messaging-inapp-core:dokkaHtmlPartial/release"></a>
+        <div class="table-row" data-filterable-current=":messaging-inapp-core:dokkaHtmlPartial/release" data-filterable-set=":messaging-inapp-core:dokkaHtmlPartial/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="revoke-token.html"><span>revoke</span><wbr><span><span>Token</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1925323972%2FFunctions%2F415633242"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":messaging-inapp-core:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">suspend </span><span class="token keyword">fun </span><a href="revoke-token.html"><span class="token function">revokeToken</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">deregisterDevice<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../../messaging-inapp-common/com.salesforce.android.smi.common.api/-result/index.html">Result</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html">Unit</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Revokes the authorization token preventing any further operations until a new token is granted. If your <a href="../../../messaging-inapp-network/com.salesforce.android.smi.network.api.auth/-user-verification-provider/index.html">UserVerificationProvider</a> returns a new token, the user is re-authorized. No action occurs in this method if <a href="../-configuration/is-user-verification-required.html">Configuration.isUserVerificationRequired</a> is set to <code class="lang-kotlin">false</code>.</p></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="1049565018%2FFunctions%2F415633242" anchor-label="start" id="1049565018%2FFunctions%2F415633242" data-filterable-set=":messaging-inapp-core:dokkaHtmlPartial/release"></a>
+        <div class="table-row" data-filterable-current=":messaging-inapp-core:dokkaHtmlPartial/release" data-filterable-set=":messaging-inapp-core:dokkaHtmlPartial/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="start.html"><span><span>start</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1049565018%2FFunctions%2F415633242"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":messaging-inapp-core:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword"></span><span class="token keyword">fun </span><a href="start.html"><span class="token function">start</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">scope<span class="token operator">: </span><span data-unresolved-link="kotlinx.coroutines/CoroutineScope///PointingToDeclaration/">CoroutineScope</span></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Starts listening to remote events.</p></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="-1344080922%2FFunctions%2F415633242" anchor-label="stop" id="-1344080922%2FFunctions%2F415633242" data-filterable-set=":messaging-inapp-core:dokkaHtmlPartial/release"></a>
+        <div class="table-row" data-filterable-current=":messaging-inapp-core:dokkaHtmlPartial/release" data-filterable-set=":messaging-inapp-core:dokkaHtmlPartial/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="stop.html"><span><span>stop</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1344080922%2FFunctions%2F415633242"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":messaging-inapp-core:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword"></span><span class="token keyword">fun </span><a href="stop.html"><span class="token function">stop</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Stops listening to remote events.</p></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <h2 class="">Properties</h2>
+      <div class="table" data-togglable="Properties"><a data-name="2039535100%2FProperties%2F415633242" anchor-label="configuration" id="2039535100%2FProperties%2F415633242" data-filterable-set=":messaging-inapp-core:dokkaHtmlPartial/release"></a>
+        <div class="table-row" data-filterable-current=":messaging-inapp-core:dokkaHtmlPartial/release" data-filterable-set=":messaging-inapp-core:dokkaHtmlPartial/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="configuration.html"><span><span>configuration</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2039535100%2FProperties%2F415633242"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-dependent-content" data-active="" data-togglable=":messaging-inapp-core:dokkaHtmlPartial/release"><a data-name="2039535100%2FProperties%2F415633242" anchor-label="configuration" id="2039535100%2FProperties%2F415633242" data-filterable-set=":messaging-inapp-core:dokkaHtmlPartial/release"></a><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword"></span><span class="token keyword">val </span><a href="configuration.html">configuration</a><span class="token operator">: </span><a href="../-configuration/index.html">Configuration</a></div><div class="brief "><a data-name="2039535100%2FProperties%2F415633242" anchor-label="configuration" id="2039535100%2FProperties%2F415633242" data-filterable-set=":messaging-inapp-core:dokkaHtmlPartial/release"></a><p class="paragraph">Gets the <a href="../-configuration/index.html">Configuration</a> that this instance is configured with.</p></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="-2054626321%2FProperties%2F415633242" anchor-label="events" id="-2054626321%2FProperties%2F415633242" data-filterable-set=":messaging-inapp-core:dokkaHtmlPartial/release"></a>
+        <div class="table-row" data-filterable-current=":messaging-inapp-core:dokkaHtmlPartial/release" data-filterable-set=":messaging-inapp-core:dokkaHtmlPartial/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="events.html"><span><span>events</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2054626321%2FProperties%2F415633242"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-dependent-content" data-active="" data-togglable=":messaging-inapp-core:dokkaHtmlPartial/release"><a data-name="-2054626321%2FProperties%2F415633242" anchor-label="events" id="-2054626321%2FProperties%2F415633242" data-filterable-set=":messaging-inapp-core:dokkaHtmlPartial/release"></a><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword"></span><span class="token keyword">val </span><a href="events.html">events</a><span class="token operator">: </span><span data-unresolved-link="kotlinx.coroutines.flow/SharedFlow///PointingToDeclaration/">SharedFlow</span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../com.salesforce.android.smi.core.events/-core-event/index.html">CoreEvent</a><span class="token operator">&gt;</span></div><div class="brief "><a data-name="-2054626321%2FProperties%2F415633242" anchor-label="events" id="-2054626321%2FProperties%2F415633242" data-filterable-set=":messaging-inapp-core:dokkaHtmlPartial/release"></a><p class="paragraph">A <span data-unresolved-link="kotlinx.coroutines.flow/SharedFlow///PointingToDeclaration/">SharedFlow</span> of <a href="../../com.salesforce.android.smi.core.events/-core-event/index.html">CoreEvent</a>s</p></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="-1943438564%2FProperties%2F415633242" anchor-label="networkConnectivityState" id="-1943438564%2FProperties%2F415633242" data-filterable-set=":messaging-inapp-core:dokkaHtmlPartial/release"></a>
+        <div class="table-row" data-filterable-current=":messaging-inapp-core:dokkaHtmlPartial/release" data-filterable-set=":messaging-inapp-core:dokkaHtmlPartial/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="network-connectivity-state.html"><span>network</span><wbr><span>Connectivity</span><wbr><span><span>State</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1943438564%2FProperties%2F415633242"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-dependent-content" data-active="" data-togglable=":messaging-inapp-core:dokkaHtmlPartial/release"><a data-name="-1943438564%2FProperties%2F415633242" anchor-label="networkConnectivityState" id="-1943438564%2FProperties%2F415633242" data-filterable-set=":messaging-inapp-core:dokkaHtmlPartial/release"></a><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword"></span><span class="token keyword">val </span><a href="network-connectivity-state.html">networkConnectivityState</a><span class="token operator">: </span><span data-unresolved-link="kotlinx.coroutines.flow/StateFlow///PointingToDeclaration/">StateFlow</span><span class="token operator">&lt;</span><span class="token keyword"></span><span data-unresolved-link="com.salesforce.android.smi.common.internal.util/NetworkConnectivityStatus///PointingToDeclaration/">NetworkConnectivityStatus</span><span class="token operator">&gt;</span></div><div class="brief "><a data-name="-1943438564%2FProperties%2F415633242" anchor-label="networkConnectivityState" id="-1943438564%2FProperties%2F415633242" data-filterable-set=":messaging-inapp-core:dokkaHtmlPartial/release"></a><p class="paragraph">Observes the current network connectivity status.</p></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      <div class="footer">
+        <span class="go-to-top-icon"><a href="#content" id="go-to-top-link"></a></span><span>© 2023 Copyright</span><span class="pull-right"><span>Generated by </span><a href="https://github.com/Kotlin/dokka"><span>dokka</span><span class="padded-icon"></span></a></span>
+      </div>
+    </div>
+</div>
+
+</body></html>
+
