@@ -52,7 +52,7 @@ class MainActivity : AppCompatActivity() {
         logger.log(Level.INFO, "Initializing config file.")
 
         // TO DO Set this value to true if using a userVerificationProvider, otherwise false
-        val isUserVerificationEnabled = true
+        val isUserVerificationEnabled = false
 
         // TO DO: Replace the config file in this app (assets/configFile.json)
         //        with the config file you downloaded from your Salesforce org.
