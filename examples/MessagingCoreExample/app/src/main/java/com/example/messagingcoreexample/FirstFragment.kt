@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.example.messagingcoreexample.databinding.FragmentFirstBinding
+import java.util.UUID
 
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
@@ -14,6 +15,7 @@ import com.example.messagingcoreexample.databinding.FragmentFirstBinding
 class FirstFragment : Fragment() {
 
     private var _binding: FragmentFirstBinding? = null
+    private var conversationId: UUID = UUID.randomUUID()
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -23,7 +25,7 @@ class FirstFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
+        conversationId = UUID.fromString(arguments?.getString("conversationID") ?: UUID.randomUUID().toString())
         _binding = FragmentFirstBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -31,8 +33,14 @@ class FirstFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.buttonFirst.setOnClickListener {
-            findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
+        binding.buttonReset.setOnClickListener {
+            conversationId = UUID.randomUUID()
+        }
+
+        binding.fab.setOnClickListener { view ->
+            val bundle = Bundle()
+            bundle.putString("conversationID", conversationId.toString())
+            findNavController().navigate(R.id.action_FirstFragment_to_ConversationFragment, bundle)
         }
     }
 

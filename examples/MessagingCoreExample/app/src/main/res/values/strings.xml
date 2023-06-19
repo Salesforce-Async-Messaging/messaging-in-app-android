@@ -3,7 +3,7 @@
 
     <string name="first_fragment_label">Messaging Core Example</string>
     <string name="second_fragment_label">Messaging Session</string>
-    <string name="next">Chat</string>
+    <string name="reset">Reset</string>
     <string name="previous">Back</string>
 
     <string name="hello_first_fragment">Messaging for In-App Core SDK Example</string>

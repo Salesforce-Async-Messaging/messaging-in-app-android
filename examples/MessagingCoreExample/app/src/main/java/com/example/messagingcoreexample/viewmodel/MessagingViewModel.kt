@@ -21,9 +21,8 @@ import java.util.*
  * View model for this Messaging for In-App Core SDK example.
  */
 class MessagingViewModel(
-    private val coreClient: CoreClient,
-    conversationId: UUID = UUID.randomUUID()
-) : ViewModel() {
+    private val coreClient: CoreClient
+    ) : ViewModel() {
     // Conversation client instance.
     // By default, this object uses a random UUID for the conversation ID, but
     // be sure to use the same ID to persist the same conversation.
@@ -49,12 +48,12 @@ class MessagingViewModel(
     }
 
     companion object {
+        var conversationId: UUID = UUID.randomUUID()
         val Factory: ViewModelProvider.Factory = viewModelFactory {
             initializer {
                 val coreClient = (this[APPLICATION_KEY] as MessagingCoreApplication).coreClient()
                 MessagingViewModel(coreClient)
             }
         }
-
     }
 }

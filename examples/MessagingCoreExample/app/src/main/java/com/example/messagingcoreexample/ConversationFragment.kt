@@ -11,18 +11,20 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.messagingcoreexample.adapter.ConversationEntryAdapter
-import com.example.messagingcoreexample.databinding.FragmentSecondBinding
+import com.example.messagingcoreexample.databinding.ConversationFragmentBinding
 import com.example.messagingcoreexample.viewmodel.MessagingViewModel
+import com.example.messagingcoreexample.viewmodel.MessagingViewModel.Companion.conversationId
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
+import java.util.UUID
 
 /**
  * A simple [Fragment] subclass as the second destination in the navigation.
  */
-class SecondFragment : Fragment() {
+class ConversationFragment : Fragment() {
 
-    private var _binding: FragmentSecondBinding? = null
-    private val viewModel: MessagingViewModel by viewModels { MessagingViewModel.Factory }
+    private var _binding: ConversationFragmentBinding? = null
+    private var viewModel: MessagingViewModel? = null
     private val pagingAdapter = ConversationEntryAdapter()
 
     // This property is only valid between onCreateView and
@@ -32,8 +34,14 @@ class SecondFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        val model : MessagingViewModel by viewModels {
+            conversationId = UUID.fromString(arguments?.getString("conversationID"))
+            MessagingViewModel.Factory
+        }
+        viewModel = model
+
         // Starts the Messaging for In-App Core SDK stream
-        viewModel.startStream()
+        viewModel?.startStream()
 
         // NOTE: This example does not handle a pre-chat
         // form. If your deployment requires a pre-chat
@@ -46,9 +54,8 @@ class SecondFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentSecondBinding.inflate(inflater, container, false)
+        _binding = ConversationFragmentBinding.inflate(inflater, container, false)
         return binding.root
-
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -63,11 +70,13 @@ class SecondFragment : Fragment() {
 
             // Pass the text to the view model,
             // which sends message to the agent
-            viewModel.sendTextMessage(message)
+            viewModel?.sendTextMessage(message)
         }
 
         binding.buttonSecond.setOnClickListener {
-            findNavController().navigate(R.id.action_SecondFragment_to_FirstFragment)
+            val bundle = Bundle()
+            bundle.putString("conversationID", conversationId.toString())
+            findNavController().navigate(R.id.action_SecondFragment_to_FirstFragment, bundle)
         }
         binding.recyclerView.apply {
             adapter = pagingAdapter
@@ -76,14 +85,14 @@ class SecondFragment : Fragment() {
             }
         }
         viewLifecycleOwner.lifecycleScope.launch {
-            viewModel.conversationEntries.collectLatest {
+            viewModel?.conversationEntries?.collectLatest {
 
                 // Submit new conversation entries to the paging adapter
                 pagingAdapter.submitData(it)
             }
         }
         viewLifecycleOwner.lifecycleScope.launch {
-            viewModel.typingEvents.collectLatest {
+            viewModel?.typingEvents?.collectLatest {
 
                 // Get the latest typing event
                 val text = "Typing Event: ${it.status}"
@@ -92,7 +101,6 @@ class SecondFragment : Fragment() {
                 Toast.makeText(requireContext(), text, Toast.LENGTH_SHORT).show()
             }
         }
-
     }
 
     override fun onDestroyView() {
