@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import com.salesforce.android.smi.core.CoreClient
+import com.salesforce.android.smi.core.CoreConfiguration
 import com.salesforce.android.smi.core.PreChatValuesProvider
 import com.salesforce.android.smi.core.TemplatedUrlValuesProvider
 import com.salesforce.android.smi.core.events.CoreEvent
@@ -23,11 +24,14 @@ import kotlinx.coroutines.flow.filterIsInstance
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
+import java.util.UUID
 import java.util.logging.Level
 import java.util.logging.Logger
 
 class AppViewModel(application: Application) : AndroidViewModel(application) {
     private val logger = Logger.getLogger(TAG)
+    var conversationId = UUID.randomUUID()
+    var uiConfig: UIConfiguration? = null
 
     fun setupMessaging(config: UIConfiguration) {
         CoreClient.setLogLevel(Level.ALL)
@@ -37,6 +41,34 @@ class AppViewModel(application: Application) : AndroidViewModel(application) {
 
         // Note: this will only be used if you also set the isUserVerification flag to true in your CoreConfig object.
         registerUserVerificationProvider(config)
+    }
+
+    /**
+     * Initializes the configuration object for Messaging for In-App
+     */
+     fun resetMessagingConfig() {
+
+        logger.log(Level.INFO, "Initializing config file.")
+
+        // TO DO Set this value to true if using a userVerificationProvider, otherwise false
+        val isUserVerificationEnabled = false
+
+        // TO DO: Replace the config file in this app (assets/configFile.json)
+        //        with the config file you downloaded from your Salesforce org.
+        //        To learn more, see https://help.salesforce.com/s/articleView?id=sf.miaw_deployment_mobile.htm
+        val coreConfig = CoreConfiguration
+            .fromFile(getApplication(), "configFile.json", isUserVerificationEnabled)
+
+        // Create a new conversation
+        // This code uses a random UUID for the conversation ID, but
+        // be sure to use the same ID to persist the same conversation.
+
+        uiConfig = UIConfiguration(coreConfig, conversationId).also {
+            // Optionally log events
+           setupMessaging(it)
+        }
+
+        logger.log(Level.INFO, "Config created using conversation ID $conversationId")
     }
 
     private fun registerHiddenPreChatValuesProvider(config: UIConfiguration) {

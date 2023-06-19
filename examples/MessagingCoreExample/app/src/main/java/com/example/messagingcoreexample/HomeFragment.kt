@@ -6,15 +6,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
-import com.example.messagingcoreexample.databinding.FragmentFirstBinding
+import com.example.messagingcoreexample.databinding.FragmentHomeBinding
 import java.util.UUID
 
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
  */
-class FirstFragment : Fragment() {
+class HomeFragment : Fragment() {
 
-    private var _binding: FragmentFirstBinding? = null
+    private var _binding: FragmentHomeBinding? = null
     private var conversationId: UUID = UUID.randomUUID()
 
     // This property is only valid between onCreateView and
@@ -26,7 +26,7 @@ class FirstFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         conversationId = UUID.fromString(arguments?.getString("conversationID") ?: UUID.randomUUID().toString())
-        _binding = FragmentFirstBinding.inflate(inflater, container, false)
+        _binding = FragmentHomeBinding.inflate(inflater, container, false)
         return binding.root
     }
 

@@ -3,6 +3,7 @@ package com.example.messaginguiexample
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -20,7 +21,7 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityMainBinding
-    var uiConfig: UIConfiguration? = null
+    private val viewModel: AppViewModel by viewModels()
     var uiClient: UIClient? = null
     private val logger = Logger.getLogger(TAG)
 
@@ -37,7 +38,7 @@ class MainActivity : AppCompatActivity() {
         setupActionBarWithNavController(navController, appBarConfiguration)
 
         // Initialize Messaging for In-App configuration object
-        this.resetMessagingConfig()
+        viewModel.resetMessagingConfig()
 
         binding.fab.setOnClickListener { view ->
             this.showMessagingUI()
@@ -45,41 +46,12 @@ class MainActivity : AppCompatActivity() {
     }
 
     /**
-     * Initializes the configuration object for Messaging for In-App
-     */
-    private fun resetMessagingConfig() {
-
-        logger.log(Level.INFO, "Initializing config file.")
-
-        // TO DO Set this value to true if using a userVerificationProvider, otherwise false
-        val isUserVerificationEnabled = false
-
-        // TO DO: Replace the config file in this app (assets/configFile.json)
-        //        with the config file you downloaded from your Salesforce org.
-        //        To learn more, see https://help.salesforce.com/s/articleView?id=sf.miaw_deployment_mobile.htm
-        val coreConfig = CoreConfiguration
-            .fromFile(this, "configFile.json", isUserVerificationEnabled)
-
-        // Create a new conversation
-        // This code uses a random UUID for the conversation ID, but
-        // be sure to use the same ID to persist the same conversation.
-        val conversationID = UUID.randomUUID()
-
-        uiConfig = UIConfiguration(coreConfig, conversationID).also {
-            // Optionally log events
-            (applicationContext as MessagingApp).viewModel.setupMessaging(it)
-        }
-
-        logger.log(Level.INFO, "Config created using conversation ID $conversationID")
-    }
-
-    /**
      * Shows the UI for Messaging for In-App
      */
     private fun showMessagingUI() {
         // Create a UI client
-        if (uiConfig != null) {
-            uiClient = UIClient.Factory.create(uiConfig!!)
+        if (viewModel.uiConfig != null) {
+            uiClient = UIClient.Factory.create(viewModel.uiConfig!!)
         }
 
         // Show the UI
