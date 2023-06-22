@@ -33,16 +33,6 @@ class AppViewModel(application: Application) : AndroidViewModel(application) {
     var conversationId = UUID.randomUUID()
     var uiConfig: UIConfiguration? = null
 
-    fun setupMessaging(config: UIConfiguration) {
-        CoreClient.setLogLevel(Level.ALL)
-        logEvents(config)
-        registerHiddenPreChatValuesProvider(config)
-        registerTemplatedUrlValuesProvider(config)
-
-        // Note: this will only be used if you also set the isUserVerification flag to true in your CoreConfig object.
-        registerUserVerificationProvider(config)
-    }
-
     /**
      * Initializes the configuration object for Messaging for In-App
      */
@@ -86,6 +76,16 @@ class AppViewModel(application: Application) : AndroidViewModel(application) {
                 }
             }
         })
+    }
+
+    private fun setupMessaging(config: UIConfiguration) {
+        CoreClient.setLogLevel(Level.ALL)
+        logEvents(config)
+        registerHiddenPreChatValuesProvider(config)
+        registerTemplatedUrlValuesProvider(config)
+
+        // Note: this will only be used if you also set the isUserVerification flag to true in your CoreConfig object.
+        registerUserVerificationProvider(config)
     }
 
     // This registers the templated url parameters you have configured in your setup to values in

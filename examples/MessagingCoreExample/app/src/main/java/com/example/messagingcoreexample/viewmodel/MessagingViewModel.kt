@@ -65,7 +65,6 @@ class MessagingViewModel(
         logEvents()
         registerHiddenPreChatValuesProvider()
         registerTemplatedUrlValuesProvider()
-        retrieveBusinessHours()
 
         // Note: this will only be used if you also set the isUserVerification flag to true in your CoreConfig object.
         registerUserVerificationProvider()
@@ -101,17 +100,13 @@ class MessagingViewModel(
 
     // This retrieves business hours from the service so they an be used to check if a time is within
     // the current business hours.
-    private fun retrieveBusinessHours() {
-        viewModelScope.launch {
-            val result = coreClient.retrieveBusinessHours()
-            val businessHoursInfo: BusinessHoursInfo? = (result as? Result.Success)?.data
-            _businessHours.emit(
-                businessHoursInfo
-            )
-        }
+    suspend fun checkIfInBusinessHours(): Boolean? {
+        val result = coreClient.retrieveBusinessHours()
+        val businessHoursInfo: BusinessHoursInfo? = (result as? Result.Success)?.data
+        return businessHoursInfo?.isWithinBusinessHours()
     }
 
-    // Registers the hidden Pre Chat provider. For your implemention you would need to set the
+    // Registers the hidden Pre Chat provider. For your implementation you would need to set the
     // expected hidden Pre Chat values from your org configuration to values from your application.
     private fun registerHiddenPreChatValuesProvider() {
         coreClient.registerHiddenPreChatValuesProvider(object : PreChatValuesProvider {
@@ -181,7 +176,7 @@ class MessagingViewModel(
         })
     }
 
-    // Logs various events within the application.
+
     private fun logEvents() {
         viewModelScope.launch {
             conversationClient.events

@@ -10,6 +10,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.viewModelScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.messagingcoreexample.adapter.ConversationEntryAdapter
@@ -111,18 +112,28 @@ class ConversationFragment : Fragment() {
     }
 
     private fun setBusinessHoursBanner() {
-        viewModel?.businessHours?.value?.isWithinBusinessHours().let {
-            if (it == null) {
-                return
-            }
-
-            binding.businessHoursBanner.visibility = VISIBLE
-            if (it == true) {
-                binding.businessHoursBanner.text = "You are within business hours."
-                binding.businessHoursBanner.setBackgroundColor(resources.getColor(R.color.green,null))
-            } else {
-                binding.businessHoursBanner.text = "You are not within business hours."
-                binding.businessHoursBanner.setBackgroundColor(resources.getColor(R.color.red,null))
+        lifecycleScope.launch {
+            viewModel?.checkIfInBusinessHours().let {
+                if (it != null) {
+                    binding.businessHoursBanner.visibility = VISIBLE
+                    if (!it) {
+                        binding.businessHoursBanner.text = "You are not within business hours."
+                        binding.businessHoursBanner.setBackgroundColor(
+                            resources.getColor(
+                                R.color.red,
+                                null
+                            )
+                        )
+                    } else {
+                        binding.businessHoursBanner.text = "You are within business hours."
+                        binding.businessHoursBanner.setBackgroundColor(
+                            resources.getColor(
+                                R.color.green,
+                                null
+                            )
+                        )
+                    }
+                }
             }
         }
     }
