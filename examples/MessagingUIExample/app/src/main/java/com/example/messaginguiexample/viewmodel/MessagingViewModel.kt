@@ -1,4 +1,4 @@
-package com.example.messaginguiexample
+package com.example.messaginguiexample.viewmodel
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
@@ -71,6 +71,8 @@ class AppViewModel(application: Application) : AndroidViewModel(application) {
         logger.log(Level.INFO, "Config created using conversation ID $conversationId")
     }
 
+    // Registers the hidden Pre Chat provider. For your implemention you would need to set the
+    // expected hidden Pre Chat values from your org configuration to values from your application.
     private fun registerHiddenPreChatValuesProvider(config: UIConfiguration) {
         coreClient(config).registerHiddenPreChatValuesProvider(object : PreChatValuesProvider {
 
@@ -86,6 +88,8 @@ class AppViewModel(application: Application) : AndroidViewModel(application) {
         })
     }
 
+    // This registers the templated url parameters you have configured in your setup to values in
+    // your application.
     private fun registerTemplatedUrlValuesProvider(config: UIConfiguration) {
         coreClient(config).registerTemplatedUrlValuesProvider(object : TemplatedUrlValuesProvider {
 
@@ -100,6 +104,8 @@ class AppViewModel(application: Application) : AndroidViewModel(application) {
         })
     }
 
+    // This is used to set the verification provider information in order to support user
+    // verification.
     private fun registerUserVerificationProvider(config: UIConfiguration) {
         coreClient(config).registerUserVerificationProvider(object : UserVerificationProvider {
 
@@ -135,6 +141,7 @@ class AppViewModel(application: Application) : AndroidViewModel(application) {
         })
     }
 
+    // Logs various events within the application.
     private fun logEvents(config: UIConfiguration) {
         viewModelScope.launch {
             conversationClient(config).events

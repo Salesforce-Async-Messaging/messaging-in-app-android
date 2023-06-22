@@ -8,6 +8,9 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
+    <!-- This color is an example that overrides the chat input background -->
+    <color name="smi_input_background">#FFFF00</color>
+
     <!-- Optional color token overrides -->
     <!--
     <color name="smi_color_primary">#FFBBDD</color>

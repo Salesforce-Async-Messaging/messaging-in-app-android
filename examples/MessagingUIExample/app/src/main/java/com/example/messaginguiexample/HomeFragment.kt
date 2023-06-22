@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.example.messaginguiexample.databinding.FragmentHomeBinding
+import com.example.messaginguiexample.viewmodel.AppViewModel
 import java.util.UUID
 
 /**

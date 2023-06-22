@@ -1,8 +1,6 @@
 package com.example.messaginguiexample
 
 import android.os.Bundle
-import android.view.Menu
-import android.view.MenuItem
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
@@ -10,10 +8,8 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import com.example.messaginguiexample.databinding.ActivityMainBinding
-import com.salesforce.android.smi.core.CoreConfiguration
+import com.example.messaginguiexample.viewmodel.AppViewModel
 import com.salesforce.android.smi.ui.UIClient
-import com.salesforce.android.smi.ui.UIConfiguration
-import java.util.*
 import java.util.logging.Level
 import java.util.logging.Logger
 

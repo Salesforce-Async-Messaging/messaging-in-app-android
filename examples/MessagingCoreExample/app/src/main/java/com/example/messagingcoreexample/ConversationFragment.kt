@@ -3,6 +3,8 @@ package com.example.messagingcoreexample
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.GONE
+import android.view.View.VISIBLE
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
@@ -40,14 +42,15 @@ class ConversationFragment : Fragment() {
         }
         viewModel = model
 
+        // Configures providers and sets logging for this example
+        viewModel?.setupMessaging()
+
         // Starts the Messaging for In-App Core SDK stream
         viewModel?.startStream()
 
-        // NOTE: This example does not handle a pre-chat
-        // form. If your deployment requires a pre-chat
-        // form, you'll have to write the Core SDK code
-        // to handle that information, or disable the
-        // form for this example.
+        // This is an basic example of how you would handle Pre Chat fields in your deployment.
+        // You will need to create a UI and handle the Pre Chat fields you have created.
+        viewModel?.handlePreChat()
     }
 
     override fun onCreateView(
@@ -84,6 +87,7 @@ class ConversationFragment : Fragment() {
                 reverseLayout = true
             }
         }
+
         viewLifecycleOwner.lifecycleScope.launch {
             viewModel?.conversationEntries?.collectLatest {
 
@@ -91,6 +95,7 @@ class ConversationFragment : Fragment() {
                 pagingAdapter.submitData(it)
             }
         }
+
         viewLifecycleOwner.lifecycleScope.launch {
             viewModel?.typingEvents?.collectLatest {
 
@@ -99,6 +104,25 @@ class ConversationFragment : Fragment() {
 
                 // Show event info as a toast
                 Toast.makeText(requireContext(), text, Toast.LENGTH_SHORT).show()
+            }
+        }
+
+        setBusinessHoursBanner()
+    }
+
+    private fun setBusinessHoursBanner() {
+        viewModel?.businessHours?.value?.isWithinBusinessHours().let {
+            if (it == null) {
+                return
+            }
+
+            binding.businessHoursBanner.visibility = VISIBLE
+            if (it == true) {
+                binding.businessHoursBanner.text = "You are within business hours."
+                binding.businessHoursBanner.setBackgroundColor(resources.getColor(R.color.green,null))
+            } else {
+                binding.businessHoursBanner.text = "You are not within business hours."
+                binding.businessHoursBanner.setBackgroundColor(resources.getColor(R.color.red,null))
             }
         }
     }

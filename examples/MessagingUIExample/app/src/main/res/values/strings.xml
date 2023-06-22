@@ -8,6 +8,9 @@
 
     <string name="hello_first_fragment">Messaging for In-App UI SDK Example</string>
 
+    <!-- This color is an example that overrides the chat screen title -->
+    <string name="smi_chat_feed_title">This is an example string override</string>
+
     <!-- Optional string overrides -->
     <!--
     <string name="smi_chat_feed_title">Chat Override</string>
