@@ -61,7 +61,7 @@ class AppViewModel(application: Application) : AndroidViewModel(application) {
         logger.log(Level.INFO, "Config created using conversation ID $conversationId")
     }
 
-    // Registers the hidden Pre Chat provider. For your implemention you would need to set the
+    // Registers the hidden pre-chat provider. For your implementation you would need to set the
     // expected hidden Pre Chat values from your org configuration to values from your application.
     private fun registerHiddenPreChatValuesProvider(config: UIConfiguration) {
         coreClient(config).registerHiddenPreChatValuesProvider(object : PreChatValuesProvider {
