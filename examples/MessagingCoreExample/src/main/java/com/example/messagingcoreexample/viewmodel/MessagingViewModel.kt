@@ -93,7 +93,7 @@ class MessagingViewModel(
 
             val hiddenPreChatFields: MutableList<PreChatField> = mutableListOf()
 
-            // Submitting the Pre Chat data after setting the values on the Pre Chat fields.
+            // Submitting the pre-chat data after setting the values on the pre-chat fields.
             conversationClient.submitPreChatData(form.formFields, hiddenPreChatFields, true)
         }
     }
