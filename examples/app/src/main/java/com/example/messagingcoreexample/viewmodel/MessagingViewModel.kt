@@ -80,7 +80,7 @@ class MessagingViewModel(
 
     // This is an example of how you would get the pre-chat values from the config and submitting
     // those values. This example does not have a UI component built for it, you would need to
-    // create one so the user can provider values for your Pre Chat fields.
+    // create one so the user can provider values for your pre-chat fields.
      fun handlePreChat() = viewModelScope.launch {
         val remoteConfig = coreClient.retrieveRemoteConfiguration()
 
