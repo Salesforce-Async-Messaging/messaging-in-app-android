@@ -107,7 +107,7 @@ class MessagingViewModel(
     }
 
     // Registers the hidden pre-chat provider. For your implementation you would need to set the
-    // expected hidden Pre Chat values from your org configuration to values from your application.
+    // expected hidden pre-chat values from your org configuration to values from your application.
     private fun registerHiddenPreChatValuesProvider() {
         coreClient.registerHiddenPreChatValuesProvider(object : PreChatValuesProvider {
 
