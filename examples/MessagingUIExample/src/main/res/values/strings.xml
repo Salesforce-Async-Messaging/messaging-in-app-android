@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">MessagingUIExample</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">Messaging UI Example</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="reset">Reset Conversation</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Messaging for In-App UI SDK Example</string>
+
+    <!-- This color is an example that overrides the chat screen title -->
+    <string name="smi_chat_feed_title">This is an example string override</string>
+
+    <!-- Optional string overrides -->
+    <!--
+    <string name="smi_chat_feed_title">Chat Override</string>
+    <string name="smi_feed_input_text">Type a message override</string>
+    -->
+</resources>
