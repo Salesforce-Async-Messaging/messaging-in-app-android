@@ -37,6 +37,9 @@
     <div>
     </div>
     <div class="pull-right d-flex">
+        <div class="filter-section" id="filter-section">
+                <button class="platform-tag platform-selector jvm-like" data-active="" data-filter=":messaging-inapp-core:dokkaHtmlPartial/release">androidJvm</button>
+        </div>
         <button id="theme-toggle-button"><span id="theme-toggle"></span></button>
         <div id="searchBar"></div>
     </div>
@@ -46,110 +49,112 @@
         <div id="sideMenu"></div>
     </div>
     <div id="main">
-<div class="main-content" id="content" pageids="messaging-inapp-core::com.salesforce.android.smi.core.data.domain.businessHours/BusinessHoursInfo///PointingToDeclaration//415633242">
+<div class="main-content" data-page-type="classlike" id="content" pageids="messaging-inapp-core::com.salesforce.android.smi.core.data.domain.businessHours/BusinessHoursInfo///PointingToDeclaration//415633242">
   <div class="breadcrumbs"><a href="../../index.html">messaging-inapp-core</a><span class="delimiter">/</span><a href="../index.html">com.salesforce.android.smi.core.data.domain.businessHours</a><span class="delimiter">/</span><span class="current">BusinessHoursInfo</span></div>
   <div class="cover ">
     <h1 class="cover"><span>Business</span><wbr><span>Hours</span><wbr><span><span>Info</span></span></h1>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":messaging-inapp-core:dokkaHtmlPartial/release"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="com.squareup.moshi/JsonClass///PointingToDeclaration/"><span class="token annotation builtin">JsonClass</span></span><span class="token punctuation">(</span><span>generateAdapter<span class="token operator"> = </span><span class="breakable-word"><span class="token boolean">true</span></span></span><wbr><span class="token punctuation">)</span></div></div><span class="token keyword">data </span><span class="token keyword">class </span><a href="index.html">BusinessHoursInfo</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>name<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>isActive<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>businessHours<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../-business-hours/index.html">BusinessHours</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>requestTimestamp<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html">Long</a></span></span><span class="token punctuation">)</span></div><p class="paragraph">The information needed to determine a deployment's business hours.</p></div></div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":messaging-inapp-core:dokkaHtmlPartial/release"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="com.squareup.moshi/JsonClass///PointingToDeclaration/"><span class="token annotation builtin">JsonClass</span></span><span class="token punctuation">(</span><span>generateAdapter<span class="token operator"> = </span><span class="breakable-word"><span class="token boolean">true</span></span></span><wbr><span class="token punctuation">)</span></div></div><span class="token keyword">data </span><span class="token keyword">class </span><a href="index.html">BusinessHoursInfo</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>name<span class="token operator">: </span><span data-unresolved-link="kotlin/String///PointingToDeclaration/">String</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>isActive<span class="token operator">: </span><span data-unresolved-link="kotlin/Boolean///PointingToDeclaration/">Boolean</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>businessHours<span class="token operator">: </span><span data-unresolved-link="kotlin.collections/List///PointingToDeclaration/">List</span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../-business-hours/index.html">BusinessHours</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>requestTimestamp<span class="token operator">: </span><span data-unresolved-link="kotlin/Long///PointingToDeclaration/">Long</span></span></span><span class="token punctuation">)</span></div><p class="paragraph">The information needed to determine a deployment's business hours.</p><h4 class="">Parameters</h4><div class="table"><div class="table-row" data-filterable-current=":messaging-inapp-core:dokkaHtmlPartial/release" data-filterable-set=":messaging-inapp-core:dokkaHtmlPartial/release"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span><span>name</span></span></u></div></span></div><div><div class="title"><p class="paragraph">The name of the business hours in Setup.</p></div></div></div></div><div class="table-row" data-filterable-current=":messaging-inapp-core:dokkaHtmlPartial/release" data-filterable-set=":messaging-inapp-core:dokkaHtmlPartial/release"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>is</span><wbr><span><span>Active</span></span></u></div></span></div><div><div class="title"><p class="paragraph">A <span data-unresolved-link="kotlin/Boolean///PointingToDeclaration/">Boolean</span> value to determine whether business hours are currently active in Setup.</p></div></div></div></div><div class="table-row" data-filterable-current=":messaging-inapp-core:dokkaHtmlPartial/release" data-filterable-set=":messaging-inapp-core:dokkaHtmlPartial/release"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>business</span><wbr><span><span>Hours</span></span></u></div></span></div><div><div class="title"><p class="paragraph">A <span data-unresolved-link="kotlin.collections/List///PointingToDeclaration/">List</span> of <a href="../-business-hours/index.html">BusinessHours</a> representing intervals across a 24-hour period.</p></div></div></div></div><div class="table-row" data-filterable-current=":messaging-inapp-core:dokkaHtmlPartial/release" data-filterable-set=":messaging-inapp-core:dokkaHtmlPartial/release"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>request</span><wbr><span><span>Timestamp</span></span></u></div></span></div><div><div class="title"><p class="paragraph">The time when the request was made, in milliseconds since the epoch.</p></div></div></div></div></div></div></div>
   </div>
   <div class="tabbedcontent">
-    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="Constructors">Constructors</button><button class="section-tab" data-togglable="Functions">Functions</button><button class="section-tab" data-togglable="Properties">Properties</button><button class="section-tab" data-togglable="Parameters">Parameters</button></div>
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,FUNCTION,PROPERTY">Members</button></div>
     <div class="tabs-section-body">
-      <h4 class="">Parameters</h4>
-      <div data-togglable="Parameters">
-        <div class="platform-hinted WithExtraAttributes" data-platform-hinted="data-platform-hinted" data-togglable="Parameters"><div class="content sourceset-dependent-content" data-active="" data-togglable=":messaging-inapp-core:dokkaHtmlPartial/release"><div data-togglable="Parameters"><div class="table" data-togglable="Parameters"><div class="table-row" data-filterable-current=":messaging-inapp-core:dokkaHtmlPartial/release" data-filterable-set=":messaging-inapp-core:dokkaHtmlPartial/release"><div class="main-subrow keyValue WithExtraAttributes"><div class=""><span class="inline-flex"><div><u><span><span>name</span></span></u></div></span></div><div><div class="title"><div data-togglable="Parameters"><p class="paragraph">The name of the business hours in Setup.</p></div></div></div></div></div><div class="table-row" data-filterable-current=":messaging-inapp-core:dokkaHtmlPartial/release" data-filterable-set=":messaging-inapp-core:dokkaHtmlPartial/release"><div class="main-subrow keyValue WithExtraAttributes"><div class=""><span class="inline-flex"><div><u><span>is</span><wbr><span><span>Active</span></span></u></div></span></div><div><div class="title"><div data-togglable="Parameters"><p class="paragraph">A <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a> value to determine whether business hours are currently active in Setup.</p></div></div></div></div></div><div class="table-row" data-filterable-current=":messaging-inapp-core:dokkaHtmlPartial/release" data-filterable-set=":messaging-inapp-core:dokkaHtmlPartial/release"><div class="main-subrow keyValue WithExtraAttributes"><div class=""><span class="inline-flex"><div><u><span>business</span><wbr><span><span>Hours</span></span></u></div></span></div><div><div class="title"><div data-togglable="Parameters"><p class="paragraph">A <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a> of <a href="../-business-hours/index.html">BusinessHours</a> representing intervals across a 24-hour period.</p></div></div></div></div></div><div class="table-row" data-filterable-current=":messaging-inapp-core:dokkaHtmlPartial/release" data-filterable-set=":messaging-inapp-core:dokkaHtmlPartial/release"><div class="main-subrow keyValue WithExtraAttributes"><div class=""><span class="inline-flex"><div><u><span>request</span><wbr><span><span>Timestamp</span></span></u></div></span></div><div><div class="title"><div data-togglable="Parameters"><p class="paragraph">The time when the request was made, in milliseconds since the epoch.</p></div></div></div></div></div></div></div></div></div>
-      </div>
-      <h2 class="tabbedcontent">Constructors</h2>
-      <div class="table" data-togglable="Constructors"><a data-name="-1305659975%2FConstructors%2F415633242" anchor-label="BusinessHoursInfo" id="-1305659975%2FConstructors%2F415633242" data-filterable-set=":messaging-inapp-core:dokkaHtmlPartial/release"></a>
-        <div class="table-row" data-filterable-current=":messaging-inapp-core:dokkaHtmlPartial/release" data-filterable-set=":messaging-inapp-core:dokkaHtmlPartial/release">
-          <div class="main-subrow keyValue TabbedContent">
-            <div class=""><span class="inline-flex">
-                <div><a href="-business-hours-info.html"><span>Business</span><wbr><span>Hours</span><wbr><span><span>Info</span></span></a></div>
+      <div data-togglable="CONSTRUCTOR">
+        <h2 class="">Constructors</h2>
+        <div class="table"><a data-name="-1305659975%2FConstructors%2F415633242" anchor-label="BusinessHoursInfo" id="-1305659975%2FConstructors%2F415633242" data-filterable-set=":messaging-inapp-core:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-togglable="CONSTRUCTOR" data-filterable-current=":messaging-inapp-core:dokkaHtmlPartial/release" data-filterable-set=":messaging-inapp-core:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-business-hours-info.html"><span>Business</span><wbr><span>Hours</span><wbr><span><span>Info</span></span></a></div>
 <span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1305659975%2FConstructors%2F415633242"></span>
-                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                </span></span></div>
-            <div>
-              <div class="title">
-                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":messaging-inapp-core:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">fun </span><a href="-business-hours-info.html"><span class="token function">BusinessHoursInfo</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">isActive<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token punctuation">, </span></span><span class="parameter ">businessHours<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../-business-hours/index.html">BusinessHours</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter ">requestTimestamp<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html">Long</a></span></span><span class="token punctuation">)</span></div></div></div>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":messaging-inapp-core:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">name<span class="token operator">: </span><span data-unresolved-link="kotlin/String///PointingToDeclaration/">String</span><span class="token punctuation">, </span></span><span class="parameter ">isActive<span class="token operator">: </span><span data-unresolved-link="kotlin/Boolean///PointingToDeclaration/">Boolean</span><span class="token punctuation">, </span></span><span class="parameter ">businessHours<span class="token operator">: </span><span data-unresolved-link="kotlin.collections/List///PointingToDeclaration/">List</span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../-business-hours/index.html">BusinessHours</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter ">requestTimestamp<span class="token operator">: </span><span data-unresolved-link="kotlin/Long///PointingToDeclaration/">Long</span></span></span><span class="token punctuation">)</span></div></div></div>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <h2 class="">Functions</h2>
-      <div class="table" data-togglable="Functions"><a data-name="2139714799%2FFunctions%2F415633242" anchor-label="isWithinBusinessHours" id="2139714799%2FFunctions%2F415633242" data-filterable-set=":messaging-inapp-core:dokkaHtmlPartial/release"></a>
-        <div class="table-row" data-filterable-current=":messaging-inapp-core:dokkaHtmlPartial/release" data-filterable-set=":messaging-inapp-core:dokkaHtmlPartial/release">
-          <div class="main-subrow keyValue ">
-            <div class=""><span class="inline-flex">
-                <div><a href="is-within-business-hours.html"><span>is</span><wbr><span>Within</span><wbr><span>Business</span><wbr><span><span>Hours</span></span></a></div>
+      <div data-togglable="FUNCTION">
+        <h2 class="">Functions</h2>
+        <div class="table"><a data-name="2139714799%2FFunctions%2F415633242" anchor-label="isWithinBusinessHours" id="2139714799%2FFunctions%2F415633242" data-filterable-set=":messaging-inapp-core:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":messaging-inapp-core:dokkaHtmlPartial/release" data-filterable-set=":messaging-inapp-core:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="is-within-business-hours.html"><span>is</span><wbr><span>Within</span><wbr><span>Business</span><wbr><span><span>Hours</span></span></a></div>
 <span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2139714799%2FFunctions%2F415633242"></span>
-                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                </span></span></div>
-            <div>
-              <div class="title">
-                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":messaging-inapp-core:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">fun </span><a href="is-within-business-hours.html"><span class="token function">isWithinBusinessHours</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">time<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html">Long</a><span class="token operator"> = </span>Date().time</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">A function to determine whether the current time is within the given business hours.</p></div></div></div>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":messaging-inapp-core:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">fun </span><a href="is-within-business-hours.html"><span class="token function">isWithinBusinessHours</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">time<span class="token operator">: </span><span data-unresolved-link="kotlin/Long///PointingToDeclaration/">Long</span><span class="token operator"> = </span>Date().time</span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="kotlin/Boolean///PointingToDeclaration/">Boolean</span></div><div class="brief "><p class="paragraph">A function to determine whether the current time is within the given business hours.</p></div></div></div>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <h2 class="">Properties</h2>
-      <div class="table" data-togglable="Properties"><a data-name="-1169153931%2FProperties%2F415633242" anchor-label="businessHours" id="-1169153931%2FProperties%2F415633242" data-filterable-set=":messaging-inapp-core:dokkaHtmlPartial/release"></a>
-        <div class="table-row" data-filterable-current=":messaging-inapp-core:dokkaHtmlPartial/release" data-filterable-set=":messaging-inapp-core:dokkaHtmlPartial/release">
-          <div class="main-subrow keyValue ">
-            <div class=""><span class="inline-flex">
-                <div><a href="business-hours.html"><span>business</span><wbr><span><span>Hours</span></span></a></div>
+      <div data-togglable="PROPERTY">
+        <h2 class="">Properties</h2>
+        <div class="table"><a data-name="-1169153931%2FProperties%2F415633242" anchor-label="businessHours" id="-1169153931%2FProperties%2F415633242" data-filterable-set=":messaging-inapp-core:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":messaging-inapp-core:dokkaHtmlPartial/release" data-filterable-set=":messaging-inapp-core:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="business-hours.html"><span>business</span><wbr><span><span>Hours</span></span></a></div>
 <span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1169153931%2FProperties%2F415633242"></span>
-                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                </span></span></div>
-            <div>
-              <div class="title">
-                <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-dependent-content" data-active="" data-togglable=":messaging-inapp-core:dokkaHtmlPartial/release"><a data-name="-1169153931%2FProperties%2F415633242" anchor-label="businessHours" id="-1169153931%2FProperties%2F415633242" data-filterable-set=":messaging-inapp-core:dokkaHtmlPartial/release"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="business-hours.html">businessHours</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../-business-hours/index.html">BusinessHours</a><span class="token operator">&gt;</span></div></div></div>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":messaging-inapp-core:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="business-hours.html">businessHours</a><span class="token operator">: </span><span data-unresolved-link="kotlin.collections/List///PointingToDeclaration/">List</span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../-business-hours/index.html">BusinessHours</a><span class="token operator">&gt;</span></div></div></div>
+                </div>
               </div>
             </div>
           </div>
-        </div>
 <a data-name="-565728378%2FProperties%2F415633242" anchor-label="isActive" id="-565728378%2FProperties%2F415633242" data-filterable-set=":messaging-inapp-core:dokkaHtmlPartial/release"></a>
-        <div class="table-row" data-filterable-current=":messaging-inapp-core:dokkaHtmlPartial/release" data-filterable-set=":messaging-inapp-core:dokkaHtmlPartial/release">
-          <div class="main-subrow keyValue ">
-            <div class=""><span class="inline-flex">
-                <div><a href="is-active.html"><span>is</span><wbr><span><span>Active</span></span></a></div>
+          <div class="table-row" data-filterable-current=":messaging-inapp-core:dokkaHtmlPartial/release" data-filterable-set=":messaging-inapp-core:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="is-active.html"><span>is</span><wbr><span><span>Active</span></span></a></div>
 <span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-565728378%2FProperties%2F415633242"></span>
-                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                </span></span></div>
-            <div>
-              <div class="title">
-                <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-dependent-content" data-active="" data-togglable=":messaging-inapp-core:dokkaHtmlPartial/release"><a data-name="-565728378%2FProperties%2F415633242" anchor-label="isActive" id="-565728378%2FProperties%2F415633242" data-filterable-set=":messaging-inapp-core:dokkaHtmlPartial/release"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="is-active.html">isActive</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a></div></div></div>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":messaging-inapp-core:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="is-active.html">isActive</a><span class="token operator">: </span><span data-unresolved-link="kotlin/Boolean///PointingToDeclaration/">Boolean</span></div></div></div>
+                </div>
               </div>
             </div>
           </div>
-        </div>
 <a data-name="308653739%2FProperties%2F415633242" anchor-label="name" id="308653739%2FProperties%2F415633242" data-filterable-set=":messaging-inapp-core:dokkaHtmlPartial/release"></a>
-        <div class="table-row" data-filterable-current=":messaging-inapp-core:dokkaHtmlPartial/release" data-filterable-set=":messaging-inapp-core:dokkaHtmlPartial/release">
-          <div class="main-subrow keyValue ">
-            <div class=""><span class="inline-flex">
-                <div><a href="name.html"><span><span>name</span></span></a></div>
+          <div class="table-row" data-filterable-current=":messaging-inapp-core:dokkaHtmlPartial/release" data-filterable-set=":messaging-inapp-core:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="name.html"><span><span>name</span></span></a></div>
 <span class="anchor-wrapper"><span class="anchor-icon" pointing-to="308653739%2FProperties%2F415633242"></span>
-                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                </span></span></div>
-            <div>
-              <div class="title">
-                <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-dependent-content" data-active="" data-togglable=":messaging-inapp-core:dokkaHtmlPartial/release"><a data-name="308653739%2FProperties%2F415633242" anchor-label="name" id="308653739%2FProperties%2F415633242" data-filterable-set=":messaging-inapp-core:dokkaHtmlPartial/release"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="name.html">name</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a></div></div></div>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":messaging-inapp-core:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="name.html">name</a><span class="token operator">: </span><span data-unresolved-link="kotlin/String///PointingToDeclaration/">String</span></div></div></div>
+                </div>
               </div>
             </div>
           </div>
-        </div>
 <a data-name="1229721583%2FProperties%2F415633242" anchor-label="requestTimestamp" id="1229721583%2FProperties%2F415633242" data-filterable-set=":messaging-inapp-core:dokkaHtmlPartial/release"></a>
-        <div class="table-row" data-filterable-current=":messaging-inapp-core:dokkaHtmlPartial/release" data-filterable-set=":messaging-inapp-core:dokkaHtmlPartial/release">
-          <div class="main-subrow keyValue ">
-            <div class=""><span class="inline-flex">
-                <div><a href="request-timestamp.html"><span>request</span><wbr><span><span>Timestamp</span></span></a></div>
+          <div class="table-row" data-filterable-current=":messaging-inapp-core:dokkaHtmlPartial/release" data-filterable-set=":messaging-inapp-core:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="request-timestamp.html"><span>request</span><wbr><span><span>Timestamp</span></span></a></div>
 <span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1229721583%2FProperties%2F415633242"></span>
-                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                </span></span></div>
-            <div>
-              <div class="title">
-                <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-dependent-content" data-active="" data-togglable=":messaging-inapp-core:dokkaHtmlPartial/release"><a data-name="1229721583%2FProperties%2F415633242" anchor-label="requestTimestamp" id="1229721583%2FProperties%2F415633242" data-filterable-set=":messaging-inapp-core:dokkaHtmlPartial/release"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="request-timestamp.html">requestTimestamp</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html">Long</a></div></div></div>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":messaging-inapp-core:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="request-timestamp.html">requestTimestamp</a><span class="token operator">: </span><span data-unresolved-link="kotlin/Long///PointingToDeclaration/">Long</span></div></div></div>
+                </div>
               </div>
             </div>
           </div>
@@ -159,10 +164,10 @@
   </div>
 </div>
       <div class="footer">
-        <span class="go-to-top-icon"><a href="#content" id="go-to-top-link"></a></span><span>© 2023 Copyright</span><span class="pull-right"><span>Generated by </span><a href="https://github.com/Kotlin/dokka"><span>dokka</span><span class="padded-icon"></span></a></span>
+        <span class="go-to-top-icon"><a href="#content" id="go-to-top-link"></a></span><span>© 2024 Copyright</span><span class="pull-right"><span>Generated by </span><a href="https://github.com/Kotlin/dokka"><span>dokka</span><span class="padded-icon"></span></a></span>
       </div>
     </div>
 </div>
-
-</body></html>
+</body>
+</html>
 
