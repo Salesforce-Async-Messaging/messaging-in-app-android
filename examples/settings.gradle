@@ -13,6 +13,6 @@ dependencyResolutionManagement {
         maven { url = "https://s3.amazonaws.com/inapp.salesforce.com/public/android" }
     }
 }
-rootProject.name = "MessagingCoreExample"
+rootProject.name = "MessagingExamples"
 include ':messaginguiexample'
 include ':messagingcoreexample'
