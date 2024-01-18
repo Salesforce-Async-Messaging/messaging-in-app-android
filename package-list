@@ -1,6 +1,7 @@
 $dokka.format:html-v1
 $dokka.linkExtension:html
 $dokka.location:com.salesforce.android.smi.core/CoreClientFactory///PointingToDeclaration/messaging-inapp-core/com.salesforce.android.smi.core/[android-jvm]-core-client-factory/index.html
+$dokka.location:com.salesforce.android.smi.core/CoreClientFactory/capabilityVersion/#/PointingToDeclaration/messaging-inapp-core/com.salesforce.android.smi.core/[android-jvm]-core-client-factory/capability-version.html
 $dokka.location:com.salesforce.android.smi.core/CoreClientFactory/create/#android.content.Context#[Error type: Unresolved type for Configuration]/PointingToDeclaration/messaging-inapp-core/com.salesforce.android.smi.core/[android-jvm]-core-client-factory/create.html
 $dokka.location:com.salesforce.android.smi.core/CoreClientFactory/destroy/#android.content.Context/PointingToDeclaration/messaging-inapp-core/com.salesforce.android.smi.core/[android-jvm]-core-client-factory/destroy.html
 $dokka.location:com.salesforce.android.smi.core/CoreClientFactory/overrideCoreClient/#[Error type: Unresolved type for CoreClient]/PointingToDeclaration/messaging-inapp-core/com.salesforce.android.smi.core/[android-jvm]-core-client-factory/override-core-client.html
@@ -22,6 +23,9 @@ com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload
 com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload.event
 com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload.event.entries
 com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload.message.component.attachment
+com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload.message.component.form.input
+com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload.message.component.form.result
+com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload.message.component.form.value
 com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload.message.component.optionItem
 com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload.message.component.optionItem.titleItem
 com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload.message.component.richLink
@@ -31,6 +35,7 @@ com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload.ro
 com.salesforce.android.smi.network.data.domain.participant
 com.salesforce.android.smi.network.data.domain.prechat
 com.salesforce.android.smi.network.data.domain.prechat.choicelist
+com.salesforce.android.smi.network.data.domain.prechat.termsAndConditions
 com.salesforce.android.smi.network.data.domain.webview
 module:messaging-inapp-ui
 com.salesforce.android.smi.ui
