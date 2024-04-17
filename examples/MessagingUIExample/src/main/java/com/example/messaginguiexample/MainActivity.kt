@@ -1,5 +1,6 @@
 package com.example.messaginguiexample
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -24,6 +25,10 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        intent.extras?.getString("conversation_id")?.let { conversationID ->
+            logger.log(Level.INFO, "Push notification with conversationId: $conversationID")
+        }
+
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
@@ -39,6 +44,15 @@ class MainActivity : AppCompatActivity() {
         binding.fab.setOnClickListener { _ ->
             this.showMessagingUI()
         }
+    }
+
+    /**
+     * This ensures that onCreate is called when the activity is opened
+     * through a push notification with intent.
+     */
+    override fun onNewIntent(intent: Intent?) {
+        super.onNewIntent(intent)
+        setIntent(intent)
     }
 
     /**
