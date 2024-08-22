@@ -1,11 +1,6 @@
 $dokka.format:html-v1
 $dokka.linkExtension:html
-$dokka.location:com.salesforce.android.smi.core/CoreClientFactory///PointingToDeclaration/messaging-inapp-core/com.salesforce.android.smi.core/[android-jvm]-core-client-factory/index.html
-$dokka.location:com.salesforce.android.smi.core/CoreClientFactory/capabilityVersion/#/PointingToDeclaration/messaging-inapp-core/com.salesforce.android.smi.core/[android-jvm]-core-client-factory/capability-version.html
-$dokka.location:com.salesforce.android.smi.core/CoreClientFactory/create/#android.content.Context#[Error type: Unresolved type for Configuration]/PointingToDeclaration/messaging-inapp-core/com.salesforce.android.smi.core/[android-jvm]-core-client-factory/create.html
-$dokka.location:com.salesforce.android.smi.core/CoreClientFactory/destroy/#android.content.Context/PointingToDeclaration/messaging-inapp-core/com.salesforce.android.smi.core/[android-jvm]-core-client-factory/destroy.html
-$dokka.location:com.salesforce.android.smi.core/CoreClientFactory/overrideCoreClient/#[Error type: Unresolved type for CoreClient]/PointingToDeclaration/messaging-inapp-core/com.salesforce.android.smi.core/[android-jvm]-core-client-factory/override-core-client.html
-$dokka.location:com.salesforce.android.smi.core/CoreClientFactory/sdkVersion/#/PointingToDeclaration/messaging-inapp-core/com.salesforce.android.smi.core/[android-jvm]-core-client-factory/sdk-version.html
+
 module:messaging-inapp-common
 com.salesforce.android.smi.common.api
 module:messaging-inapp-core
