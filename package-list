@@ -11,6 +11,7 @@ com.salesforce.android.smi.core.data.domain.remoteConfiguration
 com.salesforce.android.smi.core.events
 module:messaging-inapp-network
 com.salesforce.android.smi.network.api.auth
+com.salesforce.android.smi.network.api.rest
 com.salesforce.android.smi.network.data.domain.auth
 com.salesforce.android.smi.network.data.domain.conversation
 com.salesforce.android.smi.network.data.domain.conversationEntry
