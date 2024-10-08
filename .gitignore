@@ -20,6 +20,9 @@ jacoco.exec
 build/
 local.properties
 
+# MIAW Config File
+sample-app/src/main/assets/configFile.json
+
 #L10n build time strings
 messaging-inapp-ui/src/main/res/values-*
 
