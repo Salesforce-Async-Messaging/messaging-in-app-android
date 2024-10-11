@@ -23,3 +23,4 @@ dependencyResolutionManagement {
 rootProject.name = "messaging-in-app-android"
 include(":sample-app")
 include(":sample-messaging")
+include(":sample-core-app")
