@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">sample-app</string>
+
+
+    <!-- Optional string overrides. -->
+    <!-- See here for all available overrides: https://developer.salesforce.com/docs/service/messaging-in-app/guide/android-strings.html -->
+    <!--
+    <string name="smi_chat_feed_title">Your Company Chat</string>
+    <string name="smi_feed_input_text">Send Company a message</string>
+    -->
+</resources>
