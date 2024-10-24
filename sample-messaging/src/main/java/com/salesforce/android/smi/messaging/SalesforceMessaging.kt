@@ -25,13 +25,14 @@ class SalesforceMessaging(
         isUserVerificationRequired = false,
         remoteLocaleMap = mapOf("en-CA" to "en", "fr-Fr" to "fr", "fr-CH" to "fr", "default" to "en")
     ),
+    uiConfiguration: UIConfiguration = UIConfiguration(configuration, conversationId),
     populatePopulatePreChat: PopulatePreChat = PopulatePreChat(),
     hiddenPreChat: PreChatValuesProvider = HiddenPreChat(),
     templatedUrls: TemplatedUrlValuesProvider = TemplatedUrlValues(),
     userVerification: UserVerificationProvider = UserVerification(),
     overridableUI: OverridableUI = OverridableUI()
 ) : MessagingClients {
-    override val uiClient = UIClient.Factory.create(UIConfiguration(configuration, conversationId)).apply {
+    override val uiClient = UIClient.Factory.create(uiConfiguration).apply {
         preChatFieldValueProvider = populatePopulatePreChat::populate
     }
 

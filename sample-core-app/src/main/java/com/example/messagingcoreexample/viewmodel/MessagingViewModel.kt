@@ -84,7 +84,7 @@ class MessagingViewModel(
      fun handlePreChat() = viewModelScope.launch {
         val remoteConfig = coreClient.retrieveRemoteConfiguration()
 
-        (remoteConfig as? Result.Success)?.data?.forms?.get(0)?.let { form ->
+        (remoteConfig as? Result.Success)?.data?.forms?.getOrNull(0)?.let { form ->
             for (field in form.formFields) {
                 if ( field.required) {
                     field.userInput = "value"
