@@ -31,7 +31,15 @@ android {
         compose = true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.10"
+        kotlinCompilerExtensionVersion = "1.5.13"
+    }
+}
+
+if (project.hasProperty("substituteSDK") && project.property("substituteSDK") == "true") {
+    configurations.all {
+        resolutionStrategy.dependencySubstitution {
+            substitute(module("com.salesforce.service:messaging-inapp-ui")).using(project(":messaging-inapp-ui"))
+        }
     }
 }
 
@@ -52,6 +60,7 @@ dependencies {
     implementation(libs.coil)
     implementation(libs.coil.gif)
     implementation(libs.coil.compose)
+    implementation(libs.coil.okhttp)
 
     testImplementation(libs.test.junit)
     androidTestImplementation(libs.test.androidx.junit)

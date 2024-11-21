@@ -16,11 +16,13 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.salesforce.android.smi.core.CoreClient
 import com.salesforce.android.smi.messaging.SalesforceMessaging
 import com.salesforce.android.smi.sampleapp.ui.theme.SampleappTheme
 
@@ -41,6 +43,10 @@ class MainActivity : ComponentActivity() {
 fun MainScreen() {
     val context = LocalContext.current
     val messaging = remember { SalesforceMessaging(context.applicationContext) }
+
+    LaunchedEffect(Unit) {
+        CoreClient.clearStorage(context)
+    }
 
     Scaffold(
         modifier = Modifier.fillMaxSize(),

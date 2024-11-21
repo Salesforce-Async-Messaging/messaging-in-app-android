@@ -1,16 +1,16 @@
 [versions]
 gradlePlugin = "8.7.1"
-kotlin = "1.9.22"
-coreKtx = "1.13.1"
+kotlin = "1.9.23"
+coreKtx = "1.15.0"
 junit = "4.13.2"
 junitVersion = "1.2.1"
 espressoCore = "3.6.1"
-lifecycleRuntimeKtx = "2.8.6"
+lifecycleRuntimeKtx = "2.8.7"
 activityCompose = "1.9.3"
-composeBom = "2024.10.00"
+composeBom = "2024.10.01"
 appcompat = "1.7.0"
 material = "1.12.0"
-coil = "2.6.0"
+coil = "3.0.3"
 salesforceMessaging = "1.7.0"
 
 [libraries]
@@ -30,9 +30,10 @@ androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 google-material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 
-coil = { group = "io.coil-kt", name = "coil", version.ref = "coil" }
-coil-gif = { group = "io.coil-kt", name = "coil-gif", version.ref = "coil" }
-coil-compose = { group = "io.coil-kt", name = "coil-compose", version.ref = "coil" }
+coil = { group = "io.coil-kt.coil3", name = "coil", version.ref = "coil" }
+coil-gif = { group = "io.coil-kt.coil3", name = "coil-gif", version.ref = "coil" }
+coil-compose = { group = "io.coil-kt.coil3", name = "coil-compose-core", version.ref = "coil" }
+coil-okhttp = { group = "io.coil-kt.coil3", name = "coil-network-okhttp", version.ref = "coil" }
 
 test-junit = { group = "junit", name = "junit", version.ref = "junit" }
 test-androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }

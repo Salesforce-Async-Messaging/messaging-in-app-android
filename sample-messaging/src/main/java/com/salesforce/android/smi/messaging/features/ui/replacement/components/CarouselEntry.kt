@@ -15,9 +15,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import coil.compose.AsyncImage
+import coil3.compose.AsyncImage
+import coil3.imageLoader
 import com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload.message.component.attachment.FileAsset
 
 @Composable
@@ -25,6 +27,7 @@ internal fun CarouselMessageReplacementEntry(
     isLocal: Boolean,
     list: List<FileAsset.ImageAsset.CarouselImage>
 ) {
+    val context = LocalContext.current
     val shape = RoundedCornerShape(16)
 
     MessageContainer(isLocal = isLocal) {
@@ -44,11 +47,13 @@ internal fun CarouselMessageReplacementEntry(
                 Row(Modifier.fillMaxWidth()) {
                     list.forEach {
                         AsyncImage(
+                            imageLoader = context.imageLoader,
                             modifier = Modifier
                                 .height(75.dp)
                                 .width(75.dp)
                                 .padding(4.dp),
-                            model = it.file, contentDescription = ""
+                            model = it.file,
+                            contentDescription = ""
                         )
                     }
                 }
