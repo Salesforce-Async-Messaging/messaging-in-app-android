@@ -11,9 +11,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import coil.compose.AsyncImage
+import coil3.compose.AsyncImage
+import coil3.imageLoader
 import java.io.File
 
 @Composable
@@ -22,6 +24,8 @@ internal fun AttachmentMessageReplacementEntry(
     file: File
 ) {
     val shape = RoundedCornerShape(16)
+
+    val context = LocalContext.current
 
     MessageContainer(isLocal = isLocal) {
         Card(
@@ -37,7 +41,7 @@ internal fun AttachmentMessageReplacementEntry(
                     .width(150.dp)
                     .wrapContentSize(),
             ) {
-                AsyncImage(model = file, contentDescription = "")
+                AsyncImage(model = file, contentDescription = "", imageLoader = context.imageLoader)
             }
         }
     }
