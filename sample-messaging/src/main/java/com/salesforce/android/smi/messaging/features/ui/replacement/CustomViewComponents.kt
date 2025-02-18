@@ -121,11 +121,13 @@ private fun CustomEntryContainer(entry: ChatFeedEntry, conversationClient: Conve
         // navigation
     }
 
-    is ChatFeedEntry.TypingIndicatorModel -> {
+    is ChatFeedEntry.ProgressIndicatorModel -> {
         if (entry.isActive) {
             TypingStartedReplacementEntry(participant = entry.participants.first())
         } else {
             // inactive typing indicator
         }
     }
+
+    is ChatFeedEntry.TypingIndicatorModel -> Unit
 }
