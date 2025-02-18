@@ -24,7 +24,9 @@ com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload.me
 com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload.message.component.form.value
 com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload.message.component.optionItem
 com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload.message.component.optionItem.titleItem
+com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload.message.component.progressIndicators
 com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload.message.component.richLink
+com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload.message.component.streamingToken
 com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload.message.component.webView
 com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload.message.format
 com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload.routing
