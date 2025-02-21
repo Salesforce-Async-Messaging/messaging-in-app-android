@@ -31,9 +31,6 @@ android {
     buildFeatures {
         compose = true
     }
-    composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.13"
-    }
 }
 
 if (project.hasProperty("substituteSDK") && project.property("substituteSDK") == "true") {
