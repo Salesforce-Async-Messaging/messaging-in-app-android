@@ -1,17 +1,17 @@
 [versions]
-gradlePlugin = "8.7.1"
-kotlin = "1.9.23"
-coreKtx = "1.15.0"
+gradlePlugin = "8.9.2"
+kotlin = "2.0.21"
+coreKtx = "1.16.0"
 junit = "4.13.2"
 junitVersion = "1.2.1"
 espressoCore = "3.6.1"
-lifecycleRuntimeKtx = "2.8.7"
-activityCompose = "1.9.3"
-composeBom = "2025.01.01"
+lifecycleRuntimeKtx = "2.9.0"
+activityCompose = "1.10.1"
+composeBom = "2025.05.00"
 appcompat = "1.7.0"
 material = "1.12.0"
 coil = "3.0.3"
-salesforceMessaging = "1.8.0"
+salesforceMessaging = "1.9.0"
 
 [libraries]
 salesforce-messaging = { group = "com.salesforce.service", name = "messaging-inapp-ui", version.ref = "salesforceMessaging" }
@@ -30,6 +30,8 @@ androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 google-material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 
+kotlin-stdlib = { group = "org.jetbrains.kotlin", name = "kotlin-stdlib", version.ref = "kotlin" }
+
 coil = { group = "io.coil-kt.coil3", name = "coil", version.ref = "coil" }
 coil-gif = { group = "io.coil-kt.coil3", name = "coil-gif", version.ref = "coil" }
 coil-compose = { group = "io.coil-kt.coil3", name = "coil-compose-core", version.ref = "coil" }
@@ -43,6 +45,7 @@ test-androidx-compose-ui-test-manifest = { group = "androidx.compose.ui", name =
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "gradlePlugin" }
-jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 android-library = { id = "com.android.library", version.ref = "gradlePlugin" }
+kotlin = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 

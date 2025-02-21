@@ -15,6 +15,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.salesforce.android.smi.network.data.domain.participant.CoreParticipant
 import com.salesforce.android.smi.network.data.domain.participant.Participant
+import com.salesforce.android.smi.network.data.domain.participant.ParticipantRoleType
 
 @Composable
 internal fun TypingStartedReplacementEntry(
@@ -29,7 +30,9 @@ internal fun TypingStartedReplacementEntry(
             shape = shape
         ) {
             Text(
-                modifier = Modifier.padding(8.dp).align(Alignment.CenterHorizontally),
+                modifier = Modifier
+                    .padding(8.dp)
+                    .align(Alignment.CenterHorizontally),
                 text = "${participant.displayName} is typing...",
                 color = Color.Green
             )
@@ -41,6 +44,6 @@ internal fun TypingStartedReplacementEntry(
 @Composable
 private fun TypingStartedReplacementEntryPreview() {
     TypingStartedReplacementEntry(
-        participant = CoreParticipant()
+        participant = CoreParticipant(subject = "subject", isLocal = false, roleType = ParticipantRoleType.Agent)
     )
 }
