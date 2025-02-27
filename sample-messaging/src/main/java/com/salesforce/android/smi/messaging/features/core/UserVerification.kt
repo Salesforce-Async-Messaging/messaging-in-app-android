@@ -1,9 +1,9 @@
 package com.salesforce.android.smi.messaging.features.core
 
-import com.salesforce.android.smi.network.api.auth.UserVerificationProvider
-import com.salesforce.android.smi.network.api.auth.UserVerificationProvider.ChallengeReason
-import com.salesforce.android.smi.network.api.auth.UserVerificationToken
-import com.salesforce.android.smi.network.api.auth.UserVerificationToken.UserVerificationType
+import com.salesforce.android.smi.core.ChallengeReason
+import com.salesforce.android.smi.core.UserVerificationProvider
+import com.salesforce.android.smi.core.UserVerificationToken
+import com.salesforce.android.smi.core.UserVerificationType
 import kotlinx.coroutines.delay
 
 open class UserVerification : UserVerificationProvider {

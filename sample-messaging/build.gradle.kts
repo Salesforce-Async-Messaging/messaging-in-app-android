@@ -36,7 +36,7 @@ android {
 if (project.hasProperty("substituteSDK") && project.property("substituteSDK") == "true") {
     configurations.all {
         resolutionStrategy.dependencySubstitution {
-            substitute(module("com.salesforce.service:messaging-inapp-ui")).using(project(":messaging-inapp-ui"))
+            substitute(module("com.salesforce.service:messaging-inapp-ui")).using(project(":sdk:ui"))
         }
     }
 }

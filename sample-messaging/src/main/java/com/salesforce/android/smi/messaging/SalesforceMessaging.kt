@@ -7,12 +7,12 @@ import com.salesforce.android.smi.core.CoreClient
 import com.salesforce.android.smi.core.CoreConfiguration
 import com.salesforce.android.smi.core.PreChatValuesProvider
 import com.salesforce.android.smi.core.TemplatedUrlValuesProvider
+import com.salesforce.android.smi.core.UserVerificationProvider
 import com.salesforce.android.smi.messaging.features.core.HiddenPreChat
 import com.salesforce.android.smi.messaging.features.core.TemplatedUrlValues
 import com.salesforce.android.smi.messaging.features.core.UserVerification
 import com.salesforce.android.smi.messaging.features.ui.PopulatePreChat
 import com.salesforce.android.smi.messaging.features.ui.replacement.OverridableUI
-import com.salesforce.android.smi.network.api.auth.UserVerificationProvider
 import com.salesforce.android.smi.ui.UIClient
 import com.salesforce.android.smi.ui.UIConfiguration
 import java.util.UUID
@@ -37,11 +37,17 @@ class SalesforceMessaging(
     }
 
     override val coreClient: CoreClient = uiClient.coreClient(context.applicationContext).apply {
-        registerHiddenPreChatValuesProvider(hiddenPreChat)
-        registerTemplatedUrlValuesProvider(templatedUrls)
+        registerHiddenPreChatValuesProvider {
+            hiddenPreChat.setValues(it)
+        }
+        registerTemplatedUrlValuesProvider {
+            templatedUrls.setValues(it)
+        }
 
         if (uiClient.configuration.isUserVerificationRequired) {
-            registerUserVerificationProvider(userVerification)
+            registerUserVerificationProvider {
+                userVerification.userVerificationChallenge(it)
+            }
         }
     }
 
