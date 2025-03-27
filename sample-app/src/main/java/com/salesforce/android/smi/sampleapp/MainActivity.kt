@@ -8,7 +8,8 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Create
+import androidx.compose.material.icons.automirrored.filled.Send
+import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -16,8 +17,8 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
@@ -25,6 +26,7 @@ import androidx.compose.ui.unit.dp
 import com.salesforce.android.smi.core.CoreClient
 import com.salesforce.android.smi.messaging.SalesforceMessaging
 import com.salesforce.android.smi.sampleapp.ui.theme.SampleappTheme
+import kotlinx.coroutines.launch
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -42,11 +44,7 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun MainScreen() {
     val context = LocalContext.current
-    val messaging = remember { SalesforceMessaging(context.applicationContext) }
-
-    LaunchedEffect(Unit) {
-        CoreClient.clearStorage(context)
-    }
+    val scope = rememberCoroutineScope()
 
     Scaffold(
         modifier = Modifier.fillMaxSize(),
@@ -54,8 +52,14 @@ fun MainScreen() {
             TopAppBar(
                 title = { Text(text = "Sample App") },
                 actions = {
-                    IconButton(onClick = { messaging.uiClient.openConversationActivity(context) }) {
-                        Icon(Icons.Default.Create, Icons.Default.Create.name)
+                    IconButton(onClick = {
+                        SalesforceMessaging(context.applicationContext)
+                            .uiClient.openConversationActivity(context)
+                    }) {
+                        Icon(Icons.AutoMirrored.Default.Send, Icons.AutoMirrored.Default.Send.name)
+                    }
+                    IconButton(onClick = { scope.launch { CoreClient.clearStorage(context) } }) {
+                        Icon(Icons.Default.Delete, Icons.Default.Delete.name)
                     }
                 })
         }
