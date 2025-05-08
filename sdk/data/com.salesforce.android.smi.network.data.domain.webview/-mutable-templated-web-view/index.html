@@ -1,0 +1,337 @@
+<!doctype html>
+<html class="no-js">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>MutableTemplatedWebView</title>
+<link href="../../../../images/logo-icon.svg" rel="icon" type="image/svg">    <script>var pathToRoot = "../../../../";</script>
+    <script>document.documentElement.classList.replace("no-js","js");</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+    if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    } else {
+        const savedDarkMode = JSON.parse(storage)
+        if(savedDarkMode === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    }
+    </script>
+<script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async></script>
+<script type="text/javascript" src="../../../../scripts/sourceset_dependencies.js" async></script>
+<link href="../../../../styles/style.css" rel="Stylesheet">
+<link href="../../../../styles/main.css" rel="Stylesheet">
+<link href="../../../../styles/prism.css" rel="Stylesheet">
+<link href="../../../../styles/logo-styles.css" rel="Stylesheet">
+<link href="../../../../styles/font-jb-sans-auto.css" rel="Stylesheet">
+<script type="text/javascript" src="../../../../scripts/clipboard.js" async></script>
+<script type="text/javascript" src="../../../../scripts/navigation-loader.js" async></script>
+<script type="text/javascript" src="../../../../scripts/platform-content-handler.js" async></script>
+<script type="text/javascript" src="../../../../scripts/main.js" defer></script>
+<script type="text/javascript" src="../../../../scripts/prism.js" async></script>
+<script type="text/javascript" src="../../../../scripts/symbol-parameters-wrapper_deferred.js" defer></script></head>
+<body>
+    <div class="root">
+<nav class="navigation" id="navigation-wrapper">
+    <div class="navigation--inner">
+        <div class="navigation-title">
+            <button class="menu-toggle" id="menu-toggle" type="button">toggle menu</button>
+            <div class="library-name">
+<a class="library-name--link" href="../../../../index.html">
+                            Messaging for In-App Android
+                    </a>            </div>
+            <div class="library-version">
+            </div>
+        </div>
+        <div class="filter-section" id="filter-section">
+                <button class="platform-tag platform-selector jvm-like" data-active="" data-filter=":sdk:data:dokkaHtmlPartial/release">androidJvm</button>
+        </div>
+    </div>
+    <div class="navigation-controls">
+        <button class="navigation-controls--btn navigation-controls--theme" id="theme-toggle-button" type="button">switch theme</button>
+        <div class="navigation-controls--btn navigation-controls--search" id="searchBar" role="button">search in API</div>
+    </div>
+</nav>
+        <div id="container">
+            <div class="sidebar" id="leftColumn">
+                <div class="sidebar--inner" id="sideMenu"></div>
+            </div>
+            <div id="main">
+<div class="main-content" data-page-type="classlike" id="content" pageids="data::com.salesforce.android.smi.network.data.domain.webview/MutableTemplatedWebView///PointingToDeclaration//-467771735">
+  <div class="breadcrumbs"><a href="../../index.html">data</a><span class="delimiter">/</span><a href="../index.html">com.salesforce.android.smi.network.data.domain.webview</a><span class="delimiter">/</span><span class="current">MutableTemplatedWebView</span></div>
+  <div class="cover ">
+    <h1 class="cover"><span>Mutable</span><wbr><span>Templated</span><wbr><span>Web</span><wbr><span><span>View</span></span></h1>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk:data:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="index.html">MutableTemplatedWebView</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>title<span class="token operator">: </span><span data-unresolved-link="kotlin/String///PointingToDeclaration/">String</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>uri<span class="token operator">: </span><span data-unresolved-link="android.net/Uri///PointingToDeclaration/">Uri</span><span class="token operator">?</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">var </span>formattedUri<span class="token operator">: </span><span data-unresolved-link="android.net/Uri///PointingToDeclaration/">Uri</span><span class="token operator">?</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>queryParams<span class="token operator">: </span><span data-unresolved-link="kotlin.collections/MutableMap///PointingToDeclaration/">MutableMap</span><span class="token operator">&lt;</span><span data-unresolved-link="kotlin/String///PointingToDeclaration/">String</span><span class="token punctuation">, </span><span data-unresolved-link="kotlin/String///PointingToDeclaration/">String</span><span class="token operator">&gt;</span><span class="token operator"> = </span>parseTemplatedStrings(uri?.query).toMutableMap()<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>pathParams<span class="token operator">: </span><span data-unresolved-link="kotlin.collections/MutableMap///PointingToDeclaration/">MutableMap</span><span class="token operator">&lt;</span><span data-unresolved-link="kotlin/String///PointingToDeclaration/">String</span><span class="token punctuation">, </span><span data-unresolved-link="kotlin/String///PointingToDeclaration/">String</span><span class="token operator">&gt;</span><span class="token operator"> = </span>parseTemplatedStrings(uri?.path).toMutableMap()<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>hostParams<span class="token operator">: </span><span data-unresolved-link="kotlin.collections/MutableMap///PointingToDeclaration/">MutableMap</span><span class="token operator">&lt;</span><span data-unresolved-link="kotlin/String///PointingToDeclaration/">String</span><span class="token punctuation">, </span><span data-unresolved-link="kotlin/String///PointingToDeclaration/">String</span><span class="token operator">&gt;</span><span class="token operator"> = </span>parseTemplatedStrings(uri?.host).toMutableMap()</span></span><span class="token punctuation">)</span> : <a href="../-templated-web-view/index.html">TemplatedWebView</a></div></div></div>
+  </div>
+  <div class="tabbedcontent">
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button></div>
+    <div class="tabs-section-body">
+      <div data-togglable="CONSTRUCTOR">
+        <h2 class="">Constructors</h2>
+        <div class="table"><a data-name="1567998396%2FConstructors%2F-467771735" anchor-label="MutableTemplatedWebView" id="1567998396%2FConstructors%2F-467771735" data-filterable-set=":sdk:data:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-togglable="CONSTRUCTOR" data-filterable-current=":sdk:data:dokkaHtmlPartial/release" data-filterable-set=":sdk:data:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-mutable-templated-web-view.html"><span>Mutable</span><wbr><span>Templated</span><wbr><span>Web</span><wbr><span><span>View</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1567998396%2FConstructors%2F-467771735"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk:data:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">webView<span class="token operator">: </span><a href="../../com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload.message.format/-static-content-format/-web-view-format/index.html">StaticContentFormat.WebViewFormat</a></span></span><span class="token punctuation">)</span></div><div class="symbol monospace"><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">title<span class="token operator">: </span><span data-unresolved-link="kotlin/String///PointingToDeclaration/">String</span><span class="token punctuation">, </span></span><span class="parameter ">uri<span class="token operator">: </span><span data-unresolved-link="android.net/Uri///PointingToDeclaration/">Uri</span><span class="token operator">?</span><span class="token punctuation">, </span></span><span class="parameter ">formattedUri<span class="token operator">: </span><span data-unresolved-link="android.net/Uri///PointingToDeclaration/">Uri</span><span class="token operator">?</span><span class="token punctuation">, </span></span><span class="parameter ">queryParams<span class="token operator">: </span><span data-unresolved-link="kotlin.collections/MutableMap///PointingToDeclaration/">MutableMap</span><span class="token operator">&lt;</span><span data-unresolved-link="kotlin/String///PointingToDeclaration/">String</span><span class="token punctuation">, </span><span data-unresolved-link="kotlin/String///PointingToDeclaration/">String</span><span class="token operator">&gt;</span><span class="token operator"> = </span>parseTemplatedStrings(uri?.query).toMutableMap()<span class="token punctuation">, </span></span><span class="parameter ">pathParams<span class="token operator">: </span><span data-unresolved-link="kotlin.collections/MutableMap///PointingToDeclaration/">MutableMap</span><span class="token operator">&lt;</span><span data-unresolved-link="kotlin/String///PointingToDeclaration/">String</span><span class="token punctuation">, </span><span data-unresolved-link="kotlin/String///PointingToDeclaration/">String</span><span class="token operator">&gt;</span><span class="token operator"> = </span>parseTemplatedStrings(uri?.path).toMutableMap()<span class="token punctuation">, </span></span><span class="parameter ">hostParams<span class="token operator">: </span><span data-unresolved-link="kotlin.collections/MutableMap///PointingToDeclaration/">MutableMap</span><span class="token operator">&lt;</span><span data-unresolved-link="kotlin/String///PointingToDeclaration/">String</span><span class="token punctuation">, </span><span data-unresolved-link="kotlin/String///PointingToDeclaration/">String</span><span class="token operator">&gt;</span><span class="token operator"> = </span>parseTemplatedStrings(uri?.host).toMutableMap()</span></span><span class="token punctuation">)</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="TYPE">
+        <h2 class="">Types</h2>
+        <div class="table"><a data-name="-1284354054%2FClasslikes%2F-467771735" anchor-label="Companion" id="-1284354054%2FClasslikes%2F-467771735" data-filterable-set=":sdk:data:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":sdk:data:dokkaHtmlPartial/release" data-filterable-set=":sdk:data:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-companion/index.html"><span><span>Companion</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1284354054%2FClasslikes%2F-467771735"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk:data:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">object </span><a href="-companion/index.html">Companion</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="PROPERTY">
+        <h2 class="">Properties</h2>
+        <div class="table"><a data-name="495311863%2FProperties%2F-467771735" anchor-label="formattedUri" id="495311863%2FProperties%2F-467771735" data-filterable-set=":sdk:data:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":sdk:data:dokkaHtmlPartial/release" data-filterable-set=":sdk:data:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="formatted-uri.html"><span>formatted</span><wbr><span><span>Uri</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="495311863%2FProperties%2F-467771735"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk:data:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">var </span><a href="formatted-uri.html">formattedUri</a><span class="token operator">: </span><span data-unresolved-link="android.net/Uri///PointingToDeclaration/">Uri</span><span class="token operator">?</span></div><div class="brief "><p class="paragraph">The formatted URI.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="588371284%2FProperties%2F-467771735" anchor-label="formattedUrl" id="588371284%2FProperties%2F-467771735" data-filterable-set=":sdk:data:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":sdk:data:dokkaHtmlPartial/release" data-filterable-set=":sdk:data:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="formatted-url.html"><span>formatted</span><wbr><span><span>Url</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="588371284%2FProperties%2F-467771735"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk:data:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="formatted-url.html">formattedUrl</a><span class="token operator">: </span><span data-unresolved-link="java.net/URL///PointingToDeclaration/">URL</span><span class="token operator">?</span></div><div class="brief "><p class="paragraph">The formatted URL.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-299426311%2FProperties%2F-467771735" anchor-label="hostParams" id="-299426311%2FProperties%2F-467771735" data-filterable-set=":sdk:data:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":sdk:data:dokkaHtmlPartial/release" data-filterable-set=":sdk:data:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="host-params.html"><span>host</span><wbr><span><span>Params</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-299426311%2FProperties%2F-467771735"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk:data:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="host-params.html">hostParams</a><span class="token operator">: </span><span data-unresolved-link="kotlin.collections/MutableMap///PointingToDeclaration/">MutableMap</span><span class="token operator">&lt;</span><span data-unresolved-link="kotlin/String///PointingToDeclaration/">String</span><span class="token punctuation">, </span><span data-unresolved-link="kotlin/String///PointingToDeclaration/">String</span><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">The map of host parameters.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-2131163120%2FProperties%2F-467771735" anchor-label="isUrlFormatted" id="-2131163120%2FProperties%2F-467771735" data-filterable-set=":sdk:data:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":sdk:data:dokkaHtmlPartial/release" data-filterable-set=":sdk:data:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="is-url-formatted.html"><span>is</span><wbr><span>Url</span><wbr><span><span>Formatted</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2131163120%2FProperties%2F-467771735"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk:data:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="is-url-formatted.html">isUrlFormatted</a><span class="token operator">: </span><span data-unresolved-link="kotlin/Boolean///PointingToDeclaration/">Boolean</span></div><div class="brief "><p class="paragraph">Indicates whether the URL is formatted correctly.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-389734436%2FProperties%2F-467771735" anchor-label="pathParams" id="-389734436%2FProperties%2F-467771735" data-filterable-set=":sdk:data:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":sdk:data:dokkaHtmlPartial/release" data-filterable-set=":sdk:data:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="path-params.html"><span>path</span><wbr><span><span>Params</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-389734436%2FProperties%2F-467771735"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk:data:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="path-params.html">pathParams</a><span class="token operator">: </span><span data-unresolved-link="kotlin.collections/MutableMap///PointingToDeclaration/">MutableMap</span><span class="token operator">&lt;</span><span data-unresolved-link="kotlin/String///PointingToDeclaration/">String</span><span class="token punctuation">, </span><span data-unresolved-link="kotlin/String///PointingToDeclaration/">String</span><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">The map of path parameters.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-580777851%2FProperties%2F-467771735" anchor-label="queryParams" id="-580777851%2FProperties%2F-467771735" data-filterable-set=":sdk:data:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":sdk:data:dokkaHtmlPartial/release" data-filterable-set=":sdk:data:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="query-params.html"><span>query</span><wbr><span><span>Params</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-580777851%2FProperties%2F-467771735"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk:data:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="query-params.html">queryParams</a><span class="token operator">: </span><span data-unresolved-link="kotlin.collections/MutableMap///PointingToDeclaration/">MutableMap</span><span class="token operator">&lt;</span><span data-unresolved-link="kotlin/String///PointingToDeclaration/">String</span><span class="token punctuation">, </span><span data-unresolved-link="kotlin/String///PointingToDeclaration/">String</span><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">The map of query parameters.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-746579365%2FProperties%2F-467771735" anchor-label="title" id="-746579365%2FProperties%2F-467771735" data-filterable-set=":sdk:data:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":sdk:data:dokkaHtmlPartial/release" data-filterable-set=":sdk:data:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="title.html"><span><span>title</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-746579365%2FProperties%2F-467771735"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk:data:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="title.html">title</a><span class="token operator">: </span><span data-unresolved-link="kotlin/String///PointingToDeclaration/">String</span></div><div class="brief "><p class="paragraph">The title of the web view</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1189127353%2FProperties%2F-467771735" anchor-label="uri" id="-1189127353%2FProperties%2F-467771735" data-filterable-set=":sdk:data:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":sdk:data:dokkaHtmlPartial/release" data-filterable-set=":sdk:data:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="uri.html"><span><span>uri</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1189127353%2FProperties%2F-467771735"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk:data:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="uri.html">uri</a><span class="token operator">: </span><span data-unresolved-link="android.net/Uri///PointingToDeclaration/">Uri</span><span class="token operator">?</span></div><div class="brief "><p class="paragraph">The templated web view URI.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1096067932%2FProperties%2F-467771735" anchor-label="url" id="-1096067932%2FProperties%2F-467771735" data-filterable-set=":sdk:data:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":sdk:data:dokkaHtmlPartial/release" data-filterable-set=":sdk:data:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="url.html"><span><span>url</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1096067932%2FProperties%2F-467771735"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk:data:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="url.html">url</a><span class="token operator">: </span><span data-unresolved-link="java.net/URL///PointingToDeclaration/">URL</span><span class="token operator">?</span></div><div class="brief "><p class="paragraph">The templated web view URL.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="FUNCTION">
+        <h2 class="">Functions</h2>
+        <div class="table"><a data-name="-1525012334%2FFunctions%2F-467771735" anchor-label="constructUri" id="-1525012334%2FFunctions%2F-467771735" data-filterable-set=":sdk:data:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":sdk:data:dokkaHtmlPartial/release" data-filterable-set=":sdk:data:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="construct-uri.html"><span>construct</span><wbr><span><span>Uri</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1525012334%2FFunctions%2F-467771735"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk:data:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">fun </span><a href="construct-uri.html"><span class="token function">constructUri</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="android.net/Uri///PointingToDeclaration/">Uri</span><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-2027286680%2FFunctions%2F-467771735" anchor-label="setHostParameterValue" id="-2027286680%2FFunctions%2F-467771735" data-filterable-set=":sdk:data:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":sdk:data:dokkaHtmlPartial/release" data-filterable-set=":sdk:data:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="set-host-parameter-value.html"><span>set</span><wbr><span>Host</span><wbr><span>Parameter</span><wbr><span><span>Value</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2027286680%2FFunctions%2F-467771735"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk:data:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="set-host-parameter-value.html"><span class="token function">setHostParameterValue</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">key<span class="token operator">: </span><span data-unresolved-link="kotlin/String///PointingToDeclaration/">String</span><span class="token punctuation">, </span></span><span class="parameter ">value<span class="token operator">: </span><span data-unresolved-link="kotlin/String///PointingToDeclaration/">String</span></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Sets a path parameter value.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-334516832%2FFunctions%2F-467771735" anchor-label="setParameterValue" id="-334516832%2FFunctions%2F-467771735" data-filterable-set=":sdk:data:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":sdk:data:dokkaHtmlPartial/release" data-filterable-set=":sdk:data:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="set-parameter-value.html"><span>set</span><wbr><span>Parameter</span><wbr><span><span>Value</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-334516832%2FFunctions%2F-467771735"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk:data:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="set-parameter-value.html"><span class="token function">setParameterValue</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">key<span class="token operator">: </span><span data-unresolved-link="kotlin/String///PointingToDeclaration/">String</span><span class="token punctuation">, </span></span><span class="parameter ">value<span class="token operator">: </span><span data-unresolved-link="kotlin/String///PointingToDeclaration/">String</span></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Sets any parameter value.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1796434597%2FFunctions%2F-467771735" anchor-label="setPathParameterValue" id="1796434597%2FFunctions%2F-467771735" data-filterable-set=":sdk:data:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":sdk:data:dokkaHtmlPartial/release" data-filterable-set=":sdk:data:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="set-path-parameter-value.html"><span>set</span><wbr><span>Path</span><wbr><span>Parameter</span><wbr><span><span>Value</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1796434597%2FFunctions%2F-467771735"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk:data:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="set-path-parameter-value.html"><span class="token function">setPathParameterValue</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">key<span class="token operator">: </span><span data-unresolved-link="kotlin/String///PointingToDeclaration/">String</span><span class="token punctuation">, </span></span><span class="parameter ">value<span class="token operator">: </span><span data-unresolved-link="kotlin/String///PointingToDeclaration/">String</span></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Sets a path parameter value.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-238809744%2FFunctions%2F-467771735" anchor-label="setQueryParameterValue" id="-238809744%2FFunctions%2F-467771735" data-filterable-set=":sdk:data:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":sdk:data:dokkaHtmlPartial/release" data-filterable-set=":sdk:data:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="set-query-parameter-value.html"><span>set</span><wbr><span>Query</span><wbr><span>Parameter</span><wbr><span><span>Value</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-238809744%2FFunctions%2F-467771735"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk:data:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="set-query-parameter-value.html"><span class="token function">setQueryParameterValue</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">key<span class="token operator">: </span><span data-unresolved-link="kotlin/String///PointingToDeclaration/">String</span><span class="token punctuation">, </span></span><span class="parameter ">value<span class="token operator">: </span><span data-unresolved-link="kotlin/String///PointingToDeclaration/">String</span></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Sets a query parameter value.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      <div class="footer">
+        <span class="go-to-top-icon"><a href="#content" id="go-to-top-link"></a></span><span>© 2025 Copyright</span><span class="pull-right"><span>Generated by </span><a href="https://github.com/Kotlin/dokka"><span>dokka</span><span class="padded-icon"></span></a></span>
+      </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+

@@ -1,15 +1,15 @@
 $dokka.format:html-v1
 $dokka.linkExtension:html
 
-module:messaging-inapp-common
+module:common
 com.salesforce.android.smi.common.api
-module:messaging-inapp-core
+module:core
 com.salesforce.android.smi.core
 com.salesforce.android.smi.core.data.domain.businessHours
 com.salesforce.android.smi.core.data.domain.conversationEntry.entryPayload.event.typing
 com.salesforce.android.smi.core.data.domain.remoteConfiguration
 com.salesforce.android.smi.core.events
-module:messaging-inapp-network
+module:data
 com.salesforce.android.smi.network.api.auth
 com.salesforce.android.smi.network.api.rest
 com.salesforce.android.smi.network.data.domain.auth
@@ -19,6 +19,7 @@ com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload
 com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload.event
 com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload.event.entries
 com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload.message.component.attachment
+com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload.message.component.citations
 com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload.message.component.form.input
 com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload.message.component.form.result
 com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload.message.component.form.value
@@ -35,5 +36,6 @@ com.salesforce.android.smi.network.data.domain.prechat
 com.salesforce.android.smi.network.data.domain.prechat.choicelist
 com.salesforce.android.smi.network.data.domain.prechat.termsAndConditions
 com.salesforce.android.smi.network.data.domain.webview
-module:messaging-inapp-ui
+com.salesforce.android.smi.network.data.model
+module:ui
 com.salesforce.android.smi.ui
