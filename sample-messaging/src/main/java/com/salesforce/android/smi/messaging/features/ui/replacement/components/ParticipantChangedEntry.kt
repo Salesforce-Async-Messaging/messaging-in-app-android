@@ -16,6 +16,7 @@ import androidx.compose.ui.unit.dp
 import com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload.event.ParticipantChangedOperation
 import com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload.event.entries.ParticipantChangedEntry
 import com.salesforce.android.smi.network.data.domain.participant.CoreParticipant
+import com.salesforce.android.smi.network.data.domain.participant.ParticipantRoleType
 
 @Composable
 internal fun ParticipantChangedReplacementEntry(
@@ -34,7 +35,11 @@ internal fun ParticipantChangedReplacementEntry(
                 ParticipantChangedOperation.Remove -> "${participantChangedEntry.displayName} has left the conversation"
                 else -> ""
             }
-            Text(modifier = Modifier.padding(8.dp).align(Alignment.CenterHorizontally), text = text, color = Color.Green)
+            Text(
+                modifier = Modifier
+                    .padding(8.dp)
+                    .align(Alignment.CenterHorizontally), text = text, color = Color.Green
+            )
         }
     }
 }
@@ -44,7 +49,7 @@ internal fun ParticipantChangedReplacementEntry(
 private fun ParticipantChangedReplacementEntryPreview_Outbound() {
     ParticipantChangedReplacementEntry(
         participantChangedEntry = ParticipantChangedEntry(
-            CoreParticipant(),
+            CoreParticipant(subject = "subject", isLocal = false, roleType = ParticipantRoleType.Agent),
             ParticipantChangedOperation.Add,
             "Sarah Y"
         )

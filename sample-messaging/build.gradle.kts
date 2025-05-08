@@ -1,6 +1,7 @@
 plugins {
-    id("com.android.library")
-    id("kotlin-android")
+    alias(libs.plugins.android.library)
+    alias(libs.plugins.kotlin)
+    alias(libs.plugins.kotlin.compose)
 }
 
 android {
@@ -26,19 +27,17 @@ android {
     }
     kotlinOptions {
         jvmTarget = "1.8"
+        languageVersion = "1.9"
     }
     buildFeatures {
         compose = true
-    }
-    composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.13"
     }
 }
 
 if (project.hasProperty("substituteSDK") && project.property("substituteSDK") == "true") {
     configurations.all {
         resolutionStrategy.dependencySubstitution {
-            substitute(module("com.salesforce.service:messaging-inapp-ui")).using(project(":messaging-inapp-ui"))
+            substitute(module("com.salesforce.service:messaging-inapp-ui")).using(project(":sdk:ui"))
         }
     }
 }
@@ -49,6 +48,7 @@ dependencies {
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.google.material)
+    implementation(libs.kotlin.stdlib)
 
     implementation(platform(libs.androidx.compose.bom))
     implementation(libs.androidx.compose.material3)
