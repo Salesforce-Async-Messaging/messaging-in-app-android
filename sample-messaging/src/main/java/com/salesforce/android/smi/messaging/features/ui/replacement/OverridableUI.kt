@@ -1,8 +1,23 @@
 package com.salesforce.android.smi.messaging.features.ui.replacement
 
+import android.app.Activity
+import androidx.activity.ComponentActivity
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Button
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.colorResource
+import androidx.compose.ui.unit.dp
 import com.salesforce.android.smi.core.ConversationClient
+import com.salesforce.android.smi.messaging.R
+import com.salesforce.android.smi.messaging.SalesforceMessaging
 import com.salesforce.android.smi.messaging.features.ui.replacement.components.AttachmentMessageReplacementEntry
 import com.salesforce.android.smi.messaging.features.ui.replacement.components.CarouselMessageReplacementEntry
 import com.salesforce.android.smi.messaging.features.ui.replacement.components.DateBreakHeaderReplacementEntry
@@ -20,31 +35,111 @@ import com.salesforce.android.smi.network.data.domain.conversationEntry.entryPay
 import com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload.message.format.ChoicesResponseFormat
 import com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload.message.format.FormFormat
 import com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload.message.format.FormResponseFormat
+import com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload.message.format.MessageFormat
 import com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload.message.format.StaticContentFormat
 import com.salesforce.android.smi.ui.ChatFeedEntry
+import com.salesforce.android.smi.ui.UIClient
 import com.salesforce.android.smi.ui.ViewComponents
+import com.salesforce.android.smi.ui.internal.common.domain.extensions.message
 import com.salesforce.android.smi.ui.internal.common.domain.extensions.messageContent
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import java.util.UUID
 
 open class OverridableUI {
-    open fun renderMode(entry: ChatFeedEntry): EntryRenderMode = EntryRenderMode.Existing
-
-    inner class CustomViewComponents(private val conversationClient: ConversationClient) : ViewComponents {
+    inner class CustomViewComponents(private val salesforceMessaging: SalesforceMessaging) : ViewComponents {
         @Composable
-        override fun ChatFeedEntry(entry: ChatFeedEntry, content: @Composable () -> Unit) {
-            when (renderMode(entry)) {
-                EntryRenderMode.None -> Unit
-                EntryRenderMode.Existing -> content()
-                EntryRenderMode.Replace -> CustomEntryContainer(entry, conversationClient)
+        override fun ChatFeedEntry(
+            entry: ChatFeedEntry,
+            content: @Composable () -> Unit
+        ) {
+            when (entryRenderMode(entry)) {
+                ViewComponentRenderMode.None -> Unit
+                ViewComponentRenderMode.Existing -> content()
+                ViewComponentRenderMode.Replace -> CustomEntryContainer(entry, salesforceMessaging.conversationClient)
             }
+        }
+
+        @Composable
+        override fun ConversationClosed(content: @Composable () -> Unit) {
+            when (renderMode(OverridableViewComponent.CloseConversation)) {
+                ViewComponentRenderMode.None -> Unit
+                ViewComponentRenderMode.Existing -> content()
+                ViewComponentRenderMode.Replace -> CustomConversationClosedView(salesforceMessaging.uiClient)
+            }
+        }
+    }
+
+    open fun renderMode(component: OverridableViewComponent): ViewComponentRenderMode =
+        when (component) {
+            OverridableViewComponent.CloseConversation -> ViewComponentRenderMode.Existing
+        }
+
+    open fun entryRenderMode(entry: ChatFeedEntry): ViewComponentRenderMode =
+        when (entry) {
+            is ChatFeedEntry.ConversationEntryModel -> when (entry.payload) {
+                is EntryPayload.MessagePayload -> messageRenderMode(entry.messageContent)
+                is EntryPayload.ParticipantChangedPayload,
+                is EntryPayload.ProgressIndicatorPayload,
+                is EntryPayload.RoutingResultPayload,
+                is EntryPayload.RoutingWorkResultPayload,
+                is EntryPayload.StreamingTokenPayload,
+                is EntryPayload.TypingStartedIndicatorPayload,
+                is EntryPayload.UnknownEntryPayload -> ViewComponentRenderMode.Existing
+                else -> ViewComponentRenderMode.Existing
+            }
+            is ChatFeedEntry.DateBreakModel,
+            is ChatFeedEntry.PreChatReceiptModel,
+            is ChatFeedEntry.TypingIndicatorModel -> ViewComponentRenderMode.Existing
+        }
+
+    @Suppress("SameReturnValue")
+    private fun messageRenderMode(message: MessageFormat?): ViewComponentRenderMode =
+        when (message) {
+            is ChoicesFormat.CarouselFormat,
+            is ChoicesFormat.DisplayableOptionsFormat,
+            is ChoicesFormat.QuickRepliesFormat,
+            is ChoicesResponseFormat.ChoicesResponseSelectionsFormat,
+            is FormFormat.InputsFormat,
+            is FormResponseFormat.InputsFormResponseFormat,
+            is FormResponseFormat.ResultFormResponseFormat,
+            is StaticContentFormat.AttachmentsFormat,
+            is StaticContentFormat.RichLinkFormat,
+            is StaticContentFormat.TextFormat,
+            is StaticContentFormat.WebViewFormat -> ViewComponentRenderMode.Existing
+            else -> ViewComponentRenderMode.Existing
+        }
+}
+
+@Composable
+private fun CustomConversationClosedView(uiClient: UIClient) {
+    val context = LocalContext.current
+    val activity: Activity? = context as? ComponentActivity
+
+    Box(modifier = Modifier.background(color = colorResource(R.color.smi_closed_conversation_background))) {
+        Button(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(16.dp),
+            shape = RoundedCornerShape(8.dp),
+            onClick = {
+                activity?.finish()
+                UIClient.Factory.create(
+                    uiClient.configuration.copy(conversationId = UUID.randomUUID())
+                ).openConversationActivity(context)
+            }
+        ) {
+            Text("Start a new conversation", modifier = Modifier.padding(8.dp), style = MaterialTheme.typography.titleMedium)
         }
     }
 }
 
 @Composable
-private fun CustomEntryContainer(entry: ChatFeedEntry, conversationClient: ConversationClient?) = when (entry) {
+private fun CustomEntryContainer(
+    entry: ChatFeedEntry,
+    conversationClient: ConversationClient?
+) = when (entry) {
     is ChatFeedEntry.ConversationEntryModel -> when (entry.payload) {
         is EntryPayload.MessagePayload -> {
             when (val messageContent = entry.messageContent) {
@@ -69,10 +164,10 @@ private fun CustomEntryContainer(entry: ChatFeedEntry, conversationClient: Conve
                 is StaticContentFormat.WebViewFormat -> RichLinkMessageReplacementEntry(
                     isLocal = entry.isOutboundEntry,
                     linkItem =
-                    LinkItem(
-                        messageContent.url,
-                        TitleItem.TitleLinkItem(messageContent.title.title, messageContent.title.subTitle)
-                    ),
+                        LinkItem(
+                            messageContent.url,
+                            TitleItem.TitleLinkItem(messageContent.title.title, messageContent.title.subTitle)
+                        ),
                     image = null
                 )
 

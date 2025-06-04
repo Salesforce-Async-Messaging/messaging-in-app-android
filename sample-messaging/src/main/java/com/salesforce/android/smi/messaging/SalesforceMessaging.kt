@@ -52,6 +52,6 @@ class SalesforceMessaging(
     }
 
     override val conversationClient: ConversationClient = coreClient.conversationClient(conversationId).apply {
-        uiClient.viewComponents = overridableUI.CustomViewComponents(this)
+        uiClient.viewComponents = overridableUI.CustomViewComponents(this@SalesforceMessaging)
     }
 }
