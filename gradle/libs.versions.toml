@@ -12,6 +12,7 @@ appcompat = "1.7.0"
 material = "1.12.0"
 coil = "3.0.3"
 salesforceMessaging = "1.9.0"
+salesforceMobileSDK = "13.0.1"
 
 [libraries]
 salesforce-messaging = { group = "com.salesforce.service", name = "messaging-inapp-ui", version.ref = "salesforceMessaging" }
@@ -42,6 +43,9 @@ test-androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref
 test-androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
 test-androidx-compose-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4" }
 test-androidx-compose-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest" }
+
+# Only needed if using Salesforce Auth
+salesforce-mobile-sdk = { group = "com.salesforce.mobilesdk", name = "SalesforceSDK", version.ref = "salesforceMobileSDK" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "gradlePlugin" }

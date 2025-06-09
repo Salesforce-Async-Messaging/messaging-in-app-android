@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <!-- Salesforce Mobile SDK sets the minSDK version higher than the MIAW SDK -->
+    <uses-sdk tools:overrideLibrary="com.salesforce.androidsdk, com.salesforce.androidsdk.analytics"/>
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"

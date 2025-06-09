@@ -62,6 +62,8 @@ dependencies {
     implementation(libs.coil.compose)
     implementation(libs.coil.okhttp)
 
+    api(libs.salesforce.mobile.sdk)
+
     testImplementation(libs.test.junit)
     androidTestImplementation(libs.test.androidx.junit)
     androidTestImplementation(libs.test.androidx.espresso.core)
