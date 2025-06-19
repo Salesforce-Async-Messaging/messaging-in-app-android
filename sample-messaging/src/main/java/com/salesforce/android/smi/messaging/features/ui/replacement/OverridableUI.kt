@@ -7,14 +7,29 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.ExitToApp
+import androidx.compose.material.icons.filled.Menu
+import androidx.compose.material3.Badge
+import androidx.compose.material3.BadgedBox
 import androidx.compose.material3.Button
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.salesforce.android.smi.common.api.Result
 import com.salesforce.android.smi.core.ConversationClient
 import com.salesforce.android.smi.messaging.R
 import com.salesforce.android.smi.messaging.SalesforceMessaging
@@ -27,6 +42,7 @@ import com.salesforce.android.smi.messaging.features.ui.replacement.components.Q
 import com.salesforce.android.smi.messaging.features.ui.replacement.components.RichLinkMessageReplacementEntry
 import com.salesforce.android.smi.messaging.features.ui.replacement.components.TextMessageReplacementEntry
 import com.salesforce.android.smi.messaging.features.ui.replacement.components.TypingStartedReplacementEntry
+import com.salesforce.android.smi.network.data.domain.conversation.Conversation
 import com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload.EntryPayload
 import com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload.message.component.optionItem.OptionItem.TypedOptionItem.TitleOptionItem
 import com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload.message.component.optionItem.titleItem.TitleItem
@@ -37,13 +53,16 @@ import com.salesforce.android.smi.network.data.domain.conversationEntry.entryPay
 import com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload.message.format.FormResponseFormat
 import com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload.message.format.MessageFormat
 import com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload.message.format.StaticContentFormat
+import com.salesforce.android.smi.network.data.domain.participant.ParticipantRoleType
 import com.salesforce.android.smi.ui.ChatFeedEntry
 import com.salesforce.android.smi.ui.UIClient
 import com.salesforce.android.smi.ui.ViewComponents
-import com.salesforce.android.smi.ui.internal.common.domain.extensions.message
 import com.salesforce.android.smi.ui.internal.common.domain.extensions.messageContent
+import com.salesforce.android.smi.ui.navigation.LocalSMINavigation
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.filterIsInstance
+import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 import java.util.UUID
 
@@ -69,11 +88,21 @@ open class OverridableUI {
                 ViewComponentRenderMode.Replace -> CustomConversationClosedView(salesforceMessaging.uiClient)
             }
         }
+
+        @Composable
+        override fun ChatTopAppBar(content: @Composable () -> Unit) {
+            when (renderMode(OverridableViewComponent.ChatTopAppBar)) {
+                ViewComponentRenderMode.None -> Unit
+                ViewComponentRenderMode.Existing -> content()
+                ViewComponentRenderMode.Replace -> CustomChatTopAppBar(salesforceMessaging.conversationClient, content)
+            }
+        }
     }
 
     open fun renderMode(component: OverridableViewComponent): ViewComponentRenderMode =
         when (component) {
-            OverridableViewComponent.CloseConversation -> ViewComponentRenderMode.Existing
+            OverridableViewComponent.CloseConversation,
+            OverridableViewComponent.ChatTopAppBar -> ViewComponentRenderMode.Existing
         }
 
     open fun entryRenderMode(entry: ChatFeedEntry): ViewComponentRenderMode =
@@ -133,6 +162,65 @@ private fun CustomConversationClosedView(uiClient: UIClient) {
             Text("Start a new conversation", modifier = Modifier.padding(8.dp), style = MaterialTheme.typography.titleMedium)
         }
     }
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+private fun CustomChatTopAppBar(
+    conversationClient: ConversationClient,
+    defaultTopAppBar: @Composable () -> Unit
+) {
+    val navigation = LocalSMINavigation.current
+
+    // Show default UI for all routes other than the ChatFeed
+    if (navigation.currentRoute?.route?.contains("SMIDestination.ChatFeed") == false) {
+        return defaultTopAppBar()
+    }
+
+    val conversation by remember {
+        conversationClient.conversation
+            .filterIsInstance<Result.Success<Conversation>>()
+            .map { it.data }
+    }.collectAsStateWithLifecycle(null)
+
+    TopAppBar(
+        title = {
+            Box(modifier = Modifier.fillMaxWidth(), contentAlignment = Alignment.Center) {
+                BadgedBox(
+                    badge = {
+                        conversation?.unreadMessageCount
+                            ?.takeIf { it > 0 }?.toString()
+                            ?.let { count ->
+                                Badge { Text(count) }
+                            }
+                    }
+                ) {
+                    conversation?.activeParticipants
+                        ?.filter { it.roleType == ParticipantRoleType.Agent || it.roleType == ParticipantRoleType.Chatbot }
+                        ?.map { it.displayName }
+                        ?.let {
+                            Text(
+                                modifier = Modifier.padding(horizontal = 16.dp),
+                                text = it.joinToString(", "),
+                                textAlign = TextAlign.Center
+                            )
+                        }
+                }
+            }
+        },
+        navigationIcon = {
+            IconButton(
+                onClick = { navigation.navigateBack() },
+                content = { Icons.AutoMirrored.Default.ExitToApp.run { Icon(this, this.name) } }
+            )
+        },
+        actions = {
+            IconButton(
+                onClick = { navigation.navigateToOptions() },
+                content = { Icons.Filled.Menu.run { Icon(this, this.name) } }
+            )
+        }
+    )
 }
 
 @Composable

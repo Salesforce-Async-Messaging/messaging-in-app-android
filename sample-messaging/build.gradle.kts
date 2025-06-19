@@ -56,6 +56,7 @@ dependencies {
     implementation(libs.androidx.compose.foundation)
     implementation(libs.androidx.compose.ui)
     implementation(libs.androidx.compose.ui.text)
+    implementation(libs.androidx.navigation.compose)
 
     implementation(libs.coil)
     implementation(libs.coil.gif)
