@@ -44,10 +44,6 @@ fun MainScreen() {
     val context = LocalContext.current
     val messaging = remember { SalesforceMessaging(context.applicationContext) }
 
-    LaunchedEffect(Unit) {
-        CoreClient.clearStorage(context)
-    }
-
     Scaffold(
         modifier = Modifier.fillMaxSize(),
         topBar = {
