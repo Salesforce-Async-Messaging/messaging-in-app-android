@@ -11,7 +11,7 @@ composeBom = "2025.05.00"
 appcompat = "1.7.0"
 material = "1.12.0"
 coil = "3.0.3"
-salesforceMessaging = "1.9.1"
+salesforceMessaging = "1.9.2"
 
 [libraries]
 salesforce-messaging = { group = "com.salesforce.service", name = "messaging-inapp-ui", version.ref = "salesforceMessaging" }
