@@ -28,6 +28,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.compose.LifecycleStartEffect
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.salesforce.android.smi.common.api.Result
 import com.salesforce.android.smi.core.ConversationClient
@@ -146,18 +147,20 @@ private fun CustomConversationClosedView(uiClient: UIClient) {
     val context = LocalContext.current
     val activity: Activity? = context as? ComponentActivity
 
+    LifecycleStartEffect(Unit) {
+        onStopOrDispose {
+            UIClient.Factory.create(
+                uiClient.configuration.copy(conversationId = UUID.randomUUID())
+            ).openConversationActivity(context)
+        }
+    }
     Box(modifier = Modifier.background(color = colorResource(R.color.smi_closed_conversation_background))) {
         Button(
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(16.dp),
             shape = RoundedCornerShape(8.dp),
-            onClick = {
-                activity?.finish()
-                UIClient.Factory.create(
-                    uiClient.configuration.copy(conversationId = UUID.randomUUID())
-                ).openConversationActivity(context)
-            }
+            onClick = { activity?.finish() }
         ) {
             Text("Start a new conversation", modifier = Modifier.padding(8.dp), style = MaterialTheme.typography.titleMedium)
         }
