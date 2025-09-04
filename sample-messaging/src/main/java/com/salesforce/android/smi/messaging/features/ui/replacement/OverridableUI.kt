@@ -15,6 +15,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.compose.LifecycleStartEffect
 import com.salesforce.android.smi.core.ConversationClient
 import com.salesforce.android.smi.messaging.R
 import com.salesforce.android.smi.messaging.SalesforceMessaging
@@ -40,7 +41,6 @@ import com.salesforce.android.smi.network.data.domain.conversationEntry.entryPay
 import com.salesforce.android.smi.ui.ChatFeedEntry
 import com.salesforce.android.smi.ui.UIClient
 import com.salesforce.android.smi.ui.ViewComponents
-import com.salesforce.android.smi.ui.internal.common.domain.extensions.message
 import com.salesforce.android.smi.ui.internal.common.domain.extensions.messageContent
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -117,18 +117,20 @@ private fun CustomConversationClosedView(uiClient: UIClient) {
     val context = LocalContext.current
     val activity: Activity? = context as? ComponentActivity
 
+    LifecycleStartEffect(Unit) {
+        onStopOrDispose {
+            UIClient.Factory.create(
+                uiClient.configuration.copy(conversationId = UUID.randomUUID())
+            ).openConversationActivity(context)
+        }
+    }
     Box(modifier = Modifier.background(color = colorResource(R.color.smi_closed_conversation_background))) {
         Button(
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(16.dp),
             shape = RoundedCornerShape(8.dp),
-            onClick = {
-                activity?.finish()
-                UIClient.Factory.create(
-                    uiClient.configuration.copy(conversationId = UUID.randomUUID())
-                ).openConversationActivity(context)
-            }
+            onClick = { activity?.finish() }
         ) {
             Text("Start a new conversation", modifier = Modifier.padding(8.dp), style = MaterialTheme.typography.titleMedium)
         }
