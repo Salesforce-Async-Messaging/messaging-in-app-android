@@ -70,9 +70,9 @@ private fun CustomEntryContainer(entry: ChatFeedEntry, conversationClient: Conve
                     isLocal = entry.isOutboundEntry,
                     linkItem =
                     LinkItem(
-                        messageContent.url,
-                        TitleItem.TitleLinkItem(messageContent.title.title, messageContent.title.subTitle)
-                    ),
+                            messageContent.url,
+                            TitleItem.TitleLinkItem(messageContent.title.title, messageContent.title.subTitle)
+                        ),
                     image = null
                 )
 
@@ -107,6 +107,8 @@ private fun CustomEntryContainer(entry: ChatFeedEntry, conversationClient: Conve
                 is FormFormat.InputsFormat,
                 is FormResponseFormat.InputsFormResponseFormat,
                 is FormResponseFormat.ResultFormResponseFormat,
+                is StaticContentFormat.ErrorMessageFormat,
+                is StaticContentFormat.ExperienceTypeFormat,
                 null -> {
                     Text(entry.contentType)
                 }
