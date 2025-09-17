@@ -104,6 +104,11 @@ private fun CustomEntryContainer(entry: ChatFeedEntry, conversationClient: Conve
                     TextMessageReplacementEntry(isLocal = entry.isOutboundEntry, text = "todo")
                 }
 
+                is ChoicesResponseFormat.ExperienceTypeChoicesResponseFormat -> TextMessageReplacementEntry(isLocal = entry.isOutboundEntry, text = "todo")
+
+                is ChoicesFormat.ExperienceTypeFormat -> TextMessageReplacementEntry(isLocal = entry.isOutboundEntry, text = "todo")
+
+
                 is FormFormat.InputsFormat,
                 is FormResponseFormat.InputsFormResponseFormat,
                 is FormResponseFormat.ResultFormResponseFormat,
