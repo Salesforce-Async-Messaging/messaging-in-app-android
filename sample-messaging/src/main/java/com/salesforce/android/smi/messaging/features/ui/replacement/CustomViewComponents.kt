@@ -15,6 +15,7 @@ import com.salesforce.android.smi.messaging.features.ui.replacement.components.T
 import com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload.EntryPayload
 import com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload.message.component.optionItem.OptionItem.TypedOptionItem.TitleOptionItem
 import com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload.message.component.optionItem.titleItem.TitleItem
+import com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload.message.component.optionItem.titleItem.TitleItem.*
 import com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload.message.component.richLink.LinkItem
 import com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload.message.format.ChoicesFormat
 import com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload.message.format.ChoicesResponseFormat
@@ -71,7 +72,7 @@ private fun CustomEntryContainer(entry: ChatFeedEntry, conversationClient: Conve
                     linkItem =
                     LinkItem(
                             messageContent.url,
-                            TitleItem.TitleLinkItem(messageContent.title.title, messageContent.title.subTitle)
+                        TitleLinkItem(messageContent.title.title, messageContent.title.subTitle)
                         ),
                     image = null
                 )
@@ -113,10 +114,10 @@ private fun CustomEntryContainer(entry: ChatFeedEntry, conversationClient: Conve
                 is FormResponseFormat.InputsFormResponseFormat,
                 is FormResponseFormat.ResultFormResponseFormat,
                 is StaticContentFormat.ErrorMessageFormat,
-                is StaticContentFormat.ExperienceTypeFormat,
-                null -> {
-                    Text(entry.contentType)
-                }
+                is StaticContentFormat.ExperienceTypeFormat
+                is StaticContentFormat.CancelActionFormat,
+                null -> Text(entry.contentType)
+
             }
         }
 
