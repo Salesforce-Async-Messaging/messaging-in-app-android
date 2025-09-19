@@ -114,6 +114,7 @@ private fun CustomEntryContainer(entry: ChatFeedEntry, conversationClient: Conve
                 is FormResponseFormat.ResultFormResponseFormat,
                 is StaticContentFormat.ErrorMessageFormat,
                 is StaticContentFormat.ExperienceTypeFormat,
+                is StaticContentFormat.CancelActionFormat,
                 null -> {
                     Text(entry.contentType)
                 }
