@@ -115,7 +115,7 @@ open class OverridableUI {
                     is StaticContentFormat.ErrorMessageFormat,
                     is StaticContentFormat.ExperienceTypeFormat,
                     is ChoicesFormat.ExperienceTypeFormat,
-                    is ChoicesResponseFormat.ExperienceTypeChoicesResponseFormat,
+                    is ChoicesResponseFormat.ExperienceTypeFormat,
                     is FormFormat.ExperienceTypeFormat,
                     is FormResponseFormat.ExperienceTypeResponseFormat,
                     is StaticContentFormat.CancelActionFormat,
