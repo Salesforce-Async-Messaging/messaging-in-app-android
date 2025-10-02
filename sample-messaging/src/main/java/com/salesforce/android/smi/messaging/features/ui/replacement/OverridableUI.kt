@@ -124,8 +124,7 @@ open class OverridableUI {
             is ChatFeedEntry.TypingIndicatorModel -> ViewComponentRenderMode.Existing
         }
 
-    @Suppress("SameReturnValue")
-    private fun messageRenderMode(message: MessageFormat?): ViewComponentRenderMode =
+    open fun messageRenderMode(message: MessageFormat?): ViewComponentRenderMode =
         when (message) {
             is ChoicesFormat.CarouselFormat,
             is ChoicesFormat.DisplayableOptionsFormat,
@@ -140,135 +139,133 @@ open class OverridableUI {
             is StaticContentFormat.WebViewFormat -> ViewComponentRenderMode.Existing
             else -> ViewComponentRenderMode.Existing
         }
-}
 
-@Composable
-private fun CustomConversationClosedView(uiClient: UIClient) {
-    val context = LocalContext.current
-    val activity: Activity? = context as? ComponentActivity
+    @Composable
+    open fun CustomConversationClosedView(uiClient: UIClient) {
+        val context = LocalContext.current
+        val activity: Activity? = context as? ComponentActivity
 
-    LifecycleStartEffect(Unit) {
-        onStopOrDispose {
-            UIClient.Factory.create(
-                uiClient.configuration.copy(conversationId = UUID.randomUUID())
-            ).openConversationActivity(context)
+        LifecycleStartEffect(Unit) {
+            onStopOrDispose {
+                UIClient.Factory.create(
+                    uiClient.configuration.copy(conversationId = UUID.randomUUID())
+                ).openConversationActivity(context)
+            }
+        }
+        Box(modifier = Modifier.background(color = colorResource(R.color.smi_closed_conversation_background))) {
+            Button(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(16.dp),
+                shape = RoundedCornerShape(8.dp),
+                onClick = { activity?.finish() }
+            ) {
+                Text("Start a new conversation", modifier = Modifier.padding(8.dp), style = MaterialTheme.typography.titleMedium)
+            }
         }
     }
-    Box(modifier = Modifier.background(color = colorResource(R.color.smi_closed_conversation_background))) {
-        Button(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(16.dp),
-            shape = RoundedCornerShape(8.dp),
-            onClick = { activity?.finish() }
-        ) {
-            Text("Start a new conversation", modifier = Modifier.padding(8.dp), style = MaterialTheme.typography.titleMedium)
+
+    @OptIn(ExperimentalMaterial3Api::class)
+    @Composable
+    open fun CustomChatTopAppBar(
+        conversationClient: ConversationClient,
+        defaultTopAppBar: @Composable () -> Unit
+    ) {
+        val navigation = LocalSMINavigation.current
+
+        // Show default UI for all routes other than the ChatFeed
+        if (navigation.currentRoute?.route?.contains("SMIDestination.ChatFeed") == false) {
+            return defaultTopAppBar()
         }
-    }
-}
 
-@OptIn(ExperimentalMaterial3Api::class)
-@Composable
-private fun CustomChatTopAppBar(
-    conversationClient: ConversationClient,
-    defaultTopAppBar: @Composable () -> Unit
-) {
-    val navigation = LocalSMINavigation.current
+        val conversation by remember {
+            conversationClient.conversation
+                .filterIsInstance<Result.Success<Conversation>>()
+                .map { it.data }
+        }.collectAsStateWithLifecycle(null)
 
-    // Show default UI for all routes other than the ChatFeed
-    if (navigation.currentRoute?.route?.contains("SMIDestination.ChatFeed") == false) {
-        return defaultTopAppBar()
-    }
-
-    val conversation by remember {
-        conversationClient.conversation
-            .filterIsInstance<Result.Success<Conversation>>()
-            .map { it.data }
-    }.collectAsStateWithLifecycle(null)
-
-    TopAppBar(
-        title = {
-            Box(modifier = Modifier.fillMaxWidth(), contentAlignment = Alignment.Center) {
-                BadgedBox(
-                    badge = {
-                        conversation?.unreadMessageCount
-                            ?.takeIf { it > 0 }?.toString()
-                            ?.let { count ->
-                                Badge { Text(count) }
+        TopAppBar(
+            title = {
+                Box(modifier = Modifier.fillMaxWidth(), contentAlignment = Alignment.Center) {
+                    BadgedBox(
+                        badge = {
+                            conversation?.unreadMessageCount
+                                ?.takeIf { it > 0 }?.toString()
+                                ?.let { count ->
+                                    Badge { Text(count) }
+                                }
+                        }
+                    ) {
+                        conversation?.activeParticipants
+                            ?.filter { it.roleType == ParticipantRoleType.Agent || it.roleType == ParticipantRoleType.Chatbot }
+                            ?.map { it.displayName }
+                            ?.let {
+                                Text(
+                                    modifier = Modifier.padding(horizontal = 16.dp),
+                                    text = it.joinToString(", "),
+                                    textAlign = TextAlign.Center
+                                )
                             }
                     }
-                ) {
-                    conversation?.activeParticipants
-                        ?.filter { it.roleType == ParticipantRoleType.Agent || it.roleType == ParticipantRoleType.Chatbot }
-                        ?.map { it.displayName }
-                        ?.let {
-                            Text(
-                                modifier = Modifier.padding(horizontal = 16.dp),
-                                text = it.joinToString(", "),
-                                textAlign = TextAlign.Center
-                            )
-                        }
                 }
+            },
+            navigationIcon = {
+                IconButton(
+                    onClick = { navigation.navigateBack() },
+                    content = { Icons.AutoMirrored.Default.ExitToApp.run { Icon(this, this.name) } }
+                )
+            },
+            actions = {
+                IconButton(
+                    onClick = { navigation.navigateToOptions() },
+                    content = { Icons.Filled.Menu.run { Icon(this, this.name) } }
+                )
             }
-        },
-        navigationIcon = {
-            IconButton(
-                onClick = { navigation.navigateBack() },
-                content = { Icons.AutoMirrored.Default.ExitToApp.run { Icon(this, this.name) } }
-            )
-        },
-        actions = {
-            IconButton(
-                onClick = { navigation.navigateToOptions() },
-                content = { Icons.Filled.Menu.run { Icon(this, this.name) } }
-            )
-        }
-    )
-}
+        )
+    }
 
-@Composable
-private fun CustomEntryContainer(
-    entry: ChatFeedEntry,
-    conversationClient: ConversationClient?
-) = when (entry) {
-    is ChatFeedEntry.ConversationEntryModel -> when (entry.payload) {
-        is EntryPayload.MessagePayload -> {
-            when (val messageContent = entry.messageContent) {
-                is StaticContentFormat.TextFormat -> TextMessageReplacementEntry(
-                    isLocal = entry.isOutboundEntry,
-                    text = messageContent.text
-                )
-
-                is StaticContentFormat.AttachmentsFormat -> messageContent.attachments.first().file?.let {
-                    AttachmentMessageReplacementEntry(
+    @Composable
+    open fun CustomEntryContainer(
+        entry: ChatFeedEntry,
+        conversationClient: ConversationClient?
+    ) = when (entry) {
+        is ChatFeedEntry.ConversationEntryModel -> when (entry.payload) {
+            is EntryPayload.MessagePayload -> {
+                when (val messageContent = entry.messageContent) {
+                    is StaticContentFormat.TextFormat -> TextMessageReplacementEntry(
                         isLocal = entry.isOutboundEntry,
-                        file = it
+                        text = messageContent.text
                     )
-                }
 
-                is StaticContentFormat.RichLinkFormat -> RichLinkMessageReplacementEntry(
-                    isLocal = entry.isOutboundEntry,
-                    linkItem = messageContent.linkItem,
-                    image = messageContent.image
-                )
+                    is StaticContentFormat.AttachmentsFormat -> messageContent.attachments.first().file?.let {
+                        AttachmentMessageReplacementEntry(
+                            isLocal = entry.isOutboundEntry,
+                            file = it
+                        )
+                    }
 
-                is StaticContentFormat.WebViewFormat -> RichLinkMessageReplacementEntry(
-                    isLocal = entry.isOutboundEntry,
-                    linkItem =
-                        LinkItem(
-                            messageContent.url,
-                            TitleItem.TitleLinkItem(messageContent.title.title, messageContent.title.subTitle)
-                        ),
-                    image = null
-                )
+                    is StaticContentFormat.RichLinkFormat -> RichLinkMessageReplacementEntry(
+                        isLocal = entry.isOutboundEntry,
+                        linkItem = messageContent.linkItem,
+                        image = messageContent.image
+                    )
 
-                is ChoicesFormat.CarouselFormat -> CarouselMessageReplacementEntry(
-                    isLocal = entry.isOutboundEntry,
-                    list = messageContent.images
-                )
+                    is StaticContentFormat.WebViewFormat -> RichLinkMessageReplacementEntry(
+                        isLocal = entry.isOutboundEntry,
+                        linkItem =
+                            LinkItem(
+                                messageContent.url,
+                                TitleItem.TitleLinkItem(messageContent.title.title, messageContent.title.subTitle)
+                            ),
+                        image = null
+                    )
 
-                is ChoicesFormat.DisplayableOptionsFormat ->
-                    DisplayableOptionsReplacementEntry(
+                    is ChoicesFormat.CarouselFormat -> CarouselMessageReplacementEntry(
+                        isLocal = entry.isOutboundEntry,
+                        list = messageContent.images
+                    )
+
+                    is ChoicesFormat.DisplayableOptionsFormat -> DisplayableOptionsReplacementEntry(
                         messageContent.text,
                         messageContent.optionItems.filterIsInstance<TitleOptionItem>()
                     ) {
@@ -277,48 +274,50 @@ private fun CustomEntryContainer(
                         }
                     }
 
-                is ChoicesFormat.QuickRepliesFormat -> QuickRepliesReplacementEntry(
-                    messageContent.text,
-                    messageContent.optionItems.filterIsInstance<TitleOptionItem>()
-                ) {
-                    CoroutineScope(Dispatchers.Main).launch {
-                        conversationClient?.sendReply(it)
+                    is ChoicesFormat.QuickRepliesFormat -> QuickRepliesReplacementEntry(
+                        messageContent.text,
+                        messageContent.optionItems.filterIsInstance<TitleOptionItem>()
+                    ) {
+                        CoroutineScope(Dispatchers.Main).launch {
+                            conversationClient?.sendReply(it)
+                        }
                     }
-                }
 
-                is ChoicesResponseFormat.ChoicesResponseSelectionsFormat -> {
-                    TextMessageReplacementEntry(isLocal = entry.isOutboundEntry, text = "todo")
-                }
+                    is ChoicesResponseFormat.ChoicesResponseSelectionsFormat -> TextMessageReplacementEntry(
+                        isLocal = entry.isOutboundEntry,
+                        text = "todo"
+                    )
 
-                is FormFormat.InputsFormat,
-                is FormResponseFormat.InputsFormResponseFormat,
-                is FormResponseFormat.ResultFormResponseFormat,
-                is ChoicesFormat.ExperienceTypeFormat,
-                is ChoicesResponseFormat.ExperienceTypeFormat,
-                is FormFormat.ExperienceTypeFormat,
-                is FormResponseFormat.ExperienceTypeResponseFormat,
-                is StaticContentFormat.CancelActionFormat,
-                is StaticContentFormat.ErrorMessageFormat,
-                is StaticContentFormat.ExperienceTypeFormat,
-                null -> Text(entry.contentType)
+                    is FormFormat.InputsFormat,
+                    is FormResponseFormat.InputsFormResponseFormat,
+                    is FormResponseFormat.ResultFormResponseFormat,
+                    is ChoicesFormat.ExperienceTypeFormat,
+                    is ChoicesResponseFormat.ExperienceTypeFormat,
+                    is FormFormat.ExperienceTypeFormat,
+                    is FormResponseFormat.ExperienceTypeResponseFormat,
+                    is StaticContentFormat.CancelActionFormat,
+                    is StaticContentFormat.ErrorMessageFormat,
+                    is StaticContentFormat.ExperienceTypeFormat,
+                    null -> Text(entry.contentType)
+                }
+            }
+
+            else -> {}
+        }
+
+        is ChatFeedEntry.DateBreakModel -> DateBreakHeaderReplacementEntry(timestamp = entry.timestamp)
+        is ChatFeedEntry.PreChatReceiptModel -> PreChatSubmissionReceiptReplacementEntry {
+            // navigation
+        }
+
+        is ChatFeedEntry.ProgressIndicatorModel -> {
+            if (entry.isActive) {
+                TypingStartedReplacementEntry(participant = entry.participants.first())
+            } else {
+                // inactive typing indicator
             }
         }
 
-        else -> {}
+        is ChatFeedEntry.TypingIndicatorModel -> Unit
     }
-
-    is ChatFeedEntry.DateBreakModel -> DateBreakHeaderReplacementEntry(timestamp = entry.timestamp)
-    is ChatFeedEntry.PreChatReceiptModel -> PreChatSubmissionReceiptReplacementEntry {
-        // navigation
-    }
-
-    is ChatFeedEntry.ProgressIndicatorModel -> {
-        if (entry.isActive) {
-            TypingStartedReplacementEntry(participant = entry.participants.first())
-        } else {
-            // inactive typing indicator
-        }
-    }
-
-    is ChatFeedEntry.TypingIndicatorModel -> Unit
 }
