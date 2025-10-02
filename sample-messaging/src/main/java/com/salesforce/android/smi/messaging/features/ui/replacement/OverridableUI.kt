@@ -293,9 +293,14 @@ private fun CustomEntryContainer(
                 is FormFormat.InputsFormat,
                 is FormResponseFormat.InputsFormResponseFormat,
                 is FormResponseFormat.ResultFormResponseFormat,
-                null -> {
-                    Text(entry.contentType)
-                }
+                is ChoicesFormat.ExperienceTypeFormat,
+                is ChoicesResponseFormat.ExperienceTypeFormat,
+                is FormFormat.ExperienceTypeFormat,
+                is FormResponseFormat.ExperienceTypeResponseFormat,
+                is StaticContentFormat.CancelActionFormat,
+                is StaticContentFormat.ErrorMessageFormat,
+                is StaticContentFormat.ExperienceTypeFormat,
+                null -> Text(entry.contentType)
             }
         }
 
