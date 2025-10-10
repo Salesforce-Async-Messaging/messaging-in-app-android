@@ -1,18 +1,18 @@
 [versions]
-gradlePlugin = "8.9.2"
-kotlin = "2.0.21"
-coreKtx = "1.16.0"
+gradlePlugin = "8.13.0"
+kotlin = "2.2.20"
+coreKtx = "1.17.0"
 junit = "4.13.2"
-junitVersion = "1.2.1"
-espressoCore = "3.6.1"
-lifecycleRuntimeKtx = "2.9.0"
-activityCompose = "1.10.1"
-composeBom = "2025.05.00"
-appcompat = "1.7.0"
-material = "1.12.0"
-coil = "3.0.3"
+junitVersion = "1.3.0"
+espressoCore = "3.7.0"
+lifecycleRuntimeKtx = "2.9.4"
+activityCompose = "1.11.0"
+composeBom = "2025.10.00"
+appcompat = "1.7.1"
+material = "1.13.0"
+coil = "3.3.0"
 salesforceMessaging = "1.9.2"
-salesforceMobileSDK = "13.0.1"
+salesforceMobileSDK = "13.1.0"
 
 [libraries]
 salesforce-messaging = { group = "com.salesforce.service", name = "messaging-inapp-ui", version.ref = "salesforceMessaging" }
@@ -24,6 +24,7 @@ androidx-compose-ui-tooling-preview = { group = "androidx.compose.ui", name = "u
 androidx-compose-foundation = { group = "androidx.compose.foundation", name = "foundation" }
 androidx-compose-ui-text = { group = "androidx.compose.ui", name = "ui-text" }
 androidx-compose-material3 = { group = "androidx.compose.material3", name = "material3" }
+androidx-compose-iconsext = { group = "androidx.compose.material", name = "material-icons-extended" }
 
 androidx-lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "lifecycleRuntimeKtx" }
 androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "activityCompose" }
