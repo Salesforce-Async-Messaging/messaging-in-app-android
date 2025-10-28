@@ -6,7 +6,7 @@ plugins {
 
 android {
     namespace = "com.salesforce.android.smi.messaging"
-    compileSdk = 35
+    compileSdk = 36
 
     defaultConfig {
         minSdk = 23
@@ -56,11 +56,15 @@ dependencies {
     implementation(libs.androidx.compose.foundation)
     implementation(libs.androidx.compose.ui)
     implementation(libs.androidx.compose.ui.text)
+    implementation(libs.androidx.navigation.compose)
+    implementation(libs.androidx.compose.iconsext)
 
     implementation(libs.coil)
     implementation(libs.coil.gif)
     implementation(libs.coil.compose)
     implementation(libs.coil.okhttp)
+
+    api(libs.salesforce.mobile.sdk)
 
     testImplementation(libs.test.junit)
     androidTestImplementation(libs.test.androidx.junit)

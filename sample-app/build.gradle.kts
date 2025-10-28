@@ -6,12 +6,12 @@ plugins {
 
 android {
     namespace = "com.salesforce.android.smi.sampleapp"
-    compileSdk = 35
+    compileSdk = 36
 
     defaultConfig {
         applicationId = "com.salesforce.android.smi.sampleapp"
         minSdk = 23
-        targetSdk = 35
+        targetSdk = 36
         versionCode = 1
         versionName = "1.0"
 
@@ -63,8 +63,9 @@ dependencies {
     implementation(libs.androidx.compose.ui)
     implementation(libs.androidx.compose.ui.tooling.preview)
     implementation(libs.kotlin.stdlib)
-
     implementation(libs.androidx.compose.material3)
+    implementation(libs.androidx.compose.iconsext)
+
     testImplementation(libs.test.junit)
     androidTestImplementation(libs.test.androidx.junit)
     androidTestImplementation(libs.test.androidx.espresso.core)

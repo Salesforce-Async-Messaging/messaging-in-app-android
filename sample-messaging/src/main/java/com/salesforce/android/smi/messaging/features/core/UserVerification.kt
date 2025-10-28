@@ -3,12 +3,11 @@ package com.salesforce.android.smi.messaging.features.core
 import com.salesforce.android.smi.core.ChallengeReason
 import com.salesforce.android.smi.core.UserVerificationProvider
 import com.salesforce.android.smi.core.UserVerificationToken
-import com.salesforce.android.smi.core.UserVerificationType
 import kotlinx.coroutines.delay
 
 open class UserVerification : UserVerificationProvider {
-    override suspend fun userVerificationChallenge(reason: ChallengeReason): UserVerificationToken {
-        val token: String = when (reason) {
+    override suspend fun userVerificationChallenge(reason: ChallengeReason): UserVerificationToken =
+        when (reason) {
             ChallengeReason.INITIAL -> authenticate()
             ChallengeReason.RENEW -> renewAuthentication()
             ChallengeReason.EXPIRED -> renewAuthentication()
@@ -18,16 +17,7 @@ open class UserVerification : UserVerificationProvider {
             }
         }
 
-        return UserVerificationToken(UserVerificationType.JWT, token)
-    }
+    open suspend fun authenticate(): UserVerificationToken = delay(1000).let { UserVerificationToken.externalToken("fakeToken") }
 
-    open suspend fun authenticate(): String {
-        delay(1000)
-        return "fakeToken"
-    }
-
-    open suspend fun renewAuthentication(): String {
-        delay(1000)
-        return "renewedToken"
-    }
+    open suspend fun renewAuthentication(): UserVerificationToken = delay(1000).let { UserVerificationToken.externalToken("renewedToken") }
 }
