@@ -5,6 +5,7 @@ module:common
 com.salesforce.android.smi.common.api
 module:core
 com.salesforce.android.smi.core
+com.salesforce.android.smi.core.data.domain.agentavailability
 com.salesforce.android.smi.core.data.domain.businessHours
 com.salesforce.android.smi.core.data.domain.conversationEntry.entryPayload.event.typing
 com.salesforce.android.smi.core.data.domain.remoteConfiguration
@@ -20,9 +21,13 @@ com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload.ev
 com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload.event.entries
 com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload.message.component.attachment
 com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload.message.component.citations
+com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload.message.component.context
+com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload.message.component.error
+com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload.message.component.experienceType
 com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload.message.component.form.input
 com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload.message.component.form.result
 com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload.message.component.form.value
+com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload.message.component.messageUpdated
 com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload.message.component.optionItem
 com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload.message.component.optionItem.titleItem
 com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload.message.component.progressIndicators
@@ -39,3 +44,4 @@ com.salesforce.android.smi.network.data.domain.webview
 com.salesforce.android.smi.network.data.model
 module:ui
 com.salesforce.android.smi.ui
+com.salesforce.android.smi.ui.navigation
