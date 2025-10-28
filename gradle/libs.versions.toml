@@ -11,7 +11,7 @@ composeBom = "2025.10.00"
 appcompat = "1.7.1"
 material = "1.13.0"
 coil = "3.3.0"
-salesforceMessaging = "1.9.2"
+salesforceMessaging = "1.10.0"
 salesforceMobileSDK = "13.1.0"
 
 [libraries]
