@@ -32,7 +32,6 @@ import androidx.lifecycle.compose.LifecycleStartEffect
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.salesforce.android.smi.common.api.Result
 import com.salesforce.android.smi.core.ConversationClient
-import com.salesforce.android.smi.messaging.R
 import com.salesforce.android.smi.messaging.SalesforceMessaging
 import com.salesforce.android.smi.messaging.features.ui.replacement.components.AttachmentMessageReplacementEntry
 import com.salesforce.android.smi.messaging.features.ui.replacement.components.CarouselMessageReplacementEntry
@@ -56,6 +55,7 @@ import com.salesforce.android.smi.network.data.domain.conversationEntry.entryPay
 import com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload.message.format.StaticContentFormat
 import com.salesforce.android.smi.network.data.domain.participant.ParticipantRoleType
 import com.salesforce.android.smi.ui.ChatFeedEntry
+import com.salesforce.android.smi.ui.R
 import com.salesforce.android.smi.ui.UIClient
 import com.salesforce.android.smi.ui.ViewComponents
 import com.salesforce.android.smi.ui.internal.common.domain.extensions.messageContent

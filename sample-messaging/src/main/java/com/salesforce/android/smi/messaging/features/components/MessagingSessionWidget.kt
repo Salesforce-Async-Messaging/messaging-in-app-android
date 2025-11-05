@@ -123,15 +123,15 @@ private fun SessionStatusInfo(
     conversation: Conversation?,
     openConversation: () -> Unit
 ) {
-    AnimatedContent(sessionStatus) { sessionStatus ->
+    AnimatedContent(sessionStatus) { sessionStatusState ->
         TextButton(onClick = openConversation) {
             Row(horizontalArrangement = Arrangement.spacedBy(8.dp), verticalAlignment = Alignment.CenterVertically) {
-                when (sessionStatus) {
+                when (sessionStatusState) {
                     SessionStatus.Active -> ActiveSessionText(conversation, queuePosition)
-                    else -> Text(text = sessionStatus.name, style = MaterialTheme.typography.bodyLarge)
+                    else -> Text(text = sessionStatusState.name, style = MaterialTheme.typography.bodyLarge)
                 }
 
-                val unreadMessageCount = if (sessionStatus == SessionStatus.Active) conversation?.unreadMessageCount ?: 0 else 0
+                val unreadMessageCount = if (sessionStatusState == SessionStatus.Active) conversation?.unreadMessageCount ?: 0 else 0
                 SessionBadgeIcon(unreadMessageCount)
             }
         }
