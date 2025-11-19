@@ -21,11 +21,13 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.compose.LifecycleResumeEffect
 import androidx.lifecycle.compose.LifecycleStartEffect
 import androidx.lifecycle.lifecycleScope
 import com.salesforce.android.smi.core.CoreClient
@@ -53,23 +55,21 @@ fun MainScreen() {
     val context = LocalContext.current
     val scope = rememberCoroutineScope()
 
-    var conversationId: UUID by remember { mutableStateOf(UUID.randomUUID()) }
-    val salesforceMessaging = remember(conversationId) {
-        SalesforceMessaging(context, conversationId = conversationId)
-    }
+    var conversationId: UUID by rememberSaveable { mutableStateOf(UUID.randomUUID()) }
+    val salesforceMessaging =
+        remember(conversationId) {
+            SalesforceMessaging(context, conversationId = conversationId)
+        }
 
-    var maintainEventStream: Boolean by remember { mutableStateOf(false) }
-
-    LifecycleStartEffect(Unit) {
-        maintainEventStream = false
+    // It's important to start/stop the client events based on these lifecycle events
+    LifecycleResumeEffect(Unit) {
         salesforceMessaging.coreClient.start(this.lifecycleScope)
-        onStopOrDispose {
-            if (!maintainEventStream) salesforceMessaging.coreClient.stop()
+        onPauseOrDispose {
+            salesforceMessaging.coreClient.stop()
         }
     }
 
     val openConversation: () -> Unit = {
-        maintainEventStream = true
         salesforceMessaging.uiClient.openConversationActivity(context)
     }
 

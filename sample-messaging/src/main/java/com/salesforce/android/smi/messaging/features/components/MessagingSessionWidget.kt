@@ -1,13 +1,15 @@
 package com.salesforce.android.smi.messaging.features.components
 
-import androidx.compose.animation.AnimatedContent
 import androidx.compose.animation.animateContentSize
 import androidx.compose.animation.core.FastOutSlowInEasing
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.RowScope
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.Icons
@@ -25,10 +27,14 @@ import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
@@ -40,6 +46,8 @@ import com.salesforce.android.smi.network.data.domain.conversation.CoreConversat
 import com.salesforce.android.smi.network.data.domain.conversationEntry.ConversationEntry
 import com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload.EntryPayload
 import com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload.SessionStatus
+import com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload.message.format.ChoicesFormat
+import com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload.message.format.StaticContentFormat
 import com.salesforce.android.smi.network.data.domain.participant.ParticipantRoleType
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
@@ -64,9 +72,9 @@ fun MessagingSessionWidget(
         conversationClient.conversationEntriesFlow()
     }.collectAsStateWithLifecycle(Result.Loading)
 
-    val sessionStatus: SessionStatus by remember {
+    val sessionStatus: SessionStatus? by remember {
         derivedStateOf {
-            conversationEntries.latestPayloadOrNull<EntryPayload.SessionStatusChangedPayload>()?.sessionStatus ?: SessionStatus.Inactive
+            conversationEntries.latestPayloadOrNull<EntryPayload.SessionStatusChangedPayload>()?.sessionStatus
         }
     }
     val queuePosition: Int by remember {
@@ -85,78 +93,143 @@ fun MessagingSessionWidget(
 }
 
 @Composable
+private fun WidgetContainer(content: @Composable RowScope.() -> Unit) {
+    Box(modifier = Modifier.fillMaxWidth(.75f), contentAlignment = Alignment.CenterEnd) {
+        Surface(
+            modifier = Modifier.heightIn(max = 64.dp),
+            shape = FloatingActionButtonDefaults.shape,
+            shadowElevation = 2.dp
+        ) {
+            Row(
+                modifier =
+                    Modifier
+                        .fillMaxHeight()
+                        .animateContentSize(
+                            animationSpec =
+                                tween(
+                                    durationMillis = 200,
+                                    delayMillis = 0,
+                                    easing = FastOutSlowInEasing
+                                )
+                        ),
+                horizontalArrangement = Arrangement.End,
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                content()
+            }
+        }
+    }
+}
+
+@Composable
 private fun MessagingSessionWidget(
-    sessionStatus: SessionStatus,
+    sessionStatus: SessionStatus?,
     queuePosition: Int,
     conversation: Conversation?,
     openConversation: () -> Unit,
     endSession: () -> Unit
 ) {
-    Surface(
-        modifier = Modifier.heightIn(max = 64.dp),
-        shape = FloatingActionButtonDefaults.shape,
-        shadowElevation = 2.dp
-    ) {
-        Row(
-            modifier = Modifier.fillMaxHeight().animateContentSize(
-                animationSpec = tween(durationMillis = 200, delayMillis = 0, easing = FastOutSlowInEasing)
-            ),
-            horizontalArrangement = Arrangement.End,
-            verticalAlignment = Alignment.CenterVertically
-        ) {
-            Box(contentAlignment = Alignment.Center) {
-                IconButton(onClick = endSession) {
-                    Icon(Icons.Default.Close, Icons.Default.Close.name)
-                }
+    WidgetContainer {
+        Box(contentAlignment = Alignment.Center) {
+            when (sessionStatus) {
+                SessionStatus.Active ->
+                    IconButton(onClick = endSession) {
+                        Icon(Icons.Default.Close, Icons.Default.Close.name)
+                    }
+
+                else -> Spacer(Modifier)
             }
-            Box(contentAlignment = Alignment.Center) {
-                SessionStatusInfo(sessionStatus, queuePosition, conversation, openConversation)
-            }
+        }
+        Box(contentAlignment = Alignment.Center) {
+            SessionStatusInfo(sessionStatus, queuePosition, conversation, openConversation)
         }
     }
 }
 
 @Composable
 private fun SessionStatusInfo(
-    sessionStatus: SessionStatus,
+    sessionStatus: SessionStatus?,
     queuePosition: Int,
     conversation: Conversation?,
     openConversation: () -> Unit
 ) {
-    AnimatedContent(sessionStatus) { sessionStatusState ->
-        TextButton(onClick = openConversation) {
-            Row(horizontalArrangement = Arrangement.spacedBy(8.dp), verticalAlignment = Alignment.CenterVertically) {
-                when (sessionStatusState) {
-                    SessionStatus.Active -> ActiveSessionText(conversation, queuePosition)
-                    else -> Text(text = sessionStatusState.name, style = MaterialTheme.typography.bodyLarge)
-                }
+    TextButton(onClick = openConversation) {
+        Row(horizontalArrangement = Arrangement.spacedBy(8.dp, Alignment.End), verticalAlignment = Alignment.CenterVertically) {
+            conversation?.let {
+                when (sessionStatus) {
+                    SessionStatus.Active ->
+                        ActiveSessionText(
+                            Modifier.weight(0.5f, false),
+                            conversation,
+                            queuePosition
+                        )
 
-                val unreadMessageCount = if (sessionStatusState == SessionStatus.Active) conversation?.unreadMessageCount ?: 0 else 0
-                SessionBadgeIcon(unreadMessageCount)
-            }
+                    else ->
+                        Text(
+                            text = sessionStatus?.name ?: "Loading...",
+                            style = MaterialTheme.typography.bodyLarge
+                        )
+                }
+            } ?: Text(
+                text = sessionStatus?.name ?: "Start a chat",
+                style = MaterialTheme.typography.bodyLarge
+            )
+
+            val unreadMessageCount = if (sessionStatus == SessionStatus.Active) conversation?.unreadMessageCount ?: 0 else 0
+            SessionBadgeIcon(Modifier, unreadMessageCount)
         }
     }
 }
 
 @Composable
 private fun ActiveSessionText(
+    modifier: Modifier,
     conversation: Conversation?,
-    queuePosition: Int
+    queuePosition: Int,
+    showLastInboundMessage: Boolean = true
 ) {
-    val activeSessionText = if (queuePosition > 0) {
-        "Your position in queue is $queuePosition."
-    } else {
-        conversation?.activeParticipants?.firstOrNull {
-            it.roleType == ParticipantRoleType.Agent || it.roleType == ParticipantRoleType.Chatbot
-        }?.displayName ?: "Agent"
+    val activeSessionText = when {
+        queuePosition > 0 -> "Your position in queue is $queuePosition."
+        showLastInboundMessage -> conversation?.lastInboundMessage()
+        else -> conversation?.agentParticipant()
     }
-
-    Text(text = activeSessionText, style = MaterialTheme.typography.bodyLarge)
+    activeSessionText?.let {
+        Text(modifier = modifier, text = it, style = MaterialTheme.typography.bodyLarge, softWrap = false, overflow = TextOverflow.Ellipsis)
+    }
 }
 
 @Composable
-private fun SessionBadgeIcon(unreadMessageCount: Int) {
+private fun Conversation.agentParticipant(): String =
+    activeParticipants
+        .firstOrNull {
+            it.roleType == ParticipantRoleType.Agent || it.roleType == ParticipantRoleType.Chatbot
+        }?.displayName ?: "Agent"
+
+@Composable
+private fun Conversation.lastInboundMessage(): String {
+    var lastInboundMessage: String by rememberSaveable { mutableStateOf("") }
+
+    val messagePayload = (lastActivity?.payload as? EntryPayload.MessagePayload)
+    when (val content = messagePayload?.content) {
+        is ChoicesFormat.DisplayableOptionsFormat -> content.text
+        is ChoicesFormat.QuickRepliesFormat -> content.text
+        is StaticContentFormat.AttachmentsFormat -> content.text
+        is StaticContentFormat.RichLinkFormat -> content.text
+        is StaticContentFormat.TextFormat -> content.text
+        is StaticContentFormat.WebViewFormat -> content.title.title
+        else -> null
+    }?.takeIf { it.isNotBlank() }?.let { lastInboundMessage = it }
+
+    return lastInboundMessage
+}
+
+@Composable
+private fun SessionBadgeIcon(
+    modifier: Modifier,
+    unreadMessageCount: Int
+) {
     BadgedBox(
+        modifier = modifier,
         badge = {
             unreadMessageCount.takeIf { it > 0 }?.let {
                 Badge { Text(it.toString()) }
