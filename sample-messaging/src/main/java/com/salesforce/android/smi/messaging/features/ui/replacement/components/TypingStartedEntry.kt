@@ -18,7 +18,7 @@ import com.salesforce.android.smi.network.data.domain.participant.Participant
 import com.salesforce.android.smi.network.data.domain.participant.ParticipantRoleType
 
 @Composable
-internal fun TypingStartedReplacementEntry(
+internal fun TypingStartedEntry(
     participant: Participant
 ) {
     val shape = RoundedCornerShape(16)
@@ -43,7 +43,7 @@ internal fun TypingStartedReplacementEntry(
 @Preview
 @Composable
 private fun TypingStartedReplacementEntryPreview() {
-    TypingStartedReplacementEntry(
+    TypingStartedEntry(
         participant = CoreParticipant(subject = "subject", isLocal = false, roleType = ParticipantRoleType.Agent)
     )
 }

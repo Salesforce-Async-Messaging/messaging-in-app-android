@@ -15,7 +15,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 
 @Composable
-internal fun PreChatSubmissionReceiptReplacementEntry(
+internal fun PreChatSubmissionReceiptEntry(
     onClick: () -> Unit
 ) {
     val shape = RoundedCornerShape(16)
@@ -38,5 +38,5 @@ internal fun PreChatSubmissionReceiptReplacementEntry(
 @Preview
 @Composable
 private fun PreChatSubmissionReceiptReplacementEntryPreview() {
-    PreChatSubmissionReceiptReplacementEntry {}
+    PreChatSubmissionReceiptEntry {}
 }

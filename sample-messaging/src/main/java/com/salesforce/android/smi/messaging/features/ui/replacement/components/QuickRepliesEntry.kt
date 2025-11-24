@@ -23,7 +23,7 @@ import com.salesforce.android.smi.network.data.domain.conversationEntry.entryPay
 
 @OptIn(ExperimentalLayoutApi::class)
 @Composable
-internal fun QuickRepliesReplacementEntry(
+internal fun QuickRepliesEntry(
     title: String,
     optionItems: List<OptionItem.TypedOptionItem.TitleOptionItem>,
     onSelection: ((OptionItem) -> Unit)
@@ -67,7 +67,7 @@ internal fun QuickRepliesReplacementEntry(
 @Preview
 @Composable
 private fun QuickRepliesReplacementEntryPreview() {
-    QuickRepliesReplacementEntry(
+    QuickRepliesEntry(
         title = "Options",
         optionItems = listOf(
             OptionItem.TypedOptionItem.TitleOptionItem("1", "1", TitleItem.DefaultTitleItem("Option 1")),

@@ -49,6 +49,12 @@ captures/
 .idea/modules.xml
 .idea/deploymentTargetDropDown.xml
 .idea/misc.xml
+.idea/androidTestResultsUserPreferences.xml
+.idea/deploymentTargetSelector.xml
+.idea/studiobot.xml
+.idea/appInsightsSettings.xml
+.idea/other.xml
+.idea/deviceManager.xml
 
 # Keystore files
 # Uncomment the following line if you do not want to check your keystore files in.

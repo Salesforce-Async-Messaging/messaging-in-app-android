@@ -33,15 +33,15 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.salesforce.android.smi.common.api.Result
 import com.salesforce.android.smi.core.ConversationClient
 import com.salesforce.android.smi.messaging.SalesforceMessaging
-import com.salesforce.android.smi.messaging.features.ui.replacement.components.AttachmentMessageReplacementEntry
-import com.salesforce.android.smi.messaging.features.ui.replacement.components.CarouselMessageReplacementEntry
-import com.salesforce.android.smi.messaging.features.ui.replacement.components.DateBreakHeaderReplacementEntry
-import com.salesforce.android.smi.messaging.features.ui.replacement.components.DisplayableOptionsReplacementEntry
-import com.salesforce.android.smi.messaging.features.ui.replacement.components.PreChatSubmissionReceiptReplacementEntry
-import com.salesforce.android.smi.messaging.features.ui.replacement.components.QuickRepliesReplacementEntry
-import com.salesforce.android.smi.messaging.features.ui.replacement.components.RichLinkMessageReplacementEntry
-import com.salesforce.android.smi.messaging.features.ui.replacement.components.TextMessageReplacementEntry
-import com.salesforce.android.smi.messaging.features.ui.replacement.components.TypingStartedReplacementEntry
+import com.salesforce.android.smi.messaging.features.ui.replacement.components.AttachmentEntry
+import com.salesforce.android.smi.messaging.features.ui.replacement.components.CarouselEntry
+import com.salesforce.android.smi.messaging.features.ui.replacement.components.DateBreakHeaderEntry
+import com.salesforce.android.smi.messaging.features.ui.replacement.components.DisplayableOptionsEntry
+import com.salesforce.android.smi.messaging.features.ui.replacement.components.PreChatSubmissionReceiptEntry
+import com.salesforce.android.smi.messaging.features.ui.replacement.components.QuickRepliesEntry
+import com.salesforce.android.smi.messaging.features.ui.replacement.components.RichLinkMessageEntry
+import com.salesforce.android.smi.messaging.features.ui.replacement.components.TextMessageEntry
+import com.salesforce.android.smi.messaging.features.ui.replacement.components.TypingStartedEntry
 import com.salesforce.android.smi.network.data.domain.conversation.Conversation
 import com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload.EntryPayload
 import com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload.message.component.optionItem.OptionItem.TypedOptionItem.TitleOptionItem
@@ -232,25 +232,25 @@ open class OverridableUI {
         is ChatFeedEntry.ConversationEntryModel -> when (entry.payload) {
             is EntryPayload.MessagePayload -> {
                 when (val messageContent = entry.messageContent) {
-                    is StaticContentFormat.TextFormat -> TextMessageReplacementEntry(
+                    is StaticContentFormat.TextFormat -> TextMessageEntry(
                         isLocal = entry.isOutboundEntry,
                         text = messageContent.text
                     )
 
                     is StaticContentFormat.AttachmentsFormat -> messageContent.attachments.first().file?.let {
-                        AttachmentMessageReplacementEntry(
+                        AttachmentEntry(
                             isLocal = entry.isOutboundEntry,
                             file = it
                         )
                     }
 
-                    is StaticContentFormat.RichLinkFormat -> RichLinkMessageReplacementEntry(
+                    is StaticContentFormat.RichLinkFormat -> RichLinkMessageEntry(
                         isLocal = entry.isOutboundEntry,
                         linkItem = messageContent.linkItem,
                         image = messageContent.image
                     )
 
-                    is StaticContentFormat.WebViewFormat -> RichLinkMessageReplacementEntry(
+                    is StaticContentFormat.WebViewFormat -> RichLinkMessageEntry(
                         isLocal = entry.isOutboundEntry,
                         linkItem =
                             LinkItem(
@@ -260,12 +260,12 @@ open class OverridableUI {
                         image = null
                     )
 
-                    is ChoicesFormat.CarouselFormat -> CarouselMessageReplacementEntry(
+                    is ChoicesFormat.CarouselFormat -> CarouselEntry(
                         isLocal = entry.isOutboundEntry,
                         list = messageContent.images
                     )
 
-                    is ChoicesFormat.DisplayableOptionsFormat -> DisplayableOptionsReplacementEntry(
+                    is ChoicesFormat.DisplayableOptionsFormat -> DisplayableOptionsEntry(
                         messageContent.text,
                         messageContent.optionItems.filterIsInstance<TitleOptionItem>()
                     ) {
@@ -274,7 +274,7 @@ open class OverridableUI {
                         }
                     }
 
-                    is ChoicesFormat.QuickRepliesFormat -> QuickRepliesReplacementEntry(
+                    is ChoicesFormat.QuickRepliesFormat -> QuickRepliesEntry(
                         messageContent.text,
                         messageContent.optionItems.filterIsInstance<TitleOptionItem>()
                     ) {
@@ -283,7 +283,7 @@ open class OverridableUI {
                         }
                     }
 
-                    is ChoicesResponseFormat.ChoicesResponseSelectionsFormat -> TextMessageReplacementEntry(
+                    is ChoicesResponseFormat.ChoicesResponseSelectionsFormat -> TextMessageEntry(
                         isLocal = entry.isOutboundEntry,
                         text = "todo"
                     )
@@ -305,14 +305,14 @@ open class OverridableUI {
             else -> {}
         }
 
-        is ChatFeedEntry.DateBreakModel -> DateBreakHeaderReplacementEntry(timestamp = entry.timestamp)
-        is ChatFeedEntry.PreChatReceiptModel -> PreChatSubmissionReceiptReplacementEntry {
+        is ChatFeedEntry.DateBreakModel -> DateBreakHeaderEntry(timestamp = entry.timestamp)
+        is ChatFeedEntry.PreChatReceiptModel -> PreChatSubmissionReceiptEntry {
             // navigation
         }
 
         is ChatFeedEntry.ProgressIndicatorModel -> {
             if (entry.isActive) {
-                TypingStartedReplacementEntry(participant = entry.participants.first())
+                TypingStartedEntry(participant = entry.participants.first())
             } else {
                 // inactive typing indicator
             }

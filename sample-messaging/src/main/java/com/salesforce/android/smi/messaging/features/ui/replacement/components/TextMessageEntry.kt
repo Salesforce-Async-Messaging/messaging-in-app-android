@@ -15,7 +15,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 
 @Composable
-internal fun TextMessageReplacementEntry(
+internal fun TextMessageEntry(
     isLocal: Boolean,
     text: String?
 ) {
@@ -46,11 +46,11 @@ internal fun TextMessageReplacementEntry(
 @Preview
 @Composable
 private fun TextMessageReplacementEntryPreview_Outbound() {
-    TextMessageReplacementEntry(isLocal = true, text = "Test local message")
+    TextMessageEntry(isLocal = true, text = "Test local message")
 }
 
 @Preview
 @Composable
 private fun TextMessageReplacementEntryPreview_Inbound() {
-    TextMessageReplacementEntry(isLocal = false, text = "Test remote message")
+    TextMessageEntry(isLocal = false, text = "Test remote message")
 }

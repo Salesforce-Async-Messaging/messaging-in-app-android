@@ -19,7 +19,7 @@ import com.salesforce.android.smi.network.data.domain.participant.CoreParticipan
 import com.salesforce.android.smi.network.data.domain.participant.ParticipantRoleType
 
 @Composable
-internal fun ParticipantChangedReplacementEntry(
+internal fun ParticipantChangedEntry(
     participantChangedEntry: ParticipantChangedEntry
 ) {
     val shape = RoundedCornerShape(16)
@@ -47,7 +47,7 @@ internal fun ParticipantChangedReplacementEntry(
 @Preview
 @Composable
 private fun ParticipantChangedReplacementEntryPreview_Outbound() {
-    ParticipantChangedReplacementEntry(
+    ParticipantChangedEntry(
         participantChangedEntry = ParticipantChangedEntry(
             CoreParticipant(subject = "subject", isLocal = false, roleType = ParticipantRoleType.Agent),
             ParticipantChangedOperation.Add,
