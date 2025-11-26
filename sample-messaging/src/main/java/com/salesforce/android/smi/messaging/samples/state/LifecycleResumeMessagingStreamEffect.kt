@@ -1,4 +1,4 @@
-package com.salesforce.android.smi.messaging.features.components
+package com.salesforce.android.smi.messaging.samples.state
 
 import androidx.compose.runtime.Composable
 import androidx.lifecycle.compose.LifecycleResumeEffect
