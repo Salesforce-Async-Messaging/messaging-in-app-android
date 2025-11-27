@@ -19,7 +19,7 @@ import coil3.imageLoader
 import java.io.File
 
 @Composable
-internal fun AttachmentMessageReplacementEntry(
+internal fun AttachmentEntry(
     isLocal: Boolean,
     file: File
 ) {
@@ -50,7 +50,7 @@ internal fun AttachmentMessageReplacementEntry(
 @Preview
 @Composable
 private fun AttachmentMessageReplacementEntryPreview_Outbound() {
-    AttachmentMessageReplacementEntry(
+    AttachmentEntry(
         isLocal = true,
         file = File("https://static.scientificamerican.com/sciam/cache/file/C37174A9-488C-49D4-B9C79B4E8EB39287_source.jpg?w=1200")
     )
@@ -59,7 +59,7 @@ private fun AttachmentMessageReplacementEntryPreview_Outbound() {
 @Preview
 @Composable
 private fun AttachmentMessageReplacementEntryPreview_Inbound() {
-    AttachmentMessageReplacementEntry(
+    AttachmentEntry(
         isLocal = false,
         file = File("https://static.scientificamerican.com/sciam/cache/file/C37174A9-488C-49D4-B9C79B4E8EB39287_source.jpg?w=1200")
     )

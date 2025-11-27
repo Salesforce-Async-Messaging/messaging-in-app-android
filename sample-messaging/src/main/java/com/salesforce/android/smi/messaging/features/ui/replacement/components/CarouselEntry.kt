@@ -23,7 +23,7 @@ import coil3.imageLoader
 import com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload.message.component.attachment.FileAsset
 
 @Composable
-internal fun CarouselMessageReplacementEntry(
+internal fun CarouselEntry(
     isLocal: Boolean,
     list: List<FileAsset.ImageAsset.CarouselImage>
 ) {
@@ -65,7 +65,7 @@ internal fun CarouselMessageReplacementEntry(
 @Preview
 @Composable
 private fun CarouselMessageReplacementEntryPreview_Outbound() {
-    CarouselMessageReplacementEntry(
+    CarouselEntry(
         isLocal = true,
         list = listOf(
             FileAsset.ImageAsset.CarouselImage(

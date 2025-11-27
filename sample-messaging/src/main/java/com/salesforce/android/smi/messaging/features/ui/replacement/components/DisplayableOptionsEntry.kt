@@ -17,7 +17,7 @@ import com.salesforce.android.smi.network.data.domain.conversationEntry.entryPay
 import com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload.message.component.optionItem.titleItem.TitleItem
 
 @Composable
-internal fun DisplayableOptionsReplacementEntry(
+internal fun DisplayableOptionsEntry(
     title: String,
     optionItems: List<OptionItem.TypedOptionItem.TitleOptionItem>,
     onSelection: ((OptionItem) -> Unit)
@@ -49,7 +49,7 @@ internal fun DisplayableOptionsReplacementEntry(
 @Preview
 @Composable
 private fun DisplayableOptionsReplacementEntryPreview() {
-    DisplayableOptionsReplacementEntry(
+    DisplayableOptionsEntry(
         title = "Options",
         optionItems = listOf(
             OptionItem.TypedOptionItem.TitleOptionItem("1", "1", TitleItem.DefaultTitleItem("Option 1")),

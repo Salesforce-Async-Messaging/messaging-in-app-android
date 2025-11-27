@@ -24,7 +24,7 @@ import com.salesforce.android.smi.network.data.domain.conversationEntry.entryPay
 import com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload.message.component.richLink.LinkItem
 
 @Composable
-internal fun RichLinkMessageReplacementEntry(
+internal fun RichLinkMessageEntry(
     isLocal: Boolean,
     linkItem: LinkItem,
     image: FileAsset.ImageAsset.RichLinkImage?
@@ -71,7 +71,7 @@ internal fun RichLinkMessageReplacementEntry(
 @Preview
 @Composable
 private fun RichLinkMessageReplacementEntryPreview_Outbound() {
-    RichLinkMessageReplacementEntry(
+    RichLinkMessageEntry(
         isLocal = true,
         linkItem = LinkItem(
             "www.slack.com",

@@ -16,7 +16,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 
 @Composable
-internal fun DateBreakHeaderReplacementEntry(
+internal fun DateBreakHeaderEntry(
     timestamp: Long
 ) {
     val shape = RoundedCornerShape(16)
@@ -38,7 +38,7 @@ internal fun DateBreakHeaderReplacementEntry(
 @Preview
 @Composable
 private fun DateBreakHeaderReplacementEntryPreview_Outbound() {
-    DateBreakHeaderReplacementEntry(
+    DateBreakHeaderEntry(
         timestamp = 1568205860792
     )
 }
