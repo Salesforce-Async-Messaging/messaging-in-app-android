@@ -9,7 +9,6 @@ import androidx.compose.material3.rememberModalBottomSheetState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
-import androidx.lifecycle.viewmodel.compose.LocalViewModelStoreOwner
 import com.salesforce.android.smi.core.CoreClient
 import com.salesforce.android.smi.messaging.SalesforceMessaging
 import com.salesforce.android.smi.messaging.samples.state.LifecycleResumeMessagingStreamEffect
@@ -69,9 +68,6 @@ fun MessagingBottomSheet(
                 sheetState = sheetState
             ) {
                 Box(modifier.fillMaxHeight(maxHeight)) {
-                    // When changing the conversationId the state of the chat UI is persisted to this viewModelStore
-                    LocalViewModelStoreOwner.current?.viewModelStore?.clear()
-
                     uiClient.MessagingInAppUI {
                         dismissSheet()
                     }
