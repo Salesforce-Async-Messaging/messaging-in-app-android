@@ -62,6 +62,7 @@ dependencies {
     implementation(libs.coil.gif)
     implementation(libs.coil.compose)
     implementation(libs.coil.okhttp)
+    implementation(libs.androidx.compose.ui.tooling.preview)
 
     api(libs.salesforce.mobile.sdk)
 
@@ -69,5 +70,4 @@ dependencies {
     androidTestImplementation(libs.test.androidx.junit)
     androidTestImplementation(libs.test.androidx.espresso.core)
     debugImplementation(libs.androidx.compose.ui.tooling)
-    debugImplementation(libs.androidx.compose.ui.tooling.preview)
 }
