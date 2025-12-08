@@ -57,6 +57,7 @@ dependencies {
     implementation(libs.androidx.compose.ui.text)
     implementation(libs.androidx.navigation.compose)
     implementation(libs.androidx.compose.iconsext)
+    implementation(libs.androidx.compose.ui.tooling.preview)
 
     implementation(libs.coil)
     implementation(libs.coil.gif)
@@ -69,5 +70,4 @@ dependencies {
     androidTestImplementation(libs.test.androidx.junit)
     androidTestImplementation(libs.test.androidx.espresso.core)
     debugImplementation(libs.androidx.compose.ui.tooling)
-    debugImplementation(libs.androidx.compose.ui.tooling.preview)
 }

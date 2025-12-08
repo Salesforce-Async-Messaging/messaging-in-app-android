@@ -64,13 +64,13 @@ dependencies {
     implementation(libs.kotlin.stdlib)
     implementation(libs.androidx.compose.material3)
     implementation(libs.androidx.compose.iconsext)
+    implementation(libs.androidx.compose.ui.tooling.preview)
 
     testImplementation(libs.test.junit)
     androidTestImplementation(libs.test.androidx.junit)
     androidTestImplementation(libs.test.androidx.espresso.core)
     androidTestImplementation(platform(libs.androidx.compose.bom))
     androidTestImplementation(libs.test.androidx.compose.ui.test.junit4)
-    debugImplementation(libs.androidx.compose.ui.tooling.preview)
     debugImplementation(libs.androidx.compose.ui.tooling)
     debugImplementation(libs.test.androidx.compose.ui.test.manifest)
 }
