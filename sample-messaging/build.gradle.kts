@@ -45,6 +45,13 @@ if (project.hasProperty("substituteSDK") && project.property("substituteSDK") ==
 dependencies {
     api(libs.salesforce.messaging)
 
+    // TODO: TEMPORARY - Replace with published multimedia SDK dependency when available in next release
+    // This currently references unpublished multimedia APIs (MultimediaSession, MultimediaParticipant, etc.)
+    // NOTE: sample-messaging must be built from the main SDK repo (not standalone) to access multimedia modules
+    // Using 'api' instead of 'compileOnly' to include multimedia classes in the runtime APK
+    api(project(":sdk:multimedia:common"))
+    api(project(":sdk:multimedia:core"))
+
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.google.material)
