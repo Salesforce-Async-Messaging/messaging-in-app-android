@@ -1,6 +1,8 @@
 package com.salesforce.android.smi.messaging
 
 import android.content.Context
+import android.os.Build
+import com.salesforce.android.smi.core.ClientName
 import com.salesforce.android.smi.core.Configuration
 import com.salesforce.android.smi.core.ConversationClient
 import com.salesforce.android.smi.core.CoreClient
@@ -13,6 +15,7 @@ import com.salesforce.android.smi.messaging.features.core.TemplatedUrlValues
 import com.salesforce.android.smi.messaging.features.core.UserVerification
 import com.salesforce.android.smi.messaging.features.ui.PopulatePreChat
 import com.salesforce.android.smi.messaging.features.ui.replacement.OverridableUI
+import com.salesforce.android.smi.multimedia.core.MultimediaExtension
 import com.salesforce.android.smi.ui.UIClient
 import com.salesforce.android.smi.ui.UIConfiguration
 import java.util.UUID
@@ -23,9 +26,13 @@ class SalesforceMessaging(
     configuration: Configuration = CoreConfiguration.fromFile(
         context,
         isUserVerificationRequired = false,
-        remoteLocaleMap = mapOf("en-CA" to "en", "fr-Fr" to "fr", "fr-CH" to "fr", "default" to "en")
+        remoteLocaleMap = mapOf("en-CA" to "en", "fr-Fr" to "fr", "fr-CH" to "fr", "default" to "en"),
+        multimediaExtension = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) MultimediaExtension else null
     ),
-    uiConfiguration: UIConfiguration = UIConfiguration(configuration, conversationId),
+    uiConfiguration: UIConfiguration = UIConfiguration(
+        configuration,
+        conversationId
+    ),
     populatePopulatePreChat: PopulatePreChat = PopulatePreChat(),
     hiddenPreChat: PreChatValuesProvider = HiddenPreChat(),
     templatedUrls: TemplatedUrlValuesProvider = TemplatedUrlValues(),

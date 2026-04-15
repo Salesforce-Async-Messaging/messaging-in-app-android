@@ -5,6 +5,12 @@
     <!-- Salesforce Mobile SDK sets the minSDK version higher than the MIAW SDK -->
     <uses-sdk tools:overrideLibrary="com.salesforce.androidsdk, com.salesforce.androidsdk.analytics"/>
 
+    <!-- Voice call permissions (dangerous permissions that require runtime request)
+         Note: Additional permissions are inherited from sdk:multimedia:core module -->
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"

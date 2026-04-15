@@ -44,6 +44,7 @@ if (project.hasProperty("substituteSDK") && project.property("substituteSDK") ==
 
 dependencies {
     api(libs.salesforce.messaging)
+    api(project(":sdk:multimedia:core"))
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
