@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Voice UI strings -->
+    <string name="smi_voice_call_default_name">Support Agent</string>
+    <string name="smi_voice_mute_microphone">Mute microphone</string>
+    <string name="smi_voice_unmute_microphone">Unmute microphone</string>
+    <string name="smi_voice_end_call">End call</string>
+</resources>

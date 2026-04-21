@@ -1,6 +1,5 @@
 {
-  "_comment": "TO DO: Replace this config file with a file from your Salesforce org.",
-  "OrganizationId": "TBD",
-  "DeveloperName": "TBD",
-  "Url": "https://TBD.salesforce-scrt.com"
+  "OrganizationId": "00DoB000001PM6P",
+  "DeveloperName": "CWCMobile",
+  "Url": "https://orgfarm-ae26564531.test2.my.pc-rnd.salesforce-scrt.com"
 }
