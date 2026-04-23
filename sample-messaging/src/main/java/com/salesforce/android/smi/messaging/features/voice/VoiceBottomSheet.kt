@@ -2,18 +2,21 @@ package com.salesforce.android.smi.messaging.features.voice
 
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ModalBottomSheet
+import androidx.compose.material3.SheetValue
 import androidx.compose.material3.rememberModalBottomSheetState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import com.salesforce.android.smi.messaging.features.voice.components.VoiceBottomSheetExpanded
 import com.salesforce.android.smi.messaging.features.voice.components.VoiceBottomSheetMinimized
 import com.salesforce.android.smi.multimedia.common.api.session.MultimediaSession
 import com.salesforce.android.smi.multimedia.common.api.session.MultimediaSessionStatus
+import kotlinx.coroutines.launch
 
 /**
  * A modal bottom sheet that displays the voice call UI.
@@ -28,6 +31,7 @@ internal fun VoiceBottomSheet(
 ) {
     var showSheet by remember { mutableStateOf(false) }
     var isExpanded by remember { mutableStateOf(false) }
+    val scope = rememberCoroutineScope()
 
     val sheetState = rememberModalBottomSheetState(
         skipPartiallyExpanded = true
@@ -55,10 +59,30 @@ internal fun VoiceBottomSheet(
         }
     }
 
+    // Handle sheet state changes - if user swipes down, minimize instead of dismiss
+    LaunchedEffect(sheetState.currentValue) {
+        if (sheetState.currentValue == SheetValue.Hidden && isExpanded) {
+            // User swiped down on expanded sheet - minimize instead
+            isExpanded = false
+            scope.launch {
+                sheetState.show()
+            }
+        }
+    }
+
     if (showSheet && session != null) {
         ModalBottomSheet(
             onDismissRequest = {
-                onEndCall()
+                if (isExpanded) {
+                    // Don't dismiss, just minimize
+                    isExpanded = false
+                    scope.launch {
+                        sheetState.show()
+                    }
+                } else {
+                    // Minimized sheet dismissed - end call
+                    onEndCall()
+                }
             },
             sheetState = sheetState,
             modifier = modifier
