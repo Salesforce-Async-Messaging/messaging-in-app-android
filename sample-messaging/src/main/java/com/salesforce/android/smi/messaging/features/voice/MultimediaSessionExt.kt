@@ -46,7 +46,7 @@ private fun MultimediaSession.getAllAmplitudes(
             } else {
                 combine(participantList.map { it.audioTracks.firstTrackAmplitudes(barCount) }) {
                     it.toList()
-                }.onEach { Log.d(TAG, "Remote combined amplitudes: ${it.firstOrNull()?.take(3)?.joinToString()}") }
+                }
             }
         }
 }

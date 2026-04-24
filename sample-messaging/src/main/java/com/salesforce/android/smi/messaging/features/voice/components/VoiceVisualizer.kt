@@ -68,7 +68,6 @@ fun VoiceVisualizer(
     LaunchedEffect(amplitudes) {
         val sum = amplitudes.sum()
         val max = amplitudes.maxOrNull() ?: 0f
-        Log.d(TAG, "Amplitudes updated for $origin - sum=$sum, max=$max, values=${amplitudes.take(3).joinToString()}")
     }
 
     VoiceVisualizerContent(
