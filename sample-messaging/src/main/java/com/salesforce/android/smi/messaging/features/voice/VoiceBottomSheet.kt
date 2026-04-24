@@ -26,6 +26,7 @@ import kotlinx.coroutines.launch
 @Composable
 internal fun VoiceBottomSheet(
     session: MultimediaSession?,
+    conversationClient: com.salesforce.android.smi.core.ConversationClient,
     onEndCall: () -> Unit,
     modifier: Modifier = Modifier
 ) {
@@ -90,6 +91,7 @@ internal fun VoiceBottomSheet(
             if (isExpanded) {
                 VoiceBottomSheetExpanded(
                     session = session,
+                    conversationClient = conversationClient,
                     onEndCall = {
                         onEndCall()
                     }
