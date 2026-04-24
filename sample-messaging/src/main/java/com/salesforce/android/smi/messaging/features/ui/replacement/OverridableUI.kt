@@ -49,7 +49,10 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.util.UUID
 
-open class OverridableUI {
+open class OverridableUI(
+    var showVoiceIcon: Boolean = false,
+    var showUnreadMessageCounter: Boolean = false
+) {
     inner class CustomViewComponents(private val salesforceMessaging: SalesforceMessaging) : ViewComponents {
         @Composable
         override fun ChatFeedEntry(
@@ -81,6 +84,8 @@ open class OverridableUI {
                     VoiceTopAppBar(
                         salesforceMessaging.coreClient,
                         salesforceMessaging.conversationClient,
+                        showVoiceIcon,
+                        showUnreadMessageCounter,
                         content
                     )
                     // Show voice modal when there's an active session

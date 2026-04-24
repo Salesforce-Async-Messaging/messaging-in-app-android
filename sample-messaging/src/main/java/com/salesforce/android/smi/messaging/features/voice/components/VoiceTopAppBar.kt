@@ -35,6 +35,8 @@ import kotlinx.coroutines.flow.map
 fun VoiceTopAppBar(
     coreClient: CoreClient,
     conversationClient: ConversationClient,
+    showVoiceIcon: Boolean = false,
+    showUnreadMessageCounter: Boolean = false,
     defaultTopAppBar: @Composable () -> Unit
 ) {
     val navigation = LocalSMINavigation.current
@@ -53,15 +55,28 @@ fun VoiceTopAppBar(
     TopAppBar(
         title = {
             Box(modifier = Modifier.fillMaxWidth(), contentAlignment = Alignment.Center) {
-                BadgedBox(
-                    badge = {
-                        conversation?.unreadMessageCount
-                            ?.takeIf { it > 0 }?.toString()
-                            ?.let { count ->
-                                Badge { Text(count) }
+                if (showUnreadMessageCounter) {
+                    BadgedBox(
+                        badge = {
+                            conversation?.unreadMessageCount
+                                ?.takeIf { it > 0 }?.toString()
+                                ?.let { count ->
+                                    Badge { Text(count) }
+                                }
+                        }
+                    ) {
+                        conversation?.activeParticipants
+                            ?.filter { it.roleType == ParticipantRoleType.Agent || it.roleType == ParticipantRoleType.Chatbot }
+                            ?.map { it.displayName }
+                            ?.let {
+                                Text(
+                                    modifier = Modifier.padding(horizontal = 16.dp),
+                                    text = it.joinToString(", "),
+                                    textAlign = TextAlign.Center
+                                )
                             }
                     }
-                ) {
+                } else {
                     conversation?.activeParticipants
                         ?.filter { it.roleType == ParticipantRoleType.Agent || it.roleType == ParticipantRoleType.Chatbot }
                         ?.map { it.displayName }
@@ -82,7 +97,9 @@ fun VoiceTopAppBar(
             )
         },
         actions = {
-            VoiceButton(coreClient, conversationClient)
+            if (showVoiceIcon) {
+                VoiceButton(coreClient, conversationClient)
+            }
             IconButton(
                 onClick = { navigation.navigateToOptions() },
                 content = { Icons.Filled.Menu.run { Icon(this, this.name) } }

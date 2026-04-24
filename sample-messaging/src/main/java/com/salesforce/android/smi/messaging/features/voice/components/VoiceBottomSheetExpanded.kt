@@ -164,7 +164,8 @@ private fun LocalVisualizerContainer(session: MultimediaSession) {
         modifier = Modifier
             .size(SMIDimens.Size.dp64)
             .clip(CircleShape)
-            .background(MaterialTheme.colorScheme.secondary),
+            .background(MaterialTheme.colorScheme.surface)
+            .border(SMIDimens.Padding.dp2, MaterialTheme.colorScheme.onSurface.copy(alpha = 0.6f), CircleShape),
         contentAlignment = Alignment.Center
     ) {
         VoiceVisualizer(
@@ -179,7 +180,7 @@ private fun LocalVisualizerContainer(session: MultimediaSession) {
             cornerRadius = SMIDimens.Radius.dp8,
             minBarHeightFraction = 0.24f,
             isMirroredHorizontally = false,
-            barColor = MaterialTheme.colorScheme.onSecondary
+            barColor = MaterialTheme.colorScheme.onSurface
         )
     }
 }
@@ -191,23 +192,23 @@ private fun VoiceFloatingActionButton(
     contentDescription: String,
     modifier: Modifier = Modifier
 ) {
-    Box(
+    FloatingActionButton(
+        onClick = onClick,
         modifier = modifier
-            .border(SMIDimens.Padding.dp2, MaterialTheme.colorScheme.outline, CircleShape)
+            .border(SMIDimens.Padding.dp2, MaterialTheme.colorScheme.onSurface.copy(alpha = 0.6f), CircleShape),
+        shape = CircleShape,
+        containerColor = MaterialTheme.colorScheme.surface,
+        elevation = FloatingActionButtonDefaults.elevation(
+            defaultElevation = SMIDimens.zero,
+            pressedElevation = SMIDimens.zero,
+            focusedElevation = SMIDimens.zero,
+            hoveredElevation = SMIDimens.zero
+        )
     ) {
-        FloatingActionButton(
-            onClick = onClick,
-            containerColor = MaterialTheme.colorScheme.secondaryContainer,
-            elevation = FloatingActionButtonDefaults.elevation(
-                defaultElevation = SMIDimens.zero,
-                pressedElevation = SMIDimens.zero
-            )
-        ) {
-            Icon(
-                painter = icon,
-                contentDescription = contentDescription,
-                tint = MaterialTheme.colorScheme.onSecondaryContainer
-            )
-        }
+        Icon(
+            painter = icon,
+            contentDescription = contentDescription,
+            tint = MaterialTheme.colorScheme.onSurface
+        )
     }
 }

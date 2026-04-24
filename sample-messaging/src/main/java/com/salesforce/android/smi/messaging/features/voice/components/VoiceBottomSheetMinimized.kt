@@ -45,7 +45,7 @@ fun VoiceBottomSheetMinimized(
             .fillMaxWidth()
             .clickable(onClick = onExpand),
         shape = RoundedCornerShape(topStart = SMIDimens.Radius.dp20, topEnd = SMIDimens.Radius.dp20),
-        color = MaterialTheme.colorScheme.surfaceVariant
+        color = MaterialTheme.colorScheme.surface
     ) {
         Row(
             modifier = Modifier
@@ -78,7 +78,8 @@ private fun MinimizedVisualizerContainer(session: MultimediaSession) {
         modifier = Modifier
             .size(SMIDimens.Size.dp48)
             .clip(CircleShape)
-            .background(MaterialTheme.colorScheme.secondaryContainer),
+            .background(MaterialTheme.colorScheme.surface)
+            .border(SMIDimens.Padding.dp2, MaterialTheme.colorScheme.onSurface.copy(alpha = 0.6f), CircleShape),
         contentAlignment = Alignment.Center
     ) {
         VoiceVisualizer(
@@ -93,7 +94,7 @@ private fun MinimizedVisualizerContainer(session: MultimediaSession) {
             cornerRadius = SMIDimens.Radius.dp8,
             minBarHeightFraction = 0.24f,
             isMirroredHorizontally = false,
-            barColor = MaterialTheme.colorScheme.onSecondaryContainer
+            barColor = MaterialTheme.colorScheme.onSurface
         )
     }
 }
@@ -153,7 +154,10 @@ private fun VoiceIconButton(
 ) {
     Box(
         modifier = modifier
-            .border(SMIDimens.Padding.dp2, MaterialTheme.colorScheme.outline, CircleShape)
+            .size(SMIDimens.Size.dp48)
+            .clip(CircleShape)
+            .background(MaterialTheme.colorScheme.surface)
+            .border(SMIDimens.Padding.dp2, MaterialTheme.colorScheme.onSurface.copy(alpha = 0.6f), CircleShape)
     ) {
         IconButton(
             onClick = onClick,
@@ -162,7 +166,7 @@ private fun VoiceIconButton(
             Icon(
                 painter = icon,
                 contentDescription = contentDescription,
-                tint = MaterialTheme.colorScheme.onSecondaryContainer,
+                tint = MaterialTheme.colorScheme.onSurface,
                 modifier = Modifier.size(SMIDimens.Size.dp24)
             )
         }
