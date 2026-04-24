@@ -103,7 +103,7 @@ private fun MinimizedVisualizerContainer(session: MultimediaSession) {
 private fun MinimizedTextContainer(session: MultimediaSession) {
     Column(verticalArrangement = Arrangement.spacedBy(SMIDimens.Padding.dp2)) {
         Text(
-            text = session.displayName.ifEmpty { stringResource(R.string.smi_voice_call_default_name) },
+            text = session.displayName,
             style = MaterialTheme.typography.titleLarge,
             maxLines = 1,
             color = MaterialTheme.colorScheme.onSurface

@@ -71,7 +71,7 @@ private fun ExpandedMiddleContainer(session: MultimediaSession) {
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Text(
-            text = session.displayName.ifEmpty { stringResource(R.string.smi_voice_call_default_name) },
+            text = session.displayName,
             style = MaterialTheme.typography.headlineMedium,
             color = MaterialTheme.colorScheme.onSurface
         )
