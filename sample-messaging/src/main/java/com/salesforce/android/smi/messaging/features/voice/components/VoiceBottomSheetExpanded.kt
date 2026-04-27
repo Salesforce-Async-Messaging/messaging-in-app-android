@@ -178,7 +178,13 @@ private fun ExpandedEndContainer(
         LocalVisualizerContainer(session = session)
 
         VoiceFloatingActionButton(
-            onClick = { session.audioInput(!session.isMicrophoneMuted) },
+            onClick = {
+                if (session.isMicrophoneMuted) {
+                    session.unmuteMicrophone()
+                } else {
+                    session.muteMicrophone()
+                }
+            },
             icon = if (session.isMicrophoneMuted) VoiceIcons.mute else VoiceIcons.unmute,
             contentDescription = stringResource(
                 if (session.isMicrophoneMuted) {
