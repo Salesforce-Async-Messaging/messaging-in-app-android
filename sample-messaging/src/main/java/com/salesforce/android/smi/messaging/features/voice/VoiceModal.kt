@@ -26,6 +26,7 @@ fun VoiceModal(
 
     VoiceBottomSheet(
         session = voiceState.activeSession,
+        conversationClient = conversationClient,
         onEndCall = {
             voiceState.scope.launch {
                 voiceState.activeSession?.end()

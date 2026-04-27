@@ -19,24 +19,68 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
+import android.util.Log
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.derivedStateOf
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.res.stringResource
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.salesforce.android.smi.common.api.Result
+import com.salesforce.android.smi.common.api.data
+import com.salesforce.android.smi.core.ConversationClient
 import com.salesforce.android.smi.messaging.R
 import com.salesforce.android.smi.messaging.features.voice.VoiceIcons
 import com.salesforce.android.smi.messaging.theme.SMIDimens
 import com.salesforce.android.smi.multimedia.common.api.participant.MultimediaParticipantOrigin
 import com.salesforce.android.smi.multimedia.common.api.session.MultimediaSession
+import com.salesforce.android.smi.network.data.domain.conversationEntry.ConversationEntry
+import com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload.EntryPayload
+import com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload.message.component.modality.Modality
+import com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload.message.format.ChoicesFormat
+import com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload.message.format.StaticContentFormat
 
 @Composable
 fun VoiceBottomSheetExpanded(
     session: MultimediaSession,
+    conversationClient: ConversationClient,
     onEndCall: () -> Unit,
     modifier: Modifier = Modifier
 ) {
+    val conversation by conversationClient.conversation
+        .collectAsStateWithLifecycle(initialValue = Result.Loading)
+
+    val conversationEntries by conversationClient.conversationEntriesFlow(limit = 10)
+        .collectAsStateWithLifecycle(initialValue = Result.Loading)
+
+    val latestVoiceMessage by remember {
+        derivedStateOf {
+            conversation.data?.let { conv ->
+                val isVoiceActive = conv.activeModalities.contains(Modality.Voice)
+
+                if (isVoiceActive) {
+                    conversationEntries.data?.firstNotNullOfOrNull { entry ->
+                        val messagePayload = entry.payload as? EntryPayload.MessagePayload
+                        when (val content = messagePayload?.content) {
+                            is ChoicesFormat.DisplayableOptionsFormat -> content.text
+                            is ChoicesFormat.QuickRepliesFormat -> content.text
+                            is StaticContentFormat.AttachmentsFormat -> content.text
+                            is StaticContentFormat.RichLinkFormat -> content.text
+                            is StaticContentFormat.TextFormat -> content.text
+                            is StaticContentFormat.WebViewFormat -> content.title.title
+                            else -> null
+                        }
+                    }
+                } else {
+                    null
+                }
+            }
+        }
+    }
     Surface(
         modifier = modifier.fillMaxSize(),
         color = MaterialTheme.colorScheme.surface
@@ -56,7 +100,7 @@ fun VoiceBottomSheetExpanded(
             Spacer(Modifier.weight(1f))
             ExpandedStartContainer(session = session)
             Spacer(Modifier.height(SMIDimens.Padding.dp32))
-            ExpandedTranscriptPlaceholder()
+            ExpandedTranscriptDisplay(latestVoiceMessage = latestVoiceMessage)
             Spacer(Modifier.weight(1f))
             ExpandedEndContainer(session = session, onEndCall = onEndCall)
             Spacer(Modifier.height(SMIDimens.Padding.dp32))
@@ -110,17 +154,14 @@ private fun ExpandedStartContainer(session: MultimediaSession) {
 }
 
 @Composable
-private fun ExpandedTranscriptPlaceholder() {
+private fun ExpandedTranscriptDisplay(latestVoiceMessage: String?) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
             .padding(horizontal = SMIDimens.Padding.dp24)
     ) {
         Text(
-            text = "Lorem ipsum dolor sit amet, " +
-                "consectetur adipiscing elit, sed do eiusmod tempor incididunt" +
-                " ut labore et dolore magna aliqua. Ut enim ad minim veniam," +
-                " quis nostrud exercitation ullamco laboris.",
+            text = latestVoiceMessage ?: "",
             style = MaterialTheme.typography.titleLarge,
             color = MaterialTheme.colorScheme.onSurface
         )
