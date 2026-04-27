@@ -93,7 +93,7 @@ private fun MinimizedVisualizerContainer(session: MultimediaSession) {
             barSpacing = SMIDimens.Padding.dp2,
             cornerRadius = SMIDimens.Radius.dp8,
             minBarHeightFraction = 0.24f,
-            isMirroredHorizontally = false,
+            isMirroredHorizontally = true,
             barColor = MaterialTheme.colorScheme.onSurface
         )
     }

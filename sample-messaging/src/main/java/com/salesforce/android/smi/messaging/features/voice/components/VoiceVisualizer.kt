@@ -2,10 +2,6 @@ package com.salesforce.android.smi.messaging.features.voice.components
 
 import android.util.Log
 import androidx.compose.foundation.Canvas
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -19,10 +15,10 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.drawscope.DrawScope
 import androidx.compose.ui.unit.Dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import com.salesforce.android.smi.multimedia.common.api.participant.MultimediaParticipantOrigin
-import com.salesforce.android.smi.multimedia.common.api.session.MultimediaSession
 import com.salesforce.android.smi.messaging.features.voice.getMaxAmplitudes
 import com.salesforce.android.smi.messaging.theme.SMIDimens
+import com.salesforce.android.smi.multimedia.common.api.participant.MultimediaParticipantOrigin
+import com.salesforce.android.smi.multimedia.common.api.session.MultimediaSession
 import kotlin.math.abs
 
 private const val TAG = "VoiceVisualizer"
@@ -154,23 +150,56 @@ private fun DrawScope.renderCenterOut(
     val halfWidth = size.width / 2
     val maxBarsPerSide = ((halfWidth + barSpacingPx) / totalBarWidth).toInt()
 
-    val step = if (amplitudes.size > maxBarsPerSide) amplitudes.size.toFloat() / maxBarsPerSide else 1f
-    val barsPerSide = minOf(amplitudes.size, maxBarsPerSide)
+    val hasCenter = amplitudes.size % 2 != 0
+    val barsPerSide = amplitudes.size / 2
+    val effectiveBarsPerSide = minOf(barsPerSide, maxBarsPerSide)
+    val step = if (barsPerSide > maxBarsPerSide) barsPerSide.toFloat() / maxBarsPerSide else 1f
 
     val centerX = size.width / 2
 
-    for (i in 0 until barsPerSide) {
-        val amplitudeIndex = (i * step).toInt().coerceIn(0, amplitudes.lastIndex)
+    // Draw center bar for odd counts (index 0 = center)
+    if (hasCenter) {
+        val centerAmplitude = abs(amplitudes[0]).coerceIn(0f, 1f)
+        val centerBarHeight = (minBarHeight + (maxBarHeight - minBarHeight) * centerAmplitude)
+            .coerceAtLeast(minBarHeight)
+
+        drawBar(
+            x = centerX - barWidthPx / 2,
+            barHeight = centerBarHeight,
+            barWidthPx = barWidthPx,
+            centerY = centerY,
+            totalHeight = size.height,
+            barColor = barColor,
+            cornerRadiusPx = cornerRadiusPx,
+            isCentered = isCentered,
+            isMirroredVertically = isMirroredVertically
+        )
+    }
+
+    // Draw mirrored bars on each side (lower indices = inner, higher indices = outer)
+    for (i in 0 until effectiveBarsPerSide) {
+        val amplitudeIndex = if (hasCenter) {
+            ((i + 1) * step).toInt().coerceIn(0, amplitudes.lastIndex)
+        } else {
+            (i * step).toInt().coerceIn(0, amplitudes.lastIndex)
+        }
         val amplitude = abs(amplitudes[amplitudeIndex]).coerceIn(0f, 1f)
 
         val barHeight = (minBarHeight + (maxBarHeight - minBarHeight) * amplitude)
             .coerceAtLeast(minBarHeight)
 
+        // Offset from center accounts for center bar when odd
+        val offset = if (hasCenter) {
+            barWidthPx / 2 + barSpacingPx + i * totalBarWidth
+        } else {
+            barSpacingPx / 2 + i * totalBarWidth
+        }
+
         // Right side
-        val xRight = centerX + (barSpacingPx / 2) + i * totalBarWidth
+        val xRight = centerX + offset
 
         // Left side
-        val xLeft = centerX - (barSpacingPx / 2) - barWidthPx - i * totalBarWidth
+        val xLeft = centerX - offset - barWidthPx
 
         drawBar(
             x = xRight,
