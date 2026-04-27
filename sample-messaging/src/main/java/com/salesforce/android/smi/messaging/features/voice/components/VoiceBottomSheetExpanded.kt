@@ -19,7 +19,6 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
-import android.util.Log
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
@@ -38,7 +37,6 @@ import com.salesforce.android.smi.messaging.features.voice.VoiceIcons
 import com.salesforce.android.smi.messaging.theme.SMIDimens
 import com.salesforce.android.smi.multimedia.common.api.participant.MultimediaParticipantOrigin
 import com.salesforce.android.smi.multimedia.common.api.session.MultimediaSession
-import com.salesforce.android.smi.network.data.domain.conversationEntry.ConversationEntry
 import com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload.EntryPayload
 import com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload.message.component.modality.Modality
 import com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload.message.format.ChoicesFormat
@@ -147,7 +145,7 @@ private fun ExpandedStartContainer(session: MultimediaSession) {
             barSpacing = SMIDimens.Padding.dp8,
             cornerRadius = SMIDimens.Radius.dp8,
             minBarHeightFraction = 0.24f,
-            isMirroredHorizontally = false,
+            isMirroredHorizontally = true,
             barColor = MaterialTheme.colorScheme.onPrimary
         )
     }
@@ -220,7 +218,7 @@ private fun LocalVisualizerContainer(session: MultimediaSession) {
             barSpacing = SMIDimens.Padding.dp2,
             cornerRadius = SMIDimens.Radius.dp8,
             minBarHeightFraction = 0.24f,
-            isMirroredHorizontally = false,
+            isMirroredHorizontally = true,
             barColor = MaterialTheme.colorScheme.onSurface
         )
     }
