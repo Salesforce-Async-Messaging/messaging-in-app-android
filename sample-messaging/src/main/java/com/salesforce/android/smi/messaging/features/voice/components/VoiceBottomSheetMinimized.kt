@@ -126,7 +126,13 @@ private fun MinimizedEndContainer(
         horizontalArrangement = Arrangement.spacedBy(SMIDimens.Padding.dp8)
     ) {
         VoiceIconButton(
-            onClick = { session.audioInput(!session.isMicrophoneMuted) },
+            onClick = {
+                if (session.isMicrophoneMuted) {
+                    session.unmuteMicrophone()
+                } else {
+                    session.muteMicrophone()
+                }
+            },
             icon = if (session.isMicrophoneMuted) VoiceIcons.mute else VoiceIcons.unmute,
             contentDescription = stringResource(
                 if (session.isMicrophoneMuted) {
