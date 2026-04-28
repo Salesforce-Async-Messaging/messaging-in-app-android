@@ -45,7 +45,7 @@ fun VoiceButton(
 
                 if (isSessionActive) {
                     voiceState.scope.launch {
-                        conversationClient.changeMode(Modality.Messaging)
+                        conversationClient.changeModality(Modality.Messaging)
                     }
                 } else {
                     voiceState.requestPermissionAndStartCall()

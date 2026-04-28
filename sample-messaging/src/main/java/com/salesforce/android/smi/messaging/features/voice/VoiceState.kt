@@ -38,7 +38,7 @@ fun rememberVoiceState(
 
     val requestPermissionAndStartCall = rememberRecordAudioPermission {
         scope.launch {
-            conversationClient.changeMode(Modality.Voice)
+            conversationClient.changeModality(Modality.Voice)
         }
     }
 
