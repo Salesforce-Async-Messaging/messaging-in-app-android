@@ -30,7 +30,7 @@ fun VoiceModal(
         onEndCall = {
             voiceState.scope.launch {
                 voiceState.activeSession?.end()
-                conversationClient.changeMode(Modality.Messaging)
+                conversationClient.changeModality(Modality.Messaging)
             }
         }
     )
