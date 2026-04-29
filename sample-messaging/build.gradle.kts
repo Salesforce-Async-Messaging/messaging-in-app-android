@@ -40,13 +40,14 @@ if (project.hasProperty("substituteSDK") && project.property("substituteSDK") ==
     configurations.all {
         resolutionStrategy.dependencySubstitution {
             substitute(module("com.salesforce.service:messaging-inapp-ui")).using(project(":sdk:ui"))
+            substitute(module("com.salesforce.service:messaging-inapp-multimedia-core")).using(project(":sdk:multimedia:core"))
         }
     }
 }
 
 dependencies {
     api(libs.salesforce.messaging)
-    api(project(":sdk:multimedia:core"))
+    api(libs.salesforce.messaging.multimedia)
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
