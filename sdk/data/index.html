@@ -1,42 +1,39 @@
 <!doctype html>
-<html class="no-js">
+<html class="no-js" lang="en">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
     <title>data</title>
-<link href="../../images/logo-icon.svg" rel="icon" type="image/svg">    <script>var pathToRoot = "../../";</script>
-    <script>document.documentElement.classList.replace("no-js","js");</script>
+<link href="../../images/logo-icon.svg" rel="icon" type="image/svg"><script>var pathToRoot = "../../";</script>
+    <script>document.documentElement.classList.replace("no-js", "js");</script>
     <script>const storage = localStorage.getItem("dokka-dark-mode")
-    if (storage == null) {
+      if (storage == null) {
         const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
         if (osDarkSchemePreferred === true) {
-            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
         }
-    } else {
+      } else {
         const savedDarkMode = JSON.parse(storage)
-        if(savedDarkMode === true) {
-            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        if (savedDarkMode === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
         }
-    }
+      }
     </script>
-<script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async></script>
 <script type="text/javascript" src="../../scripts/sourceset_dependencies.js" async></script>
 <link href="../../styles/style.css" rel="Stylesheet">
 <link href="../../styles/main.css" rel="Stylesheet">
 <link href="../../styles/prism.css" rel="Stylesheet">
 <link href="../../styles/logo-styles.css" rel="Stylesheet">
-<link href="../../styles/font-jb-sans-auto.css" rel="Stylesheet">
 <link href="../../ui-kit/ui-kit.min.css" rel="Stylesheet">
-<script type="text/javascript" src="../../scripts/clipboard.js" async></script>
+<script type="text/javascript" src="../../scripts/safe-local-storage_blocking.js"></script>
 <script type="text/javascript" src="../../scripts/navigation-loader.js" async></script>
 <script type="text/javascript" src="../../scripts/platform-content-handler.js" async></script>
 <script type="text/javascript" src="../../scripts/main.js" defer></script>
 <script type="text/javascript" src="../../scripts/prism.js" async></script>
-<script type="text/javascript" src="../../ui-kit/ui-kit.min.js" defer></script>
-<script type="text/javascript" src="../../scripts/symbol-parameters-wrapper_deferred.js" defer></script></head>
+<script type="text/javascript" src="../../ui-kit/ui-kit.min.js" defer></script></head>
 <body>
-    <div class="root">
-    <nav class="navigation theme-dark" id="navigation-wrapper">
-<a class="library-name--link" href="../../index.html">
+<div class="root">
+    <header class="navigation theme-dark" id="navigation-wrapper" role="banner">
+<a class="library-name--link" href="../../index.html" tabindex="1">
                     Messaging for In-App Android
             </a>        <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle" type="button">Toggle table of contents
         </button>
@@ -44,19 +41,19 @@
         <div class="library-version" id="library-version">
         </div>
         <div class="navigation-controls">
-        <div class="filter-section filter-section_loading" id="filter-section">
-                <button class="platform-tag platform-selector jvm-like" data-active="" data-filter=":sdk:data:dokkaHtmlPartial/release">androidJvm</button>
+        <ul class="filter-section filter-section_loading" id="filter-section" aria-label="Target filter">
+                <button class="platform-tag platform-selector jvm-like" data-active="" aria-pressed="true" data-filter=":sdk:data/main">androidJvm</button>
             <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
                 <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox" data-role="dropdown-toggle" aria-controls="platform-tags-listbox" aria-haspopup="listbox" aria-expanded="false" aria-label="Toggle source sets"></button>
-                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox">
-                    <div class="dropdown--header"><span>Platform filter</span>
-                        <button class="button" data-role="dropdown-toggle" aria-label="Close platform filter">
+                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox" aria-label="Target filter">
+                    <div class="dropdown--header"><span>Target filter</span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close target filter">
                             <i class="ui-kit-icon ui-kit-icon_cross"></i>
                         </button>
                     </div>
                         <li role="option" class="dropdown--option platform-selector-option jvm-like" tabindex="0">
                             <label class="checkbox">
-                                <input type="checkbox" class="checkbox--input" id=":sdk:data:dokkaHtmlPartial/release" data-filter=":sdk:data:dokkaHtmlPartial/release">
+                                <input type="checkbox" class="checkbox--input" id=":sdk:data/main" data-filter=":sdk:data/main">
                                 <span class="checkbox--icon"></span>
                                 androidJvm
                             </label>
@@ -64,48 +61,50 @@
                 </ul>
                 <div class="dropdown--overlay"></div>
             </div>
-        </div>
+        </ul>
             <button class="navigation-controls--btn navigation-controls--btn_theme" id="theme-toggle-button" type="button">Switch theme
             </button>
             <div class="navigation-controls--btn navigation-controls--btn_search" id="searchBar" role="button">Search in
                 API
             </div>
         </div>
-    </nav>
-        <div id="container">
-            <div class="sidebar" id="leftColumn">
-                <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
-                    <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list" data-role="dropdown-listbox">
-                        <div class="dropdown--header">
+    </header>
+    <div id="container">
+        <nav id="leftColumn" class="sidebar" data-item-type="SECTION" data-item-config="{&quot;defaultSize&quot;: 280, &quot;minSize&quot;: 200, &quot;maxSize&quot;: 400}">
+            <a class="toc--skip-link" href="#main">Skip to content</a>
+            <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
+                <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list" data-role="dropdown-listbox" aria-label="Table of contents">
+                    <div class="dropdown--header">
                             <span>
                                     Messaging for In-App Android
                             </span>
-                            <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
-                                <i class="ui-kit-icon ui-kit-icon_cross"></i>
-                            </button>
-                        </div>
-                        <div class="sidebar--inner" id="sideMenu"></div>
-                    </ul>
-                    <div class="dropdown--overlay"></div>
-                </div>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                    <div class="sidebar--inner" id="sideMenu"></div>
+                </ul>
+                <div class="dropdown--overlay"></div>
             </div>
-            <div id="main">
-<div class="main-content" id="content" pageids="data::////PointingToDeclaration//-467771735">
+        </nav>
+        <div id="resizer" class="resizer" data-item-type="BAR"></div>
+        <div id="main" data-item-type="SECTION" role="main">
+<div class="main-content" id="content" pageids="data::////PointingToDeclaration//234691071">
   <div class="breadcrumbs"></div>
   <div class="cover ">
     <h1 class="cover"><span><span>data</span></span></h1>
   </div>
   <h2 class="">Packages</h2>
-  <div class="table"><a data-name="334402110%2FPackages%2F-467771735" anchor-label="com.salesforce.android.smi.network.api.auth" id="334402110%2FPackages%2F-467771735" data-filterable-set=":sdk:data:dokkaHtmlPartial/release"></a>
-    <div class="table-row" data-filterable-current=":sdk:data:dokkaHtmlPartial/release" data-filterable-set=":sdk:data:dokkaHtmlPartial/release">
+  <div class="table"><a data-name="334402110%2FPackages%2F234691071" anchor-label="com.salesforce.android.smi.network.api.auth" id="334402110%2FPackages%2F234691071" data-filterable-set=":sdk:data/main"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":sdk:data/main" data-filterable-set=":sdk:data/main">
       <div>
         <div class="main-subrow ">
           <div class=""><span class="inline-flex">
               <div><a href="com.salesforce.android.smi.network.api.auth/index.html">com.salesforce.android.smi.network.api.auth</a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="334402110%2FPackages%2F-467771735"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="334402110%2FPackages%2F234691071"></span>
                 <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
               </span></span></div>
-          <div class="pull-right">
+          <div class="pull-right platform-tags--wrapper">
             <div class="platform-tags no-gutters">
               <div class="platform-tag jvm-like">androidJvm</div>
             </div>
@@ -114,16 +113,16 @@
         <div></div>
       </div>
     </div>
-<a data-name="1231253866%2FPackages%2F-467771735" anchor-label="com.salesforce.android.smi.network.api.rest" id="1231253866%2FPackages%2F-467771735" data-filterable-set=":sdk:data:dokkaHtmlPartial/release"></a>
-    <div class="table-row" data-filterable-current=":sdk:data:dokkaHtmlPartial/release" data-filterable-set=":sdk:data:dokkaHtmlPartial/release">
+<a data-name="1231253866%2FPackages%2F234691071" anchor-label="com.salesforce.android.smi.network.api.rest" id="1231253866%2FPackages%2F234691071" data-filterable-set=":sdk:data/main"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":sdk:data/main" data-filterable-set=":sdk:data/main">
       <div>
         <div class="main-subrow ">
           <div class=""><span class="inline-flex">
               <div><a href="com.salesforce.android.smi.network.api.rest/index.html">com.salesforce.android.smi.network.api.rest</a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1231253866%2FPackages%2F-467771735"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1231253866%2FPackages%2F234691071"></span>
                 <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
               </span></span></div>
-          <div class="pull-right">
+          <div class="pull-right platform-tags--wrapper">
             <div class="platform-tags no-gutters">
               <div class="platform-tag jvm-like">androidJvm</div>
             </div>
@@ -132,16 +131,16 @@
         <div></div>
       </div>
     </div>
-<a data-name="-992606448%2FPackages%2F-467771735" anchor-label="com.salesforce.android.smi.network.data.domain.auth" id="-992606448%2FPackages%2F-467771735" data-filterable-set=":sdk:data:dokkaHtmlPartial/release"></a>
-    <div class="table-row" data-filterable-current=":sdk:data:dokkaHtmlPartial/release" data-filterable-set=":sdk:data:dokkaHtmlPartial/release">
+<a data-name="-992606448%2FPackages%2F234691071" anchor-label="com.salesforce.android.smi.network.data.domain.auth" id="-992606448%2FPackages%2F234691071" data-filterable-set=":sdk:data/main"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":sdk:data/main" data-filterable-set=":sdk:data/main">
       <div>
         <div class="main-subrow ">
           <div class=""><span class="inline-flex">
               <div><a href="com.salesforce.android.smi.network.data.domain.auth/index.html">com.salesforce.android.smi.network.data.domain.auth</a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-992606448%2FPackages%2F-467771735"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-992606448%2FPackages%2F234691071"></span>
                 <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
               </span></span></div>
-          <div class="pull-right">
+          <div class="pull-right platform-tags--wrapper">
             <div class="platform-tags no-gutters">
               <div class="platform-tag jvm-like">androidJvm</div>
             </div>
@@ -150,16 +149,16 @@
         <div></div>
       </div>
     </div>
-<a data-name="-1143081941%2FPackages%2F-467771735" anchor-label="com.salesforce.android.smi.network.data.domain.conversation" id="-1143081941%2FPackages%2F-467771735" data-filterable-set=":sdk:data:dokkaHtmlPartial/release"></a>
-    <div class="table-row" data-filterable-current=":sdk:data:dokkaHtmlPartial/release" data-filterable-set=":sdk:data:dokkaHtmlPartial/release">
+<a data-name="-1143081941%2FPackages%2F234691071" anchor-label="com.salesforce.android.smi.network.data.domain.conversation" id="-1143081941%2FPackages%2F234691071" data-filterable-set=":sdk:data/main"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":sdk:data/main" data-filterable-set=":sdk:data/main">
       <div>
         <div class="main-subrow ">
           <div class=""><span class="inline-flex">
               <div><a href="com.salesforce.android.smi.network.data.domain.conversation/index.html">com.salesforce.android.smi.network.data.domain.conversation</a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1143081941%2FPackages%2F-467771735"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1143081941%2FPackages%2F234691071"></span>
                 <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
               </span></span></div>
-          <div class="pull-right">
+          <div class="pull-right platform-tags--wrapper">
             <div class="platform-tags no-gutters">
               <div class="platform-tag jvm-like">androidJvm</div>
             </div>
@@ -168,16 +167,16 @@
         <div></div>
       </div>
     </div>
-<a data-name="-184592117%2FPackages%2F-467771735" anchor-label="com.salesforce.android.smi.network.data.domain.conversationEntry" id="-184592117%2FPackages%2F-467771735" data-filterable-set=":sdk:data:dokkaHtmlPartial/release"></a>
-    <div class="table-row" data-filterable-current=":sdk:data:dokkaHtmlPartial/release" data-filterable-set=":sdk:data:dokkaHtmlPartial/release">
+<a data-name="-184592117%2FPackages%2F234691071" anchor-label="com.salesforce.android.smi.network.data.domain.conversationEntry" id="-184592117%2FPackages%2F234691071" data-filterable-set=":sdk:data/main"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":sdk:data/main" data-filterable-set=":sdk:data/main">
       <div>
         <div class="main-subrow ">
           <div class=""><span class="inline-flex">
               <div><a href="com.salesforce.android.smi.network.data.domain.conversationEntry/index.html">com.salesforce.android.smi.network.data.domain.conversationEntry</a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-184592117%2FPackages%2F-467771735"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-184592117%2FPackages%2F234691071"></span>
                 <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
               </span></span></div>
-          <div class="pull-right">
+          <div class="pull-right platform-tags--wrapper">
             <div class="platform-tags no-gutters">
               <div class="platform-tag jvm-like">androidJvm</div>
             </div>
@@ -186,16 +185,16 @@
         <div></div>
       </div>
     </div>
-<a data-name="1396918979%2FPackages%2F-467771735" anchor-label="com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload" id="1396918979%2FPackages%2F-467771735" data-filterable-set=":sdk:data:dokkaHtmlPartial/release"></a>
-    <div class="table-row" data-filterable-current=":sdk:data:dokkaHtmlPartial/release" data-filterable-set=":sdk:data:dokkaHtmlPartial/release">
+<a data-name="1396918979%2FPackages%2F234691071" anchor-label="com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload" id="1396918979%2FPackages%2F234691071" data-filterable-set=":sdk:data/main"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":sdk:data/main" data-filterable-set=":sdk:data/main">
       <div>
         <div class="main-subrow ">
           <div class=""><span class="inline-flex">
               <div><a href="com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload/index.html">com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload</a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1396918979%2FPackages%2F-467771735"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1396918979%2FPackages%2F234691071"></span>
                 <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
               </span></span></div>
-          <div class="pull-right">
+          <div class="pull-right platform-tags--wrapper">
             <div class="platform-tags no-gutters">
               <div class="platform-tag jvm-like">androidJvm</div>
             </div>
@@ -204,16 +203,16 @@
         <div></div>
       </div>
     </div>
-<a data-name="-1438638545%2FPackages%2F-467771735" anchor-label="com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload.event" id="-1438638545%2FPackages%2F-467771735" data-filterable-set=":sdk:data:dokkaHtmlPartial/release"></a>
-    <div class="table-row" data-filterable-current=":sdk:data:dokkaHtmlPartial/release" data-filterable-set=":sdk:data:dokkaHtmlPartial/release">
+<a data-name="-1438638545%2FPackages%2F234691071" anchor-label="com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload.event" id="-1438638545%2FPackages%2F234691071" data-filterable-set=":sdk:data/main"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":sdk:data/main" data-filterable-set=":sdk:data/main">
       <div>
         <div class="main-subrow ">
           <div class=""><span class="inline-flex">
               <div><a href="com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload.event/index.html">com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload.event</a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1438638545%2FPackages%2F-467771735"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1438638545%2FPackages%2F234691071"></span>
                 <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
               </span></span></div>
-          <div class="pull-right">
+          <div class="pull-right platform-tags--wrapper">
             <div class="platform-tags no-gutters">
               <div class="platform-tag jvm-like">androidJvm</div>
             </div>
@@ -222,16 +221,16 @@
         <div></div>
       </div>
     </div>
-<a data-name="-1844138159%2FPackages%2F-467771735" anchor-label="com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload.event.entries" id="-1844138159%2FPackages%2F-467771735" data-filterable-set=":sdk:data:dokkaHtmlPartial/release"></a>
-    <div class="table-row" data-filterable-current=":sdk:data:dokkaHtmlPartial/release" data-filterable-set=":sdk:data:dokkaHtmlPartial/release">
+<a data-name="-1844138159%2FPackages%2F234691071" anchor-label="com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload.event.entries" id="-1844138159%2FPackages%2F234691071" data-filterable-set=":sdk:data/main"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":sdk:data/main" data-filterable-set=":sdk:data/main">
       <div>
         <div class="main-subrow ">
           <div class=""><span class="inline-flex">
               <div><a href="com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload.event.entries/index.html">com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload.event.entries</a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1844138159%2FPackages%2F-467771735"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1844138159%2FPackages%2F234691071"></span>
                 <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
               </span></span></div>
-          <div class="pull-right">
+          <div class="pull-right platform-tags--wrapper">
             <div class="platform-tags no-gutters">
               <div class="platform-tag jvm-like">androidJvm</div>
             </div>
@@ -240,16 +239,16 @@
         <div></div>
       </div>
     </div>
-<a data-name="759336650%2FPackages%2F-467771735" anchor-label="com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload.message.component.attachment" id="759336650%2FPackages%2F-467771735" data-filterable-set=":sdk:data:dokkaHtmlPartial/release"></a>
-    <div class="table-row" data-filterable-current=":sdk:data:dokkaHtmlPartial/release" data-filterable-set=":sdk:data:dokkaHtmlPartial/release">
+<a data-name="759336650%2FPackages%2F234691071" anchor-label="com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload.message.component.attachment" id="759336650%2FPackages%2F234691071" data-filterable-set=":sdk:data/main"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":sdk:data/main" data-filterable-set=":sdk:data/main">
       <div>
         <div class="main-subrow ">
           <div class=""><span class="inline-flex">
               <div><a href="com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload.message.component.attachment/index.html">com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload.message.component.attachment</a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="759336650%2FPackages%2F-467771735"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="759336650%2FPackages%2F234691071"></span>
                 <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
               </span></span></div>
-          <div class="pull-right">
+          <div class="pull-right platform-tags--wrapper">
             <div class="platform-tags no-gutters">
               <div class="platform-tag jvm-like">androidJvm</div>
             </div>
@@ -258,16 +257,16 @@
         <div></div>
       </div>
     </div>
-<a data-name="140444969%2FPackages%2F-467771735" anchor-label="com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload.message.component.citations" id="140444969%2FPackages%2F-467771735" data-filterable-set=":sdk:data:dokkaHtmlPartial/release"></a>
-    <div class="table-row" data-filterable-current=":sdk:data:dokkaHtmlPartial/release" data-filterable-set=":sdk:data:dokkaHtmlPartial/release">
+<a data-name="140444969%2FPackages%2F234691071" anchor-label="com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload.message.component.citations" id="140444969%2FPackages%2F234691071" data-filterable-set=":sdk:data/main"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":sdk:data/main" data-filterable-set=":sdk:data/main">
       <div>
         <div class="main-subrow ">
           <div class=""><span class="inline-flex">
               <div><a href="com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload.message.component.citations/index.html">com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload.message.component.citations</a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="140444969%2FPackages%2F-467771735"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="140444969%2FPackages%2F234691071"></span>
                 <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
               </span></span></div>
-          <div class="pull-right">
+          <div class="pull-right platform-tags--wrapper">
             <div class="platform-tags no-gutters">
               <div class="platform-tag jvm-like">androidJvm</div>
             </div>
@@ -276,16 +275,16 @@
         <div></div>
       </div>
     </div>
-<a data-name="1046152556%2FPackages%2F-467771735" anchor-label="com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload.message.component.context" id="1046152556%2FPackages%2F-467771735" data-filterable-set=":sdk:data:dokkaHtmlPartial/release"></a>
-    <div class="table-row" data-filterable-current=":sdk:data:dokkaHtmlPartial/release" data-filterable-set=":sdk:data:dokkaHtmlPartial/release">
+<a data-name="1046152556%2FPackages%2F234691071" anchor-label="com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload.message.component.context" id="1046152556%2FPackages%2F234691071" data-filterable-set=":sdk:data/main"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":sdk:data/main" data-filterable-set=":sdk:data/main">
       <div>
         <div class="main-subrow ">
           <div class=""><span class="inline-flex">
               <div><a href="com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload.message.component.context/index.html">com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload.message.component.context</a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1046152556%2FPackages%2F-467771735"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1046152556%2FPackages%2F234691071"></span>
                 <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
               </span></span></div>
-          <div class="pull-right">
+          <div class="pull-right platform-tags--wrapper">
             <div class="platform-tags no-gutters">
               <div class="platform-tag jvm-like">androidJvm</div>
             </div>
@@ -294,16 +293,34 @@
         <div></div>
       </div>
     </div>
-<a data-name="480157509%2FPackages%2F-467771735" anchor-label="com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload.message.component.error" id="480157509%2FPackages%2F-467771735" data-filterable-set=":sdk:data:dokkaHtmlPartial/release"></a>
-    <div class="table-row" data-filterable-current=":sdk:data:dokkaHtmlPartial/release" data-filterable-set=":sdk:data:dokkaHtmlPartial/release">
+<a data-name="2055671018%2FPackages%2F234691071" anchor-label="com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload.message.component.conversation" id="2055671018%2FPackages%2F234691071" data-filterable-set=":sdk:data/main"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":sdk:data/main" data-filterable-set=":sdk:data/main">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload.message.component.conversation/index.html">com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload.message.component.conversation</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2055671018%2FPackages%2F234691071"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right platform-tags--wrapper">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">androidJvm</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="480157509%2FPackages%2F234691071" anchor-label="com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload.message.component.error" id="480157509%2FPackages%2F234691071" data-filterable-set=":sdk:data/main"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":sdk:data/main" data-filterable-set=":sdk:data/main">
       <div>
         <div class="main-subrow ">
           <div class=""><span class="inline-flex">
               <div><a href="com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload.message.component.error/index.html">com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload.message.component.error</a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="480157509%2FPackages%2F-467771735"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="480157509%2FPackages%2F234691071"></span>
                 <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
               </span></span></div>
-          <div class="pull-right">
+          <div class="pull-right platform-tags--wrapper">
             <div class="platform-tags no-gutters">
               <div class="platform-tag jvm-like">androidJvm</div>
             </div>
@@ -312,16 +329,16 @@
         <div></div>
       </div>
     </div>
-<a data-name="-1105327189%2FPackages%2F-467771735" anchor-label="com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload.message.component.experienceType" id="-1105327189%2FPackages%2F-467771735" data-filterable-set=":sdk:data:dokkaHtmlPartial/release"></a>
-    <div class="table-row" data-filterable-current=":sdk:data:dokkaHtmlPartial/release" data-filterable-set=":sdk:data:dokkaHtmlPartial/release">
+<a data-name="-1105327189%2FPackages%2F234691071" anchor-label="com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload.message.component.experienceType" id="-1105327189%2FPackages%2F234691071" data-filterable-set=":sdk:data/main"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":sdk:data/main" data-filterable-set=":sdk:data/main">
       <div>
         <div class="main-subrow ">
           <div class=""><span class="inline-flex">
               <div><a href="com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload.message.component.experienceType/index.html">com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload.message.component.experienceType</a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1105327189%2FPackages%2F-467771735"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1105327189%2FPackages%2F234691071"></span>
                 <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
               </span></span></div>
-          <div class="pull-right">
+          <div class="pull-right platform-tags--wrapper">
             <div class="platform-tags no-gutters">
               <div class="platform-tag jvm-like">androidJvm</div>
             </div>
@@ -330,16 +347,16 @@
         <div></div>
       </div>
     </div>
-<a data-name="467562887%2FPackages%2F-467771735" anchor-label="com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload.message.component.form.input" id="467562887%2FPackages%2F-467771735" data-filterable-set=":sdk:data:dokkaHtmlPartial/release"></a>
-    <div class="table-row" data-filterable-current=":sdk:data:dokkaHtmlPartial/release" data-filterable-set=":sdk:data:dokkaHtmlPartial/release">
+<a data-name="467562887%2FPackages%2F234691071" anchor-label="com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload.message.component.form.input" id="467562887%2FPackages%2F234691071" data-filterable-set=":sdk:data/main"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":sdk:data/main" data-filterable-set=":sdk:data/main">
       <div>
         <div class="main-subrow ">
           <div class=""><span class="inline-flex">
               <div><a href="com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload.message.component.form.input/index.html">com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload.message.component.form.input</a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="467562887%2FPackages%2F-467771735"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="467562887%2FPackages%2F234691071"></span>
                 <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
               </span></span></div>
-          <div class="pull-right">
+          <div class="pull-right platform-tags--wrapper">
             <div class="platform-tags no-gutters">
               <div class="platform-tag jvm-like">androidJvm</div>
             </div>
@@ -348,16 +365,16 @@
         <div></div>
       </div>
     </div>
-<a data-name="-650483516%2FPackages%2F-467771735" anchor-label="com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload.message.component.form.result" id="-650483516%2FPackages%2F-467771735" data-filterable-set=":sdk:data:dokkaHtmlPartial/release"></a>
-    <div class="table-row" data-filterable-current=":sdk:data:dokkaHtmlPartial/release" data-filterable-set=":sdk:data:dokkaHtmlPartial/release">
+<a data-name="-650483516%2FPackages%2F234691071" anchor-label="com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload.message.component.form.result" id="-650483516%2FPackages%2F234691071" data-filterable-set=":sdk:data/main"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":sdk:data/main" data-filterable-set=":sdk:data/main">
       <div>
         <div class="main-subrow ">
           <div class=""><span class="inline-flex">
               <div><a href="com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload.message.component.form.result/index.html">com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload.message.component.form.result</a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-650483516%2FPackages%2F-467771735"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-650483516%2FPackages%2F234691071"></span>
                 <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
               </span></span></div>
-          <div class="pull-right">
+          <div class="pull-right platform-tags--wrapper">
             <div class="platform-tags no-gutters">
               <div class="platform-tag jvm-like">androidJvm</div>
             </div>
@@ -366,16 +383,16 @@
         <div></div>
       </div>
     </div>
-<a data-name="569137262%2FPackages%2F-467771735" anchor-label="com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload.message.component.form.value" id="569137262%2FPackages%2F-467771735" data-filterable-set=":sdk:data:dokkaHtmlPartial/release"></a>
-    <div class="table-row" data-filterable-current=":sdk:data:dokkaHtmlPartial/release" data-filterable-set=":sdk:data:dokkaHtmlPartial/release">
+<a data-name="569137262%2FPackages%2F234691071" anchor-label="com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload.message.component.form.value" id="569137262%2FPackages%2F234691071" data-filterable-set=":sdk:data/main"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":sdk:data/main" data-filterable-set=":sdk:data/main">
       <div>
         <div class="main-subrow ">
           <div class=""><span class="inline-flex">
               <div><a href="com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload.message.component.form.value/index.html">com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload.message.component.form.value</a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="569137262%2FPackages%2F-467771735"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="569137262%2FPackages%2F234691071"></span>
                 <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
               </span></span></div>
-          <div class="pull-right">
+          <div class="pull-right platform-tags--wrapper">
             <div class="platform-tags no-gutters">
               <div class="platform-tag jvm-like">androidJvm</div>
             </div>
@@ -384,16 +401,16 @@
         <div></div>
       </div>
     </div>
-<a data-name="1889426075%2FPackages%2F-467771735" anchor-label="com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload.message.component.messageUpdated" id="1889426075%2FPackages%2F-467771735" data-filterable-set=":sdk:data:dokkaHtmlPartial/release"></a>
-    <div class="table-row" data-filterable-current=":sdk:data:dokkaHtmlPartial/release" data-filterable-set=":sdk:data:dokkaHtmlPartial/release">
+<a data-name="1889426075%2FPackages%2F234691071" anchor-label="com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload.message.component.messageUpdated" id="1889426075%2FPackages%2F234691071" data-filterable-set=":sdk:data/main"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":sdk:data/main" data-filterable-set=":sdk:data/main">
       <div>
         <div class="main-subrow ">
           <div class=""><span class="inline-flex">
               <div><a href="com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload.message.component.messageUpdated/index.html">com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload.message.component.messageUpdated</a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1889426075%2FPackages%2F-467771735"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1889426075%2FPackages%2F234691071"></span>
                 <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
               </span></span></div>
-          <div class="pull-right">
+          <div class="pull-right platform-tags--wrapper">
             <div class="platform-tags no-gutters">
               <div class="platform-tag jvm-like">androidJvm</div>
             </div>
@@ -402,16 +419,34 @@
         <div></div>
       </div>
     </div>
-<a data-name="111132303%2FPackages%2F-467771735" anchor-label="com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload.message.component.optionItem" id="111132303%2FPackages%2F-467771735" data-filterable-set=":sdk:data:dokkaHtmlPartial/release"></a>
-    <div class="table-row" data-filterable-current=":sdk:data:dokkaHtmlPartial/release" data-filterable-set=":sdk:data:dokkaHtmlPartial/release">
+<a data-name="-1190968248%2FPackages%2F234691071" anchor-label="com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload.message.component.modality" id="-1190968248%2FPackages%2F234691071" data-filterable-set=":sdk:data/main"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":sdk:data/main" data-filterable-set=":sdk:data/main">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload.message.component.modality/index.html">com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload.message.component.modality</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1190968248%2FPackages%2F234691071"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right platform-tags--wrapper">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">androidJvm</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="111132303%2FPackages%2F234691071" anchor-label="com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload.message.component.optionItem" id="111132303%2FPackages%2F234691071" data-filterable-set=":sdk:data/main"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":sdk:data/main" data-filterable-set=":sdk:data/main">
       <div>
         <div class="main-subrow ">
           <div class=""><span class="inline-flex">
               <div><a href="com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload.message.component.optionItem/index.html">com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload.message.component.optionItem</a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="111132303%2FPackages%2F-467771735"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="111132303%2FPackages%2F234691071"></span>
                 <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
               </span></span></div>
-          <div class="pull-right">
+          <div class="pull-right platform-tags--wrapper">
             <div class="platform-tags no-gutters">
               <div class="platform-tag jvm-like">androidJvm</div>
             </div>
@@ -420,16 +455,16 @@
         <div></div>
       </div>
     </div>
-<a data-name="-1724094164%2FPackages%2F-467771735" anchor-label="com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload.message.component.optionItem.titleItem" id="-1724094164%2FPackages%2F-467771735" data-filterable-set=":sdk:data:dokkaHtmlPartial/release"></a>
-    <div class="table-row" data-filterable-current=":sdk:data:dokkaHtmlPartial/release" data-filterable-set=":sdk:data:dokkaHtmlPartial/release">
+<a data-name="-1724094164%2FPackages%2F234691071" anchor-label="com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload.message.component.optionItem.titleItem" id="-1724094164%2FPackages%2F234691071" data-filterable-set=":sdk:data/main"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":sdk:data/main" data-filterable-set=":sdk:data/main">
       <div>
         <div class="main-subrow ">
           <div class=""><span class="inline-flex">
               <div><a href="com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload.message.component.optionItem.titleItem/index.html">com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload.message.component.optionItem.titleItem</a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1724094164%2FPackages%2F-467771735"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1724094164%2FPackages%2F234691071"></span>
                 <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
               </span></span></div>
-          <div class="pull-right">
+          <div class="pull-right platform-tags--wrapper">
             <div class="platform-tags no-gutters">
               <div class="platform-tag jvm-like">androidJvm</div>
             </div>
@@ -438,16 +473,16 @@
         <div></div>
       </div>
     </div>
-<a data-name="-26791560%2FPackages%2F-467771735" anchor-label="com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload.message.component.progressIndicators" id="-26791560%2FPackages%2F-467771735" data-filterable-set=":sdk:data:dokkaHtmlPartial/release"></a>
-    <div class="table-row" data-filterable-current=":sdk:data:dokkaHtmlPartial/release" data-filterable-set=":sdk:data:dokkaHtmlPartial/release">
+<a data-name="-26791560%2FPackages%2F234691071" anchor-label="com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload.message.component.progressIndicators" id="-26791560%2FPackages%2F234691071" data-filterable-set=":sdk:data/main"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":sdk:data/main" data-filterable-set=":sdk:data/main">
       <div>
         <div class="main-subrow ">
           <div class=""><span class="inline-flex">
               <div><a href="com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload.message.component.progressIndicators/index.html">com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload.message.component.progressIndicators</a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-26791560%2FPackages%2F-467771735"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-26791560%2FPackages%2F234691071"></span>
                 <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
               </span></span></div>
-          <div class="pull-right">
+          <div class="pull-right platform-tags--wrapper">
             <div class="platform-tags no-gutters">
               <div class="platform-tag jvm-like">androidJvm</div>
             </div>
@@ -456,16 +491,16 @@
         <div></div>
       </div>
     </div>
-<a data-name="618029085%2FPackages%2F-467771735" anchor-label="com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload.message.component.richLink" id="618029085%2FPackages%2F-467771735" data-filterable-set=":sdk:data:dokkaHtmlPartial/release"></a>
-    <div class="table-row" data-filterable-current=":sdk:data:dokkaHtmlPartial/release" data-filterable-set=":sdk:data:dokkaHtmlPartial/release">
+<a data-name="618029085%2FPackages%2F234691071" anchor-label="com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload.message.component.richLink" id="618029085%2FPackages%2F234691071" data-filterable-set=":sdk:data/main"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":sdk:data/main" data-filterable-set=":sdk:data/main">
       <div>
         <div class="main-subrow ">
           <div class=""><span class="inline-flex">
               <div><a href="com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload.message.component.richLink/index.html">com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload.message.component.richLink</a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="618029085%2FPackages%2F-467771735"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="618029085%2FPackages%2F234691071"></span>
                 <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
               </span></span></div>
-          <div class="pull-right">
+          <div class="pull-right platform-tags--wrapper">
             <div class="platform-tags no-gutters">
               <div class="platform-tag jvm-like">androidJvm</div>
             </div>
@@ -474,16 +509,16 @@
         <div></div>
       </div>
     </div>
-<a data-name="806582494%2FPackages%2F-467771735" anchor-label="com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload.message.component.streamingToken" id="806582494%2FPackages%2F-467771735" data-filterable-set=":sdk:data:dokkaHtmlPartial/release"></a>
-    <div class="table-row" data-filterable-current=":sdk:data:dokkaHtmlPartial/release" data-filterable-set=":sdk:data:dokkaHtmlPartial/release">
+<a data-name="806582494%2FPackages%2F234691071" anchor-label="com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload.message.component.streamingToken" id="806582494%2FPackages%2F234691071" data-filterable-set=":sdk:data/main"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":sdk:data/main" data-filterable-set=":sdk:data/main">
       <div>
         <div class="main-subrow ">
           <div class=""><span class="inline-flex">
               <div><a href="com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload.message.component.streamingToken/index.html">com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload.message.component.streamingToken</a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="806582494%2FPackages%2F-467771735"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="806582494%2FPackages%2F234691071"></span>
                 <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
               </span></span></div>
-          <div class="pull-right">
+          <div class="pull-right platform-tags--wrapper">
             <div class="platform-tags no-gutters">
               <div class="platform-tag jvm-like">androidJvm</div>
             </div>
@@ -492,16 +527,16 @@
         <div></div>
       </div>
     </div>
-<a data-name="601681750%2FPackages%2F-467771735" anchor-label="com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload.message.component.webView" id="601681750%2FPackages%2F-467771735" data-filterable-set=":sdk:data:dokkaHtmlPartial/release"></a>
-    <div class="table-row" data-filterable-current=":sdk:data:dokkaHtmlPartial/release" data-filterable-set=":sdk:data:dokkaHtmlPartial/release">
+<a data-name="601681750%2FPackages%2F234691071" anchor-label="com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload.message.component.webView" id="601681750%2FPackages%2F234691071" data-filterable-set=":sdk:data/main"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":sdk:data/main" data-filterable-set=":sdk:data/main">
       <div>
         <div class="main-subrow ">
           <div class=""><span class="inline-flex">
               <div><a href="com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload.message.component.webView/index.html">com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload.message.component.webView</a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="601681750%2FPackages%2F-467771735"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="601681750%2FPackages%2F234691071"></span>
                 <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
               </span></span></div>
-          <div class="pull-right">
+          <div class="pull-right platform-tags--wrapper">
             <div class="platform-tags no-gutters">
               <div class="platform-tag jvm-like">androidJvm</div>
             </div>
@@ -510,16 +545,16 @@
         <div></div>
       </div>
     </div>
-<a data-name="899221837%2FPackages%2F-467771735" anchor-label="com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload.message.format" id="899221837%2FPackages%2F-467771735" data-filterable-set=":sdk:data:dokkaHtmlPartial/release"></a>
-    <div class="table-row" data-filterable-current=":sdk:data:dokkaHtmlPartial/release" data-filterable-set=":sdk:data:dokkaHtmlPartial/release">
+<a data-name="899221837%2FPackages%2F234691071" anchor-label="com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload.message.format" id="899221837%2FPackages%2F234691071" data-filterable-set=":sdk:data/main"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":sdk:data/main" data-filterable-set=":sdk:data/main">
       <div>
         <div class="main-subrow ">
           <div class=""><span class="inline-flex">
               <div><a href="com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload.message.format/index.html">com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload.message.format</a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="899221837%2FPackages%2F-467771735"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="899221837%2FPackages%2F234691071"></span>
                 <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
               </span></span></div>
-          <div class="pull-right">
+          <div class="pull-right platform-tags--wrapper">
             <div class="platform-tags no-gutters">
               <div class="platform-tag jvm-like">androidJvm</div>
             </div>
@@ -528,16 +563,16 @@
         <div></div>
       </div>
     </div>
-<a data-name="-860918629%2FPackages%2F-467771735" anchor-label="com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload.routing" id="-860918629%2FPackages%2F-467771735" data-filterable-set=":sdk:data:dokkaHtmlPartial/release"></a>
-    <div class="table-row" data-filterable-current=":sdk:data:dokkaHtmlPartial/release" data-filterable-set=":sdk:data:dokkaHtmlPartial/release">
+<a data-name="-860918629%2FPackages%2F234691071" anchor-label="com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload.routing" id="-860918629%2FPackages%2F234691071" data-filterable-set=":sdk:data/main"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":sdk:data/main" data-filterable-set=":sdk:data/main">
       <div>
         <div class="main-subrow ">
           <div class=""><span class="inline-flex">
               <div><a href="com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload.routing/index.html">com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload.routing</a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-860918629%2FPackages%2F-467771735"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-860918629%2FPackages%2F234691071"></span>
                 <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
               </span></span></div>
-          <div class="pull-right">
+          <div class="pull-right platform-tags--wrapper">
             <div class="platform-tags no-gutters">
               <div class="platform-tag jvm-like">androidJvm</div>
             </div>
@@ -546,16 +581,16 @@
         <div></div>
       </div>
     </div>
-<a data-name="2073463055%2FPackages%2F-467771735" anchor-label="com.salesforce.android.smi.network.data.domain.participant" id="2073463055%2FPackages%2F-467771735" data-filterable-set=":sdk:data:dokkaHtmlPartial/release"></a>
-    <div class="table-row" data-filterable-current=":sdk:data:dokkaHtmlPartial/release" data-filterable-set=":sdk:data:dokkaHtmlPartial/release">
+<a data-name="2073463055%2FPackages%2F234691071" anchor-label="com.salesforce.android.smi.network.data.domain.participant" id="2073463055%2FPackages%2F234691071" data-filterable-set=":sdk:data/main"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":sdk:data/main" data-filterable-set=":sdk:data/main">
       <div>
         <div class="main-subrow ">
           <div class=""><span class="inline-flex">
               <div><a href="com.salesforce.android.smi.network.data.domain.participant/index.html">com.salesforce.android.smi.network.data.domain.participant</a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2073463055%2FPackages%2F-467771735"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2073463055%2FPackages%2F234691071"></span>
                 <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
               </span></span></div>
-          <div class="pull-right">
+          <div class="pull-right platform-tags--wrapper">
             <div class="platform-tags no-gutters">
               <div class="platform-tag jvm-like">androidJvm</div>
             </div>
@@ -564,16 +599,16 @@
         <div></div>
       </div>
     </div>
-<a data-name="-818562729%2FPackages%2F-467771735" anchor-label="com.salesforce.android.smi.network.data.domain.prechat" id="-818562729%2FPackages%2F-467771735" data-filterable-set=":sdk:data:dokkaHtmlPartial/release"></a>
-    <div class="table-row" data-filterable-current=":sdk:data:dokkaHtmlPartial/release" data-filterable-set=":sdk:data:dokkaHtmlPartial/release">
+<a data-name="-818562729%2FPackages%2F234691071" anchor-label="com.salesforce.android.smi.network.data.domain.prechat" id="-818562729%2FPackages%2F234691071" data-filterable-set=":sdk:data/main"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":sdk:data/main" data-filterable-set=":sdk:data/main">
       <div>
         <div class="main-subrow ">
           <div class=""><span class="inline-flex">
               <div><a href="com.salesforce.android.smi.network.data.domain.prechat/index.html">com.salesforce.android.smi.network.data.domain.prechat</a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-818562729%2FPackages%2F-467771735"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-818562729%2FPackages%2F234691071"></span>
                 <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
               </span></span></div>
-          <div class="pull-right">
+          <div class="pull-right platform-tags--wrapper">
             <div class="platform-tags no-gutters">
               <div class="platform-tag jvm-like">androidJvm</div>
             </div>
@@ -582,16 +617,16 @@
         <div></div>
       </div>
     </div>
-<a data-name="684827514%2FPackages%2F-467771735" anchor-label="com.salesforce.android.smi.network.data.domain.prechat.choicelist" id="684827514%2FPackages%2F-467771735" data-filterable-set=":sdk:data:dokkaHtmlPartial/release"></a>
-    <div class="table-row" data-filterable-current=":sdk:data:dokkaHtmlPartial/release" data-filterable-set=":sdk:data:dokkaHtmlPartial/release">
+<a data-name="684827514%2FPackages%2F234691071" anchor-label="com.salesforce.android.smi.network.data.domain.prechat.choicelist" id="684827514%2FPackages%2F234691071" data-filterable-set=":sdk:data/main"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":sdk:data/main" data-filterable-set=":sdk:data/main">
       <div>
         <div class="main-subrow ">
           <div class=""><span class="inline-flex">
               <div><a href="com.salesforce.android.smi.network.data.domain.prechat.choicelist/index.html">com.salesforce.android.smi.network.data.domain.prechat.choicelist</a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="684827514%2FPackages%2F-467771735"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="684827514%2FPackages%2F234691071"></span>
                 <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
               </span></span></div>
-          <div class="pull-right">
+          <div class="pull-right platform-tags--wrapper">
             <div class="platform-tags no-gutters">
               <div class="platform-tag jvm-like">androidJvm</div>
             </div>
@@ -600,16 +635,16 @@
         <div></div>
       </div>
     </div>
-<a data-name="-1034983133%2FPackages%2F-467771735" anchor-label="com.salesforce.android.smi.network.data.domain.prechat.termsAndConditions" id="-1034983133%2FPackages%2F-467771735" data-filterable-set=":sdk:data:dokkaHtmlPartial/release"></a>
-    <div class="table-row" data-filterable-current=":sdk:data:dokkaHtmlPartial/release" data-filterable-set=":sdk:data:dokkaHtmlPartial/release">
+<a data-name="-1034983133%2FPackages%2F234691071" anchor-label="com.salesforce.android.smi.network.data.domain.prechat.termsAndConditions" id="-1034983133%2FPackages%2F234691071" data-filterable-set=":sdk:data/main"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":sdk:data/main" data-filterable-set=":sdk:data/main">
       <div>
         <div class="main-subrow ">
           <div class=""><span class="inline-flex">
               <div><a href="com.salesforce.android.smi.network.data.domain.prechat.termsAndConditions/index.html">com.salesforce.android.smi.network.data.domain.prechat.termsAndConditions</a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1034983133%2FPackages%2F-467771735"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1034983133%2FPackages%2F234691071"></span>
                 <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
               </span></span></div>
-          <div class="pull-right">
+          <div class="pull-right platform-tags--wrapper">
             <div class="platform-tags no-gutters">
               <div class="platform-tag jvm-like">androidJvm</div>
             </div>
@@ -618,16 +653,16 @@
         <div></div>
       </div>
     </div>
-<a data-name="-1136249003%2FPackages%2F-467771735" anchor-label="com.salesforce.android.smi.network.data.domain.webview" id="-1136249003%2FPackages%2F-467771735" data-filterable-set=":sdk:data:dokkaHtmlPartial/release"></a>
-    <div class="table-row" data-filterable-current=":sdk:data:dokkaHtmlPartial/release" data-filterable-set=":sdk:data:dokkaHtmlPartial/release">
+<a data-name="-1136249003%2FPackages%2F234691071" anchor-label="com.salesforce.android.smi.network.data.domain.webview" id="-1136249003%2FPackages%2F234691071" data-filterable-set=":sdk:data/main"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":sdk:data/main" data-filterable-set=":sdk:data/main">
       <div>
         <div class="main-subrow ">
           <div class=""><span class="inline-flex">
               <div><a href="com.salesforce.android.smi.network.data.domain.webview/index.html">com.salesforce.android.smi.network.data.domain.webview</a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1136249003%2FPackages%2F-467771735"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1136249003%2FPackages%2F234691071"></span>
                 <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
               </span></span></div>
-          <div class="pull-right">
+          <div class="pull-right platform-tags--wrapper">
             <div class="platform-tags no-gutters">
               <div class="platform-tag jvm-like">androidJvm</div>
             </div>
@@ -636,16 +671,16 @@
         <div></div>
       </div>
     </div>
-<a data-name="-1948185625%2FPackages%2F-467771735" anchor-label="com.salesforce.android.smi.network.data.model" id="-1948185625%2FPackages%2F-467771735" data-filterable-set=":sdk:data:dokkaHtmlPartial/release"></a>
-    <div class="table-row" data-filterable-current=":sdk:data:dokkaHtmlPartial/release" data-filterable-set=":sdk:data:dokkaHtmlPartial/release">
+<a data-name="-1948185625%2FPackages%2F234691071" anchor-label="com.salesforce.android.smi.network.data.model" id="-1948185625%2FPackages%2F234691071" data-filterable-set=":sdk:data/main"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":sdk:data/main" data-filterable-set=":sdk:data/main">
       <div>
         <div class="main-subrow ">
           <div class=""><span class="inline-flex">
               <div><a href="com.salesforce.android.smi.network.data.model/index.html">com.salesforce.android.smi.network.data.model</a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1948185625%2FPackages%2F-467771735"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1948185625%2FPackages%2F234691071"></span>
                 <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
               </span></span></div>
-          <div class="pull-right">
+          <div class="pull-right platform-tags--wrapper">
             <div class="platform-tags no-gutters">
               <div class="platform-tag jvm-like">androidJvm</div>
             </div>
@@ -657,17 +692,21 @@
   </div>
 </div>
     <div class="footer">
-        <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
-        <span>© 2025 Copyright</span>
-        <span class="pull-right">
-            <span>Generated by </span>
-            <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
-                <span>dokka</span>
-            </a>
-        </span>
-    </div>
+        <div class="footer--container">
+            <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+            <div class="footer--content">
+                <div>
+                    <span>Generated by </span>
+                    <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                        Dokka
+                    </a>
+                    <div>© 2026 Copyright</div>
+                </div>
             </div>
         </div>
     </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>
