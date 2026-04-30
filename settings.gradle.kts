@@ -17,7 +17,9 @@ dependencyResolutionManagement {
         google()
         mavenCentral()
         maven { url = uri("https://s3.amazonaws.com/inapp.salesforce.com/public/android") }
+        maven { url = uri("https://jitpack.io") }
     }
+
 }
 
 rootProject.name = "messaging-in-app-android"

@@ -19,6 +19,8 @@
  - [Widget](sample-messaging/src/main/java/com/salesforce/android/smi/messaging/samples/components/MessagingWidget.kt) - A floating action button that launches/ends the chat and updates based on the session status, last message, queue position, and unread count.
  - [ConversationList](sample-messaging/src/main/java/com/salesforce/android/smi/messaging/samples/components/MessagingConversationList.kt) - Lists the user's conversations with the latest message and an unread counter.
  - [Modal](sample-messaging/src/main/java/com/salesforce/android/smi/messaging/samples/components/MessagingBottomSheet.kt) - A dismissable bottom sheet modal container for the messaging UI.
+ - [VoiceButton](sample-messaging/src/main/java/com/salesforce/android/smi/messaging/features/voice/components/VoiceButton.kt) - A button that starts or ends a voice call when voice modality is supported.
+ - [VoiceModal](sample-messaging/src/main/java/com/salesforce/android/smi/messaging/features/voice/VoiceModal.kt) - A voice call modal with audio visualizer, call controls, and minimized/expanded states.
 
 #### Sample Utilities
  - [LifecycleResumeMessagingStreamEffect](sample-messaging/src/main/java/com/salesforce/android/smi/messaging/samples/state/LifecycleResumeMessagingStreamEffect.kt) - Maintains the messaging event stream when the UI is closed. Used for receiving conversation updates.

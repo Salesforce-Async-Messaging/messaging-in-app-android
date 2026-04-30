@@ -12,11 +12,12 @@ composeNavigation = "2.9.5"
 appcompat = "1.7.1"
 material = "1.13.0"
 coil = "3.3.0"
-salesforceMessaging = "1.10.2"
+salesforceMessaging = "1.11.0"
 salesforceMobileSDK = "13.1.0"
 
 [libraries]
 salesforce-messaging = { group = "com.salesforce.service", name = "messaging-inapp-ui", version.ref = "salesforceMessaging" }
+salesforce-messaging-multimedia = { group = "com.salesforce.service", name = "messaging-inapp-multimedia-core", version.ref = "salesforceMessaging" }
 
 androidx-compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "composeBom" }
 androidx-compose-ui = { group = "androidx.compose.ui", name = "ui" }

@@ -25,9 +25,11 @@ android {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
     }
-    kotlinOptions {
-        jvmTarget = "1.8"
-        languageVersion = "1.9"
+    kotlin {
+        compilerOptions {
+            jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_1_8)
+            languageVersion.set(org.jetbrains.kotlin.gradle.dsl.KotlinVersion.KOTLIN_2_0)
+        }
     }
     buildFeatures {
         compose = true
@@ -38,12 +40,14 @@ if (project.hasProperty("substituteSDK") && project.property("substituteSDK") ==
     configurations.all {
         resolutionStrategy.dependencySubstitution {
             substitute(module("com.salesforce.service:messaging-inapp-ui")).using(project(":sdk:ui"))
+            substitute(module("com.salesforce.service:messaging-inapp-multimedia-core")).using(project(":sdk:multimedia:core"))
         }
     }
 }
 
 dependencies {
     api(libs.salesforce.messaging)
+    api(libs.salesforce.messaging.multimedia)
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
