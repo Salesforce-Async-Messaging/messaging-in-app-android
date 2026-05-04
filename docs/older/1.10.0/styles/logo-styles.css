@@ -1,0 +1,5 @@
+:root {
+    --dokka-logo-image-url: url('../images/salesforce-logo.png');
+    --dokka-logo-height: 80px;
+    --dokka-logo-width: 45px;
+}
