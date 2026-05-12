@@ -1,0 +1,381 @@
+<!doctype html>
+<html class="no-js" lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>CoreConversationEntry</title>
+<link href="../../../../images/logo-icon.svg" rel="icon" type="image/svg"><script>var pathToRoot = "../../../../";</script>
+    <script>document.documentElement.classList.replace("no-js", "js");</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+      if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+      } else {
+        const savedDarkMode = JSON.parse(storage)
+        if (savedDarkMode === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+      }
+    </script>
+<script type="text/javascript" src="../../../../scripts/sourceset_dependencies.js" async></script>
+<link href="../../../../styles/style.css" rel="Stylesheet">
+<link href="../../../../styles/main.css" rel="Stylesheet">
+<link href="../../../../styles/prism.css" rel="Stylesheet">
+<link href="../../../../styles/logo-styles.css" rel="Stylesheet">
+<link href="../../../../ui-kit/ui-kit.min.css" rel="Stylesheet">
+<script type="text/javascript" src="../../../../scripts/safe-local-storage_blocking.js"></script>
+<script type="text/javascript" src="../../../../scripts/navigation-loader.js" async></script>
+<script type="text/javascript" src="../../../../scripts/platform-content-handler.js" async></script>
+<script type="text/javascript" src="../../../../scripts/main.js" defer></script>
+<script type="text/javascript" src="../../../../scripts/prism.js" async></script>
+<script type="text/javascript" src="../../../../ui-kit/ui-kit.min.js" defer></script></head>
+<body>
+<div class="root">
+    <header class="navigation theme-dark" id="navigation-wrapper" role="banner">
+<a class="library-name--link" href="../../../../index.html" tabindex="1">
+                    Enhanced Chat Android
+            </a>        <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle" type="button">Toggle table of contents
+        </button>
+        <div class="navigation-controls--break ui-kit_mobile-only"></div>
+        <div class="library-version" id="library-version">
+<dokka-template-command data="{&quot;@class&quot;:&quot;org.jetbrains.dokka.base.templating.ReplaceVersionsCommand&quot;,&quot;location&quot;:&quot;com.salesforce.android.smi.network.data.domain.conversationEntry/-core-conversation-entry/index.html&quot;}"><div class="dropdown versions-dropdown" data-role="dropdown">
+  <div class="button button_dropdown versions-dropdown-button" role="combobox" data-role="dropdown-toggle" aria-controls="versions-listbox" aria-haspopup="listbox" aria-expanded="false" aria-label="Select version" tabindex="0" title="1.11.0"><span class="versions-dropdown-button-text">1.11.0</span></div>
+  <div class="dropdown--list dropdown--list_positioned_left versions-dropdown-data" role="listbox" data-role="dropdown-listbox" aria-label="Versions" id="versions-listbox">
+    <div class="dropdown--header" data-remove-style="true" style="display: none"><span>Select version</span><button class="button" data-role="dropdown-toggle" aria-label="Close versions selection"><i class="ui-kit-icon ui-kit-icon_cross"></i></button></div>
+<a href="index.html" class="dropdown--option dropdown--option_active dropdown--option-link" style="display: block; padding: 5px; color: #fff" data-remove-style="true" role="option" title="1.11.0"><span class="dropdown--option-icon dropdown--option-icon_selected"></span><span class="dropdown--option-text">1.11.0</span></a><a href="../../../../older/1.10.0/sdk/data/com.salesforce.android.smi.network.data.domain.conversationEntry/-core-conversation-entry/index.html" class="dropdown--option dropdown--option-link" style="display: block; padding: 5px; color: #fff" data-remove-style="true" role="option" title="1.10.0"><span class="dropdown--option-icon"></span><span class="dropdown--option-text">1.10.0</span></a></div>
+  <div class="dropdown--overlay"></div>
+</div>
+</dokka-template-command>        </div>
+        <div class="navigation-controls">
+        <ul class="filter-section filter-section_loading" id="filter-section" aria-label="Target filter">
+                <button class="platform-tag platform-selector jvm-like" data-active="" aria-pressed="true" data-filter=":sdk:data/main">androidJvm</button>
+            <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
+                <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox" data-role="dropdown-toggle" aria-controls="platform-tags-listbox" aria-haspopup="listbox" aria-expanded="false" aria-label="Toggle source sets"></button>
+                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox" aria-label="Target filter">
+                    <div class="dropdown--header"><span>Target filter</span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close target filter">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                        <li role="option" class="dropdown--option platform-selector-option jvm-like" tabindex="0">
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox--input" id=":sdk:data/main" data-filter=":sdk:data/main">
+                                <span class="checkbox--icon"></span>
+                                androidJvm
+                            </label>
+                        </li>
+                </ul>
+                <div class="dropdown--overlay"></div>
+            </div>
+        </ul>
+            <button class="navigation-controls--btn navigation-controls--btn_theme" id="theme-toggle-button" type="button">Switch theme
+            </button>
+            <div class="navigation-controls--btn navigation-controls--btn_search" id="searchBar" role="button">Search in
+                API
+            </div>
+        </div>
+    </header>
+    <div id="container">
+        <nav id="leftColumn" class="sidebar" data-item-type="SECTION" data-item-config="{&quot;defaultSize&quot;: 280, &quot;minSize&quot;: 200, &quot;maxSize&quot;: 400}">
+            <a class="toc--skip-link" href="#main">Skip to content</a>
+            <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
+                <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list" data-role="dropdown-listbox" aria-label="Table of contents">
+                    <div class="dropdown--header">
+                            <span>
+                                    Enhanced Chat Android
+                            </span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                    <div class="sidebar--inner" id="sideMenu"></div>
+                </ul>
+                <div class="dropdown--overlay"></div>
+            </div>
+        </nav>
+        <div id="resizer" class="resizer" data-item-type="BAR"></div>
+        <div id="main" data-item-type="SECTION" role="main">
+<div class="main-content" data-page-type="classlike" id="content" pageids="data::com.salesforce.android.smi.network.data.domain.conversationEntry/CoreConversationEntry///PointingToDeclaration//234691071">
+  <div class="breadcrumbs"><a href="../../index.html">data</a><span class="delimiter">/</span><a href="../index.html">com.salesforce.android.smi.network.data.domain.conversationEntry</a><span class="delimiter">/</span><span class="current">CoreConversationEntry</span></div>
+  <div class="cover ">
+    <h1 class="cover"><span>Core</span><wbr><span>Conversation</span><wbr><span><span>Entry</span></span></h1>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk:data/main"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="index.html">CoreConversationEntry</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>senderDisplayName<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>conversationId<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/java/util/UUID.html">UUID</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>sender<span class="token operator">: </span><a href="../../com.salesforce.android.smi.network.data.domain.participant/-participant/index.html">Participant</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>payload<span class="token operator">: </span><a href="../../com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload/-entry-payload/index.html">EntryPayload</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>entryType<span class="token operator">: </span><a href="../../com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload/-conversation-entry-type/index.html">ConversationEntryType</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>identifier<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>transcriptedTimestamp<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-long/index.html">Long</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>timestamp<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-long/index.html">Long</a><span class="token operator"> = </span>transcriptedTimestamp ?: Date().time<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>status<span class="token operator">: </span><a href="../-conversation-entry-status/index.html">ConversationEntryStatus</a><span class="token operator"> = </span>ConversationEntryStatus.Sending<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>error<span class="token operator">: </span><a href="../../com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload/-network-error/index.html">NetworkError</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>modality<span class="token operator">: </span><a href="../../com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload.message.component.modality/-modality/index.html">Modality</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span> : <a href="../-conversation-entry/index.html">ConversationEntry</a></div><p class="paragraph">Conversation entry class.</p><h4 class="tableheader">See also</h4><div class="table"><div class="table-row table-row_content" data-filterable-current=":sdk:data/main" data-filterable-set=":sdk:data/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../-conversation-entry/index.html"><span>Conversation</span><wbr><span><span>Entry</span></span></a></div></span></div><div></div></div></div></div></div></div>
+  </div>
+  <div class="tabbedcontent">
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button><button class="section-tab" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION,EXTENSION_PROPERTY,EXTENSION_FUNCTION">Members &amp; Extensions</button></div>
+    <div class="tabs-section-body">
+      <div data-togglable="CONSTRUCTOR">
+        <h2 class="tableheader">Constructors</h2>
+        <div class="table"><a data-name="2009968627%2FConstructors%2F234691071" anchor-label="CoreConversationEntry" id="2009968627%2FConstructors%2F234691071" data-filterable-set=":sdk:data/main"></a>
+          <div class="table-row table-row_content" data-togglable="CONSTRUCTOR" data-filterable-current=":sdk:data/main" data-filterable-set=":sdk:data/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-core-conversation-entry.html"><span>Core</span><wbr><span>Conversation</span><wbr><span><span>Entry</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2009968627%2FConstructors%2F234691071"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk:data/main"><div class="symbol monospace"><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">senderDisplayName<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">conversationId<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/java/util/UUID.html">UUID</a><span class="token punctuation">, </span></span><span class="parameter ">sender<span class="token operator">: </span><a href="../../com.salesforce.android.smi.network.data.domain.participant/-participant/index.html">Participant</a><span class="token punctuation">, </span></span><span class="parameter ">payload<span class="token operator">: </span><a href="../../com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload/-entry-payload/index.html">EntryPayload</a><span class="token punctuation">, </span></span><span class="parameter ">entryType<span class="token operator">: </span><a href="../../com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload/-conversation-entry-type/index.html">ConversationEntryType</a><span class="token punctuation">, </span></span><span class="parameter ">identifier<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">transcriptedTimestamp<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-long/index.html">Long</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">timestamp<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-long/index.html">Long</a><span class="token operator"> = </span>transcriptedTimestamp ?: Date().time<span class="token punctuation">, </span></span><span class="parameter ">status<span class="token operator">: </span><a href="../-conversation-entry-status/index.html">ConversationEntryStatus</a><span class="token operator"> = </span>ConversationEntryStatus.Sending<span class="token punctuation">, </span></span><span class="parameter ">error<span class="token operator">: </span><a href="../../com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload/-network-error/index.html">NetworkError</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">modality<span class="token operator">: </span><a href="../../com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload.message.component.modality/-modality/index.html">Modality</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span></div><div class="symbol monospace"><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">conversationEntry<span class="token operator">: </span><a href="../-conversation-entry/index.html">ConversationEntry</a></span></span><span class="token punctuation">)</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="PROPERTY">
+        <h2 class="tableheader">Properties</h2>
+        <div class="table"><a data-name="-97125638%2FProperties%2F234691071" anchor-label="conversationId" id="-97125638%2FProperties%2F234691071" data-filterable-set=":sdk:data/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":sdk:data/main" data-filterable-set=":sdk:data/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="conversation-id.html"><span>conversation</span><wbr><span><span>Id</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-97125638%2FProperties%2F234691071"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk:data/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="conversation-id.html">conversationId</a><span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/java/util/UUID.html">UUID</a></div><div class="brief "><p class="paragraph">The unique identifier of the conversation this entry belongs to.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1103234795%2FProperties%2F234691071" anchor-label="entryId" id="-1103234795%2FProperties%2F234691071" data-filterable-set=":sdk:data/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":sdk:data/main" data-filterable-set=":sdk:data/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="entry-id.html"><span>entry</span><wbr><span><span>Id</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1103234795%2FProperties%2F234691071"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk:data/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="entry-id.html">entryId</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></div><div class="brief "><p class="paragraph">The server-assigned identifier for this entry. May differ from <a href="../-conversation-entry/identifier.html">identifier</a> for locally-created entries.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1815638250%2FProperties%2F234691071" anchor-label="entryType" id="-1815638250%2FProperties%2F234691071" data-filterable-set=":sdk:data/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":sdk:data/main" data-filterable-set=":sdk:data/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="entry-type.html"><span>entry</span><wbr><span><span>Type</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1815638250%2FProperties%2F234691071"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk:data/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="entry-type.html">entryType</a><span class="token operator">: </span><a href="../../com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload/-conversation-entry-type/index.html">ConversationEntryType</a></div><div class="brief "><p class="paragraph">The type of this entry (e.g., message, typing indicator, participant event).</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="39499226%2FProperties%2F234691071" anchor-label="error" id="39499226%2FProperties%2F234691071" data-filterable-set=":sdk:data/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":sdk:data/main" data-filterable-set=":sdk:data/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="error.html"><span><span>error</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="39499226%2FProperties%2F234691071"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk:data/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="error.html">error</a><span class="token operator">: </span><a href="../../com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload/-network-error/index.html">NetworkError</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">The error associated with this entry if <a href="../-conversation-entry/status.html">status</a> is <a href="../-conversation-entry-status/-error/index.html">ConversationEntryStatus.Error</a>, or null otherwise.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-144344273%2FProperties%2F234691071" anchor-label="identifier" id="-144344273%2FProperties%2F234691071" data-filterable-set=":sdk:data/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":sdk:data/main" data-filterable-set=":sdk:data/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="identifier.html"><span><span>identifier</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-144344273%2FProperties%2F234691071"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk:data/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="identifier.html">identifier</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></div><div class="brief "><p class="paragraph">A unique identifier for this entry, used for deduplication and reference.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-955998551%2FProperties%2F234691071" anchor-label="message" id="-955998551%2FProperties%2F234691071" data-filterable-set=":sdk:data/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":sdk:data/main" data-filterable-set=":sdk:data/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../message.html"><span><span>message</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-955998551%2FProperties%2F234691071"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk:data/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="../-conversation-entry/index.html">ConversationEntry</a><span class="token punctuation">.</span><a href="../message.html">message</a><span class="token operator">: </span><a href="../../com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload/-message/index.html">Message</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">The <a href="../../com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload/-message/index.html">Message</a> payload of this entry, or null if the entry is not a message type.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="620877495%2FProperties%2F234691071" anchor-label="modality" id="620877495%2FProperties%2F234691071" data-filterable-set=":sdk:data/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":sdk:data/main" data-filterable-set=":sdk:data/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="modality.html"><span><span>modality</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="620877495%2FProperties%2F234691071"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk:data/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="modality.html">modality</a><span class="token operator">: </span><a href="../../com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload.message.component.modality/-modality/index.html">Modality</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">The communication modality in which this entry was sent (e.g., messaging, voice), or null if not applicable.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1955736620%2FProperties%2F234691071" anchor-label="payload" id="-1955736620%2FProperties%2F234691071" data-filterable-set=":sdk:data/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":sdk:data/main" data-filterable-set=":sdk:data/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="payload.html"><span><span>payload</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1955736620%2FProperties%2F234691071"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk:data/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="payload.html">payload</a><span class="token operator">: </span><a href="../../com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload/-entry-payload/index.html">EntryPayload</a></div><div class="brief "><p class="paragraph">The content payload of this entry, containing the message body, event data, or other typed content.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-652519261%2FProperties%2F234691071" anchor-label="sender" id="-652519261%2FProperties%2F234691071" data-filterable-set=":sdk:data/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":sdk:data/main" data-filterable-set=":sdk:data/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="sender.html"><span><span>sender</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-652519261%2FProperties%2F234691071"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk:data/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="sender.html">sender</a><span class="token operator">: </span><a href="../../com.salesforce.android.smi.network.data.domain.participant/-participant/index.html">Participant</a></div><div class="brief "><p class="paragraph">The participant who sent this entry.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-504871574%2FProperties%2F234691071" anchor-label="senderDisplayName" id="-504871574%2FProperties%2F234691071" data-filterable-set=":sdk:data/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":sdk:data/main" data-filterable-set=":sdk:data/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="sender-display-name.html"><span>sender</span><wbr><span>Display</span><wbr><span><span>Name</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-504871574%2FProperties%2F234691071"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk:data/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="sender-display-name.html">senderDisplayName</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></div><div class="brief "><p class="paragraph">The display name of the participant who sent this entry.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1847959942%2FProperties%2F234691071" anchor-label="status" id="1847959942%2FProperties%2F234691071" data-filterable-set=":sdk:data/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":sdk:data/main" data-filterable-set=":sdk:data/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="status.html"><span><span>status</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1847959942%2FProperties%2F234691071"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk:data/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="status.html">status</a><span class="token operator">: </span><a href="../-conversation-entry-status/index.html">ConversationEntryStatus</a></div><div class="brief "><p class="paragraph">The current delivery status of this entry (e.g., sending, sent, delivered, read).</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-248118201%2FProperties%2F234691071" anchor-label="streamingToken" id="-248118201%2FProperties%2F234691071" data-filterable-set=":sdk:data/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":sdk:data/main" data-filterable-set=":sdk:data/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../streaming-token.html"><span>streaming</span><wbr><span><span>Token</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-248118201%2FProperties%2F234691071"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk:data/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="../-conversation-entry/index.html">ConversationEntry</a><span class="token punctuation">.</span><a href="../streaming-token.html">streamingToken</a><span class="token operator">: </span><a href="../../com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload.message.component.streamingToken/-streaming-token/index.html">StreamingToken</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">The <a href="../../com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload.message.component.streamingToken/-streaming-token/index.html">StreamingToken</a> payload of this entry, or null if the entry is not a streaming token type.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-452677620%2FProperties%2F234691071" anchor-label="timestamp" id="-452677620%2FProperties%2F234691071" data-filterable-set=":sdk:data/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":sdk:data/main" data-filterable-set=":sdk:data/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="timestamp.html"><span><span>timestamp</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-452677620%2FProperties%2F234691071"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk:data/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="timestamp.html">timestamp</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-long/index.html">Long</a></div><div class="brief "><p class="paragraph">The time this entry was created, in milliseconds since the epoch.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1207588417%2FProperties%2F234691071" anchor-label="transcriptedTimestamp" id="1207588417%2FProperties%2F234691071" data-filterable-set=":sdk:data/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":sdk:data/main" data-filterable-set=":sdk:data/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="transcripted-timestamp.html"><span>transcripted</span><wbr><span><span>Timestamp</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1207588417%2FProperties%2F234691071"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk:data/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="transcripted-timestamp.html">transcriptedTimestamp</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-long/index.html">Long</a><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="EXTENSION_FUNCTION">
+        <h2 class="tableheader">Functions</h2>
+        <div class="table"><a data-name="-993030740%2FFunctions%2F234691071" anchor-label="messageContent" id="-993030740%2FFunctions%2F234691071" data-filterable-set=":sdk:data/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":sdk:data/main" data-filterable-set=":sdk:data/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../message-content.html"><span>message</span><wbr><span><span>Content</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-993030740%2FFunctions%2F234691071"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk:data/main"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="../message-content.html">T</a><span class="token operator"> : </span><a href="../../com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload.message.format/-message-format/index.html">MessageFormat</a><span class="token operator">&gt; </span><a href="../-conversation-entry/index.html">ConversationEntry</a><span class="token punctuation">.</span><a href="../message-content.html"><span class="token function">messageContent</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../message-content.html">T</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">Returns the message content cast to the specified <a href="../../com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload.message.format/-message-format/index.html">MessageFormat</a> subtype, or null if the entry does not contain message content of that type. Works for both standard messages and streaming tokens.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    <div class="footer">
+        <div class="footer--container">
+            <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+            <div class="footer--content">
+                <div>
+                    <span>Generated by </span>
+                    <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                        Dokka
+                    </a>
+                    <div>© 2026 Copyright</div>
+                </div>
+            </div>
+        </div>
+    </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
