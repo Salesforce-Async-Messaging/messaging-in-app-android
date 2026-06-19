@@ -6,7 +6,7 @@ import com.salesforce.android.smi.core.UserVerificationToken
 import kotlinx.coroutines.delay
 
 open class UserVerification : UserVerificationProvider {
-    override suspend fun userVerificationChallenge(reason: ChallengeReason): UserVerificationToken =
+    override suspend fun userVerificationChallenge(reason: ChallengeReason): UserVerificationToken? =
         when (reason) {
             ChallengeReason.INITIAL -> authenticate()
             ChallengeReason.RENEW -> renewAuthentication()
@@ -17,7 +17,7 @@ open class UserVerification : UserVerificationProvider {
             }
         }
 
-    open suspend fun authenticate(): UserVerificationToken = delay(1000).let { UserVerificationToken.externalToken("fakeToken") }
+    open suspend fun authenticate(): UserVerificationToken? = delay(1000).let { UserVerificationToken.externalToken("fakeToken") }
 
-    open suspend fun renewAuthentication(): UserVerificationToken = delay(1000).let { UserVerificationToken.externalToken("renewedToken") }
+    open suspend fun renewAuthentication(): UserVerificationToken? = delay(1000).let { UserVerificationToken.externalToken("renewedToken") }
 }
