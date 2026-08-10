@@ -15,6 +15,7 @@ com.salesforce.android.smi.network.api.auth
 com.salesforce.android.smi.network.api.rest
 com.salesforce.android.smi.network.data.domain.auth
 com.salesforce.android.smi.network.data.domain.conversation
+com.salesforce.android.smi.network.data.domain.conversationAction
 com.salesforce.android.smi.network.data.domain.conversationEntry
 com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload
 com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload.event

@@ -1,0 +1,234 @@
+<!doctype html>
+<html class="no-js" lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>core</title>
+<link href="../../images/logo-icon.svg" rel="icon" type="image/svg"><script>var pathToRoot = "../../";</script>
+    <script>document.documentElement.classList.replace("no-js", "js");</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+      if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+      } else {
+        const savedDarkMode = JSON.parse(storage)
+        if (savedDarkMode === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+      }
+    </script>
+<script type="text/javascript" src="../../scripts/sourceset_dependencies.js" async></script>
+<link href="../../styles/style.css" rel="Stylesheet">
+<link href="../../styles/main.css" rel="Stylesheet">
+<link href="../../styles/prism.css" rel="Stylesheet">
+<link href="../../styles/logo-styles.css" rel="Stylesheet">
+<link href="../../ui-kit/ui-kit.min.css" rel="Stylesheet">
+<script type="text/javascript" src="../../scripts/safe-local-storage_blocking.js"></script>
+<script type="text/javascript" src="../../scripts/navigation-loader.js" async></script>
+<script type="text/javascript" src="../../scripts/platform-content-handler.js" async></script>
+<script type="text/javascript" src="../../scripts/main.js" defer></script>
+<script type="text/javascript" src="../../scripts/prism.js" async></script>
+<script type="text/javascript" src="../../ui-kit/ui-kit.min.js" defer></script></head>
+<body>
+<div class="root">
+    <header class="navigation theme-dark" id="navigation-wrapper" role="banner">
+<a class="library-name--link" href="../../index.html" tabindex="1">
+                    Enhanced Chat Android
+            </a>        <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle" type="button">Toggle table of contents
+        </button>
+        <div class="navigation-controls--break ui-kit_mobile-only"></div>
+        <div class="library-version" id="library-version">
+<dokka-template-command data="{&quot;@class&quot;:&quot;org.jetbrains.dokka.base.templating.ReplaceVersionsCommand&quot;,&quot;location&quot;:&quot;index.html&quot;}"><div class="dropdown versions-dropdown" data-role="dropdown">
+  <div class="button button_dropdown versions-dropdown-button" role="combobox" data-role="dropdown-toggle" aria-controls="versions-listbox" aria-haspopup="listbox" aria-expanded="false" aria-label="Select version" tabindex="0" title="1.11.0"><span class="versions-dropdown-button-text">1.11.0</span></div>
+  <div class="dropdown--list dropdown--list_positioned_left versions-dropdown-data" role="listbox" data-role="dropdown-listbox" aria-label="Versions" id="versions-listbox">
+    <div class="dropdown--header" data-remove-style="true" style="display: none"><span>Select version</span><button class="button" data-role="dropdown-toggle" aria-label="Close versions selection"><i class="ui-kit-icon ui-kit-icon_cross"></i></button></div>
+<a href="../../../../sdk/core/index.html" class="dropdown--option dropdown--option-link" style="display: block; padding: 5px; color: #fff" data-remove-style="true" role="option" title="1.12.0"><span class="dropdown--option-icon"></span><span class="dropdown--option-text">1.12.0</span></a><a href="index.html" class="dropdown--option dropdown--option_active dropdown--option-link" style="display: block; padding: 5px; color: #fff" data-remove-style="true" role="option" title="1.11.0"><span class="dropdown--option-icon dropdown--option-icon_selected"></span><span class="dropdown--option-text">1.11.0</span></a><a href="../../../1.10.0/sdk/core/index.html" class="dropdown--option dropdown--option-link" style="display: block; padding: 5px; color: #fff" data-remove-style="true" role="option" title="1.10.0"><span class="dropdown--option-icon"></span><span class="dropdown--option-text">1.10.0</span></a></div>
+  <div class="dropdown--overlay"></div>
+</div>
+</dokka-template-command>        </div>
+        <div class="navigation-controls">
+        <ul class="filter-section filter-section_loading" id="filter-section" aria-label="Target filter">
+                <button class="platform-tag platform-selector jvm-like" data-active="" aria-pressed="true" data-filter=":sdk:core/main">androidJvm</button>
+            <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
+                <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox" data-role="dropdown-toggle" aria-controls="platform-tags-listbox" aria-haspopup="listbox" aria-expanded="false" aria-label="Toggle source sets"></button>
+                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox" aria-label="Target filter">
+                    <div class="dropdown--header"><span>Target filter</span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close target filter">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                        <li role="option" class="dropdown--option platform-selector-option jvm-like" tabindex="0">
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox--input" id=":sdk:core/main" data-filter=":sdk:core/main">
+                                <span class="checkbox--icon"></span>
+                                androidJvm
+                            </label>
+                        </li>
+                </ul>
+                <div class="dropdown--overlay"></div>
+            </div>
+        </ul>
+            <button class="navigation-controls--btn navigation-controls--btn_theme" id="theme-toggle-button" type="button">Switch theme
+            </button>
+            <div class="navigation-controls--btn navigation-controls--btn_search" id="searchBar" role="button">Search in
+                API
+            </div>
+        </div>
+    </header>
+    <div id="container">
+        <nav id="leftColumn" class="sidebar" data-item-type="SECTION" data-item-config="{&quot;defaultSize&quot;: 280, &quot;minSize&quot;: 200, &quot;maxSize&quot;: 400}">
+            <a class="toc--skip-link" href="#main">Skip to content</a>
+            <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
+                <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list" data-role="dropdown-listbox" aria-label="Table of contents">
+                    <div class="dropdown--header">
+                            <span>
+                                    Enhanced Chat Android
+                            </span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                    <div class="sidebar--inner" id="sideMenu"></div>
+                </ul>
+                <div class="dropdown--overlay"></div>
+            </div>
+        </nav>
+        <div id="resizer" class="resizer" data-item-type="BAR"></div>
+        <div id="main" data-item-type="SECTION" role="main">
+<div class="main-content" id="content" pageids="core::////PointingToDeclaration//-746848150">
+  <div class="breadcrumbs"></div>
+  <div class="cover ">
+    <h1 class="cover"><span><span>core</span></span></h1>
+    <div class="platform-hinted UnderCoverText" data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk:core/main"><p class="paragraph">The primary entry point for the Messaging for In-App SDK. Provides <code class="lang-kotlin">CoreClient</code> and <code class="lang-kotlin">ConversationClient</code> for managing conversations, sending messages, handling authentication, and coordinating pre-chat flows. Use this module for headless integrations or as the foundation for custom UI implementations.</p><h2 class="">Getting Started</h2><p class="paragraph">Create a <code class="lang-kotlin">CoreConfiguration</code> with your deployment values, then instantiate a <code class="lang-kotlin">CoreClient</code>:</p><div class="sample-container"><pre><code class="block lang-kotlin" theme="idea">val configuration = CoreConfiguration(<br>    serviceAPI = URL("https://myorg.my.salesforce-scrt.com"),<br>    organizationId = "00D000000000001",<br>    developerName = "My_Messaging_Deployment"<br>)<br>val coreClient = CoreClient.Factory.create(context, configuration)</code></pre><span class="copy-tooltip"><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div><span class="copy-icon"></span></span></div><p class="paragraph">Alternatively, create the configuration from the JSON config file downloaded from Salesforce setup (Embedded Service Deployments &gt; Get Code File):</p><div class="sample-container"><pre><code class="block lang-kotlin" theme="idea">val configuration = CoreConfiguration.fromFile(context)<br>val coreClient = CoreClient.Factory.create(context, configuration)</code></pre><span class="copy-tooltip"><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div><span class="copy-icon"></span></span></div><h2 class="">Managing Conversations</h2><p class="paragraph">Obtain a <code class="lang-kotlin">ConversationClient</code> to interact with a specific conversation. Check for existing conversations first, and generate a new UUID only if none exist:</p><div class="sample-container"><pre><code class="block lang-kotlin" theme="idea">val result = coreClient.conversations(limit = 10, forceRefresh = true)<br>val conversationId = if (result is Result.Success) {<br>    result.data.firstOrNull()?.identifier ?: UUID.randomUUID()<br>} else {<br>    UUID.randomUUID()<br>}<br>val conversationClient = coreClient.conversationClient(conversationId)</code></pre><span class="copy-tooltip"><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div><span class="copy-icon"></span></span></div><p class="paragraph">To explicitly create a conversation on the server:</p><div class="sample-container"><pre><code class="block lang-kotlin" theme="idea">val result = coreClient.createConversation(conversationId)</code></pre><span class="copy-tooltip"><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div><span class="copy-icon"></span></span></div><p class="paragraph"><strong>Important:</strong> Always use a randomly generated UUID for new conversation IDs. Never use deterministic values (customer IDs, account numbers). For unverified users, reusing IDs after a reinstall or database clear with <code class="lang-kotlin">clearAuthorization = true</code> causes HTTP 403 errors because the previous authorization token is lost, a new user identity is created, and the previous conversation ID becomes inaccessible to the new identity.</p><h2 class="">Sending Messages</h2><p class="paragraph">Use the <code class="lang-kotlin">ConversationClient</code> to send text messages and file attachments:</p><div class="sample-container"><pre><code class="block lang-kotlin" theme="idea">val result = conversationClient.sendMessage("Hello, I need help with my order")</code></pre><span class="copy-tooltip"><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div><span class="copy-icon"></span></span></div><div class="sample-container"><pre><code class="block lang-kotlin" theme="idea">conversationClient.sendFile(file, message = "See attached")</code></pre><span class="copy-tooltip"><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div><span class="copy-icon"></span></span></div><p class="paragraph">Entries appear in the local conversation feed immediately and are delivered to the server asynchronously.</p><h2 class="">Observing Events</h2><p class="paragraph">Collect the <code class="lang-kotlin">events</code> flow on <code class="lang-kotlin">CoreClient</code> to observe real-time activity across all conversations:</p><div class="sample-container"><pre><code class="block lang-kotlin" theme="idea">scope.launch {<br>    coreClient.events.collect { event -&gt;<br>        when (event) {<br>            is CoreEvent.ConversationEvent.Entry -&gt; { /* New message received */ }<br>            is CoreEvent.ConversationEvent.ProgressIndicator -&gt; { /* Agent is typing */ }<br>            is CoreEvent.Connection -&gt; { /* Connection state changed */ }<br>            is CoreEvent.Error -&gt; { /* Handle error */ }<br>            else -&gt; {}<br>        }<br>    }<br>}</code></pre><span class="copy-tooltip"><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div><span class="copy-icon"></span></span></div><p class="paragraph">For conversation-scoped events, collect from <code class="lang-kotlin">ConversationClient.events</code> instead.</p><h2 class="">Pre-Chat Configuration</h2><p class="paragraph">If your deployment uses pre-chat fields, retrieve the remote configuration and submit it when creating a conversation:</p><div class="sample-container"><pre><code class="block lang-kotlin" theme="idea">val config = coreClient.retrieveRemoteConfiguration()<br>if (config is Result.Success) {<br>    conversationClient.submitRemoteConfiguration(config.data)<br>}</code></pre><span class="copy-tooltip"><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div><span class="copy-icon"></span></span></div><p class="paragraph">To supply hidden pre-chat values (not visible to the user but used for routing), register a provider:</p><div class="sample-container"><pre><code class="block lang-kotlin" theme="idea">coreClient.registerHiddenPreChatValuesProvider { fields -&gt;<br>    fields.onEach { field -&gt;<br>        field.userInput = when (field.name) {<br>            "CustomerId" -&gt; "customer-123"<br>            else -&gt; ""<br>        }<br>    }<br>}</code></pre><span class="copy-tooltip"><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div><span class="copy-icon"></span></span></div><p class="paragraph">You can also fetch the remote configuration, modify hidden pre-chat field values directly, and then submit:</p><div class="sample-container"><pre><code class="block lang-kotlin" theme="idea">val configResult = coreClient.retrieveRemoteConfiguration()<br>if (configResult is Result.Success) {<br>    val remoteConfig = configResult.data<br>    remoteConfig.forms.forEach { form -&gt;<br>        form.hiddenFormFields.forEach { field -&gt;<br>            when (field.name) {<br>                "CustomerId" -&gt; field.userInput = "customer-123"<br>                "Priority" -&gt; field.userInput = "high"<br>            }<br>        }<br>    }<br>    conversationClient.submitRemoteConfiguration(remoteConfig)<br>}</code></pre><span class="copy-tooltip"><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div><span class="copy-icon"></span></span></div><h2 class="">User Verification</h2><p class="paragraph">For deployments that require authenticated users, set <code class="lang-kotlin">isUserVerificationRequired = true</code> in your configuration and register a JWT provider:</p><div class="sample-container"><pre><code class="block lang-kotlin" theme="idea">coreClient.registerUserVerificationProvider { reason -&gt;<br>    when (reason) {<br>        ChallengeReason.INITIAL -&gt; UserVerificationToken.externalToken(fetchJwt())<br>        ChallengeReason.RENEW, ChallengeReason.EXPIRED -&gt; UserVerificationToken.externalToken(renewJwt())<br>        ChallengeReason.MALFORMED -&gt; UserVerificationToken.externalToken(fetchJwt())<br>    }<br>}</code></pre><span class="copy-tooltip"><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div><span class="copy-icon"></span></span></div><p class="paragraph">The provider is called whenever the SDK needs a token -- at initial connection, on token expiry, or if the previous token was rejected.</p><h2 class="">Push Notifications</h2><p class="paragraph">Register the device for push notifications by providing your FCM token from <code class="lang-kotlin">FirebaseMessagingService</code>:</p><div class="sample-container"><pre><code class="block lang-kotlin" theme="idea">class MyFirebaseService : FirebaseMessagingService() {<br>    private val scope = CoroutineScope(Dispatchers.IO + SupervisorJob())<br><br>    override fun onNewToken(token: String) {<br>        super.onNewToken(token)<br>        scope.launch {<br>            CoreClient.provideDeviceToken(applicationContext, token)<br>        }<br>    }<br>}</code></pre><span class="copy-tooltip"><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div><span class="copy-icon"></span></span></div><p class="paragraph">The static <code class="lang-kotlin">provideDeviceToken</code> method stores the token locally and defers registration until the first network request. If you have an active <code class="lang-kotlin">CoreClient</code> instance and want to register immediately, use <code class="lang-kotlin">coreClient.registerDevice(context, token)</code> instead.</p><p class="paragraph">Push notifications are delivered when the real-time connection is not active (i.e., when <code class="lang-kotlin">stop()</code> has been called or the app is in the background).</p><h2 class="">Lifecycle Management</h2><p class="paragraph">Call <code class="lang-kotlin">start</code> to open the real-time event connection and <code class="lang-kotlin">stop</code> to close it. In Compose, use <code class="lang-kotlin">LifecycleResumeEffect</code> to tie the connection to the screen lifecycle:</p><div class="sample-container"><pre><code class="block lang-kotlin" theme="idea">LifecycleResumeEffect(Unit) {<br>    coreClient.start(lifecycleScope)<br>    onPauseOrDispose { coreClient.stop() }<br>}</code></pre><span class="copy-tooltip"><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div><span class="copy-icon"></span></span></div><p class="paragraph">While started, events flow through <code class="lang-kotlin">CoreClient.events</code> and push notifications are suppressed. When stopped, push notifications resume.</p><h2 class="">Clearing Data</h2><p class="paragraph">To clear all local SDK data (useful on user logout):</p><div class="sample-container"><pre><code class="block lang-kotlin" theme="idea">CoreClient.clearStorage(context)</code></pre><span class="copy-tooltip"><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div><span class="copy-icon"></span></span></div><p class="paragraph"><strong>Warning:</strong> The <code class="lang-kotlin">clearAuthorization</code> parameter behaves differently depending on your verification mode:</p><ul><li><p class="paragraph"><strong>Verified users</strong> (<code class="lang-kotlin">isUserVerificationRequired = true</code>): <code class="lang-kotlin">clearAuthorization = true</code> is safe — the user can re-verify and regain access to their conversations.</p></li><li><p class="paragraph"><strong>Unverified users</strong> (<code class="lang-kotlin">isUserVerificationRequired = false</code>): <code class="lang-kotlin">clearAuthorization = true</code> is <strong>destructive</strong> — the user permanently loses access to all conversations and a new user identity is created.</p></li></ul><p class="paragraph">For unverified users, prefer <code class="lang-kotlin">clearAuthorization = false</code> to preserve conversation access:</p><div class="sample-container"><pre><code class="block lang-kotlin" theme="idea">CoreClient.clearStorage(context, clearAuthorization = false)</code></pre><span class="copy-tooltip"><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div><span class="copy-icon"></span></span></div><p class="paragraph">To revoke the current auth token and optionally deregister from push:</p><div class="sample-container"><pre><code class="block lang-kotlin" theme="idea">coreClient.revokeToken(deregisterDevice = true)</code></pre><span class="copy-tooltip"><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div><span class="copy-icon"></span></span></div></div></div>
+  </div>
+  <h2 class="">Packages</h2>
+  <div class="table"><a data-name="1598751585%2FPackages%2F-746848150" anchor-label="com.salesforce.android.smi.core" id="1598751585%2FPackages%2F-746848150" data-filterable-set=":sdk:core/main"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":sdk:core/main" data-filterable-set=":sdk:core/main">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="com.salesforce.android.smi.core/index.html">com.salesforce.android.smi.core</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1598751585%2FPackages%2F-746848150"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right platform-tags--wrapper">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">androidJvm</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="1280481965%2FPackages%2F-746848150" anchor-label="com.salesforce.android.smi.core.data.domain.agentavailability" id="1280481965%2FPackages%2F-746848150" data-filterable-set=":sdk:core/main"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":sdk:core/main" data-filterable-set=":sdk:core/main">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="com.salesforce.android.smi.core.data.domain.agentavailability/index.html">com.salesforce.android.smi.core.data.domain.agentavailability</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1280481965%2FPackages%2F-746848150"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right platform-tags--wrapper">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">androidJvm</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="1295018428%2FPackages%2F-746848150" anchor-label="com.salesforce.android.smi.core.data.domain.businessHours" id="1295018428%2FPackages%2F-746848150" data-filterable-set=":sdk:core/main"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":sdk:core/main" data-filterable-set=":sdk:core/main">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="com.salesforce.android.smi.core.data.domain.businessHours/index.html">com.salesforce.android.smi.core.data.domain.businessHours</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1295018428%2FPackages%2F-746848150"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right platform-tags--wrapper">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">androidJvm</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="1645135947%2FPackages%2F-746848150" anchor-label="com.salesforce.android.smi.core.data.domain.conversationEntry.entryPayload.event.typing" id="1645135947%2FPackages%2F-746848150" data-filterable-set=":sdk:core/main"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":sdk:core/main" data-filterable-set=":sdk:core/main">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="com.salesforce.android.smi.core.data.domain.conversationEntry.entryPayload.event.typing/index.html">com.salesforce.android.smi.core.data.domain.conversationEntry.entryPayload.event.typing</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1645135947%2FPackages%2F-746848150"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right platform-tags--wrapper">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">androidJvm</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="-7670435%2FPackages%2F-746848150" anchor-label="com.salesforce.android.smi.core.data.domain.remoteConfiguration" id="-7670435%2FPackages%2F-746848150" data-filterable-set=":sdk:core/main"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":sdk:core/main" data-filterable-set=":sdk:core/main">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="com.salesforce.android.smi.core.data.domain.remoteConfiguration/index.html">com.salesforce.android.smi.core.data.domain.remoteConfiguration</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-7670435%2FPackages%2F-746848150"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right platform-tags--wrapper">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">androidJvm</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="-133218934%2FPackages%2F-746848150" anchor-label="com.salesforce.android.smi.core.events" id="-133218934%2FPackages%2F-746848150" data-filterable-set=":sdk:core/main"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":sdk:core/main" data-filterable-set=":sdk:core/main">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="com.salesforce.android.smi.core.events/index.html">com.salesforce.android.smi.core.events</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-133218934%2FPackages%2F-746848150"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right platform-tags--wrapper">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">androidJvm</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+  </div>
+</div>
+    <div class="footer">
+        <div class="footer--container">
+            <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+            <div class="footer--content">
+                <div>
+                    <span>Generated by </span>
+                    <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                        Dokka
+                    </a>
+                    <div>© 2026 Copyright</div>
+                </div>
+            </div>
+        </div>
+    </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
