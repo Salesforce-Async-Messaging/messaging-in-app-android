@@ -86,7 +86,16 @@ data class MessagingSessionState(
     val unreadMessageCount: Int = 0,
     val statusText: String? = null,
     val agentName: String = "Agent"
-)
+) {
+    /**
+     * Whether the messaging session is currently considered active. A session is treated as active
+     * unless its latest [SessionStatus] is [SessionStatus.Ended]. This is useful for building an
+     * efficient, cache-first inbox: ended sessions cannot receive new remote messages until the
+     * local user reopens them, so they do not need to be refreshed over the network.
+     */
+    val isActive: Boolean
+        get() = sessionStatus != SessionStatus.Ended
+}
 
 /**
  * Helper to get a particular messaging payload from a [List] of [ConversationEntry].

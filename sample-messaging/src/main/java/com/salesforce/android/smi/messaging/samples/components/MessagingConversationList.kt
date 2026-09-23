@@ -17,10 +17,12 @@ import androidx.compose.material3.ListItem
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -31,6 +33,7 @@ import com.salesforce.android.smi.core.CoreClient
 import com.salesforce.android.smi.messaging.SalesforceMessaging
 import com.salesforce.android.smi.messaging.samples.state.MessagingSessionState
 import com.salesforce.android.smi.messaging.samples.state.rememberMessagingSessionState
+import com.salesforce.android.smi.messaging.samples.state.refreshActiveConversations
 import com.salesforce.android.smi.network.data.domain.conversation.Conversation
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.mapNotNull
@@ -53,6 +56,13 @@ fun MessagingConversationList(
             list.map { coreClient.conversationClient(it.identifier) }
         }
     }.collectAsStateWithLifecycle(emptyList())
+
+    // Efficient, cache-first refresh: when the list of conversations changes, refresh only the
+    // conversations whose session is still active. Conversations whose session has ended are
+    // authoritative from the local cache and are skipped, incurring no network activity.
+    LaunchedEffect(conversationClients) {
+        conversationClients.refreshActiveConversations()
+    }
 
     val states: List<MessagingSessionState> = conversationClients.map { rememberMessagingSessionState(it) }
 
@@ -102,7 +112,7 @@ private fun ConversationsList(
                     val agentName = state.agentName
                     val unreadMessageCount = state.unreadMessageCount
 
-                    ConversationItem(statusText, agentName, unreadMessageCount)
+                    ConversationItem(statusText, agentName, unreadMessageCount, state.isActive)
                 },
                 modifier = Modifier
                     .clickable { state.conversation?.let { onSelection(it) } }
@@ -120,13 +130,26 @@ private fun ConversationsList(
 private fun ConversationItem(
     statusText: String,
     agentName: String,
-    unreadMessageCount: Int
+    unreadMessageCount: Int,
+    isActive: Boolean = true
 ) {
-    Row(verticalAlignment = Alignment.CenterVertically, modifier = Modifier.fillMaxWidth()) {
+    Row(
+        verticalAlignment = Alignment.CenterVertically,
+        modifier = Modifier
+            .fillMaxWidth()
+            .alpha(if (isActive) 1f else 0.5f)
+    ) {
         MessagingIcon(unreadMessageCount = unreadMessageCount, icon = Icons.Default.Person)
         Column {
             Text(agentName, style = MaterialTheme.typography.titleMedium, maxLines = 1, overflow = TextOverflow.Clip)
             Text(statusText, maxLines = 1, overflow = TextOverflow.Ellipsis)
+            if (!isActive) {
+                Text(
+                    "Session ended",
+                    style = MaterialTheme.typography.labelSmall,
+                    color = MaterialTheme.colorScheme.outline
+                )
+            }
         }
     }
 }
