@@ -22,19 +22,21 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.salesforce.android.smi.core.ConversationClient
-import com.salesforce.android.smi.messaging.SalesforceMessaging
+import com.salesforce.android.smi.core.CoreClient
 import com.salesforce.android.smi.messaging.samples.state.MessagingSessionState
+import com.salesforce.android.smi.messaging.samples.state.MessagingStore
 import com.salesforce.android.smi.messaging.samples.state.rememberMessagingSessionState
 import com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload.SessionStatus
+import java.util.UUID
 import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.launch
 
@@ -53,28 +55,45 @@ import kotlinx.coroutines.launch
 @OptIn(FlowPreview::class)
 @Composable
 fun MessagingWidget(
-    salesforceMessaging: SalesforceMessaging,
-    modifier: Modifier = Modifier
+    store: MessagingStore,
+    conversationId: UUID,
+    modifier: Modifier = Modifier,
+    onEnd: () -> Unit = {},
+    onOpen: () -> Unit
 ) {
-    val context = LocalContext.current
     MessagingWidget(
-        salesforceMessaging,
-        modifier,
-        { salesforceMessaging.uiClient.openConversationActivity(context) }
+        messagingSessionState = rememberMessagingSessionState(store, conversationId),
+        conversationClient = store.conversationClient(conversationId),
+        modifier = modifier,
+        onEnd = onEnd,
+        onOpen = onOpen
     )
 }
 
+/**
+ * [CoreClient]-backed overload for standalone use without a [MessagingStore]. Ungated: observes the
+ * conversation's session state directly, so pass an id backed by a real conversation. See
+ * [rememberMessagingSessionState] for the trade-offs vs the store.
+ */
 @OptIn(FlowPreview::class)
 @Composable
 fun MessagingWidget(
-    salesforceMessaging: SalesforceMessaging,
+    coreClient: CoreClient,
+    conversationId: UUID,
     modifier: Modifier = Modifier,
-    onOpen: () -> Unit,
-    onEnd: () -> Unit = {}
+    onEnd: () -> Unit = {},
+    onOpen: () -> Unit
 ) {
-    MessagingWidget(salesforceMessaging.conversationClient, modifier, onOpen, onEnd)
+    val conversationClient = remember(coreClient, conversationId) {
+        coreClient.conversationClient(conversationId)
+    }
+    MessagingWidget(conversationClient = conversationClient, modifier = modifier, onEnd = onEnd, onOpen = onOpen)
 }
 
+/**
+ * [ConversationClient]-backed overload for standalone use without a [MessagingStore]. Ungated; opens
+ * its own subscription (no cross-caller dedup).
+ */
 @OptIn(FlowPreview::class)
 @Composable
 fun MessagingWidget(
@@ -83,9 +102,29 @@ fun MessagingWidget(
     onEnd: () -> Unit = {},
     onOpen: () -> Unit
 ) {
-    val coroutineScope = rememberCoroutineScope()
-    val messagingSessionState = rememberMessagingSessionState(conversationClient)
+    MessagingWidget(
+        messagingSessionState = rememberMessagingSessionState(conversationClient),
+        conversationClient = conversationClient,
+        modifier = modifier,
+        onEnd = onEnd,
+        onOpen = onOpen
+    )
+}
 
+/**
+ * Source-independent overload: given an already-resolved [MessagingSessionState] and the
+ * [ConversationClient] used to end the session, renders the widget. All client/store overloads funnel
+ * here so the ending behaviour and layout are defined once.
+ */
+@Composable
+fun MessagingWidget(
+    messagingSessionState: MessagingSessionState,
+    conversationClient: ConversationClient,
+    modifier: Modifier = Modifier,
+    onEnd: () -> Unit = {},
+    onOpen: () -> Unit
+) {
+    val coroutineScope = rememberCoroutineScope()
     MessagingWidget(messagingSessionState, modifier, onOpen) {
         coroutineScope.launch {
             conversationClient.endSession()

@@ -53,7 +53,12 @@ class SalesforceMessaging(
         preChatFieldValueProvider = populatePopulatePreChat::populate
     }
 
-    override val coreClient: CoreClient = uiClient.coreClient(context.applicationContext).apply {
+    // Create the CoreClient from the conversation-independent [configuration] rather than from the
+    // per-conversation [uiClient]. CoreClient.Factory is an idempotent singleton keyed on
+    // (context, configuration); keying it on the base configuration (which carries no
+    // conversationId) means the same CoreClient instance is reused across active-conversation
+    // switches instead of being rebuilt each time. This is the single CoreClient for the app.
+    override val coreClient: CoreClient = CoreClient.Factory.create(context.applicationContext, configuration).apply {
         registerHiddenPreChatValuesProvider {
             hiddenPreChat.setValues(it)
         }

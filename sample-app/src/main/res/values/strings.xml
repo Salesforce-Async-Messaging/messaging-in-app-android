@@ -1,6 +1,10 @@
 <resources>
     <string name="app_name">sample-app</string>
 
+    <string name="home_title">Welcome</string>
+    <string name="home_message">Need a hand? Start a chat.</string>
+    <string name="home_open_messaging_button">Open Messaging Sample</string>
+
 
     <!-- Optional string overrides. -->
     <!-- See here for all available overrides: https://developer.salesforce.com/docs/service/messaging-in-app/guide/android-strings.html -->
