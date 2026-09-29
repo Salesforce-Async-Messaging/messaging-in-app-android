@@ -11,17 +11,12 @@ import kotlinx.coroutines.flow.filterIsInstance
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.map
 
-/**
- * Default number of most-recent cached entries inspected when determining session activity.
- */
+/** Default number of recent cached entries inspected for session activity. */
 const val DEFAULT_SESSION_ENTRY_LIMIT = 100
 
 /**
- * Sample: emits the current session-activity state of this conversation, derived entirely from
- * locally cached data (no network request is made).
- *
- * This is useful for building an efficient, cache-first inbox: the emitted flag lets you decide
- * whether a conversation still needs network activity, or whether the local cache is authoritative.
+ * Emits cache-derived activity and latest-activity time for this conversation without a network
+ * request. [MessagingStore] uses this cache-first signal to refresh only active conversations.
  *
  * The emitted [Pair] is:
  *  - `first` ([Boolean]): whether the messaging session is currently considered **active**,
@@ -34,10 +29,8 @@ const val DEFAULT_SESSION_ENTRY_LIMIT = 100
  *    milliseconds since the epoch. This is the newest cached [ConversationEntry.timestamp], or `0`
  *    if the conversation has no cached entries.
  *
- * The session state is driven by the server: this reflects the latest [SessionStatus] received and
- * does not infer session changes from local actions such as sending a message.
- *
- * The returned [Flow] updates reactively as new entries are persisted to the local cache.
+ * Session state reflects the latest server-provided [SessionStatus], not local actions. The returned
+ * [Flow] updates as entries reach the local cache.
  *
  * @param limit The maximum number of most-recent cached entries to inspect. Must be large enough to
  * include the latest session-status entry for accurate results. Defaults to [DEFAULT_SESSION_ENTRY_LIMIT].
@@ -48,8 +41,7 @@ fun ConversationClient.isActiveFlow(limit: Int = DEFAULT_SESSION_ENTRY_LIMIT): F
         .map { result -> result.data.toSessionActivity() }
 
 /**
- * Sample: reads the current session-activity state of this conversation once, from locally cached
- * data (no network request is made). See [isActiveFlow] for a description of the returned [Pair].
+ * Reads cache-derived activity once without a network request. See [isActiveFlow] for [Pair] values.
  *
  * @param limit The maximum number of most-recent cached entries to inspect. Defaults to
  * [DEFAULT_SESSION_ENTRY_LIMIT].
@@ -58,9 +50,8 @@ suspend fun ConversationClient.isActiveNow(limit: Int = DEFAULT_SESSION_ENTRY_LI
     isActiveFlow(limit).first()
 
 /**
- * Sample: force-refreshes this conversation's entries over the network **only if** its cached session
- * is still active. Ended sessions can't receive new remote messages, so their local cache is
- * authoritative and no network call is made.
+ * Refreshes entries only when cached session activity permits it. Ended sessions cannot receive new
+ * remote messages, so their cache remains authoritative and no network call occurs.
  *
  * @return `true` if a network refresh was performed, `false` if the conversation was inactive.
  */

@@ -28,12 +28,10 @@ import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.flow.stateIn
 
 /**
- * Immutable snapshot of the conversation list, exposed by [MessagingStore.listState].
+ * Conversation-list snapshot exposed by [MessagingStore.listState].
  *
- * @property states one [MessagingSessionState] per conversation, in list order. Each entry is backed
- * by the same shared per-conversation flow used everywhere else in the app.
- * @property isLoading `true` until the underlying conversation list has emitted for the first time.
- * This distinguishes "still loading the list" from "loaded, but there are no conversations".
+ * @property states one shared [MessagingSessionState] per conversation, in list order.
+ * @property isLoading `true` until the list first loads; `false` for an empty loaded list.
  */
 data class ConversationListState(
     val states: List<MessagingSessionState> = emptyList(),
@@ -41,20 +39,14 @@ data class ConversationListState(
 )
 
 /**
- * The single entrypoint for reading messaging data across the sample app.
+ * Shared cache-first source of messaging state for this sample.
  *
- * Owns the one [CoreClient] for the app and hands out a **single shared** [MessagingSessionState]
- * flow per conversation, so that any number of components observing the same conversation (e.g. the
- * launcher button, the widget, and a row in the conversation list) all collect from **one** upstream
- * subscription rather than each opening their own. This is what keeps network activity proportional
- * to the number of distinct conversations on screen instead of the number of components.
+ * Hoist one store in Compose and pass it to consumers. It owns the [CoreClient] and memoizes one
+ * [ConversationClient] and shared [MessagingSessionState] flow per conversation, so list rows and
+ * standalone UI observe the same state without duplicate subscriptions.
  *
- * Hoist a single instance high in the composition (e.g. at the screen root) and pass it down.
- *
- * @param coreClient the app's single CoreClient. See `SalesforceMessaging` for why this instance is
- * stable across active-conversation switches.
- * @param scope the scope the shared flows are started in. Use a scope tied to the store's owner
- * (e.g. `rememberCoroutineScope()` at the hoist site).
+ * @param coreClient app's single [CoreClient], stable across active-conversation switches.
+ * @param scope scope that owns shared flows, such as `rememberCoroutineScope()` at the hoist site.
  * @param listLimit maximum number of conversations fetched for [listState].
  * @param refreshThrottle minimum time between network refreshes of a single active conversation's
  * entries. The first refresh runs immediately; subsequent refreshes within this window are skipped
@@ -72,8 +64,8 @@ class MessagingStore(
     // main thread (component reads) and from flow-collection/refresh coroutines off the main thread.
     private val conversationClients = ConcurrentHashMap<UUID, ConversationClient>()
 
-    // One shared, hot session-state flow per conversation. computeIfAbsent is the dedup: repeated calls for
-    // the same id return the same StateFlow, so all collectors share a single upstream. stateIn with
+    // One shared, hot session-state flow per conversation. Synchronized memoization is the dedup: repeated
+    // calls for the same id return the same StateFlow, so all collectors share a single upstream. stateIn with
     // WhileSubscribed keeps that upstream alive only while something is observing it (plus a short
     // grace period across config changes / quick navigation), then stops the network flow.
     private val sessionStates = ConcurrentHashMap<UUID, StateFlow<MessagingSessionState>>()
@@ -84,7 +76,7 @@ class MessagingStore(
     private val throttle = Throttle()
 
     fun conversationClient(conversationId: UUID): ConversationClient =
-        conversationClients.computeIfAbsent(conversationId) {
+        conversationClients.getOrPutSynchronized(conversationId) {
             coreClient.conversationClient(conversationId)
         }
 
@@ -100,16 +92,14 @@ class MessagingStore(
             .stateIn(scope, SharingStarted.WhileSubscribed(SHARE_STOP_TIMEOUT_MS), null)
 
     /**
-     * Shared session-state flow for [conversationId]; the same id returns the same [StateFlow], so
-     * collectors share one upstream.
+     * Shared UI-state flow for [conversationId]. Repeated calls for one id return the same flow.
      *
-     * Self-gating on the inbox: it only opens the network-backed flows once [conversationId] is in
-     * [knownConversationIds]. For an unknown id (e.g. a not-yet-started conversation) it emits a
-     * default state and makes no request, so components can observe it unconditionally.
+     * Known inbox conversations use cache-backed flows. Unknown ids emit a default state without a
+     * request, allowing Compose callers to observe them unconditionally.
      */
     @OptIn(ExperimentalCoroutinesApi::class)
     fun sessionState(conversationId: UUID): StateFlow<MessagingSessionState> =
-        sessionStates.computeIfAbsent(conversationId) {
+        sessionStates.getOrPutSynchronized(conversationId) {
             knownConversationIds
                 .flatMapLatest { ids ->
                     if (ids?.contains(conversationId) == true) {
@@ -125,14 +115,18 @@ class MessagingStore(
                 )
         }
 
+    // ConcurrentHashMap.computeIfAbsent is only available on Android API 24+. Synchronize each map's
+    // check-and-create operation so API 23 also creates and retains exactly one value per UUID.
+    private fun <T> ConcurrentHashMap<UUID, T>.getOrPutSynchronized(
+        key: UUID,
+        create: () -> T
+    ): T = synchronized(this) {
+        get(key) ?: create().also { put(key, it) }
+    }
+
     /**
-     * Cache-first stream of the conversation list. Rows reuse the same per-conversation
-     * [sessionState] flows, so a conversation shown both here and standalone is fetched once.
-     *
-     * The active conversations are refreshed in the background whenever the set of conversation ids
-     * actually changes (not on every emission), keeping the list current without looping: the id set
-     * only changes when conversations are added/removed, so the refresh — which itself writes entries
-     * — cannot re-trigger itself.
+     * Cache-first conversation-list state. Rows reuse [sessionState], so list and standalone UI share
+     * each conversation's state. Active conversations refresh when the list membership changes.
      */
     @OptIn(ExperimentalCoroutinesApi::class)
     val listState: StateFlow<ConversationListState> =
@@ -144,9 +138,7 @@ class MessagingStore(
             )
 
     /**
-     * Cold flow backing [listState]: projects the known ids onto their shared [sessionState] flows.
-     * The list fetch and background refresh are owned by [knownConversationIds], so this is a pure
-     * projection. Split from [listState] so the flow is testable and the [stateIn] policy lives once.
+     * Cold flow backing [listState], mapping known ids to their shared [sessionState] flows.
      */
     @OptIn(ExperimentalCoroutinesApi::class)
     private fun conversationListStateFlow(): Flow<ConversationListState> =
@@ -166,11 +158,9 @@ class MessagingStore(
     }
 
     /**
-     * Total unread message count across every conversation in [listState], derived from the same
-     * shared per-conversation flows (no extra fetch). This mirrors the per-row unread counts shown in
-     * the inbox: [MessagingSessionState.unreadMessageCount] is only non-zero for active sessions, so
-     * this sums unread for active conversations. To count unread across all conversations regardless
-     * of session status, sum `it.conversation?.unreadMessageCount ?: 0` instead.
+     * Total unread count for active conversations in [listState], derived from shared state without an
+     * extra fetch. For every conversation regardless of status, sum
+     * `it.conversation?.unreadMessageCount ?: 0` instead.
      */
     val totalUnreadCount: StateFlow<Int> = listState
         .map { state -> state.states.sumOf { it.unreadMessageCount } }
@@ -178,10 +168,8 @@ class MessagingStore(
         .stateIn(scope, SharingStarted.WhileSubscribed(SHARE_STOP_TIMEOUT_MS), 0)
 
     /**
-     * The most recently active conversation id in [listState], or `null` while loading or when none
-     * is loadable. Ended conversations are skipped (they 403 on load), so this only returns one you
-     * can open. "Most recent" is by last activity, falling back to list order. Handy for seeding a
-     * default conversation instead of a brand-new random id.
+     * Most recently active conversation in [listState], or `null` while loading or when none is
+     * loadable. Ended conversations are skipped; activity time determines recency, then list order.
      */
     val latestConversationId: StateFlow<UUID?> = listState
         .map { state -> if (state.isLoading) null else state.states.latestConversationId() }
@@ -196,12 +184,10 @@ class MessagingStore(
     }
 
     /**
-     * Explicitly refreshes the conversation list from the network, **throttled and idempotent**.
+     * Reconciles the cache-first list with the network, such as for pull-to-refresh.
      *
-     * This is not automatic — [listState] stays cache-first on its own. Call this (e.g. from a
-     * pull-to-refresh) when you want to reconcile with the backend. The first call forces a network
-     * fetch; any call within the throttle window skips the network and simply returns the same
-     * locally cached list. On success, [listState] updates reactively from the refreshed cache.
+     * First call forces a fetch. Calls within the throttle window return the locally cached list, and
+     * [listState] updates from refreshed cache data.
      *
      * @return the current conversation list (freshly fetched, or the throttled cached copy).
      */

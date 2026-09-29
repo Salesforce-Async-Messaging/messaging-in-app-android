@@ -22,17 +22,16 @@ import kotlinx.coroutines.flow.debounce
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.mapNotNull
 
-/**
- *  Creates a MessagingSessionState that is remembered across compositions.
- */
+/** Returns the current state for the active [SalesforceMessaging] conversation. */
 @Composable
 fun rememberMessagingSessionState(salesforceMessaging: SalesforceMessaging): MessagingSessionState =
     rememberMessagingSessionState(salesforceMessaging.conversationClient)
 
 /**
- * Observes the shared session state for [conversationId] from the [MessagingStore]. Callers for the
- * same id share one subscription, and it is safe to call unconditionally: the store skips network for
- * an id that isn't in the inbox (e.g. a new-conversation id), emitting a default state instead.
+ * Normal Compose accessor for a conversation's shared [MessagingSessionState].
+ *
+ * [MessagingStore] memoizes state by id, so callers share one subscription. Unknown inbox ids emit a
+ * default state without a request, making this safe to call unconditionally.
  */
 @Composable
 fun rememberMessagingSessionState(
@@ -50,11 +49,10 @@ fun rememberMessagingSessionState(conversationClients: List<ConversationClient>)
     }
 
 /**
- * Observes session state directly from a [CoreClient] and [conversationId], bypassing the
- * [MessagingStore].
+ * Observes state directly from [CoreClient], bypassing [MessagingStore].
  *
- * Ungated: the entries flow is collected immediately, so pass an id backed by a real conversation.
- * Prefer the [MessagingStore] overload, which dedups subscriptions and skips network for unknown ids.
+ * This opens an ungated subscription immediately; use a real conversation id. Prefer the store
+ * overload for shared state and unknown-id handling.
  */
 @Composable
 fun rememberMessagingSessionState(
@@ -68,11 +66,9 @@ fun rememberMessagingSessionState(
 }
 
 /**
- * Observes session state directly from a single [ConversationClient], bypassing the
- * [MessagingStore].
+ * Observes state directly from one [ConversationClient], bypassing [MessagingStore].
  *
- * Like the [CoreClient] overload this is **ungated** and opens its own subscription (no cross-caller
- * dedup). Prefer the [MessagingStore] overload when you have a store.
+ * This is ungated and not shared across callers. Prefer the store overload when available.
  */
 @Composable
 fun rememberMessagingSessionState(conversationClient: ConversationClient): MessagingSessionState {
@@ -84,8 +80,7 @@ fun rememberMessagingSessionState(conversationClient: ConversationClient): Messa
 }
 
 /**
- * Observes the total unread message count across all conversations from the single [MessagingStore].
- * Derived from the same shared flows the inbox uses, so it adds no extra network activity.
+ * Observes active-conversation unread count from [MessagingStore]'s shared inbox state.
  */
 @Composable
 fun rememberTotalUnreadCount(store: MessagingStore): Int {
@@ -127,7 +122,9 @@ internal fun provideMessagingSessionStateFlow(conversationClient: ConversationCl
     }.debounce(500)
 
 /**
- * A state object that can be hoisted to observe common messaging session state.
+ * UI snapshot for one messaging conversation.
+ *
+ * [MessagingStore] creates and shares these snapshots; use its Compose accessor for normal UI.
  */
 data class MessagingSessionState(
     val conversation: Conversation? = null,
@@ -139,24 +136,21 @@ data class MessagingSessionState(
     val agentName: String = "Agent"
 ) {
     /**
-     * Whether the messaging session is currently considered active. A session is treated as active
-     * unless its latest [SessionStatus] is [SessionStatus.Ended]. This is useful for building an
-     * efficient, cache-first inbox: ended sessions cannot receive new remote messages until the
-     * local user reopens them, so they do not need to be refreshed over the network.
+     * Whether the session can still receive remote messages. Only [SessionStatus.Ended] is inactive;
+     * cache-first refresh skips inactive sessions.
      */
     val isActive: Boolean
         get() = sessionStatus != SessionStatus.Ended
 
     /**
      * Whether the session is live on the backend ([SessionStatus.Active]). Unlike [isActive], this is
-     * `false` for new and ended sessions. Used to gate the live SSE stream to active sessions only.
+     * `false` for new and ended sessions.
      */
     val isSessionActive: Boolean
         get() = sessionStatus == SessionStatus.Active
 
     /**
-     * Timestamp (ms since epoch) of the newest cached entry, or `0` if none. Used to order
-     * conversations by last activity.
+     * Newest cached-entry timestamp in milliseconds since epoch, or `0` if none.
      */
     val lastActivityTimestamp: Long
         get() = conversationEntries.maxOfOrNull { it.timestamp } ?: 0L
