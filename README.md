@@ -24,7 +24,9 @@
 
 #### Sample Utilities
  - [LifecycleResumeMessagingStreamEffect](sample-messaging/src/main/java/com/salesforce/android/smi/messaging/samples/state/LifecycleResumeMessagingStreamEffect.kt) - Maintains the messaging event stream when the UI is closed. Used for receiving conversation updates.
- - [MessagingSessionState](sample-messaging/src/main/java/com/salesforce/android/smi/messaging/samples/state/MessagingSessionState.kt) - Maintains an object with the relevant data used in the sample components. This could also be done in your ViewModel instead.
+ - [MessagingSessionState](sample-messaging/src/main/java/com/salesforce/android/smi/messaging/samples/state/MessagingSessionState.kt) - UI-ready snapshot for one conversation, combining cached conversation details and entries into session status, unread count, queue position, latest display text, and last activity. Obtain shared state with `rememberMessagingSessionState(store, conversationId)`.
+ - [MessagingStore](sample-messaging/src/main/java/com/salesforce/android/smi/messaging/samples/state/MessagingStore.kt) - Cache-first state entry point for the sample app. Provides one shared MessagingSessionState flow per conversation so multiple components reuse the same client and upstream data; skips unknown IDs and throttles active-session refreshes.
+ - [ConversationClientExt](sample-messaging/src/main/java/com/salesforce/android/smi/messaging/samples/extensions/ConversationClientExt.kt) - Detects session activity from cached entries and refreshes entries only for active conversations.
 
 #### Sample Usage
  - [MainActivity](sample-app/src/main/java/com/salesforce/android/smi/sampleapp/MainActivity.kt)

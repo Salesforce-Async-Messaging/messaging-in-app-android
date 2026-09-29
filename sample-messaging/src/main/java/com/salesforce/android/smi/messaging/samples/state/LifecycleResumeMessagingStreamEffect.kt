@@ -8,7 +8,9 @@ import com.salesforce.android.smi.messaging.SalesforceMessaging
 import com.salesforce.android.smi.ui.MessagingInAppUI
 
 /**
- * Maintains the messaging event stream. Should be used when the [MessagingInAppUI] is not active.
+ * Maintains the messaging event stream while the [MessagingInAppUI] is not active.
+ *
+ * @param salesforceMessaging provides the [CoreClient] that owns the stream.
  */
 @Composable
 fun LifecycleResumeMessagingStreamEffect(salesforceMessaging: SalesforceMessaging) {
@@ -16,11 +18,13 @@ fun LifecycleResumeMessagingStreamEffect(salesforceMessaging: SalesforceMessagin
 }
 
 /**
- * Maintains the messaging event stream. Should be used when the [MessagingInAppUI] is not active.
+ * Maintains the messaging event stream while the [MessagingInAppUI] is not active.
+ *
+ * @param coreClient the client that owns the stream.
  */
 @Composable
 fun LifecycleResumeMessagingStreamEffect(coreClient: CoreClient) {
-    // It's important to start/stop the client events based on these lifecycle events
+    // It's important to start/stop the client events based on these lifecycle events.
     LifecycleResumeEffect(Unit) {
         coreClient.start(lifecycleScope)
         onPauseOrDispose { coreClient.stop() }

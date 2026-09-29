@@ -6,6 +6,7 @@ import androidx.compose.runtime.remember
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.salesforce.android.smi.common.api.data
 import com.salesforce.android.smi.core.ConversationClient
+import com.salesforce.android.smi.core.CoreClient
 import com.salesforce.android.smi.messaging.SalesforceMessaging
 import com.salesforce.android.smi.network.data.domain.conversation.Conversation
 import com.salesforce.android.smi.network.data.domain.conversationEntry.ConversationEntry
@@ -13,6 +14,7 @@ import com.salesforce.android.smi.network.data.domain.conversationEntry.entryPay
 import com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload.SessionStatus
 import com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload.message.format.ChoicesFormat
 import com.salesforce.android.smi.network.data.domain.conversationEntry.entryPayload.message.format.StaticContentFormat
+import java.util.UUID
 import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.combine
@@ -20,12 +22,25 @@ import kotlinx.coroutines.flow.debounce
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.mapNotNull
 
-/**
- *  Creates a MessagingSessionState that is remembered across compositions.
- */
+/** Returns the current state for the active [SalesforceMessaging] conversation. */
 @Composable
 fun rememberMessagingSessionState(salesforceMessaging: SalesforceMessaging): MessagingSessionState =
     rememberMessagingSessionState(salesforceMessaging.conversationClient)
+
+/**
+ * Normal Compose accessor for a conversation's shared [MessagingSessionState].
+ *
+ * [MessagingStore] memoizes state by id, so callers share one subscription. Unknown inbox ids emit a
+ * default state without a request, making this safe to call unconditionally.
+ */
+@Composable
+fun rememberMessagingSessionState(
+    store: MessagingStore,
+    conversationId: UUID
+): MessagingSessionState {
+    val state by store.sessionState(conversationId).collectAsStateWithLifecycle()
+    return state
+}
 
 @Composable
 fun rememberMessagingSessionState(conversationClients: List<ConversationClient>): List<MessagingSessionState> =
@@ -33,6 +48,28 @@ fun rememberMessagingSessionState(conversationClients: List<ConversationClient>)
         rememberMessagingSessionState(it)
     }
 
+/**
+ * Observes state directly from [CoreClient], bypassing [MessagingStore].
+ *
+ * This opens an ungated subscription immediately; use a real conversation id. Prefer the store
+ * overload for shared state and unknown-id handling.
+ */
+@Composable
+fun rememberMessagingSessionState(
+    coreClient: CoreClient,
+    conversationId: UUID
+): MessagingSessionState {
+    val conversationClient = remember(coreClient, conversationId) {
+        coreClient.conversationClient(conversationId)
+    }
+    return rememberMessagingSessionState(conversationClient)
+}
+
+/**
+ * Observes state directly from one [ConversationClient], bypassing [MessagingStore].
+ *
+ * This is ungated and not shared across callers. Prefer the store overload when available.
+ */
 @Composable
 fun rememberMessagingSessionState(conversationClient: ConversationClient): MessagingSessionState {
     val state by remember(conversationClient.conversationId) {
@@ -42,8 +79,17 @@ fun rememberMessagingSessionState(conversationClient: ConversationClient): Messa
     return state
 }
 
+/**
+ * Observes active-conversation unread count from [MessagingStore]'s shared inbox state.
+ */
+@Composable
+fun rememberTotalUnreadCount(store: MessagingStore): Int {
+    val total by store.totalUnreadCount.collectAsStateWithLifecycle()
+    return total
+}
+
 @OptIn(FlowPreview::class)
-private fun provideMessagingSessionStateFlow(conversationClient: ConversationClient): Flow<MessagingSessionState> =
+internal fun provideMessagingSessionStateFlow(conversationClient: ConversationClient): Flow<MessagingSessionState> =
     combine(
         conversationClient.conversation.map { it.data },
         conversationClient.conversationEntriesFlow().mapNotNull { it.data }
@@ -76,7 +122,9 @@ private fun provideMessagingSessionStateFlow(conversationClient: ConversationCli
     }.debounce(500)
 
 /**
- * A state object that can be hoisted to observe common messaging session state.
+ * UI snapshot for one messaging conversation.
+ *
+ * [MessagingStore] creates and shares these snapshots; use its Compose accessor for normal UI.
  */
 data class MessagingSessionState(
     val conversation: Conversation? = null,
@@ -86,7 +134,27 @@ data class MessagingSessionState(
     val unreadMessageCount: Int = 0,
     val statusText: String? = null,
     val agentName: String = "Agent"
-)
+) {
+    /**
+     * Whether the session can still receive remote messages. Only [SessionStatus.Ended] is inactive;
+     * cache-first refresh skips inactive sessions.
+     */
+    val isActive: Boolean
+        get() = sessionStatus != SessionStatus.Ended
+
+    /**
+     * Whether the session is live on the backend ([SessionStatus.Active]). Unlike [isActive], this is
+     * `false` for new and ended sessions.
+     */
+    val isSessionActive: Boolean
+        get() = sessionStatus == SessionStatus.Active
+
+    /**
+     * Newest cached-entry timestamp in milliseconds since epoch, or `0` if none.
+     */
+    val lastActivityTimestamp: Long
+        get() = conversationEntries.maxOfOrNull { it.timestamp } ?: 0L
+}
 
 /**
  * Helper to get a particular messaging payload from a [List] of [ConversationEntry].
