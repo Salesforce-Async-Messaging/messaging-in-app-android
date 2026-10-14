@@ -17,8 +17,11 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.salesforce.android.smi.core.ConversationClient
+import com.salesforce.android.smi.core.CoreClient
 import com.salesforce.android.smi.messaging.SalesforceMessaging
+import com.salesforce.android.smi.messaging.samples.state.MessagingStore
 import com.salesforce.android.smi.messaging.samples.state.rememberMessagingSessionState
+import java.util.UUID
 
 /**
  * Icon with a badge for displaying the current unread message count.
@@ -33,6 +36,35 @@ fun MessagingIcon(
     icon: ImageVector = Icons.AutoMirrored.Filled.Chat
 ) {
     MessagingIcon(modifier, salesforceMessaging.conversationClient, icon)
+}
+
+/**
+ * [MessagingStore]-backed overload: shared/deduped session state, gated on the inbox.
+ */
+@Composable
+fun MessagingIcon(
+    store: MessagingStore,
+    conversationId: UUID,
+    modifier: Modifier = Modifier,
+    icon: ImageVector = Icons.AutoMirrored.Filled.Chat
+) {
+    val messagingSessionState = rememberMessagingSessionState(store, conversationId)
+    MessagingIcon(modifier, messagingSessionState.unreadMessageCount, icon)
+}
+
+/**
+ * [CoreClient]-backed overload for standalone use without a [MessagingStore]. Ungated; pass an id
+ * backed by a real conversation.
+ */
+@Composable
+fun MessagingIcon(
+    coreClient: CoreClient,
+    conversationId: UUID,
+    modifier: Modifier = Modifier,
+    icon: ImageVector = Icons.AutoMirrored.Filled.Chat
+) {
+    val messagingSessionState = rememberMessagingSessionState(coreClient, conversationId)
+    MessagingIcon(modifier, messagingSessionState.unreadMessageCount, icon)
 }
 
 @Composable
