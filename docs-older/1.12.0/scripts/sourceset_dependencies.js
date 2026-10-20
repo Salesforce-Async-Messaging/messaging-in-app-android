@@ -1,0 +1,1 @@
+sourceset_dependencies = '{":sdk:core/main":[],":sdk:core/release":[],":sdk:common/main":[],":sdk:common/release":[],":sdk:data/main":[],":sdk:data/release":[],":sdk:ui/main":[],":sdk:ui/release":[],":sdk:multimedia:core/main":[],":sdk:multimedia:core/release":[],":sdk:multimedia:common/main":[],":sdk:multimedia:common/release":[]}'

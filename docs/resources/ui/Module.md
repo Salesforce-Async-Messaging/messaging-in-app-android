@@ -54,6 +54,19 @@ uiClient.MessagingInAppUI(onExit = {
 })
 ```
 
+Declare the following on the activity that hosts `MessagingInAppUI`. Without this,
+entering split-screen or multi-window recreates the host activity and the conversation
+UI can render as a blank screen. The SDK-launched `MessagingInappActivity` already
+declares these config changes.
+
+```xml
+<activity
+    android:name=".YourHostActivity"
+    android:configChanges="smallestScreenSize|screenSize|screenLayout|orientation" />
+```
+
+Add `keyboardHidden` to `android:configChanges` if desired.
+
 ### Bottom sheet (modal)
 
 Present the messaging UI in a `ModalBottomSheet`:
@@ -801,6 +814,14 @@ To customize any UI text, create a strings.xml resource file in your app using t
 |smi_file_format_unsupported|Unsupported file format.|Message shown if user sends an unsupported file in chat|
 |smi_file_format_unsupported_alternate|File type not supported, try: %s|Message show if the user sends an unsupported file in the chat and a list of alternate file types given as a suggestion.|
 |smi_file_size_exceeded|Attachment is too large. Maximum size is %s.|Message shown if the user sends an attachment that exceeds the max size that can be sent|
+|smi_attachment_upload_error_storage_limit|Storage limit reached.|Error shown beneath an individual attachment when the upload fails because the storage limit was exceeded.|
+|smi_attachment_upload_error_too_large|File is too large.|Error shown beneath an individual attachment when the upload fails because the file is too large.|
+|smi_attachment_upload_error_not_found|File not found.|Error shown beneath an individual attachment when the upload fails because the file could not be found.|
+|smi_attachment_upload_error_not_enabled|Attachments aren\'t enabled.|Error shown beneath an individual attachment when the upload fails because attachments are not enabled.|
+|smi_attachment_upload_error_not_allowed|This file type isn\'t allowed.|Error shown beneath an individual attachment when the upload fails because the user is not permitted to upload attachments.|
+|smi_attachment_upload_error_generic|Upload failed.|Error shown beneath an individual attachment when the upload fails for an unspecified reason.|
+|smi_attachment_upload_error_rate_limited|Too many requests.|Error shown beneath an individual attachment when the upload fails due to rate limiting.|
+|smi_attachment_upload_error_max_files|Too many files.|Error shown beneath an individual attachment when the upload fails because the message exceeds the maximum number of files allowed.|
 
 ###  Agent Transfer  ###
 |**Keyword**|**Default Value**|**Description**|

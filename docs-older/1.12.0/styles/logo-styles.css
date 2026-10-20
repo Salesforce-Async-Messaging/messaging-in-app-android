@@ -1,0 +1,48 @@
+:root {
+    --dokka-logo-image-url: url('../images/salesforce-logo.png');
+    --dokka-logo-height: 80px;
+    --dokka-logo-width: 45px;
+
+    --color-sf-blue: #0176D3;
+    --color-sf-dark: #032D60;
+    --color-sf-light: #EEF4FF;
+}
+
+/* Navigation bar brand color */
+.navigation.theme-dark {
+    background-color: var(--color-sf-dark);
+}
+
+/* Navigation link styling */
+.library-name--link {
+    color: #FFFFFF;
+    font-weight: 600;
+}
+
+/* Active tab and link accent color */
+.tabs--tab[data-active] {
+    border-bottom-color: var(--color-sf-blue);
+}
+
+/* Code block styling */
+.sample-container pre {
+    border-radius: 6px;
+    border: 1px solid #e0e0e0;
+}
+
+.theme-dark .sample-container pre {
+    border-color: #3a3a3a;
+}
+
+/* Footer styling */
+.footer {
+    border-top: 1px solid #e0e0e0;
+    padding-top: 12px;
+    font-size: 0.85em;
+    color: #666;
+}
+
+.theme-dark .footer {
+    border-top-color: #3a3a3a;
+    color: #999;
+}
