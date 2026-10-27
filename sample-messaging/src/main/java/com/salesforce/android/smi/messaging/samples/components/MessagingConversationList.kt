@@ -172,7 +172,13 @@ private fun ConversationsList(
                     val agentName = state.agentName
                     val unreadMessageCount = state.unreadMessageCount
 
-                    ConversationItem(statusText, agentName, unreadMessageCount, state.isActive)
+                    ConversationItem(
+                        state.conversation?.label,
+                        statusText,
+                        agentName,
+                        unreadMessageCount,
+                        state.isActive
+                    )
                 },
                 modifier = Modifier
                     .clickable { state.conversation?.let { onSelection(it) } }
@@ -209,6 +215,7 @@ private fun LazyItemScope.EmptyConversationsItem() {
 
 @Composable
 private fun ConversationItem(
+    label: String?,
     statusText: String,
     agentName: String,
     unreadMessageCount: Int,
@@ -222,7 +229,21 @@ private fun ConversationItem(
     ) {
         MessagingIcon(unreadMessageCount = unreadMessageCount, icon = Icons.Default.Person)
         Column {
-            Text(agentName, style = MaterialTheme.typography.titleMedium, maxLines = 1, overflow = TextOverflow.Clip)
+            val conversationTitle = label?.takeIf { it.isNotBlank() }
+            Text(
+                conversationTitle ?: agentName,
+                style = MaterialTheme.typography.titleMedium,
+                maxLines = 1,
+                overflow = TextOverflow.Clip
+            )
+            if (conversationTitle != null) {
+                Text(
+                    agentName,
+                    style = MaterialTheme.typography.labelMedium,
+                    maxLines = 1,
+                    overflow = TextOverflow.Clip
+                )
+            }
             Text(statusText, maxLines = 1, overflow = TextOverflow.Ellipsis)
             if (!isActive) {
                 Text(
@@ -238,5 +259,5 @@ private fun ConversationItem(
 @Composable
 @Preview
 private fun MessagingConversationList() {
-    ConversationItem("This is a message", "Agent", 5)
+    ConversationItem("Priority support", "This is a message", "Agent", 5)
 }
